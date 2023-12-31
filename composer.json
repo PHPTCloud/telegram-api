@@ -1,0 +1,29 @@
+{
+  "name": "phptcloud/telegram-api",
+  "description": "Библиотека для работы с Telegram API",
+  "version": "1.0.0",
+  "type": "library",
+  "keywords": [
+    "php",
+    "sdk",
+    "telegram",
+    "bot",
+    "api"
+  ],
+  "authors": [
+    {
+      "name": "Юдов Алексей",
+      "email": "tcloud.ax@gmail.com",
+      "role": "Автор"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PHPTCloud\\TelegramApi\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "guzzlehttp/guzzle": "^6.0|^7.0"
+  }
+}
