@@ -71,7 +71,7 @@ interface ChatInterface
      *
      * @return ChatPhotoInterface|null
      */
-    public function getChatPhoto(): ?ChatPhotoInterface;
+    public function getPhoto(): ?ChatPhotoInterface;
 
     /**
      * Необязательный. Если не пусто, список всех активных имен пользователей чата; для приватных чатов, су

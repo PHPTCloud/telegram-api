@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces;
+namespace PHPTCloud\TelegramApi\Type\DataObject;
+
+use PHPTCloud\TelegramApi\Type\Interfaces\GeneralForumTopicHiddenInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -11,6 +13,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces;
  * омент не содержит никакой информации.
  * @link    https://core.telegram.org/bots/api#generalforumtopichidden
  */
-interface GeneralForumTopicHiddenInterface
+class GeneralForumTopicHidden implements GeneralForumTopicHiddenInterface
 {
 }
