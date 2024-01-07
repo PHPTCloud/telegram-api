@@ -5,6 +5,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Юдов Никита yudov.nikita@bk.ru
  * @version 1.0.0
  *
  * Этот объект представляет собой файл анимации (видео GIF или H.264/MPEG-4 AVC без звука).

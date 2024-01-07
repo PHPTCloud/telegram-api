@@ -4,13 +4,13 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Interfaces;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Юдов Никита yudov.nikita@bk.ru
  * @version 1.0.0
  *
  * Этот объект представляет собой видеосообщение (доступно в приложениях Telegram начиная с версии 4.0).
  * @link    https://telegram.org/blog/video-messages-and-telescope
  * @link    https://core.telegram.org/bots/api#videonote
  */
-
 interface VideoNoteInterface
 {
     /**
@@ -49,5 +49,5 @@ interface VideoNoteInterface
      */
     public function getThumbnail(): ?PhotoSizeInterface;
 
-    
+
 }

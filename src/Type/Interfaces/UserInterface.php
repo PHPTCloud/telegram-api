@@ -5,10 +5,11 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Юдов Никита yudov.nikita@bk.ru
  * @version 1.0.0
  *
  * Telegram API
- * @link https://core.telegram.org/bots/api#user
+ * @link    https://core.telegram.org/bots/api#user
  * Этот объект представляет пользователя или бота Telegram.
  */
 interface UserInterface
