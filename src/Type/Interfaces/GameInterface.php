@@ -9,7 +9,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces;
  *
  * Этот объект представляет игру. Используйте BotFather для создания и редактирования игр, их короткие
  * имена будут выступать в качестве уникальных идентификаторов.
- * @link    https://core.telegram.org/bots/api#forumtopicreopened
+ * @link    https://core.telegram.org/bots/api#game
  */
 interface GameInterface
 {
