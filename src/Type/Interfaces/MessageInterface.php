@@ -107,7 +107,7 @@ interface MessageInterface
      *
      * @return TextQuoteInterface|null
      */
-    public function getTextQuote(): ?TextQuoteInterface;
+    public function getQuote(): ?TextQuoteInterface;
 
     /**
      * Необязательный. Бот, через которого было отправлено сообщение.
@@ -196,7 +196,7 @@ interface MessageInterface
      *
      * @return PhotoSizeInterface[]|null
      */
-    public function getPhotoSize(): ?array;
+    public function getPhoto(): ?array;
 
     /**
      * Необязательный. Сообщение — стикер, информация о стикере.
@@ -392,7 +392,7 @@ interface MessageInterface
 
     /**
      * Необязательный. Указанное сообщение было закреплено. Обратите внимание, что объект Message в этом по
-     * ле не будет содержать дополнительных полей Answer_to_message, даже если он сам является ответом.
+     * ле не будет содержать дополнительных полей reply_to_message, даже если он сам является ответом.
      *
      * @return MaybeInaccessibleMessageInterface|null
      */
@@ -428,43 +428,149 @@ interface MessageInterface
      */
     public function getChatShared(): ?ChatSharedInterface;
 
+    /**
+     * Необязательный. Доменное имя веб-сайта, на котором авторизовался пользователь.
+     *
+     * @link https://core.telegram.org/widgets/login
+     * @return string|null
+     */
     public function getConnectedWebsite(): ?string;
 
+    /**
+     * Необязательный. Служебное сообщение: пользователь разрешил боту писать сообщения после добавления ег
+     * о во вложение или боковое меню, запуска веб-приложения по ссылке или принятия явного запроса от веб-
+     * приложения, отправленного методом requestWriteAccess.
+     *
+     * @link https://core.telegram.org/bots/webapps#initializing-mini-apps
+     * @return WriteAccessAllowedInterface|null
+     */
     public function getWriteAccessAllowed(): ?WriteAccessAllowedInterface;
 
+    /**
+     * Необязательный. Паспортные данные Telegram.
+     *
+     * @return PassportDataInterface|null
+     */
     public function getPassportData(): ?PassportDataInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение. Пользователь в чате активировал оповещение о близости другого п
+     * ользователя, когда делился местоположением в реальном времени.
+     *
+     * @return ProximityAlertTriggeredInterface|null
+     */
     public function getProximityAlertTriggered(): ?ProximityAlertTriggeredInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение: тема на форуме создана.
+     *
+     * @return ForumTopicCreatedInterface|null
+     */
     public function getForumTopicCreated(): ?ForumTopicCreatedInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение: тема форума отредактирована.
+     *
+     * @return ForumTopicEditedInterface|null
+     */
     public function getForumTopicEdited(): ?ForumTopicEditedInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение: тема форума закрыта.
+     *
+     * @return ForumTopicClosedInterface|null
+     */
     public function getForumTopicClosed(): ?ForumTopicClosedInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение: тема форума открыта заново.
+     *
+     * @return ForumTopicReopenedInterface|null
+     */
     public function getForumTopicReopened(): ?ForumTopicReopenedInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: тема форума «Общие» скрыта.
+     *
+     * @return GeneralForumTopicHiddenInterface|null
+     */
     public function getGeneralForumTopicHidden(): ?GeneralForumTopicHiddenInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: отображается тема форума «Общие».
+     *
+     * @return GeneralForumTopicUnhiddenInterface|null
+     */
     public function getGeneralForumTopicUnhidden(): ?GeneralForumTopicUnhiddenInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение: создана запланированная раздача.
+     *
+     * @return GiveawayCreatedInterface|null
+     */
     public function getGiveawayCreated(): ?GiveawayCreatedInterface;
 
+    /**
+     * Необязательный. Это запланированное сообщение о раздаче подарков.
+     *
+     * @return GiveawayInterface|null
+     */
     public function getGiveaway(): ?GiveawayInterface;
 
+    /**
+     * Необязательный. Розыгрыш с участием публичных победителей завершен.
+     *
+     * @return GiveawayWinnersInterface|null
+     */
     public function getGiveawayWinners(): ?GiveawayWinnersInterface;
 
+    /**
+     * Необязательный. Сервисное сообщение: розыгрыш без публичных победителей завершен.
+     *
+     * @return GiveawayCompletedInterface|null
+     */
     public function getGiveawayCompleted(): ?GiveawayCompletedInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: запланирован видеочат.
+     *
+     * @return VideoChatScheduledInterface|null
+     */
     public function getVideoChatScheduled(): ?VideoChatScheduledInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: видеочат запущен.
+     *
+     * @return VideoChatStartedInterface|null
+     */
     public function getVideoChatStarted(): ?VideoChatStartedInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: видеочат завершен.
+     *
+     * @return VideoChatEndedInterface|null
+     */
     public function getVideoChatEnded(): ?VideoChatEndedInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: новые участники приглашены в видеочат.
+     *
+     * @return VideoChatParticipantsInvitedInterface|null
+     */
     public function getVideoChatParticipantsInvited(): ?VideoChatParticipantsInvitedInterface;
 
+    /**
+     * Необязательный. Служебное сообщение: данные, отправленные веб-приложением.
+     *
+     * @return WebAppDataInterface|null
+     */
     public function getWebAppData(): ?WebAppDataInterface;
 
+    /**
+     * Необязательный. Встроенная клавиатура, прикрепленная к сообщению. Кнопки login_url представлены как
+     * обычные кнопки URL.
+     *
+     * @return InlineKeyboardMarkupInterface|null
+     */
     public function getInlineKeyboardMarkup(): ?InlineKeyboardMarkupInterface;
 }
