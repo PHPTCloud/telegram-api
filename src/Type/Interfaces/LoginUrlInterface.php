@@ -28,9 +28,9 @@ interface LoginUrlInterface
      *
      * @link https://core.telegram.org/widgets/login#receiving-authorization-data
      * @link https://core.telegram.org/widgets/login#checking-authorization
-     * @return sttring
+     * @return string
      */
-    public function getUrl(): sttring;
+    public function getUrl(): string;
 
     /**
      * Необязательный. Новый текст кнопки в пересылаемых сообщениях.
