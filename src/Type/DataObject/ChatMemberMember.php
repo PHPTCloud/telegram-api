@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces;
+namespace PHPTCloud\TelegramApi\Type\DataObject;
+
+use PHPTCloud\TelegramApi\Type\Interfaces\ChatMemberMemberInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -11,6 +13,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces;
  * Представляет участника чата, не имеющего дополнительных привилегий или ограничений.
  * @link    https://core.telegram.org/bots/api#chatmembermember
  */
-interface ChatMemberMemberInterface extends ChatMemberInterface
+class ChatMemberMember extends ChatMember implements ChatMemberMemberInterface
 {
 }

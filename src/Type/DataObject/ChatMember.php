@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces;
+namespace PHPTCloud\TelegramApi\Type\DataObject;
+
+use PHPTCloud\TelegramApi\Type\Interfaces\ChatMemberInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -18,20 +21,20 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces;
  * - ChatMemberBanned (https://core.telegram.org/bots/api#chatmemberbanned);
  * @link    https://core.telegram.org/bots/api#chatmember
  */
-interface ChatMemberInterface
+abstract class ChatMember implements ChatMemberInterface
 {
-    /**
-     * Статус участника в чате.
-     *
-     * @return string
-     * @see \PHPTCloud\TelegramApi\Type\Enums\ChatMemberEnum
-     */
-    public function getStatus(): string;
+    public function __construct(
+        protected readonly string        $status,
+        protected readonly UserInterface $user,
+    ) {}
 
-    /**
-     * Информация о пользователе.
-     *
-     * @return UserInterface
-     */
-    public function getUser(): UserInterface;
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function getUser(): UserInterface
+    {
+        return $this->user;
+    }
 }
