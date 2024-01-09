@@ -49,5 +49,10 @@ interface VideoNoteInterface
      */
     public function getThumbnail(): ?PhotoSizeInterface;
 
-
+    /**
+     * Необязательный. Размер файла в байтах
+     *
+     * @return int|null
+     */
+    public function getFileSize(): ?int;
 }
