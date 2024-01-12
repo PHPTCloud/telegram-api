@@ -9,5 +9,4 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces;
  */
 interface DomainServiceInterface
 {
-    public function getAvailableMethods(): array;
 }

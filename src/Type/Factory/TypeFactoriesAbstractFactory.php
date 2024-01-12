@@ -13,7 +13,14 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     {
         switch ($type) {
             case UserTypeFactoryInterface::class:
+            case UserTypeFactory::class:
                 return $this->createUserTypeFactory();
+            case MessageTypeFactory::class:
+            case MessageTypeFactoryInterface::class:
+                return $this->createMessageTypeFactory();
+            case ChatTypeFactory::class:
+            case ChatTypeFactoryInterface::class:
+                return $this->createChatTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -22,5 +29,15 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createUserTypeFactory(): UserTypeFactoryInterface
     {
         return new UserTypeFactory();
+    }
+
+    public function createMessageTypeFactory(): MessageTypeFactoryInterface
+    {
+        return new MessageTypeFactory();
+    }
+
+    public function createChatTypeFactory(): ChatTypeFactoryInterface
+    {
+        return new ChatTypeFactory();
     }
 }

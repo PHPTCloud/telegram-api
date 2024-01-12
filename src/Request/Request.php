@@ -84,11 +84,17 @@ class Request implements RequestInterface
         }
     }
 
-    public static function post(string $method, array $json = []): ResponseInterface
+    public static function post(string $method, ?array $json = null): ResponseInterface
     {
         try {
             $url = self::buildUrl(self::$host, self::$telegramBot->getToken(), $method);
-            $response = self::$client->post($url, [RequestOptions::JSON => $json]);
+            $options = [];
+
+            if ($json) {
+                $options[RequestOptions::JSON] = $json;
+            }
+
+            $response = self::$client->post($url, $options);
 
             if ($response->getStatusCode() !== 200) {
                 return self::createErrorResponse($response->getStatusCode(), '', $response->getHeaders());

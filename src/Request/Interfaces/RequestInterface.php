@@ -27,5 +27,5 @@ interface RequestInterface
 
     public static function get(string $method, array $query = []): ResponseInterface;
 
-    public static function post(string $method, array $json = []): ResponseInterface;
+    public static function post(string $method, ?array $json = null): ResponseInterface;
 }

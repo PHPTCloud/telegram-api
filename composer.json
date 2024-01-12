@@ -25,5 +25,8 @@
   "require": {
     "php": "^8.1",
     "guzzlehttp/guzzle": "^6.0|^7.0"
+  },
+  "require-dev": {
+    "larapack/dd": "^1.1"
   }
 }

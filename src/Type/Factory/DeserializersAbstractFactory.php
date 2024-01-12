@@ -1,12 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi;
+namespace PHPTCloud\TelegramApi\Type\Factory;
 
+use PHPTCloud\TelegramApi\DeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializerInterface;
-use PHPTCloud\TelegramApi\Type\Factory\TypeFactoriesAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Factory\UserTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -22,7 +24,11 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
     {
         switch ($type) {
             case UserDeserializerInterface::class:
+            case UserDeserializer::class:
                 return $this->createUserDeserializer();
+            case MessageDeserializer::class:
+            case MessageDeserializerInterface::class:
+                return $this->createMessageDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -31,5 +37,13 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
     public function createUserDeserializer(): UserDeserializerInterface
     {
         return new UserDeserializer($this->typeFactoriesAbstractFactory->create(UserTypeFactoryInterface::class));
+    }
+
+    public function createMessageDeserializer(): MessageDeserializerInterface
+    {
+        return new MessageDeserializer(
+            $this->typeFactoriesAbstractFactory->create(MessageTypeFactoryInterface::class),
+            new ChatDeserializer($this->typeFactoriesAbstractFactory->create(ChatTypeFactoryInterface::class)),
+        );
     }
 }

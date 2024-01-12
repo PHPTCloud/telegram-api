@@ -10,4 +10,5 @@ namespace PHPTCloud\TelegramApi\DomainService\Enums;
 enum DomainServiceEnum: string
 {
     case TELEGRAM_BOT = 'telegram_bot';
+    case MESSAGES = 'messages';
 }

@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService;
 
-use PHPTCloud\TelegramApi\DeserializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\TelegramApiException;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
 /**
@@ -21,12 +21,6 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         private readonly RequestInterface $request,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
     ) {}
-
-    // ПОКА ХУЙ ЗНАЕТ ЗАЧЕМ ЭТОТ МЕТОД.
-    public function getAvailableMethods(): array
-    {
-        return [];
-    }
 
     public function getMe(): UserInterface
     {

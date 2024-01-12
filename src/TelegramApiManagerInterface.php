@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
 /**
@@ -15,11 +17,13 @@ interface TelegramApiManagerInterface
 
     public function getBot(): TelegramBotInterface;
 
+    public function setTelegramApiHost(string $host): void;
+
     public function getMe(): UserInterface;
 
     public function logOut(): bool;
 
     public function close(): bool;
 
-    public function setTelegramApiHost(string $host): void;
+    public function sendMessage(MessageArgumentInterface $argument): MessageInterface;
 }

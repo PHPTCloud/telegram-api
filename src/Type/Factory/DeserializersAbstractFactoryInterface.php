@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi;
+namespace PHPTCloud\TelegramApi\Type\Factory;
+
+use PHPTCloud\TelegramApi\DeserializerInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

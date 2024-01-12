@@ -14,7 +14,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 class UserDeserializer extends AbstractDeserializer implements UserDeserializerInterface
 {
     public function __construct(
-        private readonly UserTypeFactoryInterface $typeFactory,
+        private readonly UserTypeFactoryInterface $userTypeFactory,
     ) {}
 
     public function deserialize(array $data): UserInterface
@@ -43,7 +43,7 @@ class UserDeserializer extends AbstractDeserializer implements UserDeserializerI
         $isCanReadAllGroupMessages = $this->filterBoolean($isCanReadAllGroupMessages);
         $isSupportsInlineQueries = $this->filterBoolean($isSupportsInlineQueries);
 
-        return $this->typeFactory->create(
+        return $this->userTypeFactory->create(
             $id,
             $isBot,
             $firstName,

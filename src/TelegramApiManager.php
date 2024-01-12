@@ -3,7 +3,10 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
 /**
@@ -16,8 +19,14 @@ class TelegramApiManager implements TelegramApiManagerInterface
 
     public function __construct(
         private readonly TelegramBotInterface $bot,
-        private readonly TelegramBotDomainServiceFactoryInterface $domainServiceFactory,
+        private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
+        private readonly MessageDomainServiceFactoryInterface $messageDomainServiceFactory,
     ) {}
+
+    public function setTelegramApiHost(string $host): void
+    {
+        $this->host = $host;
+    }
 
     public function getBot(): TelegramBotInterface
     {
@@ -26,21 +35,21 @@ class TelegramApiManager implements TelegramApiManagerInterface
 
     public function getMe(): UserInterface
     {
-        return $this->domainServiceFactory->create($this->bot, $this->host)->getMe();
+        return $this->telegramBotDomainServiceFactory->create($this->bot, $this->host)->getMe();
     }
 
     public function logOut(): bool
     {
-        return $this->domainServiceFactory->create($this->bot, $this->host)->logOut();
+        return $this->telegramBotDomainServiceFactory->create($this->bot, $this->host)->logOut();
     }
 
     public function close(): bool
     {
-        return $this->domainServiceFactory->create($this->bot, $this->host)->close();
+        return $this->telegramBotDomainServiceFactory->create($this->bot, $this->host)->close();
     }
 
-    public function setTelegramApiHost(string $host): void
+    public function sendMessage(MessageArgumentInterface $argument): MessageInterface
     {
-        $this->host = $host;
+        return $this->messageDomainServiceFactory->create($this->bot, $this->host)->sendMessage($argument);
     }
 }
