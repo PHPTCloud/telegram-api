@@ -25,7 +25,10 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
         $messageId = $this->filterNumeric($messageId);
         $date = $this->filterNumeric($date);
         $text = $this->filterString($text);
-        $chat = $this->chatDeserializer->deserialize($chat);
+        $chat = $this->filterArray($chat);
+        if (!empty($chat)) {
+            $chat = $this->chatDeserializer->deserialize($chat);
+        }
 
         return $this->messageTypeFactory->create(
             messageId: $messageId,
