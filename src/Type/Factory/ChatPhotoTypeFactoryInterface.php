@@ -5,7 +5,11 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatPhotoInterface;
 
-interface ChatPhotoTypeFactoryInterface
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
+interface ChatPhotoTypeFactoryInterface extends TypeFactoryInterface
 {
     public function create(
         string $smallFileId,

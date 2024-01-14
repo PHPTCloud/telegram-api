@@ -6,6 +6,10 @@ namespace PHPTCloud\TelegramApi\Type\Deserializer;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReactionTypeInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ReactionTypeDeserializer implements ReactionTypeDeserializerInterface
 {
     public function __construct(

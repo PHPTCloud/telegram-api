@@ -7,6 +7,10 @@ use PHPTCloud\TelegramApi\AbstractDeserializer;
 use PHPTCloud\TelegramApi\Type\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatPhotoInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ChatPhotoDeserializer extends AbstractDeserializer implements ChatPhotoDeserializerInterface
 {
     public function __construct(

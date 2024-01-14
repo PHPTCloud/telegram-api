@@ -21,10 +21,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\LoginUrlInterface;
 class LoginUrl implements LoginUrlInterface
 {
     public function __construct(
-        private readonly string $url,
+        private readonly string  $url,
         private readonly ?string $forwardText = null,
         private readonly ?string $botUsername = null,
-        private readonly ?bool $requestWriteAccess = null,
+        private readonly ?bool   $requestWriteAccess = null,
     ) {}
 
     public function getUrl(): string

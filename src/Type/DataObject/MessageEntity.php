@@ -17,13 +17,13 @@ use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 class MessageEntity implements MessageEntityInterface
 {
     public function __construct(
-        private readonly string         $type,
-        private readonly int            $offset,
-        private readonly int            $length,
-        private readonly ?string        $url = null,
-        private readonly ?UserInterface $user = null,
-        private readonly ?string        $language = null,
-        private readonly ?string        $customEmojiId = null,
+        protected readonly string         $type,
+        protected readonly int            $offset,
+        protected readonly int            $length,
+        protected readonly ?string        $url = null,
+        protected readonly ?UserInterface $user = null,
+        protected readonly ?string        $language = null,
+        protected readonly ?string        $customEmojiId = null,
     ) {}
 
     /**

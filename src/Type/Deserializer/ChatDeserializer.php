@@ -8,15 +8,19 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Factory\ChatTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ChatDeserializer extends AbstractDeserializer implements ChatDeserializerInterface
 {
     public function __construct(
         private readonly ChatTypeFactoryInterface $chatTypeFactory,
         private readonly ChatPhotoDeserializerInterface $chatPhotoDeserializer,
         private readonly ReactionTypeDeserializerInterface $reactionTypeDeserializer,
-        private readonly MessageDeserializerInterface $messageDeserializer,
         private readonly ChatPermissionsDeserializerInterface $chatPermissionsDeserializer,
         private readonly ChatLocationDeserializerInterface $chatLocationDeserializer,
+        private readonly ?MessageDeserializerInterface $messageDeserializer = null,
     ) {}
 
     public function deserialize(array $data): ChatInterface
@@ -86,10 +90,13 @@ class ChatDeserializer extends AbstractDeserializer implements ChatDeserializerI
         $description = $this->filterString($description);
         $inviteLink = $this->filterString($inviteLink);
         $pinnedMessage = $this->filterArray($pinnedMessage);
-        if (!empty($pinnedMessage)) {
+        if (!empty($pinnedMessage) && $this->messageDeserializer) {
             $pinnedMessage = $this->messageDeserializer->deserialize($pinnedMessage);
         }
-        $permissions = $this->chatPermissionsDeserializer->deserialize($permissions);
+        $permissions = $this->filterArray($permissions);
+        if (!empty($permissions)) {
+            $permissions = $this->chatPermissionsDeserializer->deserialize($permissions);
+        }
         $slowModeDelay = $this->filterNumeric($slowModeDelay);
         $messageAutoDeleteTime = $this->filterNumeric($messageAutoDeleteTime);
         $aggressiveAntiSpamEnabled = $this->filterBoolean($aggressiveAntiSpamEnabled);

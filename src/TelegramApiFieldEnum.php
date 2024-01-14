@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 enum TelegramApiFieldEnum: string
 {
     case CHAT_ID = 'chat_id';
@@ -78,4 +82,13 @@ enum TelegramApiFieldEnum: string
     case HEADING = 'heading';
     case PROXIMITY_ALERT_RADIUS = 'proximity_alert_radius';
     case ADDRESS = 'address';
+    case OFFSET = 'offset';
+    case LENGTH = 'length';
+    case URL = 'url';
+    case USER = 'user';
+    case LANGUAGE = 'language';
+    case IS_DISABLED = 'is_disabled';
+    case PREFER_SMALL_MEDIA = 'prefer_small_media';
+    case PREFER_LARGE_MEDIA = 'prefer_large_media';
+    case SHOW_ABOVE_TEXT= 'show_above_text';
 }

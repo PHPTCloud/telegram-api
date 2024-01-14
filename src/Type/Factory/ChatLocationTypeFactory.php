@@ -7,6 +7,10 @@ use PHPTCloud\TelegramApi\Type\DataObject\ChatLocation;
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatLocationInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ChatLocationTypeFactory implements ChatLocationTypeFactoryInterface
 {
     public function create(LocationInterface $location, string $address): ChatLocationInterface

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Builder;
 
 use PHPTCloud\TelegramApi\Argument\DataObject\MessageArgument;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentBuilderInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
 use PHPTCloud\TelegramApi\Type\Interfaces\ForceReplyInterface;
@@ -173,7 +172,10 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
             );
         }
 
-        return $this->messageArgument;
+        $argument = $this->messageArgument;
+        $this->messageArgument = null;
+
+        return $argument;
     }
 
     private function initializeArgumentInstance(): void

@@ -3,11 +3,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\InlineKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\LinkPreviewOptionsInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageEntityInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReplyKeyboardRemoveInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReplyParametersInterface;
@@ -20,21 +21,21 @@ use PHPTCloud\TelegramApi\Type\Interfaces\ReplyParametersInterface;
  * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное Message возв
  * ращается.
  *
- * @link https://core.telegram.org/bots/api#sendmessage
- * @link https://core.telegram.org/bots/api#message
+ * @link    https://core.telegram.org/bots/api#sendmessage
+ * @link    https://core.telegram.org/bots/api#message
  */
 class MessageArgument implements MessageArgumentInterface
 {
     public function __construct(
-        private string|int|float|null $chatId = null,
-        private ?int $messageThreadId = null,
-        private ?string $text = null,
-        private ?string $parseMode = null,
-        private ?array $entities = null,
-        private ?LinkPreviewOptionsInterface $linkPreviewOptions = null,
-        private ?bool $notificationDisabled = null,
-        private ?bool $contentProtected = null,
-        private ?ReplyParametersInterface $replyParameters = null,
+        private string|int|float|null                                                                                            $chatId = null,
+        private ?int                                                                                                             $messageThreadId = null,
+        private ?string                                                                                                          $text = null,
+        private ?string                                                                                                          $parseMode = null,
+        private ?array                                                                                                           $entities = null,
+        private ?LinkPreviewOptionsInterface                                                                                     $linkPreviewOptions = null,
+        private ?bool                                                                                                            $notificationDisabled = null,
+        private ?bool                                                                                                            $contentProtected = null,
+        private ?ReplyParametersInterface                                                                                        $replyParameters = null,
         private InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null,
     ) {}
 
@@ -88,17 +89,17 @@ class MessageArgument implements MessageArgumentInterface
         $this->entities = $entities;
     }
 
-    public function addEntity(MessageEntityInterface $entity): void
+    public function addEntity(MessageEntityArgumentInterface $entity): void
     {
         $this->entities[] = $entity;
     }
 
-    public function getLinkPreviewOptions(): ?LinkPreviewOptionsInterface
+    public function getLinkPreviewOptions(): LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null
     {
         return $this->linkPreviewOptions;
     }
 
-    public function setLinkPreviewOptions(?LinkPreviewOptionsInterface $linkPreviewOptions = null): void
+    public function setLinkPreviewOptions(LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null $linkPreviewOptions = null): void
     {
         $this->linkPreviewOptions = $linkPreviewOptions;
     }

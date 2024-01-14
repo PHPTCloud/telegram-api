@@ -9,5 +9,10 @@ namespace PHPTCloud\TelegramApi;
  */
 interface TelegramBotFactoryInterface
 {
-    public function create(string $token, ?string $username = null, ?string $name = null, ?string $description = null): TelegramBotInterface;
+    public function create(
+        string  $token,
+        ?string $username = null,
+        ?string $name = null,
+        ?string $description = null,
+    ): TelegramBotInterface;
 }

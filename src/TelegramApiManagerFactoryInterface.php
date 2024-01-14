@@ -10,8 +10,8 @@ namespace PHPTCloud\TelegramApi;
 interface TelegramApiManagerFactoryInterface
 {
     public static function create(
-        string $token,
-        string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        string  $token,
+        string  $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
         ?string $username = null,
         ?string $name = null,
         ?string $description = null

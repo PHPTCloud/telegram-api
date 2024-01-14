@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 /**
@@ -13,6 +13,11 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
  */
 class MessageArgumentArraySerializer implements MessageArgumentArraySerializerInterface
 {
+    public function __construct(
+        private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
+        private readonly LinkPreviewOptionsArgumentArraySerializerInterface $linkPreviewOptionsArgumentArraySerializer,
+    ) {}
+
     public function serialize(MessageArgumentInterface $argument): array
     {
         $data = [];
@@ -30,10 +35,16 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
             $data[TelegramApiFieldEnum::PARSE_MODE->value] = $argument->getParseMode();
         }
         if ($argument->getEntities()) {
-            $data[TelegramApiFieldEnum::ENTITIES->value] = $argument->getEntities();
+            $data[TelegramApiFieldEnum::ENTITIES->value] = array_map(
+                function (MessageEntityArgumentInterface $argument) {
+                    return $this->messageEntityArgumentArraySerializer->serialize($argument);
+                },
+                $argument->getEntities(),
+            );
         }
         if ($argument->getLinkPreviewOptions()) {
-            $data[TelegramApiFieldEnum::LINK_PREVIEW_OPTIONS->value] = $argument->getLinkPreviewOptions();
+            $data[TelegramApiFieldEnum::LINK_PREVIEW_OPTIONS->value]
+                = $this->linkPreviewOptionsArgumentArraySerializer->serialize($argument->getLinkPreviewOptions());
         }
         if ($argument->isNotificationDisabled()) {
             $data[TelegramApiFieldEnum::DISABLE_NOTIFICATION->value] = $argument->isNotificationDisabled();

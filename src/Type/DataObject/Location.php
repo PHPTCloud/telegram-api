@@ -15,12 +15,12 @@ use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
 class Location implements LocationInterface
 {
     public function __construct(
-        private readonly float $longitude,
-        private readonly float $latitude,
+        private readonly float  $longitude,
+        private readonly float  $latitude,
         private readonly ?float $horizontalAccuracy = null,
-        private readonly ?int $livePeriod = null,
-        private readonly ?int $heading = null,
-        private readonly ?int $proximityAlertRadius = null,
+        private readonly ?int   $livePeriod = null,
+        private readonly ?int   $heading = null,
+        private readonly ?int   $proximityAlertRadius = null,
     ) {}
 
     public function getLongitude(): float

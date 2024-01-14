@@ -5,11 +5,15 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\ReactionTypeInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ReactionTypeTypeFactory implements ReactionTypeTypeFactoryInterface
 {
     public function __construct(
         private readonly ReactionTypeCustomEmojiTypeFactoryInterface $reactionTypeCustomEmojiTypeFactory,
-        private readonly ReactionTypeEmojiTypeFactoryInterface $reactionTypeEmojiTypeFactoryInterface,
+        private readonly ReactionTypeEmojiTypeFactoryInterface       $reactionTypeEmojiTypeFactoryInterface,
     ) {}
 
     public function create(string $type, ?string $emoji = null, ?string $customEmojiId = null): ReactionTypeInterface

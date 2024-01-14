@@ -8,6 +8,10 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Factory\LocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class LocationDeserializer extends AbstractDeserializer implements LocationDeserializerInterface
 {
     public function __construct(

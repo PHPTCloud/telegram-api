@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\Exception\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
@@ -18,9 +19,9 @@ class TelegramApiManager implements TelegramApiManagerInterface
     private ?string $host = self::TELEGRAM_API_HOST;
 
     public function __construct(
-        private readonly TelegramBotInterface $bot,
+        private readonly TelegramBotInterface                     $bot,
         private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
-        private readonly MessageDomainServiceFactoryInterface $messageDomainServiceFactory,
+        private readonly MessageDomainServiceFactoryInterface     $messageDomainServiceFactory,
     ) {}
 
     public function setTelegramApiHost(string $host): void
@@ -50,6 +51,9 @@ class TelegramApiManager implements TelegramApiManagerInterface
 
     public function sendMessage(MessageArgumentInterface $argument): MessageInterface
     {
-        return $this->messageDomainServiceFactory->create($this->bot, $this->host)->sendMessage($argument);
+        return $this->messageDomainServiceFactory->create(
+            $this->bot,
+            $this->host,
+        )->sendMessage($argument);
     }
 }

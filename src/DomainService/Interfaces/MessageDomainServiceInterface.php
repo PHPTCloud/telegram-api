@@ -19,7 +19,7 @@ interface MessageDomainServiceInterface
      * Message (https://core.telegram.org/bots/api#message).
      *
      * @return MessageInterface
-     *@link https://core.telegram.org/bots/api#sendmessage
+     * @link https://core.telegram.org/bots/api#sendmessage
      */
     public function sendMessage(MessageArgumentInterface $argument): MessageInterface;
 }

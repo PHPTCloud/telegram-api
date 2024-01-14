@@ -13,16 +13,16 @@ class User implements UserInterface
 {
     public function __construct(
         protected int|float $id,
-        protected ?bool $bot = null,
-        protected ?string $firstName = null,
-        protected ?string $lastName = null,
-        protected ?string $username = null,
-        protected ?string $languageCode = null,
-        protected ?bool $premium = null,
-        protected ?bool $addedToAttachmentMenu = null,
-        protected ?bool $canJoinGroups = null,
-        protected ?bool $canReadAllGroupMessages = null,
-        protected ?bool $supportsInlineQueries = null,
+        protected ?bool     $bot = null,
+        protected ?string   $firstName = null,
+        protected ?string   $lastName = null,
+        protected ?string   $username = null,
+        protected ?string   $languageCode = null,
+        protected ?bool     $premium = null,
+        protected ?bool     $addedToAttachmentMenu = null,
+        protected ?bool     $canJoinGroups = null,
+        protected ?bool     $canReadAllGroupMessages = null,
+        protected ?bool     $supportsInlineQueries = null,
     ) {}
 
     public function getId(): float|int

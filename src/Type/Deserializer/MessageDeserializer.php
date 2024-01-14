@@ -8,11 +8,15 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Factory\MessageTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class MessageDeserializer extends AbstractDeserializer implements MessageDeserializerInterface
 {
     public function __construct(
         private readonly MessageTypeFactoryInterface $messageTypeFactory,
-        private readonly ChatDeserializerInterface $chatDeserializer,
+        private readonly ChatDeserializerInterface   $chatDeserializer,
     ) {}
 
     public function deserialize(array $data): MessageInterface

@@ -7,11 +7,11 @@ use PHPTCloud\TelegramApi\Type\Enums\MenuButtonEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\MenuButtonCommandsInterface;
 
 /**
- * @author Пешко Илья peshkoi@mail.ru
+ * @author  Пешко Илья peshkoi@mail.ru
  * @version 1.0.0
  *
  * Предоставляет кнопку меню, которая открывает список команд бота.
- * @link https://core.telegram.org/bots/api#menubuttoncommands
+ * @link    https://core.telegram.org/bots/api#menubuttoncommands
  */
 class MenuButtonCommands implements MenuButtonCommandsInterface
 {

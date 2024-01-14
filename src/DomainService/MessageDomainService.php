@@ -4,22 +4,28 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService;
 
 use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\MessageDomainServiceInterface;
+use PHPTCloud\TelegramApi\Exception\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\TelegramApiException;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class MessageDomainService implements MessageDomainServiceInterface
 {
     public function __construct(
         private readonly RequestInterface                      $request,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
         private readonly SerializersAbstractFactoryInterface   $serializersAbstractFactory,
+        private readonly ExceptionAbstractFactoryInterface     $exceptionAbstractFactory,
     ) {}
 
     public function sendMessage(MessageArgumentInterface $argument): MessageInterface
@@ -31,6 +37,10 @@ class MessageDomainService implements MessageDomainServiceInterface
         $response = $this->request::post(TelegramApiMethodEnum::SEND_MESSAGE->value, $data);
 
         if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
             throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
         }
 

@@ -15,10 +15,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\InvoiceInterface;
 class Invoice implements InvoiceInterface
 {
     public function __construct(
-        private readonly string $title,
-        private readonly string $description,
-        private readonly string $startParameter,
-        private readonly string $currency,
+        private readonly string    $title,
+        private readonly string    $description,
+        private readonly string    $startParameter,
+        private readonly string    $currency,
         private readonly int|float $totalAmount,
     ) {}
 

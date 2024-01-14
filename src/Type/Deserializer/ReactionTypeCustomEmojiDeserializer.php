@@ -9,6 +9,10 @@ use PHPTCloud\TelegramApi\Type\Enums\ReactionTypeTypeEnum;
 use PHPTCloud\TelegramApi\Type\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReactionTypeCustomEmojiInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ReactionTypeCustomEmojiDeserializer extends AbstractDeserializer implements ReactionTypeCustomEmojiDeserializerInterface
 {
     public function __construct(

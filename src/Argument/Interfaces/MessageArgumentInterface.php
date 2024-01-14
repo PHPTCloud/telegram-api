@@ -7,7 +7,7 @@ use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
 use PHPTCloud\TelegramApi\Type\Interfaces\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\InlineKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\LinkPreviewOptionsInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageEntityInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReplyKeyboardRemoveInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ReplyParametersInterface;
@@ -20,8 +20,8 @@ use PHPTCloud\TelegramApi\Type\Interfaces\ReplyParametersInterface;
  * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное Message возв
  * ращается.
  *
- * @link https://core.telegram.org/bots/api#sendmessage
- * @link https://core.telegram.org/bots/api#message
+ * @link    https://core.telegram.org/bots/api#sendmessage
+ * @link    https://core.telegram.org/bots/api#message
  */
 interface MessageArgumentInterface
 {
@@ -66,30 +66,30 @@ interface MessageArgumentInterface
     public function setParseMode(?string $parseMode = null): void;
 
     /**
-     * Необязательный. Сериализованный в формате JSON список специальных сущностей, которые появляются в тексте сообщения и
-     * которые можно указать вместо parse_mode.
+     * Необязательный. Сериализованный в формате JSON список специальных сущностей, которые появляются в тексте
+     * сообщения и которые можно указать вместо parse_mode.
      *
-     * @return MessageEntityInterface|null
+     * @return MessageEntityArgumentInterface|null
      */
     public function getEntities(): ?array;
 
     /**
-     * @param MessageEntityInterface[]|null $entities
+     * @param MessageEntityArgumentInterface[]|null $entities
      *
      * @return void
      */
     public function setEntities(?array $entities = null): void;
 
-    public function addEntity(MessageEntityInterface $entity): void;
+    public function addEntity(MessageEntityArgumentInterface $entity): void;
 
     /**
      * Необязательный. Параметры создания предварительного просмотра ссылки для сообщения.
      *
-     * @return LinkPreviewOptionsInterface|null
+     * @return LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null
      */
-    public function getLinkPreviewOptions(): ?LinkPreviewOptionsInterface;
+    public function getLinkPreviewOptions(): LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null;
 
-    public function setLinkPreviewOptions(?LinkPreviewOptions $linkPreviewOptions = null): void;
+    public function setLinkPreviewOptions(LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null $linkPreviewOptions = null): void;
 
     /**
      * Необязательный. Отправляет сообщение молча. Пользователи получат уведомление без звука.

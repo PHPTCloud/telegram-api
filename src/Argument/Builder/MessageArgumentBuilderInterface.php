@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Argument\Interfaces;
+namespace PHPTCloud\TelegramApi\Argument\Builder;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
 use PHPTCloud\TelegramApi\Type\Interfaces\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\InlineKeyboardMarkupInterface;

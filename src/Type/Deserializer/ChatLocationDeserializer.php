@@ -8,11 +8,15 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Factory\ChatLocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatLocationInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ChatLocationDeserializer extends AbstractDeserializer implements ChatLocationDeserializerInterface
 {
     public function __construct(
-        private readonly LocationDeserializerInterface $locationDeserializer,
         private readonly ChatLocationTypeFactoryInterface $chatLocationTypeFactory,
+        private readonly LocationDeserializerInterface $locationDeserializer,
     ) {}
 
     public function deserialize(array $data): ChatLocationInterface

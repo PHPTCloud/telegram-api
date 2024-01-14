@@ -12,9 +12,9 @@ use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
 class Response implements ResponseInterface
 {
     public function __construct(
-        private readonly array $headers = [],
-        private readonly array $responseData = [],
-        private readonly ?int $code = null,
+        private readonly array   $headers = [],
+        private readonly array   $responseData = [],
+        private readonly ?int    $code = null,
         private readonly ?string $errorMessage = null,
     ) {}
 

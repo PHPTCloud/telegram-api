@@ -12,8 +12,12 @@ use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
  */
 class ResponseFactory implements ResponseFactoryInterface
 {
-    public function create(array $headers = [], array $responseData = [], ?int $code = null, ?string $errorMessage = null): ResponseInterface
-    {
+    public function create(
+        array   $headers = [],
+        array   $responseData = [],
+        ?int    $code = null,
+        ?string $errorMessage = null,
+    ): ResponseInterface {
         return new Response($headers, $responseData, $code, $errorMessage);
     }
 }

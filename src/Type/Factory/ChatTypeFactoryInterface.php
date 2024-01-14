@@ -9,6 +9,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\ChatPhotoInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 interface ChatTypeFactoryInterface extends TypeFactoryInterface
 {
     public function create(

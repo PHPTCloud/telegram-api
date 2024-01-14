@@ -13,15 +13,15 @@ interface UserTypeFactoryInterface extends TypeFactoryInterface
 {
     public function create(
         int|float|null $id = null,
-        ?bool $bot = null,
-        ?string $firstName = null,
-        ?string $lastName = null,
-        ?string $username = null,
-        ?string $languageCode = null,
-        ?bool $premium = null,
-        ?bool $addedToAttachmentMenu = null,
-        ?bool $canJoinGroups = null,
-        ?bool $canReadAllGroupMessages = null,
-        ?bool $supportsInlineQueries = null,
+        ?bool          $bot = null,
+        ?string        $firstName = null,
+        ?string        $lastName = null,
+        ?string        $username = null,
+        ?string        $languageCode = null,
+        ?bool          $premium = null,
+        ?bool          $addedToAttachmentMenu = null,
+        ?bool          $canJoinGroups = null,
+        ?bool          $canReadAllGroupMessages = null,
+        ?bool          $supportsInlineQueries = null,
     ): UserInterface;
 }

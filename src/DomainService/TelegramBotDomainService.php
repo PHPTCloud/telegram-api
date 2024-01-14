@@ -18,7 +18,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 class TelegramBotDomainService implements TelegramBotDomainServiceInterface
 {
     public function __construct(
-        private readonly RequestInterface $request,
+        private readonly RequestInterface                      $request,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
     ) {}
 

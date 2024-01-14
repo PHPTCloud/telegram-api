@@ -5,14 +5,18 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
 
-interface LocationTypeFactoryInterface
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
+interface LocationTypeFactoryInterface extends TypeFactoryInterface
 {
     public function create(
-        float $longitude,
-        float $latitude,
+        float  $longitude,
+        float  $latitude,
         ?float $horizontalAccuracy = null,
-        ?int $livePeriod = null,
-        ?int $heading = null,
-        ?int $proximityAlertRadius = null,
+        ?int   $livePeriod = null,
+        ?int   $heading = null,
+        ?int   $proximityAlertRadius = null,
     ): LocationInterface;
 }

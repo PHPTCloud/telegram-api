@@ -15,11 +15,11 @@ use PHPTCloud\TelegramApi\Type\Interfaces\ContactInterface;
 class Contact implements ContactInterface
 {
     public function __construct(
-        private readonly string $phoneNumber,
-        private readonly string $firstName,
-        private readonly ?string $lastName = null,
+        private readonly string         $phoneNumber,
+        private readonly string         $firstName,
+        private readonly ?string        $lastName = null,
         private readonly null|int|float $userId = null,
-        private readonly ?string $vCard = null,
+        private readonly ?string        $vCard = null,
     ) {}
 
     public function getPhoneNumber(): string

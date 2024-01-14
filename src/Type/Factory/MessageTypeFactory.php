@@ -51,6 +51,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\VoiceInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\WebAppDataInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\WriteAccessAllowedInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class MessageTypeFactory implements MessageTypeFactoryInterface
 {
     public function create(

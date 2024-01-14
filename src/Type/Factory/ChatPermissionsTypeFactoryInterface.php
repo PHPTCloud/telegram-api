@@ -5,7 +5,11 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatPermissionsInterface;
 
-interface ChatPermissionsTypeFactoryInterface
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
+interface ChatPermissionsTypeFactoryInterface extends TypeFactoryInterface
 {
     public function create(
         ?bool $sendMessages = null,

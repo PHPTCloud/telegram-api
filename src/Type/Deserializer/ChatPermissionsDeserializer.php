@@ -8,6 +8,10 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatPermissionsInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @version 1.0.0
+ */
 class ChatPermissionsDeserializer extends AbstractDeserializer implements ChatPermissionsDeserializerInterface
 {
     public function __construct(
