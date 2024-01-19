@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\DomainService\Factory\ChatDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactoryInterface;
-use PHPTCloud\TelegramApi\Exception\ExceptionAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
@@ -22,6 +24,7 @@ class TelegramApiManager implements TelegramApiManagerInterface
         private readonly TelegramBotInterface                     $bot,
         private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
         private readonly MessageDomainServiceFactoryInterface     $messageDomainServiceFactory,
+        private readonly ChatDomainServiceFactoryInterface        $chatDomainServiceFactory,
     ) {}
 
     public function setTelegramApiHost(string $host): void
@@ -55,5 +58,13 @@ class TelegramApiManager implements TelegramApiManagerInterface
             $this->bot,
             $this->host,
         )->sendMessage($argument);
+    }
+
+    public function getChat(ChatIdArgumentInterface $argument): ChatInterface
+    {
+        return $this->chatDomainServiceFactory->create(
+            $this->bot,
+            $this->host,
+        )->getChat($argument);
     }
 }

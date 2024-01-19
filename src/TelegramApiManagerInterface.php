@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
@@ -26,4 +28,6 @@ interface TelegramApiManagerInterface
     public function close(): bool;
 
     public function sendMessage(MessageArgumentInterface $argument): MessageInterface;
+
+    public function getChat(ChatIdArgumentInterface $argument): ChatInterface;
 }
