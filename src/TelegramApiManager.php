@@ -5,9 +5,9 @@ namespace PHPTCloud\TelegramApi;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\DomainService\Factory\ChatDomainServiceFactoryInterface;
-use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactoryInterface;
-use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\TelegramBotDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;

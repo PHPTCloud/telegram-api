@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Factory;
 
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\TelegramBotDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\TelegramBotDomainService;
 use PHPTCloud\TelegramApi\Request\Request;

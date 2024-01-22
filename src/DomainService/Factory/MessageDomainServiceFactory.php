@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Factory;
 
 use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\MessageDomainService;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
