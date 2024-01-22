@@ -5,25 +5,36 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\DeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatLocationDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ChatLocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeCustomEmojiDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeCustomEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
-use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatLocationDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeCustomEmojiDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\TypeFactoriesAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

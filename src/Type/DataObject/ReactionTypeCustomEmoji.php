@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\ReactionTypeCustomEmojiInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReactionTypeCustomEmojiInterface;
 
 class ReactionTypeCustomEmoji implements ReactionTypeCustomEmojiInterface
 {

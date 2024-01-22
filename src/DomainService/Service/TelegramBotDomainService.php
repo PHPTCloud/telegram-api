@@ -7,9 +7,9 @@ use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
-use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializerInterface;
-use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\AnimationInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\PhotoSizeInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\AnimationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\PhotoSizeInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

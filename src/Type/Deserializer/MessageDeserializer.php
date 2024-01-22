@@ -5,8 +5,10 @@ namespace PHPTCloud\TelegramApi\Type\Deserializer;
 
 use PHPTCloud\TelegramApi\AbstractDeserializer;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
-use PHPTCloud\TelegramApi\Type\Factory\MessageTypeFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

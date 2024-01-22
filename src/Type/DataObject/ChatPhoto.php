@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatPhotoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPhotoInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

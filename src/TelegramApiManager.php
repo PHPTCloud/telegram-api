@@ -8,9 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\TelegramBotDomainServiceFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

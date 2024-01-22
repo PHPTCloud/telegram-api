@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru

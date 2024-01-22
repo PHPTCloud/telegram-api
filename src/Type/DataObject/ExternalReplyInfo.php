@@ -3,27 +3,27 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\AnimationInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\AudioInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ContactInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DiceInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DocumentInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ExternalReplyInfoInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\GameInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\GiveawayInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\GiveawayWinnersInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\InvoiceInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LinkPreviewOptionsInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageOriginInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\PollInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\StickerInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\StoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\VenueInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\VideoInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\VideoNoteInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\VoiceInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\AnimationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\AudioInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ContactInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\DiceInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\DocumentInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ExternalReplyInfoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GameInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayWinnersInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InvoiceInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageOriginInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\PollInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\StickerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\StoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\VenueInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\VideoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\VideoNoteInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\VoiceInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\CallbackGameInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\InlineKeyboardButtonInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LoginUrlInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\SwitchInlineQueryChosenChatInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\WebAppInfoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardButtonInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LoginUrlInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\SwitchInlineQueryChosenChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 
 class InlineKeyboardButton implements InlineKeyboardButtonInterface
 {

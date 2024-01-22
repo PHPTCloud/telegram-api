@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatPermissionsInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatPhotoInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPermissionsInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPhotoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

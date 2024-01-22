@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\GiveawayCompletedInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayCompletedInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\LoginUrlInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LoginUrlInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

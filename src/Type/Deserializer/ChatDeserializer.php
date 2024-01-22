@@ -5,8 +5,14 @@ namespace PHPTCloud\TelegramApi\Type\Deserializer;
 
 use PHPTCloud\TelegramApi\AbstractDeserializer;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
-use PHPTCloud\TelegramApi\Type\Factory\ChatTypeFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatLocationDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

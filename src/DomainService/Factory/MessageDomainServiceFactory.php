@@ -11,7 +11,7 @@ use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface
 use PHPTCloud\TelegramApi\Request\Request;
 use PHPTCloud\TelegramApi\TelegramApiManagerInterface;
 use PHPTCloud\TelegramApi\TelegramBotInterface;
-use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

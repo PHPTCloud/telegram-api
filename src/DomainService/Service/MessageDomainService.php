@@ -11,9 +11,9 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceI
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
-use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializerInterface;
-use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\DataObject\ChatPermissions;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatPermissionsInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPermissionsInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

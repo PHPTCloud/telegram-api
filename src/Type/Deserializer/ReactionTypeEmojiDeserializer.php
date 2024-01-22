@@ -6,8 +6,9 @@ namespace PHPTCloud\TelegramApi\Type\Deserializer;
 use PHPTCloud\TelegramApi\AbstractDeserializer;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Enums\ReactionTypeTypeEnum;
-use PHPTCloud\TelegramApi\Type\Factory\ReactionTypeEmojiTypeFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ReactionTypeEmojiInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReactionTypeEmojiInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

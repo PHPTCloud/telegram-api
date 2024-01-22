@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Deserializer;
 
 use PHPTCloud\TelegramApi\AbstractDeserializer;
-use PHPTCloud\TelegramApi\Type\Factory\UserTypeFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

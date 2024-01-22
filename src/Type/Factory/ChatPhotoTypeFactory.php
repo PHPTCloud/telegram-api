@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\DataObject\ChatPhoto;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatPhotoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPhotoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

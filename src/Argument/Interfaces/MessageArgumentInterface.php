@@ -3,14 +3,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces;
 
-use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
-use PHPTCloud\TelegramApi\Type\Interfaces\ForceReplyInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\InlineKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LinkPreviewOptionsInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ReplyKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ReplyKeyboardRemoveInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ReplyParametersInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

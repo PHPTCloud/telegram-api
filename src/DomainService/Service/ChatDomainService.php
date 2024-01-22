@@ -11,9 +11,9 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\ChatDomainServiceInte
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
-use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializerInterface;
-use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru

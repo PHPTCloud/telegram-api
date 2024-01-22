@@ -5,8 +5,9 @@ namespace PHPTCloud\TelegramApi\Type\Deserializer;
 
 use PHPTCloud\TelegramApi\AbstractDeserializer;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
-use PHPTCloud\TelegramApi\Type\Factory\LocationTypeFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

@@ -6,7 +6,7 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\UserArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageEntity;
-use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\GeneralForumTopicHiddenInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GeneralForumTopicHiddenInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

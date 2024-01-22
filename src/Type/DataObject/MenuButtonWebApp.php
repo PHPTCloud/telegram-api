@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Enums\MenuButtonEnum;
-use PHPTCloud\TelegramApi\Type\Interfaces\MenuButtonWebAppInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\WebAppInfoInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MenuButtonWebAppInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru

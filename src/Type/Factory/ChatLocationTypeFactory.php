@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\Type\DataObject\ChatLocation;
-use PHPTCloud\TelegramApi\Type\Interfaces\ChatLocationInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\LocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatLocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
