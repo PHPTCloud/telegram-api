@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\DomainService;
+namespace PHPTCloud\TelegramApi\DomainService\Service;
 
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
-use PHPTCloud\TelegramApi\DomainService\Interfaces\TelegramBotDomainServiceInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializerInterface;

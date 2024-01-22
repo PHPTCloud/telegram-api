@@ -1,40 +1,40 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\DomainService;
+namespace PHPTCloud\TelegramApi\DomainService\Service;
 
 use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
-use PHPTCloud\TelegramApi\DomainService\Interfaces\MessageDomainServiceInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\ChatDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
-use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface;
 
 /**
- * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Пешко Илья peshkoi@mail.ru
  * @version 1.0.0
  */
-class MessageDomainService implements MessageDomainServiceInterface
+class ChatDomainService implements ChatDomainServiceInterface
 {
     public function __construct(
         private readonly RequestInterface                      $request,
-        private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
         private readonly SerializersAbstractFactoryInterface   $serializersAbstractFactory,
+        private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
         private readonly ExceptionAbstractFactoryInterface     $exceptionAbstractFactory,
     ) {}
 
-    public function sendMessage(MessageArgumentInterface $argument): MessageInterface
+    public function getChat(ChatIdArgumentInterface $argument): ChatInterface
     {
-        /** @var MessageArgumentArraySerializerInterface $serializer */
-        $serializer = $this->serializersAbstractFactory->create(MessageArgumentArraySerializerInterface::class);
+        /** @var ChatIdArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(ChatIdArgumentArraySerializerInterface::class);
         $data = $serializer->serialize($argument);
 
-        $response = $this->request::post(TelegramApiMethodEnum::SEND_MESSAGE->value, $data);
+        $response = $this->request::post(TelegramApiMethodEnum::GET_CHAT->value, $data);
 
         if ($response->isError()) {
             $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
@@ -44,8 +44,8 @@ class MessageDomainService implements MessageDomainServiceInterface
             throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
         }
 
-        /** @var MessageDeserializerInterface $deserializer */
-        $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
+        /** @var ChatDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(ChatDeserializerInterface::class);
 
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }

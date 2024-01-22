@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\DomainService\Interfaces;
+namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
 
