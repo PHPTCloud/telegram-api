@@ -4,17 +4,26 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageEntityInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
-
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
  * @version 1.0.0
  *
- * @see    https://core.telegram.org/bots/api#messageentity
+ * @see     https://core.telegram.org/bots/api#messageentity
  */
-interface MessageEntityArgumentInterface extends MessageEntityInterface
+interface MessageEntityArgumentInterface
 {
-    public function getUser(): UserArgumentInterface|UserInterface|null;
+    public function getType(): string;
+
+    public function getOffset(): int;
+
+    public function getLength(): int;
+
+    public function getUrl(): ?string;
+
+    public function getUser(): ?UserArgumentInterface;
+
+    public function getLanguage(): ?string;
+
+    public function getCustomEmojiId(): ?string;
 }

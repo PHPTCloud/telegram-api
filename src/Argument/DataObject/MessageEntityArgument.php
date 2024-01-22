@@ -6,30 +6,60 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UserArgumentInterface;
-use PHPTCloud\TelegramApi\Type\DataObject\MessageEntity;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
  * @version 1.0.0
  */
-class MessageEntityArgument extends MessageEntity implements MessageEntityArgumentInterface
+class MessageEntityArgument implements MessageEntityArgumentInterface
 {
     public function __construct(
-        string $type,
-        int $offset,
-        int $length,
-        string $url = null,
-        UserArgumentInterface $user = null,
-        string $language = null,
-        string $customEmojiId = null
+        protected readonly string $type,
+        protected readonly int $offset,
+        protected readonly int $length,
+        protected readonly ?string $url = null,
+        protected readonly ?UserArgumentInterface $user = null,
+        protected readonly ?string $language = null,
+        protected readonly ?string $customEmojiId = null,
     ) {
-        parent::__construct($type, $offset, $length, $url, $user, $language, $customEmojiId);
     }
 
-    public function getUser(): UserArgumentInterface|UserInterface|null
+    /**
+     * @see  \PHPTCloud\TelegramApi\Type\Enums\MessageEntityTypeEnum
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getOffset(): int
+    {
+        return $this->offset;
+    }
+
+    public function getLength(): int
+    {
+        return $this->length;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function getUser(): ?UserArgumentInterface
     {
         return $this->user;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function getCustomEmojiId(): ?string
+    {
+        return $this->customEmojiId;
     }
 }

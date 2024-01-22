@@ -23,7 +23,7 @@ $message = $messageBuilder->setChatId($chatId)
     ->build()
 ;
 
-$result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+$result = $manager->sendMessage($message);
 dump($result);
 
 // Также можно указать parse_mode параметр для использования форматирования текста.
@@ -36,7 +36,7 @@ $message = $messageBuilder->setChatId($chatId)
     ->build()
 ;
 
-$result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+$result = $manager->sendMessage($message);
 dump($result);
 
 // Пример отправки кода. В объекте Code автоматически происходит форматирование, но если вам не подходит этот
@@ -47,7 +47,7 @@ $message = $messageBuilder->setChatId($chatId)
     ->build()
 ;
 
-$result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+$result = $manager->sendMessage($message);
 dump($result);
 
 // Пример использования MessageEntityArgument для форматирования текста.
@@ -62,7 +62,7 @@ $message = $messageBuilder->setChatId($chatId)
     ->build()
 ;
 
-$result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+$result = $manager->sendMessage($message);
 dump($result);
 
 // Установка опция для пред показа ссылок
@@ -77,7 +77,7 @@ $message = $messageBuilder->setChatId($chatId)
     ->build()
 ;
 
-$result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+$result = $manager->sendMessage($message);
 dump($result);
 
 // Цитирование и ответ на предыдущие сообщения можно производить через объект
@@ -95,8 +95,6 @@ $messageWithQuote = $messageBuilder->setChatId($chatId)
         new PHPTCloud\TelegramApi\Argument\DataObject\ReplyParametersArgument(
             // используем ID сообщения, на которое будем ссылаться.
             $result->getMessageId(),
-            // chat_id передавать не будем, так как он приходит в ответ от Telegram API.
-            null,
             // установим флаг для отправки сообщения, даже если указанное
             // сообщение, на которое нужно ответить, не найдено;
             // можно использовать только для ответов в одной и той же теме чата и форума
@@ -111,4 +109,4 @@ $messageWithQuote = $messageBuilder->setChatId($chatId)
     )
     ->build()
 ;
-$result = $manager->sendMessage($messageWithQuote); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+$result = $manager->sendMessage($messageWithQuote);

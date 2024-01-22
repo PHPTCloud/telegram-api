@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-require(__DIR__ . '/../vendor/autoload.php');
+require __DIR__ . '/../vendor/autoload.php';
 
 // Загружаем переменные из .env
 $dotenv = new Symfony\Component\Dotenv\Dotenv();
@@ -13,4 +14,4 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 
-dump($manager->getChat(new PHPTCloud\TelegramApi\Argument\DataObject\ChatIdArgument($chatId))); // PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface
+dump($manager->getChat(new PHPTCloud\TelegramApi\Argument\DataObject\ChatIdArgument($chatId)));

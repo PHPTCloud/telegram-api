@@ -18,11 +18,11 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface
 class LinkPreviewOptions implements LinkPreviewOptionsInterface
 {
     public function __construct(
-        protected readonly ?bool $disabled = null,
-        protected readonly ?string $url = null,
-        protected readonly ?bool $preferSmallMedia = null,
-        protected readonly ?bool $preferLargeMedia = null,
-        protected readonly ?bool $showAboveText = null,
+        private readonly ?bool $disabled = null,
+        private readonly ?string $url = null,
+        private readonly ?bool $preferSmallMedia = null,
+        private readonly ?bool $preferLargeMedia = null,
+        private readonly ?bool $showAboveText = null,
     ) {
     }
 

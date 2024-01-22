@@ -32,6 +32,6 @@
     "friendsofphp/php-cs-fixer": "^3.48"
   },
   "scripts": {
-    "cs_fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --config .php_cs.php"
+    "cs_fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --using-cache=no --config .php_cs.php"
   }
 }
