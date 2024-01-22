@@ -26,8 +26,7 @@ class ChatDomainService implements ChatDomainServiceInterface
         private readonly SerializersAbstractFactoryInterface   $serializersAbstractFactory,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
         private readonly ExceptionAbstractFactoryInterface     $exceptionAbstractFactory,
-    ) {
-    }
+    ) {}
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface
     {
@@ -48,6 +47,6 @@ class ChatDomainService implements ChatDomainServiceInterface
         /** @var ChatDeserializerInterface $deserializer */
         $deserializer = $this->deserializersAbstractFactory->create(ChatDeserializerInterface::class);
 
-        return  $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 }

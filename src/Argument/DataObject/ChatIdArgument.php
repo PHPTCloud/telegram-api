@@ -7,6 +7,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
+ * @author  Юдов Алексей tcloud.ax@gmail.com
  * @version 1.0.0
  */
 class ChatIdArgument implements ChatIdArgumentInterface

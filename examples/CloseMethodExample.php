@@ -10,6 +10,7 @@ $dotenv->load(__DIR__ . '/.env');
 $token = $_ENV['TELEGRAM_BOT_TOKEN'];
 $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 
+// Инициализируем менеджер для интеграции с Telegram API
 $manager = \PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 
 dump($manager->close());

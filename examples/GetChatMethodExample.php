@@ -13,9 +13,4 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 
-/**
- * Используйте этот метод, чтобы получать актуальную информацию о чате. Возвращает объект Chat в случае
- * успеха
- * @link https://core.telegram.org/bots/api#getchat
- */
-dump($manager->getChat(new PHPTCloud\TelegramApi\Argument\DataObject\ChatIdArgument($chatId)));
+dump($manager->getChat(new PHPTCloud\TelegramApi\Argument\DataObject\ChatIdArgument($chatId))); // PHPTCloud\TelegramApi\Type\Interfaces\ChatInterface
