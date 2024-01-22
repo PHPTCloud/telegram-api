@@ -9,7 +9,7 @@ use PHPTCloud\TelegramApi\Exception\TelegramApiExceptionInterface;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @version 1.0.0
  */
-class TelegramApiException extends \RuntimeException  implements TelegramApiExceptionInterface
+class TelegramApiException extends \RuntimeException implements TelegramApiExceptionInterface
 {
     public const CODE = 'TelegramApiException';
 

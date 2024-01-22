@@ -18,12 +18,4 @@ interface TelegramApiManagerInterface
     public function getBot(): TelegramBotInterface;
 
     public function setTelegramApiHost(string $host): void;
-
-    public function getMe(): UserInterface;
-
-    public function logOut(): bool;
-
-    public function close(): bool;
-
-    public function sendMessage(MessageArgumentInterface $argument): MessageInterface;
 }

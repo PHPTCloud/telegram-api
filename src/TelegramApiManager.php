@@ -6,6 +6,8 @@ namespace PHPTCloud\TelegramApi;
 use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\MessageDomainServiceInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
@@ -14,7 +16,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\UserInterface;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @version 1.0.0
  */
-class TelegramApiManager implements TelegramApiManagerInterface
+class TelegramApiManager implements
+    TelegramApiManagerInterface,
+    MessageDomainServiceInterface,
+    TelegramBotDomainServiceInterface
 {
     private ?string $host = self::TELEGRAM_API_HOST;
 

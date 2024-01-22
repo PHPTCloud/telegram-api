@@ -28,7 +28,7 @@ $message = $messageBuilder->setChatId(869126733)
     ->build();
 
 // Пример отправки кода. В объекте Code автоматически происходит форматирование, но если вам не подходит этот
-// метод, то можно отправить "сырой" отформатированный заранее код в sendMessage.
+// метод, то можно отправить "сырой" отформатированный заранее контент в sendMessage.
 //$message = $messageBuilder->setChatId(869126733)
 //    ->setText((string)(new \PHPTCloud\TelegramApi\Type\Code('$foo = "Код на PHP";', 'php')))
 //    ->setParseMode(\PHPTCloud\TelegramApi\FormattingLanguagesEnum::MARKDOWN->value)
@@ -51,13 +51,10 @@ $message = $messageBuilder->setChatId(869126733)
 $result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
 dump($result);
 
+// Установка опция для пред показа ссылок
+// @link https://core.telegram.org/bots/api#linkpreviewoptions
 $message = $messageBuilder->setChatId(869126733)
     ->setText('LinkPreviewOptions - https://core.telegram.org/bots/api#linkpreviewoptions')
-    ->addEntity(new \PHPTCloud\TelegramApi\Argument\DataObject\MessageEntityArgument(
-        \PHPTCloud\TelegramApi\Type\Enums\MessageEntityTypeEnum::URL->value,
-        20,
-        53,
-    ))
     ->setLinkPreviewOptions(
         new \PHPTCloud\TelegramApi\Argument\DataObject\LinkPreviewOptionsArgument(
             true, // убираем превью у ссылки.
