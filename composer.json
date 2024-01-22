@@ -27,6 +27,7 @@
     "guzzlehttp/guzzle": "^6.0|^7.0"
   },
   "require-dev": {
-    "larapack/dd": "^1.1"
+    "larapack/dd": "^1.1",
+    "symfony/dotenv": "^6.4"
   }
 }

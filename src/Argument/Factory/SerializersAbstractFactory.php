@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Factory;
 
+use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
@@ -34,6 +36,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case LinkPreviewOptionsArgumentArraySerializer::class:
             case LinkPreviewOptionsArgumentArraySerializerInterface::class:
                 return $this->createLinkPreviewOptionsArgumentArraySerializer();
+            case ChatIdIdArgumentArraySerializer::class:
+            case ChatIdArgumentArraySerializerInterface::class:
+                return $this->createChatIdArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf(
                     'Тип %s не может быть создан данной фабрикой.',
@@ -65,5 +70,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createLinkPreviewOptionsArgumentArraySerializer(): LinkPreviewOptionsArgumentArraySerializerInterface
     {
         return new LinkPreviewOptionsArgumentArraySerializer();
+    }
+
+    public function createChatIdArgumentArraySerializer(): ChatIdArgumentArraySerializerInterface
+    {
+        return new ChatIdIdArgumentArraySerializer();
     }
 }

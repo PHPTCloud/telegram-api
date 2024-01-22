@@ -46,4 +46,12 @@ enum TelegramApiMethodEnum: string
      * ращается с типом Message (https://core.telegram.org/bots/api#message).
      */
     case SEND_MESSAGE = 'sendMessage';
+
+    /**
+     * @link https://core.telegram.org/bots/api#getchat
+     *
+     * Используйте этот метод, чтобы получить актуальную информацию о чате. В случае успеха возвращает объе
+     * кт с типом Chat (https://core.telegram.org/bots/api#chat).
+     */
+    case GET_CHAT = 'getChat';
 }
