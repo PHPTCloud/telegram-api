@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Request\Factory;
-
-use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
+namespace PHPTCloud\TelegramApi\Request\Interfaces;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

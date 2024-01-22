@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Request\Factory;
 
 use PHPTCloud\TelegramApi\Request\DataObject\Response;
+use PHPTCloud\TelegramApi\Request\Interfaces\ResponseFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
 
 /**

@@ -7,7 +7,7 @@ use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\ChatDomainServiceFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactory;
-use PHPTCloud\TelegramApi\Exception\ExceptionAbstractFactory;
+use PHPTCloud\TelegramApi\Exception\Factory\ExceptionAbstractFactory;
 use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactory;
 use PHPTCloud\TelegramApi\Type\Factory\TypeFactoriesAbstractFactory;
 

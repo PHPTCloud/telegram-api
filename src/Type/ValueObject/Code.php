@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type;
+namespace PHPTCloud\TelegramApi\Type\ValueObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com

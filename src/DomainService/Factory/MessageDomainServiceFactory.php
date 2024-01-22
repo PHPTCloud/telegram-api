@@ -6,7 +6,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Factory;
 use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\MessageDomainService;
-use PHPTCloud\TelegramApi\Exception\ExceptionAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Request;
 use PHPTCloud\TelegramApi\TelegramApiManagerInterface;
 use PHPTCloud\TelegramApi\TelegramBotInterface;

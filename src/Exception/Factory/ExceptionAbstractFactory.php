@@ -1,9 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Exception;
+namespace PHPTCloud\TelegramApi\Exception\Factory;
 
-use PHPTCloud\TelegramApi\TelegramApiException;
+use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
+use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
+use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
+use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Exception\Interfaces\TelegramApiExceptionInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
