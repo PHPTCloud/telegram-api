@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,10 +7,12 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Telegram API
- * @link    https://core.telegram.org/bots/api#user
+ *
+ * @see    https://core.telegram.org/bots/api#user
  * Этот объект представляет пользователя или бота Telegram.
  */
 interface UserInterface
@@ -19,8 +22,6 @@ interface UserInterface
      * и в некоторых языках программирования могут возникнуть трудности или неявные дефекты при его интерп
      * ретации. Но он имеет не более 52 значащих битов, поэтому для хранения этого идентификатора можно без
      * опасно использовать 64-битное целое число или тип с плавающей запятой двойной точности.
-     *
-     * @return int|float
      */
     public function getId(): int|float;
 

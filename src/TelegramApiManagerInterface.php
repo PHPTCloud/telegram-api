@@ -1,16 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 interface TelegramApiManagerInterface

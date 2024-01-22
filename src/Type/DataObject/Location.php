@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,21 +8,24 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой точку на карте.
- * @link    https://core.telegram.org/bots/api#location
+ *
+ * @see    https://core.telegram.org/bots/api#location
  */
 class Location implements LocationInterface
 {
     public function __construct(
-        private readonly float  $longitude,
-        private readonly float  $latitude,
+        private readonly float $longitude,
+        private readonly float $latitude,
         private readonly ?float $horizontalAccuracy = null,
-        private readonly ?int   $livePeriod = null,
-        private readonly ?int   $heading = null,
-        private readonly ?int   $proximityAlertRadius = null,
-    ) {}
+        private readonly ?int $livePeriod = null,
+        private readonly ?int $heading = null,
+        private readonly ?int $proximityAlertRadius = null,
+    ) {
+    }
 
     public function getLongitude(): float
     {

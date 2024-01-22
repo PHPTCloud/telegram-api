@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -9,6 +10,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект содержит информацию об одном участнике чата. На данный момент поддерживаются следующие 6
@@ -19,14 +21,16 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
  * - ChatMemberRestricted (https://core.telegram.org/bots/api#chatmemberrestricted);
  * - ChatMemberLeft (https://core.telegram.org/bots/api#chatmemberleft);
  * - ChatMemberBanned (https://core.telegram.org/bots/api#chatmemberbanned);
- * @link    https://core.telegram.org/bots/api#chatmember
+ *
+ * @see    https://core.telegram.org/bots/api#chatmember
  */
 abstract class ChatMember implements ChatMemberInterface
 {
     public function __construct(
-        protected readonly string        $status,
+        protected readonly string $status,
         protected readonly UserInterface $user,
-    ) {}
+    ) {
+    }
 
     public function getStatus(): string
     {

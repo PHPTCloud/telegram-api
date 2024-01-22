@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -12,17 +13,18 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 class InlineKeyboardButton implements InlineKeyboardButtonInterface
 {
     public function __construct(
-        private readonly string                                $text,
-        private readonly ?string                               $url = null,
-        private readonly ?string                               $callbackData = null,
-        private readonly ?WebAppInfoInterface                  $webApp = null,
-        private readonly ?LoginUrlInterface                    $loginUrl = null,
-        private readonly ?string                               $switchInlineQuery = null,
-        private readonly ?string                               $switchInlineQueryCurrentChat = null,
+        private readonly string $text,
+        private readonly ?string $url = null,
+        private readonly ?string $callbackData = null,
+        private readonly ?WebAppInfoInterface $webApp = null,
+        private readonly ?LoginUrlInterface $loginUrl = null,
+        private readonly ?string $switchInlineQuery = null,
+        private readonly ?string $switchInlineQueryCurrentChat = null,
         private readonly ?SwitchInlineQueryChosenChatInterface $switchInlineQueryChosenChat = null,
-        private readonly ?CallbackGameInterface                $callbackGame = null,
-        private readonly ?bool                                 $pay = null,
-    ) {}
+        private readonly ?CallbackGameInterface $callbackGame = null,
+        private readonly ?bool $pay = null,
+    ) {
+    }
 
     public function getText(): string
     {

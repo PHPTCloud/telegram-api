@@ -1,30 +1,29 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Описывает параметры ответа для отправляемого сообщения.
- * @link    https://core.telegram.org/bots/api#replyparameters
+ *
+ * @see    https://core.telegram.org/bots/api#replyparameters
  */
 interface ReplyParametersInterface
 {
     /**
      * Идентификатор сообщения, на которое будет дан ответ в текущем чате или в чате chat_id, если он указа
      * н.
-     *
-     * @return int|float
      */
     public function getMessageId(): int|float;
 
     /**
      * Необязательный. Если сообщение, на которое нужно ответить, пришло из другого чата, уникальный иденти
      * фикатор чата или имя пользователя канала (в формате @channelusername).
-     *
-     * @return int|float|string|null
      */
     public function getChatId(): int|float|string|null;
 
@@ -32,8 +31,6 @@ interface ReplyParametersInterface
      * Необязательный. Передайте значение True, если сообщение должно быть отправлено, даже если указанное
      * сообщение, на которое нужно ответить, не найдено; можно использовать только для ответов в одной и то
      * й же теме чата и форума.
-     *
-     * @return bool|null
      */
     public function isAllowedSendingWithoutReply(): ?bool;
 
@@ -42,8 +39,6 @@ interface ReplyParametersInterface
      * лиза сущностей. Цитата должна представлять собой точную подстроку сообщения, на которое нужно ответи
      * ть, включая жирный шрифт, курсив, подчеркивание, зачеркивание, спойлер и элементы custom_emoji. Сооб
      * щение не будет отправлено, если цитата не найдена в исходном сообщении.
-     *
-     * @return string|null
      */
     public function getQuote(): ?string;
 
@@ -51,8 +46,7 @@ interface ReplyParametersInterface
      * Необязательный. Режим разбора сущностей в цитате. Дополнительные сведения см. в разделе «Параметры ф
      * орматирования».
      *
-     * @link https://core.telegram.org/bots/api#formatting-options
-     * @return string|null
+     * @see https://core.telegram.org/bots/api#formatting-options
      */
     public function getQuoteParseMode(): ?string;
 
@@ -66,8 +60,6 @@ interface ReplyParametersInterface
 
     /**
      * Необязательный. Позиция цитаты в исходном сообщении в кодовых единицах UTF-16.
-     *
-     * @return int|null
      */
     public function getQuotePosition(): ?int;
 }

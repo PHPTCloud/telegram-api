@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,11 +7,13 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой особый объект в текстовом сообщении. Например, хэштеги, имена пользов
  * ателей, URL-адреса и т.д.
- * @link    https://core.telegram.org/bots/api#messageentity
+ *
+ * @see    https://core.telegram.org/bots/api#messageentity
  */
 interface MessageEntityInterface
 {
@@ -35,47 +38,38 @@ interface MessageEntityInterface
      * - «text_mention» (для пользователей без имен пользователей);
      * - «custom_emoji» (для встроенных пользовательских стикеров-эмодзи).
      *
-     * @link https://telegram.org/blog/edit#new-mentions
+     * @see https://telegram.org/blog/edit#new-mentions
      * @see  \PHPTCloud\TelegramApi\Type\Enums\MessageEntityTypeEnum
-     * @return string
      */
     public function getType(): string;
 
     /**
      * Смещение в кодовых единицах UTF-16 до начала объекта.
      *
-     * @link https://core.telegram.org/api/entities#entity-length
-     * @return int
+     * @see https://core.telegram.org/api/entities#entity-length
      */
     public function getOffset(): int;
 
     /**
      * Длина объекта в кодовых единицах UTF-16.
      *
-     * @link https://core.telegram.org/api/entities#entity-length
-     * @return int
+     * @see https://core.telegram.org/api/entities#entity-length
      */
     public function getLength(): int;
 
     /**
      * Необязательный. Только для «text_link»: URL-адрес, который будет открыт после того, как пользователь
      * нажмет на текст.
-     *
-     * @return string|null
      */
     public function getUrl(): ?string;
 
     /**
      * Необязательный. Только для «text_mention» — упомянутый пользователь.
-     *
-     * @return UserInterface|null
      */
     public function getUser(): ?UserInterface;
 
     /**
      * Необязательный. Только для «pre» — язык программирования текста сущности.
-     *
-     * @return string|null
      */
     public function getLanguage(): ?string;
 
@@ -83,8 +77,7 @@ interface MessageEntityInterface
      * Необязательный. Только для «custom_emoji» — уникальный идентификатор пользовательского смайлика. Исп
      * ользуйте getCustomEmojiStickers, чтобы получить полную информацию о стикере.
      *
-     * @link https://core.telegram.org/bots/api#getcustomemojistickers
-     * @return string|null
+     * @see https://core.telegram.org/bots/api#getcustomemojistickers
      */
     public function getCustomEmojiId(): ?string;
 }

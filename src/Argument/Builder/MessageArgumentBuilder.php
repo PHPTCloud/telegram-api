@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Builder;
 
 use PHPTCloud\TelegramApi\Argument\DataObject\MessageArgument;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\MessageArgumentBuilderInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
@@ -15,8 +17,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
- * @see     \PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface
+ *
+ * @see     MessageArgumentInterface
  */
 class MessageArgumentBuilder implements MessageArgumentBuilderInterface
 {
@@ -49,7 +53,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
         return $this;
     }
 
-    public function setParseMode(?string $parseMode = null): MessageArgumentBuilderInterface
+    public function setParseMode(string $parseMode = null): MessageArgumentBuilderInterface
     {
         $this->initializeArgumentInstance();
 
@@ -58,7 +62,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
         return $this;
     }
 
-    public function setEntities(?array $entities = null): MessageArgumentBuilderInterface
+    public function setEntities(array $entities = null): MessageArgumentBuilderInterface
     {
         $this->initializeArgumentInstance();
 
@@ -164,12 +168,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
     public function build(): MessageArgumentInterface
     {
         if (!$this->messageArgument) {
-            throw new \RuntimeException(
-                sprintf(
-                    'Объект %s невозможно построить. Убедитесь в том, что все обязательные поля заполнены.',
-                    $this->messageArgument::class,
-                ),
-            );
+            throw new \RuntimeException(sprintf('Объект %s невозможно построить. Убедитесь в том, что все обязательные поля заполнены.', $this->messageArgument::class));
         }
 
         $argument = $this->messageArgument;

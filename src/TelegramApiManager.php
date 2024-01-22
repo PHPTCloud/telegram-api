@@ -1,10 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\TelegramBotDomainServiceFactoryInterface;
@@ -14,6 +15,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class TelegramApiManager implements TelegramApiManagerInterface
@@ -21,11 +23,12 @@ class TelegramApiManager implements TelegramApiManagerInterface
     private ?string $host = self::TELEGRAM_API_HOST;
 
     public function __construct(
-        private readonly TelegramBotInterface                     $bot,
+        private readonly TelegramBotInterface $bot,
         private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
-        private readonly MessageDomainServiceFactoryInterface     $messageDomainServiceFactory,
-        private readonly ChatDomainServiceFactoryInterface        $chatDomainServiceFactory,
-    ) {}
+        private readonly MessageDomainServiceFactoryInterface $messageDomainServiceFactory,
+        private readonly ChatDomainServiceFactoryInterface $chatDomainServiceFactory,
+    ) {
+    }
 
     public function setTelegramApiHost(string $host): void
     {

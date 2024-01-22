@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,10 +8,12 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Описывает параметры ответа для отправляемого сообщения.
- * @link    https://core.telegram.org/bots/api#replyparameters
+ *
+ * @see    https://core.telegram.org/bots/api#replyparameters
  */
 class ReplyParameters implements ReplyParametersInterface
 {
@@ -18,5 +21,6 @@ class ReplyParameters implements ReplyParametersInterface
         private readonly int|float $messageId,
         private readonly int|float|string|null $chatId = null,
         private readonly ?bool $allowedSendingWithoutReply = null,
-    ) {}
+    ) {
+    }
 }

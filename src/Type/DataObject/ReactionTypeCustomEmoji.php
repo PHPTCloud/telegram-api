@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -10,7 +11,8 @@ class ReactionTypeCustomEmoji implements ReactionTypeCustomEmojiInterface
     public function __construct(
         private readonly string $type,
         private readonly string $customEmojiId,
-    ) {}
+    ) {
+    }
 
     public function getType(): string
     {

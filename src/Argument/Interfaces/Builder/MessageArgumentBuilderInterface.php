@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Argument\Builder;
+namespace PHPTCloud\TelegramApi\Argument\Interfaces\Builder;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
@@ -14,8 +15,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
- * @see     \PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface
+ *
+ * @see     MessageArgumentInterface
  */
 interface MessageArgumentBuilderInterface
 {
@@ -25,7 +28,7 @@ interface MessageArgumentBuilderInterface
 
     public function setMessageThreadId(int $messageThreadId): MessageArgumentBuilderInterface;
 
-    public function setParseMode(?string $parseMode = null): MessageArgumentBuilderInterface;
+    public function setParseMode(string $parseMode = null): MessageArgumentBuilderInterface;
 
     public function setEntities(array $entities): MessageArgumentBuilderInterface;
 

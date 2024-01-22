@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Request\Interfaces;
@@ -8,6 +9,7 @@ use PHPTCloud\TelegramApi\TelegramBotInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 interface RequestInterface
@@ -16,16 +18,16 @@ interface RequestInterface
     public const DESCRIPTION_KEY = 'description';
 
     public static function getInstance(
-        ?TelegramBotInterface $telegramBot = null,
-        ?string               $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        TelegramBotInterface $telegramBot = null,
+        ?string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface;
 
     public static function create(
         TelegramBotInterface $telegramBot,
-        string               $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface;
 
     public static function get(string $method, array $query = []): ResponseInterface;
 
-    public static function post(string $method, ?array $json = null): ResponseInterface;
+    public static function post(string $method, array $json = null): ResponseInterface;
 }

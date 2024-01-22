@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,24 +7,22 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Представляет запрос на присоединение, отправленный в чат.
- * @link    https://core.telegram.org/bots/api#chatjoinrequest
+ *
+ * @see    https://core.telegram.org/bots/api#chatjoinrequest
  */
 interface ChatJoinRequestInterface
 {
     /**
      * Чат, в который был отправлен запрос.
-     *
-     * @return ChatInterface
      */
     public function getChat(): ChatInterface;
 
     /**
      * Пользователь, отправивший запрос на присоединение.
-     *
-     * @return UserInterface
      */
     public function getFrom(): UserInterface;
 
@@ -35,30 +34,22 @@ interface ChatJoinRequestInterface
      * йной точности. Бот может использовать этот идентификатор в течение 5 минут для отправки сообщений, п
      * ока запрос на присоединение не будет обработан, при условии, что с пользователем не связался ни один
      * другой администратор.
-     *
-     * @return int|float
      */
     public function getUserChatId(): int|float;
 
     /**
      * Дата отправки запроса по времени Unix.
-     *
-     * @return int
      */
     public function getDate(): int;
 
     /**
      * Необязательный. Биография пользователя.
-     *
-     * @return string|null
      */
     public function getBio(): ?string;
 
     /**
      * Необязательный. Ссылка для приглашения в чат, которая использовалась пользователем для отправки запр
      * оса на присоединение.
-     *
-     * @return ChatInviteLinkInterface|null
      */
     public function getInviteLink(): ?ChatInviteLinkInterface;
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
@@ -13,14 +14,16 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryIn
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class TelegramBotDomainService implements TelegramBotDomainServiceInterface
 {
     public function __construct(
-        private readonly RequestInterface                      $request,
+        private readonly RequestInterface $request,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
-    ) {}
+    ) {
+    }
 
     public function getMe(): UserInterface
     {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,6 +7,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой параметр встроенной кнопки клавиатуры, используемой для автоматическо
@@ -14,8 +16,8 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * войти в систему.
  * Приложения Telegram поддерживают эти кнопки начиная с версии 5.7.
  *
- * @link    https://core.telegram.org/widgets/login
- * @link    https://core.telegram.org/bots/api#loginurl
+ * @see    https://core.telegram.org/widgets/login
+ * @see    https://core.telegram.org/bots/api#loginurl
  */
 interface LoginUrlInterface
 {
@@ -27,16 +29,13 @@ interface LoginUrlInterface
      * Примечание: Вы всегда должны проверять хеш полученных данных, чтобы убедиться в аутентификации и цел
      * остности данных, как описано в разделе «Проверка авторизации».
      *
-     * @link https://core.telegram.org/widgets/login#receiving-authorization-data
-     * @link https://core.telegram.org/widgets/login#checking-authorization
-     * @return string
+     * @see https://core.telegram.org/widgets/login#receiving-authorization-data
+     * @see https://core.telegram.org/widgets/login#checking-authorization
      */
     public function getUrl(): string;
 
     /**
      * Необязательный. Новый текст кнопки в пересылаемых сообщениях.
-     *
-     * @return string|null
      */
     public function getForwardText(): ?string;
 
@@ -46,9 +45,8 @@ interface LoginUrlInterface
      * мен URL-адреса должен совпадать с доменом, связанным с ботом. Дополнительную информацию см. в раздел
      * е «Привязка вашего домена к боту».
      *
-     * @link https://core.telegram.org/widgets/login#setting-up-a-bot
-     * @link https://core.telegram.org/widgets/login#linking-your-domain-to-the-bot
-     * @return string|null
+     * @see https://core.telegram.org/widgets/login#setting-up-a-bot
+     * @see https://core.telegram.org/widgets/login#linking-your-domain-to-the-bot
      */
     public function getBotUsername(): ?string;
 

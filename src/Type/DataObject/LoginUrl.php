@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,6 +8,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LoginUrlInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой параметр встроенной кнопки клавиатуры, используемой для автоматическо
@@ -15,17 +17,18 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LoginUrlInterface;
  * войти в систему.
  * Приложения Telegram поддерживают эти кнопки начиная с версии 5.7.
  *
- * @link    https://core.telegram.org/widgets/login
- * @link    https://core.telegram.org/bots/api#loginurl
+ * @see    https://core.telegram.org/widgets/login
+ * @see    https://core.telegram.org/bots/api#loginurl
  */
 class LoginUrl implements LoginUrlInterface
 {
     public function __construct(
-        private readonly string  $url,
+        private readonly string $url,
         private readonly ?string $forwardText = null,
         private readonly ?string $botUsername = null,
-        private readonly ?bool   $requestWriteAccess = null,
-    ) {}
+        private readonly ?bool $requestWriteAccess = null,
+    ) {
+    }
 
     public function getUrl(): string
     {

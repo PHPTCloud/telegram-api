@@ -1,12 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Enums;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
- * @link    https://core.telegram.org/bots/api#messageentity
+ *
+ * @see    https://core.telegram.org/bots/api#messageentity
  */
 enum MessageEntityTypeEnum: string
 {

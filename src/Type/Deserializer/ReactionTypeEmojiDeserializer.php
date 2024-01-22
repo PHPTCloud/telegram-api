@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Deserializer;
@@ -12,13 +13,15 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryIn
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class ReactionTypeEmojiDeserializer extends AbstractDeserializer implements ReactionTypeEmojiDeserializerInterface
 {
     public function __construct(
         private readonly ReactionTypeEmojiTypeFactoryInterface $reactionTypeEmojiTypeFactory,
-    ) {}
+    ) {
+    }
 
     public function deserialize(array $data): ReactionTypeEmojiInterface
     {

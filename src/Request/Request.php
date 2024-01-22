@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Request;
 
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\RequestOptions;
@@ -16,6 +16,7 @@ use PHPTCloud\TelegramApi\TelegramBotInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class Request implements RequestInterface
@@ -36,11 +37,11 @@ class Request implements RequestInterface
     }
 
     public static function getInstance(
-        ?TelegramBotInterface $telegramBot = null,
-        ?string               $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        TelegramBotInterface $telegramBot = null,
+        ?string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface {
-        if (self::$instance === null) {
-            if ($host === null || $telegramBot === null) {
+        if (null === self::$instance) {
+            if (null === $host || null === $telegramBot) {
                 throw new \InvalidArgumentException('Нельзя создать экземпляр класса без обязательных аргументов.');
             }
 
@@ -52,7 +53,7 @@ class Request implements RequestInterface
 
     public static function create(
         TelegramBotInterface $telegramBot,
-        string               $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface {
         return self::getInstance($telegramBot, $host);
     }
@@ -63,7 +64,7 @@ class Request implements RequestInterface
             $url = self::buildUrl(self::$host, self::$telegramBot->getToken(), $method, $query);
             $response = self::$client->get($url);
 
-            if ($response->getStatusCode() !== 200) {
+            if (200 !== $response->getStatusCode()) {
                 return self::createErrorResponse($response->getStatusCode(), '', $response->getHeaders());
             }
 
@@ -84,7 +85,7 @@ class Request implements RequestInterface
         }
     }
 
-    public static function post(string $method, ?array $json = null): ResponseInterface
+    public static function post(string $method, array $json = null): ResponseInterface
     {
         try {
             $url = self::buildUrl(self::$host, self::$telegramBot->getToken(), $method);
@@ -96,7 +97,7 @@ class Request implements RequestInterface
 
             $response = self::$client->post($url, $options);
 
-            if ($response->getStatusCode() !== 200) {
+            if (200 !== $response->getStatusCode()) {
                 return self::createErrorResponse($response->getStatusCode(), '', $response->getHeaders());
             }
 
@@ -118,9 +119,9 @@ class Request implements RequestInterface
     }
 
     private static function createErrorResponse(
-        int    $code,
+        int $code,
         string $message,
-        array  $headers = [],
+        array $headers = [],
     ): ResponseInterface {
         return self::$responseFactory->create(
             headers: $headers,
@@ -134,13 +135,15 @@ class Request implements RequestInterface
         return sprintf('%s/bot%s/%s?%s', $host, $token, $method, http_build_query($query));
     }
 
-    private function __clone() {}
+    private function __clone()
+    {
+    }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function __wakeup()
     {
-        throw new Exception();
+        throw new \Exception();
     }
 }

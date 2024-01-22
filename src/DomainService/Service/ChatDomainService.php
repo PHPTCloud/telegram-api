@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
-use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\ChatDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
@@ -17,16 +18,18 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryIn
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
+ *
  * @version 1.0.0
  */
 class ChatDomainService implements ChatDomainServiceInterface
 {
     public function __construct(
-        private readonly RequestInterface                      $request,
-        private readonly SerializersAbstractFactoryInterface   $serializersAbstractFactory,
+        private readonly RequestInterface $request,
+        private readonly SerializersAbstractFactoryInterface $serializersAbstractFactory,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
-        private readonly ExceptionAbstractFactoryInterface     $exceptionAbstractFactory,
-    ) {}
+        private readonly ExceptionAbstractFactoryInterface $exceptionAbstractFactory,
+    ) {
+    }
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface
     {

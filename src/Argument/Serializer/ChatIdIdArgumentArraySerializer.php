@@ -1,13 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
+ *
  * @version 1.0.0
  */
 class ChatIdIdArgumentArraySerializer implements ChatIdArgumentArraySerializerInterface

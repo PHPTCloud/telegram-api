@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\Factory;
@@ -17,6 +18,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 interface DeserializersAbstractFactoryInterface
@@ -29,9 +31,7 @@ interface DeserializersAbstractFactoryInterface
 
     /**
      * @param bool $wantCreateMessageDeserializer - флаг для того, чтобы избежать циклической зависимости между
-     *                                            ChatDeserializer и MessageDeserializer.
-     *
-     * @return ChatDeserializerInterface
+     *                                            ChatDeserializer и MessageDeserializer
      */
     public function createChatDeserializer(bool $wantCreateMessageDeserializer = true): ChatDeserializerInterface;
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,25 +7,23 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект представляет игру. Используйте BotFather для создания и редактирования игр, их короткие
  * имена будут выступать в качестве уникальных идентификаторов.
- * @link    https://core.telegram.org/bots/api#game
+ *
+ * @see    https://core.telegram.org/bots/api#game
  */
 interface GameInterface
 {
     /**
      * Название игры.
-     *
-     * @return string
      */
     public function getTitle(): string;
 
     /**
      * Описание игры.
-     *
-     * @return string
      */
     public function getDescription(): string;
 
@@ -39,8 +38,6 @@ interface GameInterface
      * Необязательный. Краткое описание игры или рекорды, включенные в игровое сообщение. Может быть автома
      * тически отредактировано для включения текущих рекордов в игре, когда бот вызывает setGameScore, или
      * отредактировано вручную с помощью editMessageText. 0–4096 символов.
-     *
-     * @return string|null
      */
     public function getText(): ?string;
 
@@ -55,8 +52,6 @@ interface GameInterface
     /**
      * Необязательный. Анимация, которая будет отображаться в игровом сообщении в чатах. Загрузить через
      * BotFather.
-     *
-     * @return AnimationInterface|null
      */
     public function getAnimation(): ?AnimationInterface;
 }

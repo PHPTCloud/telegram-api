@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 enum TelegramApiFieldEnum: string
@@ -90,5 +92,5 @@ enum TelegramApiFieldEnum: string
     case IS_DISABLED = 'is_disabled';
     case PREFER_SMALL_MEDIA = 'prefer_small_media';
     case PREFER_LARGE_MEDIA = 'prefer_large_media';
-    case SHOW_ABOVE_TEXT= 'show_above_text';
+    case SHOW_ABOVE_TEXT = 'show_above_text';
 }

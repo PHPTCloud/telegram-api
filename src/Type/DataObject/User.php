@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,23 +8,25 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class User implements UserInterface
 {
     public function __construct(
         protected int|float $id,
-        protected ?bool     $bot = null,
-        protected ?string   $firstName = null,
-        protected ?string   $lastName = null,
-        protected ?string   $username = null,
-        protected ?string   $languageCode = null,
-        protected ?bool     $premium = null,
-        protected ?bool     $addedToAttachmentMenu = null,
-        protected ?bool     $canJoinGroups = null,
-        protected ?bool     $canReadAllGroupMessages = null,
-        protected ?bool     $supportsInlineQueries = null,
-    ) {}
+        protected ?bool $bot = null,
+        protected ?string $firstName = null,
+        protected ?string $lastName = null,
+        protected ?string $username = null,
+        protected ?string $languageCode = null,
+        protected ?bool $premium = null,
+        protected ?bool $addedToAttachmentMenu = null,
+        protected ?bool $canJoinGroups = null,
+        protected ?bool $canReadAllGroupMessages = null,
+        protected ?bool $supportsInlineQueries = null,
+    ) {
+    }
 
     public function getId(): float|int
     {
@@ -74,7 +77,6 @@ class User implements UserInterface
     {
         return $this->canReadAllGroupMessages;
     }
-
 
     public function isSupportsInlineQueries(): ?bool
     {

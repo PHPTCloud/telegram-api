@@ -1,14 +1,19 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class MessageArgumentArraySerializer implements MessageArgumentArraySerializerInterface
@@ -16,7 +21,8 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
     public function __construct(
         private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
         private readonly LinkPreviewOptionsArgumentArraySerializerInterface $linkPreviewOptionsArgumentArraySerializer,
-    ) {}
+    ) {
+    }
 
     public function serialize(MessageArgumentInterface $argument): array
     {

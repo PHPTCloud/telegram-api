@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -11,21 +12,24 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Представляет запрос на присоединение, отправленный в чат.
- * @link    https://core.telegram.org/bots/api#chatjoinrequest
+ *
+ * @see    https://core.telegram.org/bots/api#chatjoinrequest
  */
 class ChatJoinRequest implements ChatJoinRequestInterface
 {
     public function __construct(
-        private readonly ChatInterface            $chat,
-        private readonly UserInterface            $from,
-        private readonly int|float                $userChatId,
-        private readonly int                      $date,
-        private readonly ?string                  $bio = null,
+        private readonly ChatInterface $chat,
+        private readonly UserInterface $from,
+        private readonly int|float $userChatId,
+        private readonly int $date,
+        private readonly ?string $bio = null,
         private readonly ?ChatInviteLinkInterface $inviteLink = null,
-    ) {}
+    ) {
+    }
 
     public function getChat(): ChatInterface
     {

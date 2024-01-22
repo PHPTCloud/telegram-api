@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,23 +8,26 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой сообщение о запланированной раздаче подарков.
- * @link    https://core.telegram.org/bots/api#giveaway
+ *
+ * @see    https://core.telegram.org/bots/api#giveaway
  */
 class Giveaway implements GiveawayInterface
 {
     public function __construct(
-        private readonly array   $chats,
-        private readonly int     $winnersSelectionDate,
-        private readonly int     $winnerCount,
-        private readonly ?bool   $onlyNewMembers = null,
-        private readonly ?bool   $publicWinners = null,
+        private readonly array $chats,
+        private readonly int $winnersSelectionDate,
+        private readonly int $winnerCount,
+        private readonly ?bool $onlyNewMembers = null,
+        private readonly ?bool $publicWinners = null,
         private readonly ?string $prizeDescription = null,
-        private readonly ?array  $countryCodes = null,
-        private readonly ?int    $premiumSubscriptionMonthCount = null,
-    ) {}
+        private readonly ?array $countryCodes = null,
+        private readonly ?int $premiumSubscriptionMonthCount = null,
+    ) {
+    }
 
     public function getChats(): array
     {

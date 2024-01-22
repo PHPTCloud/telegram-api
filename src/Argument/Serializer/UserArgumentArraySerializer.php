@@ -1,12 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\UserArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UserArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class UserArgumentArraySerializer implements UserArgumentArraySerializerInterface

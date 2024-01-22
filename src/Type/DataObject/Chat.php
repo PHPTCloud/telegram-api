@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -11,50 +12,53 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой чат.
- * @link    https://core.telegram.org/bots/api#chat
+ *
+ * @see    https://core.telegram.org/bots/api#chat
  */
 class Chat implements ChatInterface
 {
     public function __construct(
-        private readonly int|float                 $id,
-        private readonly string                    $type,
-        private readonly ?string                   $title = null,
-        private readonly ?string                   $username = null,
-        private readonly ?string                   $firstName = null,
-        private readonly ?string                   $lastName = null,
-        private readonly ?bool                     $forum = null,
-        private readonly ?ChatPhotoInterface       $photo = null,
-        private readonly ?array                    $activeUsernames = null,
-        private readonly ?array                    $availableReactions = null,
-        private readonly ?int                      $accentColorId = null,
-        private readonly ?string                   $backgroundCustomEmojiId = null,
-        private readonly ?int                      $profileAccentColorId = null,
-        private readonly ?string                   $profileBackgroundCustomEmojiId = null,
-        private readonly ?string                   $emojiStatusCustomEmojiId = null,
-        private readonly ?int                      $emojiStatusExpirationDate = null,
-        private readonly ?string                   $bio = null,
-        private readonly ?bool                     $privateForwards = null,
-        private readonly ?bool                     $restrictedVoiceAndVideoMessages = null,
-        private readonly ?bool                     $joinToSendMessages = null,
-        private readonly ?bool                     $joinByRequest = null,
-        private readonly ?string                   $description = null,
-        private readonly ?string                   $inviteLink = null,
-        private readonly ?MessageInterface         $pinnedMessage = null,
+        private readonly int|float $id,
+        private readonly string $type,
+        private readonly ?string $title = null,
+        private readonly ?string $username = null,
+        private readonly ?string $firstName = null,
+        private readonly ?string $lastName = null,
+        private readonly ?bool $forum = null,
+        private readonly ?ChatPhotoInterface $photo = null,
+        private readonly ?array $activeUsernames = null,
+        private readonly ?array $availableReactions = null,
+        private readonly ?int $accentColorId = null,
+        private readonly ?string $backgroundCustomEmojiId = null,
+        private readonly ?int $profileAccentColorId = null,
+        private readonly ?string $profileBackgroundCustomEmojiId = null,
+        private readonly ?string $emojiStatusCustomEmojiId = null,
+        private readonly ?int $emojiStatusExpirationDate = null,
+        private readonly ?string $bio = null,
+        private readonly ?bool $privateForwards = null,
+        private readonly ?bool $restrictedVoiceAndVideoMessages = null,
+        private readonly ?bool $joinToSendMessages = null,
+        private readonly ?bool $joinByRequest = null,
+        private readonly ?string $description = null,
+        private readonly ?string $inviteLink = null,
+        private readonly ?MessageInterface $pinnedMessage = null,
         private readonly ?ChatPermissionsInterface $permissions = null,
-        private readonly ?int                      $slowModeDelay = null,
-        private readonly ?int                      $messageAutoDeleteTime = null,
-        private readonly ?bool                     $aggressiveAntiSpamEnabled = null,
-        private readonly ?bool                     $hiddenMembers = null,
-        private readonly ?bool                     $protectedContent = null,
-        private readonly ?bool                     $visibleHistory = null,
-        private readonly ?string                   $stickerSetName = null,
-        private readonly ?bool                     $setStickerSet = null,
-        private readonly ?int                      $linkedChatId = null,
-        private readonly ?LocationInterface        $location = null,
-    ) {}
+        private readonly ?int $slowModeDelay = null,
+        private readonly ?int $messageAutoDeleteTime = null,
+        private readonly ?bool $aggressiveAntiSpamEnabled = null,
+        private readonly ?bool $hiddenMembers = null,
+        private readonly ?bool $protectedContent = null,
+        private readonly ?bool $visibleHistory = null,
+        private readonly ?string $stickerSetName = null,
+        private readonly ?bool $setStickerSet = null,
+        private readonly ?int $linkedChatId = null,
+        private readonly ?LocationInterface $location = null,
+    ) {
+    }
 
     public function getId(): float|int
     {

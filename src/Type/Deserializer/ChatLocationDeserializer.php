@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Deserializer;
@@ -12,6 +13,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterfa
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class ChatLocationDeserializer extends AbstractDeserializer implements ChatLocationDeserializerInterface
@@ -19,7 +21,8 @@ class ChatLocationDeserializer extends AbstractDeserializer implements ChatLocat
     public function __construct(
         private readonly ChatLocationTypeFactoryInterface $chatLocationTypeFactory,
         private readonly LocationDeserializerInterface $locationDeserializer,
-    ) {}
+    ) {
+    }
 
     public function deserialize(array $data): ChatLocationInterface
     {

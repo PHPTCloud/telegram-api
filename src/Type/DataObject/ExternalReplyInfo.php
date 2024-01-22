@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -27,38 +28,41 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\VoiceInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект содержит информацию о сообщении, которое может прийти из другого чата или темы форума.
- * @link    https://core.telegram.org/bots/api#externalreplyinfo
+ *
+ * @see    https://core.telegram.org/bots/api#externalreplyinfo
  */
 class ExternalReplyInfo implements ExternalReplyInfoInterface
 {
     public function __construct(
-        private readonly MessageOriginInterface       $origin,
-        private readonly ?ChatInterface               $chat = null,
-        private readonly null|int|float               $messageId = null,
+        private readonly MessageOriginInterface $origin,
+        private readonly ?ChatInterface $chat = null,
+        private readonly null|int|float $messageId = null,
         private readonly ?LinkPreviewOptionsInterface $linkPreviewOptions = null,
-        private readonly ?AnimationInterface          $animation = null,
-        private readonly ?AudioInterface              $audio = null,
-        private readonly ?DocumentInterface           $document = null,
-        private readonly ?array                       $photo = null,
-        private readonly ?StickerInterface            $sticker = null,
-        private readonly ?StoryInterface              $story = null,
-        private readonly ?VideoInterface              $video = null,
-        private readonly ?VideoNoteInterface          $videoNote = null,
-        private readonly ?VoiceInterface              $voice = null,
-        private readonly ?bool                        $mediaSpoiler = null,
-        private readonly ?ContactInterface            $contact = null,
-        private readonly ?DiceInterface               $dice = null,
-        private readonly ?GameInterface               $game = null,
-        private readonly ?GiveawayInterface           $giveaway = null,
-        private readonly ?GiveawayWinnersInterface    $giveawayWinners = null,
-        private readonly ?InvoiceInterface            $invoice = null,
-        private readonly ?LocationInterface           $location = null,
-        private readonly ?PollInterface               $poll = null,
-        private readonly ?VenueInterface              $venue = null,
-    ) {}
+        private readonly ?AnimationInterface $animation = null,
+        private readonly ?AudioInterface $audio = null,
+        private readonly ?DocumentInterface $document = null,
+        private readonly ?array $photo = null,
+        private readonly ?StickerInterface $sticker = null,
+        private readonly ?StoryInterface $story = null,
+        private readonly ?VideoInterface $video = null,
+        private readonly ?VideoNoteInterface $videoNote = null,
+        private readonly ?VoiceInterface $voice = null,
+        private readonly ?bool $mediaSpoiler = null,
+        private readonly ?ContactInterface $contact = null,
+        private readonly ?DiceInterface $dice = null,
+        private readonly ?GameInterface $game = null,
+        private readonly ?GiveawayInterface $giveaway = null,
+        private readonly ?GiveawayWinnersInterface $giveawayWinners = null,
+        private readonly ?InvoiceInterface $invoice = null,
+        private readonly ?LocationInterface $location = null,
+        private readonly ?PollInterface $poll = null,
+        private readonly ?VenueInterface $venue = null,
+    ) {
+    }
 
     public function getOrigin(): MessageOriginInterface
     {

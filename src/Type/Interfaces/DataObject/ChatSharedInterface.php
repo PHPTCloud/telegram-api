@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,11 +7,13 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект содержит информацию о чате, идентификатор которого был передан боту с помощью кнопки
  * KeyboardButtonRequestChat.
- * @link    https://core.telegram.org/bots/api#chatshared
+ *
+ * @see    https://core.telegram.org/bots/api#chatshared
  */
 interface ChatSharedInterface
 {
@@ -27,8 +30,6 @@ interface ChatSharedInterface
      * ее 52 значащих битов, поэтому для хранения этого идентификатора можно безопасно использовать 64-битн
      * ое целое число или тип с плавающей запятой двойной точности. Бот может не иметь доступа к чату и не
      * сможет использовать этот идентификатор, если чат уже не известен боту каким-либо другим способом.
-     *
-     * @return int|float
      */
     public function getChatId(): int|float;
 }

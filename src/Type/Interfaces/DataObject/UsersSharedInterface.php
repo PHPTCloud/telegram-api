@@ -1,23 +1,25 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
+
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект содержит информацию о пользователях, чьи идентификаторы были переданы боту с помощью кно
  * пки KeyboardButtonRequestUsers.
- * @link    https://core.telegram.org/bots/api#keyboardbuttonrequestusers
- * @link    https://core.telegram.org/bots/api#usersshared
+ *
+ * @see    https://core.telegram.org/bots/api#keyboardbuttonrequestusers
+ * @see    https://core.telegram.org/bots/api#usersshared
  */
 interface UsersSharedInterface
 {
     /**
      * Идентификатор запроса.
-     *
-     * @return int
      */
     public function getRequestId(): int;
 

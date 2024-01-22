@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
@@ -6,6 +7,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Этот объект представляет входящий запрос обратного вызова от кнопки обратного вызова на встроенной к
@@ -19,62 +21,48 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * ь вызовом answerCallbackQuery, даже если уведомление пользователя не требуется (например, без указан
  * ия каких-либо дополнительных параметров).
  *
- * @link    https://core.telegram.org/bots/api#callbackquery
- * @link    https://core.telegram.org/bots/features#inline-keyboards
- * @link    https://core.telegram.org/bots/api#inline-mode
- * @link    https://core.telegram.org/bots/api#answercallbackquery
+ * @see    https://core.telegram.org/bots/api#callbackquery
+ * @see    https://core.telegram.org/bots/features#inline-keyboards
+ * @see    https://core.telegram.org/bots/api#inline-mode
+ * @see    https://core.telegram.org/bots/api#answercallbackquery
  */
 interface CallbackQueryInterface
 {
     /**
      * Уникальный идентификатор для этого запроса.
-     *
-     * @return string
      */
     public function getId(): string;
 
     /**
      * Отправитель.
-     *
-     * @return UserInterface
      */
     public function getFrom(): UserInterface;
 
     /**
      * Необязательный. Сообщение, отправленное ботом с помощью кнопки обратного вызова, вызвавшей запрос.
-     *
-     * @return MaybeInaccessibleMessageInterface
      */
     public function getMessage(): MaybeInaccessibleMessageInterface;
 
     /**
      * Необязательный. Идентификатор сообщения, отправленного через бот во встроенном режиме, из которого б
      * ыл отправлен запрос.
-     *
-     * @return string|null
      */
     public function getInlineMessageId(): ?string;
 
     /**
      * Глобальный идентификатор, однозначно соответствующий чату, в который было отправлено сообщение с кно
      * пкой обратного звонка. Полезно для высоких результатов в играх.
-     *
-     * @return string
      */
     public function getChatInstance(): string;
 
     /**
      * Необязательный. Данные, связанные с кнопкой обратного вызова. Имейте в виду, что сообщение, породивш
      * ее запрос, не может содержать кнопок обратного вызова с этими данными.
-     *
-     * @return string|null
      */
     public function getData(): ?string;
 
     /**
      * Необязательный. Краткое название возвращаемой Игры служит уникальным идентификатором игры.
-     *
-     * @return string|null
      */
     public function getGameShortName(): ?string;
 }

@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
-use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
@@ -17,16 +18,18 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryIn
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class MessageDomainService implements MessageDomainServiceInterface
 {
     public function __construct(
-        private readonly RequestInterface                      $request,
+        private readonly RequestInterface $request,
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
-        private readonly SerializersAbstractFactoryInterface   $serializersAbstractFactory,
-        private readonly ExceptionAbstractFactoryInterface     $exceptionAbstractFactory,
-    ) {}
+        private readonly SerializersAbstractFactoryInterface $serializersAbstractFactory,
+        private readonly ExceptionAbstractFactoryInterface $exceptionAbstractFactory,
+    ) {
+    }
 
     public function sendMessage(MessageArgumentInterface $argument): MessageInterface
     {

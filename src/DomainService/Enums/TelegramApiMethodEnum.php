@@ -1,16 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Enums;
 
 /**
  * @author Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 enum TelegramApiMethodEnum: string
 {
     /**
-     * @link https://core.telegram.org/bots/api#getme
+     * @see https://core.telegram.org/bots/api#getme
      *
      * Простой метод проверки токена аутентификации вашего бота. Не требует параметров. Возвращает основную
      * информацию о боте в виде объекта User (https://core.telegram.org/bots/api#user).
@@ -18,7 +20,7 @@ enum TelegramApiMethodEnum: string
     case GET_ME = 'getMe';
 
     /**
-     * @link https://core.telegram.org/bots/api#logout
+     * @see https://core.telegram.org/bots/api#logout
      *
      * Используйте этот метод для выхода из облачного сервера API бота перед локальным запуском бота. Вы до
      * лжны выйти из системы бота перед его локальным запуском, иначе нет никакой гарантии, что бот будет п
@@ -30,7 +32,7 @@ enum TelegramApiMethodEnum: string
     case LOG_OUT = 'logOut';
 
     /**
-     * @link https://core.telegram.org/bots/api#close
+     * @see https://core.telegram.org/bots/api#close
      *
      * Используйте этот метод, чтобы закрыть экземпляр бота перед его перемещением с одного локального серв
      * ера на другой. Вам необходимо удалить веб-перехватчик перед вызовом этого метода, чтобы гарантироват
@@ -40,7 +42,7 @@ enum TelegramApiMethodEnum: string
     case CLOSE = 'close';
 
     /**
-     * @link https://core.telegram.org/bots/api#sendmessage
+     * @see https://core.telegram.org/bots/api#sendmessage
      *
      * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное сообщение возв
      * ращается с типом Message (https://core.telegram.org/bots/api#message).
@@ -48,7 +50,7 @@ enum TelegramApiMethodEnum: string
     case SEND_MESSAGE = 'sendMessage';
 
     /**
-     * @link https://core.telegram.org/bots/api#getchat
+     * @see https://core.telegram.org/bots/api#getchat
      *
      * Используйте этот метод, чтобы получить актуальную информацию о чате. В случае успеха возвращает объе
      * кт с типом Chat (https://core.telegram.org/bots/api#chat).

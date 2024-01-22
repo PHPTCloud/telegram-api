@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Deserializer;
@@ -16,6 +17,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class ChatDeserializer extends AbstractDeserializer implements ChatDeserializerInterface
@@ -27,7 +29,8 @@ class ChatDeserializer extends AbstractDeserializer implements ChatDeserializerI
         private readonly ChatPermissionsDeserializerInterface $chatPermissionsDeserializer,
         private readonly ChatLocationDeserializerInterface $chatLocationDeserializer,
         private readonly ?MessageDeserializerInterface $messageDeserializer = null,
-    ) {}
+    ) {
+    }
 
     public function deserialize(array $data): ChatInterface
     {

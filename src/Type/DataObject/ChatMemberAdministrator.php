@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -9,32 +10,34 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
+ *
  * @version 1.0.0
  *
  * Представляет участника чата, имеющего некоторые дополнительные привилегии.
- * @link    https://core.telegram.org/bots/api#chatmemberadministrator
+ *
+ * @see    https://core.telegram.org/bots/api#chatmemberadministrator
  */
 class ChatMemberAdministrator extends ChatMember implements ChatMemberAdministratorInterface
 {
     public function __construct(
-        string                   $status,
-        UserInterface            $user,
-        private readonly bool    $edited,
-        private readonly bool    $anonymous,
-        private readonly bool    $manageChat,
-        private readonly bool    $deleteMessages,
-        private readonly bool    $manageVideoChats,
-        private readonly bool    $restrictMembers,
-        private readonly bool    $promoteMembers,
-        private readonly bool    $changeInfo,
-        private readonly bool    $inviteUsers,
-        private readonly ?bool   $postMessages,
-        private readonly ?bool   $editMessages,
-        private readonly ?bool   $pinMessages,
-        private readonly ?bool   $postStories,
-        private readonly ?bool   $editStories,
-        private readonly ?bool   $deleteStories,
-        private readonly ?bool   $manageTopics,
+        string $status,
+        UserInterface $user,
+        private readonly bool $edited,
+        private readonly bool $anonymous,
+        private readonly bool $manageChat,
+        private readonly bool $deleteMessages,
+        private readonly bool $manageVideoChats,
+        private readonly bool $restrictMembers,
+        private readonly bool $promoteMembers,
+        private readonly bool $changeInfo,
+        private readonly bool $inviteUsers,
+        private readonly ?bool $postMessages,
+        private readonly ?bool $editMessages,
+        private readonly ?bool $pinMessages,
+        private readonly ?bool $postStories,
+        private readonly ?bool $editStories,
+        private readonly ?bool $deleteStories,
+        private readonly ?bool $manageTopics,
         private readonly ?string $customTitle,
     ) {
         parent::__construct($status, $user);

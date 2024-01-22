@@ -28,6 +28,10 @@
   },
   "require-dev": {
     "larapack/dd": "^1.1",
-    "symfony/dotenv": "^6.4"
+    "symfony/dotenv": "^6.4",
+    "friendsofphp/php-cs-fixer": "^3.48"
+  },
+  "scripts": {
+    "cs_fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --config .php_cs.php"
   }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -8,26 +9,28 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой особый объект в текстовом сообщении. Например, хэштеги, имена пользов
  * ателей, URL-адреса и т.д.
- * @link    https://core.telegram.org/bots/api#messageentity
+ *
+ * @see    https://core.telegram.org/bots/api#messageentity
  */
 class MessageEntity implements MessageEntityInterface
 {
     public function __construct(
-        protected readonly string         $type,
-        protected readonly int            $offset,
-        protected readonly int            $length,
-        protected readonly ?string        $url = null,
+        protected readonly string $type,
+        protected readonly int $offset,
+        protected readonly int $length,
+        protected readonly ?string $url = null,
         protected readonly ?UserInterface $user = null,
-        protected readonly ?string        $language = null,
-        protected readonly ?string        $customEmojiId = null,
-    ) {}
+        protected readonly ?string $language = null,
+        protected readonly ?string $customEmojiId = null,
+    ) {
+    }
 
     /**
-     * @return string
      * @see  \PHPTCloud\TelegramApi\Type\Enums\MessageEntityTypeEnum
      */
     public function getType(): string

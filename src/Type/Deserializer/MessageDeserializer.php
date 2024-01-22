@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Deserializer;
@@ -12,14 +13,16 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class MessageDeserializer extends AbstractDeserializer implements MessageDeserializerInterface
 {
     public function __construct(
         private readonly MessageTypeFactoryInterface $messageTypeFactory,
-        private readonly ChatDeserializerInterface   $chatDeserializer,
-    ) {}
+        private readonly ChatDeserializerInterface $chatDeserializer,
+    ) {
+    }
 
     public function deserialize(array $data): MessageInterface
     {

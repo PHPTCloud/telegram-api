@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Factory;
@@ -38,13 +39,15 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterface
 {
     public function __construct(
         private readonly TypeFactoriesAbstractFactoryInterface $typeFactoriesAbstractFactory,
-    ) {}
+    ) {
+    }
 
     public function create(string $type): DeserializerInterface
     {
@@ -105,9 +108,7 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
 
     /**
      * @param bool $wantCreateMessageDeserializer - флаг для того, чтобы избежать циклической зависимости между
-     *                                            ChatDeserializer и MessageDeserializer.
-     *
-     * @return ChatDeserializerInterface
+     *                                            ChatDeserializer и MessageDeserializer
      */
     public function createChatDeserializer(bool $wantCreateMessageDeserializer = true): ChatDeserializerInterface
     {

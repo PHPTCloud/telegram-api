@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,10 +8,12 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPermissionsInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Описывает действия, которые разрешено выполнять в чате пользователю, не являющемуся администратором.
- * @link    https://core.telegram.org/bots/api#chatpermissions
+ *
+ * @see    https://core.telegram.org/bots/api#chatpermissions
  */
 class ChatPermissions implements ChatPermissionsInterface
 {
@@ -29,7 +32,8 @@ class ChatPermissions implements ChatPermissionsInterface
         private readonly ?bool $inviteUsers = null,
         private readonly ?bool $pinMessages = null,
         private readonly ?bool $manageTopics = null,
-    ) {}
+    ) {
+    }
 
     public function canSendMessages(): ?bool
     {

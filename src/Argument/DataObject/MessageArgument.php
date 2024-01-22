@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\LinkPreviewOptionsArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
@@ -15,29 +16,31 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Метод "sendMessage".
  * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное Message возв
  * ращается.
  *
- * @link    https://core.telegram.org/bots/api#sendmessage
- * @link    https://core.telegram.org/bots/api#message
+ * @see    https://core.telegram.org/bots/api#sendmessage
+ * @see    https://core.telegram.org/bots/api#message
  */
 class MessageArgument implements MessageArgumentInterface
 {
     public function __construct(
-        private string|int|float|null                                                                                            $chatId = null,
-        private ?int                                                                                                             $messageThreadId = null,
-        private ?string                                                                                                          $text = null,
-        private ?string                                                                                                          $parseMode = null,
-        private ?array                                                                                                           $entities = null,
-        private ?LinkPreviewOptionsInterface                                                                                     $linkPreviewOptions = null,
-        private ?bool                                                                                                            $notificationDisabled = null,
-        private ?bool                                                                                                            $contentProtected = null,
-        private ?ReplyParametersInterface                                                                                        $replyParameters = null,
+        private string|int|float|null $chatId = null,
+        private ?int $messageThreadId = null,
+        private ?string $text = null,
+        private ?string $parseMode = null,
+        private ?array $entities = null,
+        private ?LinkPreviewOptionsInterface $linkPreviewOptions = null,
+        private ?bool $notificationDisabled = null,
+        private ?bool $contentProtected = null,
+        private ?ReplyParametersInterface $replyParameters = null,
         private InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null,
-    ) {}
+    ) {
+    }
 
     public function getChatId(): float|int|string|null
     {
@@ -54,7 +57,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->messageThreadId;
     }
 
-    public function setMessageThreadId(?int $messageThreadId = null): void
+    public function setMessageThreadId(int $messageThreadId = null): void
     {
         $this->messageThreadId = $messageThreadId;
     }
@@ -74,7 +77,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->parseMode;
     }
 
-    public function setParseMode(?string $parseMode = null): void
+    public function setParseMode(string $parseMode = null): void
     {
         $this->parseMode = $parseMode;
     }
@@ -84,7 +87,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->entities;
     }
 
-    public function setEntities(?array $entities = null): void
+    public function setEntities(array $entities = null): void
     {
         $this->entities = $entities;
     }
@@ -99,7 +102,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->linkPreviewOptions;
     }
 
-    public function setLinkPreviewOptions(LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null $linkPreviewOptions = null): void
+    public function setLinkPreviewOptions(LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null): void
     {
         $this->linkPreviewOptions = $linkPreviewOptions;
     }
@@ -109,7 +112,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->notificationDisabled;
     }
 
-    public function setNotificationDisabled(?bool $notificationDisabled = null): void
+    public function setNotificationDisabled(bool $notificationDisabled = null): void
     {
         $this->notificationDisabled = $notificationDisabled;
     }
@@ -119,7 +122,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->contentProtected;
     }
 
-    public function setContentProtected(?bool $contentProtected = null): void
+    public function setContentProtected(bool $contentProtected = null): void
     {
         $this->contentProtected = $contentProtected;
     }
@@ -129,7 +132,7 @@ class MessageArgument implements MessageArgumentInterface
         return $this->replyParameters;
     }
 
-    public function setReplyParameters(?ReplyParametersInterface $replyParameters = null): void
+    public function setReplyParameters(ReplyParametersInterface $replyParameters = null): void
     {
         $this->replyParameters = $replyParameters;
     }
@@ -139,27 +142,27 @@ class MessageArgument implements MessageArgumentInterface
         return $this->replyMarkup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null): void
+    public function setReplyMarkup(InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setInlineKeyboardMarkup(?InlineKeyboardMarkupInterface $replyMarkup = null): void
+    public function setInlineKeyboardMarkup(InlineKeyboardMarkupInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setReplyKeyboardMarkup(?ReplyKeyboardMarkupInterface $replyMarkup = null): void
+    public function setReplyKeyboardMarkup(ReplyKeyboardMarkupInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setReplyKeyboardRemove(?ReplyKeyboardRemoveInterface $replyMarkup = null): void
+    public function setReplyKeyboardRemove(ReplyKeyboardRemoveInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setForceReply(?ForceReplyInterface $replyMarkup = null): void
+    public function setForceReply(ForceReplyInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }

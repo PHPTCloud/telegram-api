@@ -1,22 +1,25 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Factory;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
-use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
-use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
-use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
-use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
-use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\SerializerInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
@@ -40,10 +43,7 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case ChatIdArgumentArraySerializerInterface::class:
                 return $this->createChatIdArgumentArraySerializer();
             default:
-                throw new \InvalidArgumentException(sprintf(
-                    'Тип %s не может быть создан данной фабрикой.',
-                    $type,
-                ));
+                throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
     }
 

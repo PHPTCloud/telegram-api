@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Deserializer;
@@ -10,13 +11,15 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class UserDeserializer extends AbstractDeserializer implements UserDeserializerInterface
 {
     public function __construct(
         private readonly UserTypeFactoryInterface $userTypeFactory,
-    ) {}
+    ) {
+    }
 
     public function deserialize(array $data): UserInterface
     {

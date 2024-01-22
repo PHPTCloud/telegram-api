@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -7,24 +8,27 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\AudioInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  *
  * Этот объект представляет собой аудиофайл, который клиенты Telegram будут рассматривать как музыку.
- * @link    https://core.telegram.org/bots/api#audio
+ *
+ * @see    https://core.telegram.org/bots/api#audio
  */
 class Audio implements AudioInterface
 {
     public function __construct(
-        private readonly string              $fileId,
-        private readonly string              $fileUniqueId,
-        private readonly int                 $duration,
-        private readonly ?string             $performer = null,
-        private readonly ?string             $title = null,
-        private readonly ?string             $fileName = null,
-        private readonly ?string             $mimeType = null,
-        private readonly null|int|float      $fileSize = null,
+        private readonly string $fileId,
+        private readonly string $fileUniqueId,
+        private readonly int $duration,
+        private readonly ?string $performer = null,
+        private readonly ?string $title = null,
+        private readonly ?string $fileName = null,
+        private readonly ?string $mimeType = null,
+        private readonly null|int|float $fileSize = null,
         private readonly ?PhotoSizeInterface $thumbnail = null,
-    ) {}
+    ) {
+    }
 
     public function getFileId(): string
     {

@@ -1,13 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\LinkPreviewOptionsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @version 1.0.0
  */
 class LinkPreviewOptionsArgumentArraySerializer implements LinkPreviewOptionsArgumentArraySerializerInterface
