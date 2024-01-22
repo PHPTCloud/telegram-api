@@ -93,4 +93,9 @@ enum TelegramApiFieldEnum: string
     case PREFER_SMALL_MEDIA = 'prefer_small_media';
     case PREFER_LARGE_MEDIA = 'prefer_large_media';
     case SHOW_ABOVE_TEXT = 'show_above_text';
+    case ALLOW_SENDING_WITHOUT_REPLY = 'allow_sending_without_reply';
+    case QUOTE = 'quote';
+    case QUOTE_PARSE_MODE = 'quote_parse_mode';
+    case QUOTE_ENTITIES = 'quote_entities';
+    case QUOTE_POSITION = 'quote_position';
 }

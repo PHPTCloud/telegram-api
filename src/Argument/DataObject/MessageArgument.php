@@ -7,12 +7,12 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -23,8 +23,8 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
  * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное Message возв
  * ращается.
  *
- * @see    https://core.telegram.org/bots/api#sendmessage
- * @see    https://core.telegram.org/bots/api#message
+ * @see     https://core.telegram.org/bots/api#sendmessage
+ * @see     https://core.telegram.org/bots/api#message
  */
 class MessageArgument implements MessageArgumentInterface
 {
@@ -37,7 +37,7 @@ class MessageArgument implements MessageArgumentInterface
         private ?LinkPreviewOptionsInterface $linkPreviewOptions = null,
         private ?bool $notificationDisabled = null,
         private ?bool $contentProtected = null,
-        private ?ReplyParametersInterface $replyParameters = null,
+        private ?ReplyParametersArgumentInterface $replyParameters = null,
         private InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null,
     ) {
     }
@@ -127,12 +127,12 @@ class MessageArgument implements MessageArgumentInterface
         $this->contentProtected = $contentProtected;
     }
 
-    public function getReplyParameters(): ?ReplyParametersInterface
+    public function getReplyParameters(): ?ReplyParametersArgumentInterface
     {
         return $this->replyParameters;
     }
 
-    public function setReplyParameters(ReplyParametersInterface $replyParameters = null): void
+    public function setReplyParameters(ReplyParametersArgumentInterface $replyParameters = null): void
     {
         $this->replyParameters = $replyParameters;
     }

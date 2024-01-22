@@ -9,11 +9,13 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySeri
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ReplyParametersArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
 use PHPTCloud\TelegramApi\SerializerInterface;
 
@@ -42,6 +44,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case ChatIdIdArgumentArraySerializer::class:
             case ChatIdArgumentArraySerializerInterface::class:
                 return $this->createChatIdArgumentArraySerializer();
+            case ReplyParametersArgumentArraySerializer::class:
+            case ReplyParametersArgumentArraySerializerInterface::class:
+                return $this->createReplyParametersArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -52,6 +57,7 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
         return new MessageArgumentArraySerializer(
             $this->createMessageEntityArgumentArraySerializer(),
             $this->createLinkPreviewOptionsArgumentArraySerializer(),
+            $this->createReplyParametersArgumentArraySerializer(),
         );
     }
 
@@ -75,5 +81,12 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createChatIdArgumentArraySerializer(): ChatIdArgumentArraySerializerInterface
     {
         return new ChatIdIdArgumentArraySerializer();
+    }
+
+    public function createReplyParametersArgumentArraySerializer(): ReplyParametersArgumentArraySerializerInterface
+    {
+        return new ReplyParametersArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+        );
     }
 }

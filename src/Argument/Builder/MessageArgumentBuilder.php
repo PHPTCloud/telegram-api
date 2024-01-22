@@ -6,11 +6,11 @@ namespace PHPTCloud\TelegramApi\Argument\Builder;
 
 use PHPTCloud\TelegramApi\Argument\DataObject\MessageArgument;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\MessageArgumentBuilderInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
-use PHPTCloud\TelegramApi\Type\DataObject\LinkPreviewOptions;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageEntityInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
@@ -71,7 +71,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
         return $this;
     }
 
-    public function addEntity(MessageEntityInterface $entity): MessageArgumentBuilderInterface
+    public function addEntity(MessageEntityArgumentInterface $entity): MessageArgumentBuilderInterface
     {
         $this->initializeArgumentInstance();
 
@@ -84,7 +84,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
         return $this;
     }
 
-    public function setLinkPreviewOptions(LinkPreviewOptions $linkPreviewOptions): MessageArgumentBuilderInterface
+    public function setLinkPreviewOptions(LinkPreviewOptionsArgumentInterface $linkPreviewOptions): MessageArgumentBuilderInterface
     {
         $this->initializeArgumentInstance();
 

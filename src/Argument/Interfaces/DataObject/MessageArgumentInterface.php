@@ -9,7 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterfa
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -20,8 +19,8 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyParametersInterface;
  * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное Message возв
  * ращается.
  *
- * @see    https://core.telegram.org/bots/api#sendmessage
- * @see    https://core.telegram.org/bots/api#message
+ * @see     https://core.telegram.org/bots/api#sendmessage
+ * @see     https://core.telegram.org/bots/api#message
  */
 interface MessageArgumentInterface
 {
@@ -98,9 +97,9 @@ interface MessageArgumentInterface
     /**
      * Необязательный. Описание сообщения, на которое нужно ответить.
      */
-    public function getReplyParameters(): ?ReplyParametersInterface;
+    public function getReplyParameters(): ?ReplyParametersArgumentInterface;
 
-    public function setReplyParameters(ReplyParametersInterface $replyParameters = null): void;
+    public function setReplyParameters(ReplyParametersArgumentInterface $replyParameters = null): void;
 
     /**
      * Необязательный. Дополнительные возможности интерфейса. Объект, сериализованный в формате JSON, для в

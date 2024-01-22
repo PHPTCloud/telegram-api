@@ -13,11 +13,11 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
+$messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 
 // Для создания простого текстового сообщения можно не использовать MessageArgumentBuilder. Однако, что
 // бы соблюдать уровень сцепления модулей рекомендую не привязываться к конкретным реализациям и исполь
 // зовать билдеры и фабрики.
-$messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
     ->setText('Простое текстовое сообщение.')
     ->build()
@@ -79,3 +79,36 @@ $message = $messageBuilder->setChatId($chatId)
 
 $result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
 dump($result);
+
+// Цитирование и ответ на предыдущие сообщения можно производить через объект
+// PHPTCloud\TelegramApi\Argument\DataObject\ReplyParametersArgument
+// Для начала отправим какое-нибудь сообщение, на которое потом пришлем ответ.
+$message = $messageBuilder->setChatId($chatId)
+    ->setText('Текстовое сообщение, на которое мы хотим ответить и использовать часть сообщения как цитату.')
+    ->build()
+;
+$result = $manager->sendMessage($message); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface
+
+$messageWithQuote = $messageBuilder->setChatId($chatId)
+    ->setText('Какой-то ответ на предыдущее сообщение.')
+    ->setReplyParameters(
+        new PHPTCloud\TelegramApi\Argument\DataObject\ReplyParametersArgument(
+            // используем ID сообщения, на которое будем ссылаться.
+            $result->getMessageId(),
+            // chat_id передавать не будем, так как он приходит в ответ от Telegram API.
+            null,
+            // установим флаг для отправки сообщения, даже если указанное
+            // сообщение, на которое нужно ответить, не найдено;
+            // можно использовать только для ответов в одной и той же теме чата и форума
+            true,
+            // Мы можем указать целиком текст сообщения или указать его часть, например, через substr() / mb_substr().
+            // Если указать quote = null, то сообщение будет укорочено, а в конце будет стоять "...".
+            mb_substr($result->getText(), 0, 19),
+            null,
+            null,
+            0,
+        ),
+    )
+    ->build()
+;
+$result = $manager->sendMessage($messageWithQuote); // @return \PHPTCloud\TelegramApi\Type\Interfaces\MessageInterface

@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 /**
@@ -21,6 +22,7 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
     public function __construct(
         private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
         private readonly LinkPreviewOptionsArgumentArraySerializerInterface $linkPreviewOptionsArgumentArraySerializer,
+        private readonly ReplyParametersArgumentArraySerializerInterface $replyParametersArgumentArraySerializer,
     ) {
     }
 
@@ -59,7 +61,8 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
             $data[TelegramApiFieldEnum::PROTECT_CONTENT->value] = $argument->isContentProtected();
         }
         if ($argument->getReplyParameters()) {
-            $data[TelegramApiFieldEnum::REPLY_PARAMETERS->value] = $argument->getReplyParameters();
+            $data[TelegramApiFieldEnum::REPLY_PARAMETERS->value]
+                = $this->replyParametersArgumentArraySerializer->serialize($argument->getReplyParameters());
         }
         if ($argument->getReplyMarkup()) {
             $data[TelegramApiFieldEnum::REPLY_MARKUP->value] = $argument->getReplyMarkup();
