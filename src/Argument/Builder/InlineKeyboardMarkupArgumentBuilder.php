@@ -15,8 +15,6 @@ class InlineKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumen
     /**
      * Позволяет установить максимальное количество кнопок на одной строке.
      * Будет использовано при построении аргумента.
-     *
-     * @var int|null
      */
     private ?int $buttonsCountPerLine = null;
 
@@ -44,7 +42,7 @@ class InlineKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumen
 
     public function build(): InlineKeyboardMarkupArgumentInterface
     {
-        if ($this->buttonsCountPerLine !== null && $this->buttonsCountPerLine > 0) {
+        if (null !== $this->buttonsCountPerLine && $this->buttonsCountPerLine > 0) {
             $this->buttons = $this->prepareButtons();
         }
 
