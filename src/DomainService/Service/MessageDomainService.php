@@ -12,6 +12,7 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceI
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
+use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
@@ -36,6 +37,10 @@ class MessageDomainService implements MessageDomainServiceInterface
         /** @var MessageArgumentArraySerializerInterface $serializer */
         $serializer = $this->serializersAbstractFactory->create(MessageArgumentArraySerializerInterface::class);
         $data = $serializer->serialize($argument);
+
+        if (isset($data[TelegramApiFieldEnum::REPLY_MARKUP->value])) {
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value] = json_encode($data[TelegramApiFieldEnum::REPLY_MARKUP->value]);
+        }
 
         $response = $this->request::post(TelegramApiMethodEnum::SEND_MESSAGE->value, $data);
 

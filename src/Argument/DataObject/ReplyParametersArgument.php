@@ -6,6 +6,11 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
+ * @version 1.0.0
+ */
 class ReplyParametersArgument implements ReplyParametersArgumentInterface
 {
     public function __construct(

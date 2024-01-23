@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
+namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#switchinlinequerychosenchat
  */
-interface SwitchInlineQueryChosenChatInterface
+interface SwitchInlineQueryChosenChatArgumentInterface
 {
     /**
      * Необязательный. Встроенный запрос по умолчанию, который будет вставлен в поле ввода. Если оставить п

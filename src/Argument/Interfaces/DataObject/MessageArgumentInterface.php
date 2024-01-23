@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
 
@@ -76,9 +74,9 @@ interface MessageArgumentInterface
     /**
      * Необязательный. Параметры создания предварительного просмотра ссылки для сообщения.
      */
-    public function getLinkPreviewOptions(): LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null;
+    public function getLinkPreviewOptions(): LinkPreviewOptionsArgumentInterface|null;
 
-    public function setLinkPreviewOptions(LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null): void;
+    public function setLinkPreviewOptions(LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null): void;
 
     /**
      * Необязательный. Отправляет сообщение молча. Пользователи получат уведомление без звука.
@@ -106,11 +104,11 @@ interface MessageArgumentInterface
      * строенной клавиа туры, настраиваемой клавиатуры ответа, инструкций по удалению клавиатуры ответа или
      * принудительному ответу пользователя.
      */
-    public function getReplyMarkup(): InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null;
+    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null;
 
-    public function setReplyMarkup(InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup = null): void;
+    public function setReplyMarkup(InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup = null): void;
 
-    public function setInlineKeyboardMarkup(InlineKeyboardMarkupInterface $replyMarkup = null): void;
+    public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
     public function setReplyKeyboardMarkup(ReplyKeyboardMarkupInterface $replyMarkup = null): void;
 

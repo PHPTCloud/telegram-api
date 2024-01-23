@@ -6,12 +6,16 @@ namespace PHPTCloud\TelegramApi\Argument\Factory;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
@@ -47,6 +51,12 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case ReplyParametersArgumentArraySerializer::class:
             case ReplyParametersArgumentArraySerializerInterface::class:
                 return $this->createReplyParametersArgumentArraySerializer();
+            case InlineKeyboardMarkupArgumentArraySerializerInterface::class:
+            case InlineKeyboardMarkupArgumentArraySerializer::class:
+                return $this->createInlineKeyboardMarkupArgumentArraySerializer();
+            case InlineKeyboardButtonArgumentArraySerializer::class:
+            case InlineKeyboardButtonArgumentArraySerializerInterface::class:
+                return $this->createInlineKeyboardButtonArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -58,6 +68,7 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createMessageEntityArgumentArraySerializer(),
             $this->createLinkPreviewOptionsArgumentArraySerializer(),
             $this->createReplyParametersArgumentArraySerializer(),
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
         );
     }
 
@@ -88,5 +99,17 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
         return new ReplyParametersArgumentArraySerializer(
             $this->createMessageEntityArgumentArraySerializer(),
         );
+    }
+
+    public function createInlineKeyboardMarkupArgumentArraySerializer(): InlineKeyboardMarkupArgumentArraySerializerInterface
+    {
+        return new InlineKeyboardMarkupArgumentArraySerializer(
+            $this->createInlineKeyboardButtonArgumentArraySerializer(),
+        );
+    }
+
+    public function createInlineKeyboardButtonArgumentArraySerializer(): InlineKeyboardButtonArgumentArraySerializerInterface
+    {
+        return new InlineKeyboardButtonArgumentArraySerializer();
     }
 }

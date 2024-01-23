@@ -2,20 +2,19 @@
 
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
+namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- * @author  Юдов Никита yudov.nikita@bk.ru
  *
  * @version 1.0.0
  *
  * Этот объект представляет собой одну кнопку встроенной клавиатуры. Вы должны использовать только одно
  * из необязательных полей.
  *
- * @see     hhttps://core.telegram.org/bots/api#inlinekeyboardbutton
+ * @see    https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
-interface InlineKeyboardButtonInterface
+interface InlineKeyboardButtonArgumentInterface
 {
     /**
      * Текст метки на кнопке.
@@ -45,7 +44,7 @@ interface InlineKeyboardButtonInterface
      * @see https://core.telegram.org/bots/webapps
      * @see https://core.telegram.org/bots/api#answerwebappquery
      */
-    public function getWebApp(): ?WebAppInfoInterface;
+    public function getWebApp(): ?WebAppInfoArgumentInterface;
 
     /**
      * Необязательный. URL-адрес HTTPS, используемый для автоматической авторизации пользователя. Может исп
@@ -53,7 +52,7 @@ interface InlineKeyboardButtonInterface
      *
      * @see https://core.telegram.org/widgets/login
      */
-    public function getLoginUrl(): ?LoginUrlInterface;
+    public function getLoginUrl(): ?LoginUrlArgumentInterface;
 
     /**
      * Необязательный. Если установлено, нажатие кнопки предложит пользователю выбрать один из своих чатов,
@@ -74,13 +73,7 @@ interface InlineKeyboardButtonInterface
      * указанного типа, открыть этот чат и вставить имя пользователя бота и указанный встроенный запрос в п
      * оле ввода.
      */
-    public function getSwitchInlineQueryChosenChat(): ?SwitchInlineQueryChosenChatInterface;
-
-    /**
-     * Необязательный. Описание игры, которая будет запускаться при нажатии пользователем кнопки.
-     * Примечание: Кнопки этого типа всегда должны быть первой кнопкой в первом ряду.
-     */
-    public function getCallbackGame(): ?CallbackGameInterface;
+    public function getSwitchInlineQueryChosenChat(): ?SwitchInlineQueryChosenChatArgumentInterface;
 
     /**
      * Необязательный. Укажите True, чтобы отправить кнопку «Оплатить».

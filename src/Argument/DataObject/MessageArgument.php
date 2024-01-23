@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\InlineKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LinkPreviewOptionsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
 
@@ -18,13 +17,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterfac
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
  * @version 1.0.0
- *
- * Метод "sendMessage".
- * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное Message возв
- * ращается.
- *
- * @see     https://core.telegram.org/bots/api#sendmessage
- * @see     https://core.telegram.org/bots/api#message
  */
 class MessageArgument implements MessageArgumentInterface
 {
@@ -34,11 +26,11 @@ class MessageArgument implements MessageArgumentInterface
         private ?string $text = null,
         private ?string $parseMode = null,
         private ?array $entities = null,
-        private ?LinkPreviewOptionsInterface $linkPreviewOptions = null,
+        private ?LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null,
         private ?bool $notificationDisabled = null,
         private ?bool $contentProtected = null,
         private ?ReplyParametersArgumentInterface $replyParameters = null,
-        private InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null,
+        private InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null,
     ) {
     }
 
@@ -97,12 +89,12 @@ class MessageArgument implements MessageArgumentInterface
         $this->entities[] = $entity;
     }
 
-    public function getLinkPreviewOptions(): LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface|null
+    public function getLinkPreviewOptions(): LinkPreviewOptionsArgumentInterface|null
     {
         return $this->linkPreviewOptions;
     }
 
-    public function setLinkPreviewOptions(LinkPreviewOptionsInterface|LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null): void
+    public function setLinkPreviewOptions(LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null): void
     {
         $this->linkPreviewOptions = $linkPreviewOptions;
     }
@@ -137,17 +129,17 @@ class MessageArgument implements MessageArgumentInterface
         $this->replyParameters = $replyParameters;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null
+    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null
     {
         return $this->replyMarkup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkupInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup = null): void
+    public function setReplyMarkup(InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setInlineKeyboardMarkup(InlineKeyboardMarkupInterface $replyMarkup = null): void
+    public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }

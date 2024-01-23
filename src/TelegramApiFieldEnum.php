@@ -98,4 +98,13 @@ enum TelegramApiFieldEnum: string
     case QUOTE_PARSE_MODE = 'quote_parse_mode';
     case QUOTE_ENTITIES = 'quote_entities';
     case QUOTE_POSITION = 'quote_position';
+    case INLINE_KEYBOARD = 'inline_keyboard';
+    case CALLBACK_DATA = 'callback_data';
+    case WEB_APP = 'web_app';
+    case LOGIN_URL = 'login_url';
+    case SWITCH_INLINE_QUERY = 'switch_inline_query';
+    case SWITCH_INLINE_QUERY_CURRENT_CHAT = 'switch_inline_query_current_chat';
+    case SWITCH_INLINE_QUERY_CHOSEN_CHAT = 'switch_inline_query_chosen_chat';
+    case CALLBACK_GAME = 'callback_game';
+    case PAY = 'pay';
 }

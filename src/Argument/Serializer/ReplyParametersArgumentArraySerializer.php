@@ -23,10 +23,6 @@ class ReplyParametersArgumentArraySerializer implements ReplyParametersArgumentA
 
         $data[TelegramApiFieldEnum::MESSAGE_ID->value] = $argument->getMessageId();
 
-        if ($argument->getChatId()) {
-            $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
-        }
-
         if (null !== $argument->isAllowedSendingWithoutReply()) {
             $data[TelegramApiFieldEnum::ALLOW_SENDING_WITHOUT_REPLY->value] = $argument->isAllowedSendingWithoutReply();
         }

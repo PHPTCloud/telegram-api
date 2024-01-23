@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Exception\Factory;
 
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
+use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
@@ -25,6 +26,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new UnsupportedParseModeException($message);
         } elseif (str_contains($message, $this->getCantFindFieldMessagePart())) {
             return new CantFindFieldException($message);
+        } elseif (str_contains($message, $this->getCantParseInlineKeyboardButtonMessagePart())) {
+            return new CantParseInlineKeyboardButtonException($message);
         }
 
         return new TelegramApiException($message);
@@ -38,5 +41,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getCantFindFieldMessagePart(): string
     {
         return 'can\'t find field';
+    }
+
+    private function getCantParseInlineKeyboardButtonMessagePart(): string
+    {
+        return 'can\'t parse inline keyboard button';
     }
 }
