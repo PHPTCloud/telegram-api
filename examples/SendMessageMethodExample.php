@@ -175,10 +175,30 @@ $message = $messageBuilder->setChatId($chatId)
                 'CALLBACK_DATA4',
             ),
         )
+        ->addRow(
+
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Кнопка 3',
+                null,
+                'CALLBACK_DATA3',
+            ),
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Кнопка 4',
+                null,
+                'CALLBACK_DATA4',
+            ),
+        )
+        ->addRow(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Кнопка 3',
+                null,
+                'CALLBACK_DATA3',
+            ),
+        )
         // Вы также можете указать максимальное количество элементов в строке,
         // тогда билдер сам преобразует добавленные кнопки в строки с указанным
         // количеством элементов.
-        ->setButtonsCountPerLine(2)
+        ->setButtonsCountPerLine(3)
         ->build(),
     )
     ->build()

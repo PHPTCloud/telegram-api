@@ -18,6 +18,45 @@ class InlineKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumen
      */
     private ?int $buttonsCountPerLine = null;
 
+    /**
+     * Метод позволяет указать максимальное количество кнопок в одной строке.
+     *
+     * Пример работы №1:
+     * $count = 2
+     * Исходный массив кнопок [
+     *  [button1, button2, button3, button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * Результирующий массив кнопок [
+     *  [button1, button2],
+     *  [button3, button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * Пример работы №2:
+     * $count = 3
+     * Исходный массив кнопок [
+     *  [button1, button2, button3, button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * Результирующий массив кнопок [
+     *  [button1, button2, button3],
+     *  [button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * @TODO Надо написать алгоритм равномерного распределения кнопок по всем возможным строкам.
+     *
+     * @param int $count
+     *
+     * @return $this
+     */
     public function setButtonsCountPerLine(int $count): self
     {
         $this->buttonsCountPerLine = $count;
