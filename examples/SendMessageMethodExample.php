@@ -148,7 +148,7 @@ $message = $messageBuilder->setChatId($chatId)
 $result = $manager->sendMessage($message);
 dump($result);
 
-// Отправка нескольких кнопок
+// Отправка нескольких кнопок вместе с сообщением.
 $inlineKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\InlineKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
     ->setText('Какой-то текст.')
@@ -199,6 +199,24 @@ $message = $messageBuilder->setChatId($chatId)
         // тогда билдер сам преобразует добавленные кнопки в строки с указанным
         // количеством элементов.
         ->setButtonsCountPerLine(3)
+        ->build(),
+    )
+    ->build()
+;
+$result = $manager->sendMessage($message);
+dump($result);
+
+// Отправка кнопок под поле ввода сообщения
+$replyKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardMarkupArgumentBuilder();
+$message = $messageBuilder->setChatId($chatId)
+    ->setText('Какой-то текст.')
+    ->setReplyKeyboardMarkup(
+        $replyKeyboardBuilder->setResizeKeyboard(true)
+        ->setPersistent(true)
+        ->setInputFieldPlaceholder('Заглушка.')
+        ->addButton(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument('Кнопка 1️⃣')
+        )
         ->build(),
     )
     ->build()

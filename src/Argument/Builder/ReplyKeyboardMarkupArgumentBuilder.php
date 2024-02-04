@@ -57,7 +57,6 @@ class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentB
      */
     public function setButtonsCountPerLine(int $count): self
     {
-        $this->initializeButtons();
         $this->buttonsCountPerLine = $count;
 
         return $this;
@@ -66,6 +65,7 @@ class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentB
     public function addButton(KeyboardButtonArgumentInterface $button): ReplyKeyboardMarkupArgumentBuilderInterface
     {
         $this->initializeButtons();
+        $this->buttons[] = [$button];
 
         return $this;
     }
@@ -73,47 +73,52 @@ class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentB
     public function addRow(KeyboardButtonArgumentInterface ...$buttons): ReplyKeyboardMarkupArgumentBuilderInterface
     {
         $this->initializeButtons();
+        $this->buttons = [...$buttons];
 
         return $this;
     }
 
     public function setResizeKeyboard(bool $resizeKeyboard): ReplyKeyboardMarkupArgumentBuilderInterface
     {
-        $this->initializeButtons();
+        $this->resizeKeyboard = $resizeKeyboard;
 
         return $this;
     }
 
     public function setOneTimeKeyboard(bool $oneTimeKeyboard): ReplyKeyboardMarkupArgumentBuilderInterface
     {
-        $this->initializeButtons();
+        $this->oneTimeKeyboard = $oneTimeKeyboard;
 
         return $this;
     }
 
     public function setInputFieldPlaceholder(string $inputFieldPlaceholder): ReplyKeyboardMarkupArgumentBuilderInterface
     {
-        $this->initializeButtons();
+        $this->inputFieldPlaceholder = $inputFieldPlaceholder;
 
         return $this;
     }
 
     public function setSelective(bool $selective): ReplyKeyboardMarkupArgumentBuilderInterface
     {
-        $this->initializeButtons();
+        $this->selective = $selective;
 
         return $this;
     }
 
     public function setPersistent(bool $persistent): ReplyKeyboardMarkupArgumentBuilderInterface
     {
-        $this->initializeButtons();
+        $this->persistent = $persistent;
 
         return $this;
     }
 
     public function build(): ReplyKeyboardMarkupArgumentInterface
     {
+        if (empty($this->buttons)) {
+            throw new \InvalidArgumentException('Для отправки клавиатуры необходимо добавить минимум одну кнопку.');
+        }
+
         if (null !== $this->buttonsCountPerLine && $this->buttonsCountPerLine > 0) {
             $this->buttons = $this->prepareButtons();
         }

@@ -67,6 +67,7 @@ class InlineKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgument
 
     public function addRow(InlineKeyboardButtonArgumentInterface ...$buttons): self
     {
+        $this->initializeButtons();
         $this->buttons[] = [...$buttons];
 
         return $this;
@@ -74,6 +75,10 @@ class InlineKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgument
 
     public function build(): InlineKeyboardMarkupArgumentInterface
     {
+        if (empty($this->buttons)) {
+            throw new \InvalidArgumentException('Для отправки клавиатуры необходимо добавить минимум одну кнопку.');
+        }
+
         if (null !== $this->buttonsCountPerLine && $this->buttonsCountPerLine > 0) {
             $this->buttons = $this->prepareButtons();
         }

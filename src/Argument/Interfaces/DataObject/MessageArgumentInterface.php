@@ -104,13 +104,18 @@ interface MessageArgumentInterface
      * строенной клавиа туры, настраиваемой клавиатуры ответа, инструкций по удалению клавиатуры ответа или
      * принудительному ответу пользователя.
      */
-    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null;
+    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null;
 
-    public function setReplyMarkup(InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup = null): void;
+    public function setReplyMarkup(
+        InlineKeyboardMarkupArgumentInterface
+        |ReplyKeyboardMarkupArgumentInterface
+        |ReplyKeyboardRemoveInterface
+        |ForceReplyInterface $replyMarkup = null
+    ): void;
 
     public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
-    public function setReplyKeyboardMarkup(ReplyKeyboardMarkupInterface $replyMarkup = null): void;
+    public function setReplyKeyboardMarkup(ReplyKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
     public function setReplyKeyboardRemove(ReplyKeyboardRemoveInterface $replyMarkup = null): void;
 
