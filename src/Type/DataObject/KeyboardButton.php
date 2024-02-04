@@ -4,7 +4,10 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonPollTypeInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonRequestChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonRequestUsersInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -25,8 +28,48 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonRequestUsersI
 class KeyboardButton implements KeyboardButtonInterface
 {
     public function __construct(
-        private readonly string $text,
+        private readonly string                               $text,
         private readonly ?KeyboardButtonRequestUsersInterface $requestUsers = null,
+        private readonly ?KeyboardButtonRequestChatInterface  $requestChat = null,
+        private readonly ?bool                                $requestContact = null,
+        private readonly ?bool                                $requestLocation = null,
+        private readonly ?KeyboardButtonPollTypeInterface     $requestPoll = null,
+        private readonly ?WebAppInfoInterface                 $webApp = null,
     ) {
+    }
+
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    public function getRequestUsers(): ?KeyboardButtonRequestUsersInterface
+    {
+        return $this->requestUsers;
+    }
+
+    public function getRequestChat(): ?KeyboardButtonRequestChatInterface
+    {
+        return $this->requestChat;
+    }
+
+    public function isRequestContact(): ?bool
+    {
+        return $this->requestContact;
+    }
+
+    public function isRequestLocation(): ?bool
+    {
+        return $this->requestLocation;
+    }
+
+    public function getRequestPoll(): ?KeyboardButtonPollTypeInterface
+    {
+        return $this->requestPoll;
+    }
+
+    public function getWebApp(): ?WebAppInfoInterface
+    {
+        return $this->webApp;
     }
 }
