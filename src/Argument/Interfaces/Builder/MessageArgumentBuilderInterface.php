@@ -42,7 +42,12 @@ interface MessageArgumentBuilderInterface
 
     public function setReplyParameters(ReplyParametersArgumentInterface $replyParameters): MessageArgumentBuilderInterface;
 
-    public function setReplyMarkup(InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface $replyMarkup): MessageArgumentBuilderInterface;
+    public function setReplyMarkup(
+        InlineKeyboardMarkupArgumentInterface
+        |ReplyKeyboardMarkupInterface
+        |ReplyKeyboardRemoveInterface
+        |ForceReplyInterface $replyMarkup
+    ): MessageArgumentBuilderInterface;
 
     public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup): MessageArgumentBuilderInterface;
 
