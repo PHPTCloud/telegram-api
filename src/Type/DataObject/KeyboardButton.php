@@ -11,7 +11,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- * @author  Юдов Никита yudov.nikita@bk.ru
  *
  * @version 1.0.0
  *
