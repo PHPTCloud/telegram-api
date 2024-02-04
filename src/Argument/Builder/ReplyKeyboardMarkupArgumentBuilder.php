@@ -1,0 +1,130 @@
+<?php
+declare(strict_types=1);
+
+namespace PHPTCloud\TelegramApi\Argument\Builder;
+
+use PHPTCloud\TelegramApi\Argument\DataObject\ReplyKeyboardMarkupArgument;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\ReplyKeyboardMarkupArgumentBuilderInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
+
+class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentBuilder implements ReplyKeyboardMarkupArgumentBuilderInterface
+{
+    private bool $resizeKeyboard = false;
+    private bool $oneTimeKeyboard = false;
+    private ?string $inputFieldPlaceholder = null;
+    private bool $selective = false;
+    private bool $persistent = false;
+
+    /**
+     * Метод позволяет указать максимальное количество кнопок в одной строке.
+     *
+     * Пример работы №1:
+     * $count = 2
+     * Исходный массив кнопок [
+     *  [button1, button2, button3, button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * Результирующий массив кнопок [
+     *  [button1, button2],
+     *  [button3, button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * Пример работы №2:
+     * $count = 3
+     * Исходный массив кнопок [
+     *  [button1, button2, button3, button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * Результирующий массив кнопок [
+     *  [button1, button2, button3],
+     *  [button4],
+     *  [button5, button6],
+     *  [button7],
+     * ]
+     *
+     * @TODO Надо написать алгоритм равномерного распределения кнопок по всем возможным строкам.
+     *
+     * @param int $count
+     *
+     * @return $this
+     */
+    public function setButtonsCountPerLine(int $count): self
+    {
+        $this->initializeButtons();
+        $this->buttonsCountPerLine = $count;
+
+        return $this;
+    }
+
+    public function addButton(KeyboardButtonArgumentInterface $button): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function addRow(KeyboardButtonArgumentInterface ...$buttons): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function setResizeKeyboard(bool $resizeKeyboard): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function setOneTimeKeyboard(bool $oneTimeKeyboard): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function setInputFieldPlaceholder(string $inputFieldPlaceholder): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function setSelective(bool $selective): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function setPersistent(bool $persistent): ReplyKeyboardMarkupArgumentBuilderInterface
+    {
+        $this->initializeButtons();
+
+        return $this;
+    }
+
+    public function build(): ReplyKeyboardMarkupArgumentInterface
+    {
+        if (null !== $this->buttonsCountPerLine && $this->buttonsCountPerLine > 0) {
+            $this->buttons = $this->prepareButtons();
+        }
+
+        return new ReplyKeyboardMarkupArgument(
+            $this->buttons,
+            $this->persistent,
+            $this->resizeKeyboard,
+            $this->oneTimeKeyboard,
+            $this->inputFieldPlaceholder,
+            $this->selective,
+        );
+    }
+}

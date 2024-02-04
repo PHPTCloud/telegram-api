@@ -8,6 +8,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardMarkupArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
@@ -44,14 +45,14 @@ interface MessageArgumentBuilderInterface
 
     public function setReplyMarkup(
         InlineKeyboardMarkupArgumentInterface
-        |ReplyKeyboardMarkupInterface
+        |ReplyKeyboardMarkupArgumentInterface
         |ReplyKeyboardRemoveInterface
         |ForceReplyInterface $replyMarkup
     ): MessageArgumentBuilderInterface;
 
     public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup): MessageArgumentBuilderInterface;
 
-    public function setReplyKeyboardMarkup(ReplyKeyboardMarkupInterface $replyMarkup): MessageArgumentBuilderInterface;
+    public function setReplyKeyboardMarkup(ReplyKeyboardMarkupArgumentInterface $replyMarkup): MessageArgumentBuilderInterface;
 
     public function setReplyKeyboardRemove(ReplyKeyboardRemoveInterface $replyMarkup): MessageArgumentBuilderInterface;
 

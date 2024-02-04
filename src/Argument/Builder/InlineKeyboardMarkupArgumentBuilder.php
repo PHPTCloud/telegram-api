@@ -9,15 +9,8 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\InlineKeyboardMarkupArgume
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardMarkupArgumentInterface;
 
-class InlineKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumentBuilderInterface
+class InlineKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumentBuilderInterface
 {
-    private ?array $buttons = null;
-    /**
-     * Позволяет установить максимальное количество кнопок на одной строке.
-     * Будет использовано при построении аргумента.
-     */
-    private ?int $buttonsCountPerLine = null;
-
     /**
      * Метод позволяет указать максимальное количество кнопок в одной строке.
      *
@@ -86,43 +79,5 @@ class InlineKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumen
         }
 
         return new InlineKeyboardMarkupArgument($this->buttons);
-    }
-
-    private function prepareButtons(): array
-    {
-        $result = [];
-
-        foreach ($this->buttons as $row) {
-            $count = count($row);
-
-            if ($count <= $this->buttonsCountPerLine) {
-                $result[] = $row;
-                continue;
-            }
-
-            $currentRow = [];
-            foreach ($row as $button) {
-                if (count($currentRow) === $this->buttonsCountPerLine) {
-                    $result[] = $currentRow;
-                    $currentRow = [];
-                }
-                $currentRow[] = $button;
-            }
-
-            if (!empty($currentRow)) {
-                $result[] = $currentRow;
-            }
-        }
-
-        return $result;
-    }
-
-    private function initializeButtons(): void
-    {
-        if (null !== $this->buttons) {
-            return;
-        }
-
-        $this->buttons = [];
     }
 }
