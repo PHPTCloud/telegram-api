@@ -9,10 +9,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -31,7 +30,7 @@ class MessageArgument implements MessageArgumentInterface
         private ?bool $notificationDisabled = null,
         private ?bool $contentProtected = null,
         private ?ReplyParametersArgumentInterface $replyParameters = null,
-        private InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null $replyMarkup = null,
+        private InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface|null $replyMarkup = null,
     ) {
     }
 
@@ -130,7 +129,7 @@ class MessageArgument implements MessageArgumentInterface
         $this->replyParameters = $replyParameters;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null
+    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface|null
     {
         return $this->replyMarkup;
     }
@@ -138,7 +137,7 @@ class MessageArgument implements MessageArgumentInterface
     public function setReplyMarkup(
         InlineKeyboardMarkupArgumentInterface
         |ReplyKeyboardMarkupArgumentInterface
-        |ReplyKeyboardRemoveInterface
+        |ReplyKeyboardRemoveArgumentInterface
         |ForceReplyInterface $replyMarkup = null
     ): void {
         $this->replyMarkup = $replyMarkup;
@@ -154,7 +153,7 @@ class MessageArgument implements MessageArgumentInterface
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setReplyKeyboardRemove(ReplyKeyboardRemoveInterface $replyMarkup = null): void
+    public function setReplyKeyboardRemove(ReplyKeyboardRemoveArgumentInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }

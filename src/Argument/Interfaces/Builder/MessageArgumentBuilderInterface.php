@@ -9,10 +9,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -46,7 +45,7 @@ interface MessageArgumentBuilderInterface
     public function setReplyMarkup(
         InlineKeyboardMarkupArgumentInterface
         |ReplyKeyboardMarkupArgumentInterface
-        |ReplyKeyboardRemoveInterface
+        |ReplyKeyboardRemoveArgumentInterface
         |ForceReplyInterface $replyMarkup
     ): MessageArgumentBuilderInterface;
 
@@ -54,7 +53,7 @@ interface MessageArgumentBuilderInterface
 
     public function setReplyKeyboardMarkup(ReplyKeyboardMarkupArgumentInterface $replyMarkup): MessageArgumentBuilderInterface;
 
-    public function setReplyKeyboardRemove(ReplyKeyboardRemoveInterface $replyMarkup): MessageArgumentBuilderInterface;
+    public function setReplyKeyboardRemove(ReplyKeyboardRemoveArgumentInterface $replyMarkup): MessageArgumentBuilderInterface;
 
     public function setForceReply(ForceReplyInterface $replyMarkup): MessageArgumentBuilderInterface;
 

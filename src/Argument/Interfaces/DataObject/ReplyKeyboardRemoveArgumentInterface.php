@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
+namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -17,7 +17,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  *
  * @link https://core.telegram.org/bots/api#replykeyboardremove
  */
-interface ReplyKeyboardRemoveInterface
+interface ReplyKeyboardRemoveArgumentInterface
 {
     /**
      * Запрос клиентов на удаление пользовательской клавиатуры (пользователь не сможет вызвать эту клавиату

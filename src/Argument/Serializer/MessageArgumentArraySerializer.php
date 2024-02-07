@@ -6,10 +6,12 @@ namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
@@ -25,6 +27,7 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
         private readonly LinkPreviewOptionsArgumentArraySerializerInterface $linkPreviewOptionsArgumentArraySerializer,
         private readonly ReplyParametersArgumentArraySerializerInterface $replyParametersArgumentArraySerializer,
         private readonly InlineKeyboardMarkupArgumentArraySerializerInterface $inlineKeyboardMarkupArgumentArraySerializer,
+        private readonly ReplyKeyboardRemoveArgumentArraySerializerInterface $replyKeyboardRemoveArgumentArraySerializer,
     ) {
     }
 
@@ -67,8 +70,12 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
                 = $this->replyParametersArgumentArraySerializer->serialize($argument->getReplyParameters());
         }
         if ($argument->getReplyMarkup()) {
-            $data[TelegramApiFieldEnum::REPLY_MARKUP->value]
-                = $this->inlineKeyboardMarkupArgumentArraySerializer->serialize($argument->getReplyMarkup());
+            $argumentInterface = array_key_first(class_implements(get_class($argument->getReplyMarkup())));
+
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value] = match ($argumentInterface) {
+                ReplyKeyboardRemoveArgumentInterface::class => $this->replyKeyboardRemoveArgumentArraySerializer->serialize($argument->getReplyMarkup()),
+                default => $this->inlineKeyboardMarkupArgumentArraySerializer->serialize($argument->getReplyMarkup()),
+            };
         }
 
         if (empty($data)) {

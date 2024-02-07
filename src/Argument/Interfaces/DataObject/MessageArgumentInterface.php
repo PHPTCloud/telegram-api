@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -104,12 +102,12 @@ interface MessageArgumentInterface
      * строенной клавиа туры, настраиваемой клавиатуры ответа, инструкций по удалению клавиатуры ответа или
      * принудительному ответу пользователя.
      */
-    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveInterface|ForceReplyInterface|null;
+    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface|null;
 
     public function setReplyMarkup(
         InlineKeyboardMarkupArgumentInterface
         |ReplyKeyboardMarkupArgumentInterface
-        |ReplyKeyboardRemoveInterface
+        |ReplyKeyboardRemoveArgumentInterface
         |ForceReplyInterface $replyMarkup = null
     ): void;
 
@@ -117,7 +115,7 @@ interface MessageArgumentInterface
 
     public function setReplyKeyboardMarkup(ReplyKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
-    public function setReplyKeyboardRemove(ReplyKeyboardRemoveInterface $replyMarkup = null): void;
+    public function setReplyKeyboardRemove(ReplyKeyboardRemoveArgumentInterface $replyMarkup = null): void;
 
     public function setForceReply(ForceReplyInterface $replyMarkup = null): void;
 }

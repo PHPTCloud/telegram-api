@@ -107,4 +107,6 @@ enum TelegramApiFieldEnum: string
     case SWITCH_INLINE_QUERY_CHOSEN_CHAT = 'switch_inline_query_chosen_chat';
     case CALLBACK_GAME = 'callback_game';
     case PAY = 'pay';
+    case REMOVE_KEYBOARD = 'remove_keyboard';
+    case SELECTIVE = 'selective';
 }
