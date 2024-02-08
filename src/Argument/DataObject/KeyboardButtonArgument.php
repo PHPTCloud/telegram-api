@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -22,18 +23,18 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\WebAppInfoArgumentInter
  * Примечание. Параметры request_users и request_chat будут работать только в версиях Telegram, выпущен
  * ных после 3 февраля 2023 г. В старых клиентах будет отображаться неподдерживаемое сообщение.
  *
- * @link    https://core.telegram.org/bots/api#keyboardbutton
+ * @see    https://core.telegram.org/bots/api#keyboardbutton
  */
 class KeyboardButtonArgument implements KeyboardButtonArgumentInterface
 {
     public function __construct(
-        private readonly string                                       $text,
+        private readonly string $text,
         private readonly ?KeyboardButtonRequestUsersArgumentInterface $requestUsers = null,
-        private readonly ?KeyboardButtonRequestChatArgumentInterface  $requestChat = null,
-        private readonly ?bool                                        $requestContact = null,
-        private readonly ?bool                                        $requestLocation = null,
-        private readonly ?KeyboardButtonPollTypeArgumentInterface     $requestPoll = null,
-        private readonly ?WebAppInfoArgumentInterface                 $webApp = null,
+        private readonly ?KeyboardButtonRequestChatArgumentInterface $requestChat = null,
+        private readonly ?bool $requestContact = null,
+        private readonly ?bool $requestLocation = null,
+        private readonly ?KeyboardButtonPollTypeArgumentInterface $requestPoll = null,
+        private readonly ?WebAppInfoArgumentInterface $webApp = null,
     ) {
     }
 

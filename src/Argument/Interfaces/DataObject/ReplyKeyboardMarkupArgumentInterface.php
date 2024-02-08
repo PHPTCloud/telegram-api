@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -11,8 +12,8 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * Этот объект представляет собой пользовательскую клавиатуру с опциями ответа (подробности и примеры с
  * м. в разделе Знакомство с ботами).
  *
- * @link    https://core.telegram.org/bots/api#replykeyboardmarkup
- * @link    https://core.telegram.org/bots/features#keyboards
+ * @see    https://core.telegram.org/bots/api#replykeyboardmarkup
+ * @see    https://core.telegram.org/bots/features#keyboards
  */
 interface ReplyKeyboardMarkupArgumentInterface
 {
@@ -27,8 +28,6 @@ interface ReplyKeyboardMarkupArgumentInterface
      * Необязательный. Просит клиентов всегда показывать клавиатуру, когда обычная клавиатура скрыта. По ум
      * олчанию установлено значение false; в этом случае пользовательскую клавиатуру можно скрыть и открыть
      * с помощью значка клавиатуры.
-     *
-     * @return bool|null
      */
     public function isPersistent(): ?bool;
 
@@ -37,8 +36,6 @@ interface ReplyKeyboardMarkupArgumentInterface
      * я (например, уменьшить клавиатуру, если на ней всего два ряда кнопок). По умолчанию установлено знач
      * ение false. В этом случае пользовательская клавиатура всегда имеет ту же высоту, что и стандартная к
      * лавиатура приложения.
-     *
-     * @return bool|null
      */
     public function wantResizeKeyboard(): ?bool;
 
@@ -47,16 +44,12 @@ interface ReplyKeyboardMarkupArgumentInterface
      * нему будет доступна, но клиенты будут автоматически отображать в чате обычную буквенную клавиатуру —
      * пользователь может нажать специальную кнопку в поле ввода, чтобы снова увидеть кастомную клавиатуру.
      * По умолчанию ложь.
-     *
-     * @return bool|null
      */
     public function isOneTimeKeyboard(): ?bool;
 
     /**
      * Необязательный. Заполнитель, который будет отображаться в поле ввода, когда клавиатура активна; 1-64
      * символов.
-     *
-     * @return string|null
      */
     public function getInputFieldPlaceholder(): ?string;
 
@@ -68,8 +61,6 @@ interface ReplyKeyboardMarkupArgumentInterface
      *
      * Пример: пользователь запрашивает изменение языка бота, бот отвечает на запрос с помощью клавиатуры д
      * ля выбора нового языка. Другие пользователи в группе не видят клавиатуру.
-     *
-     * @return bool|null
      */
     public function isSelective(): ?bool;
 }

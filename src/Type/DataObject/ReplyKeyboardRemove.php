@@ -17,7 +17,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardRemoveInterfac
  * до тех пор, пока бот не отправит новую клавиатуру. Исключение составляют одноразовые клавиатуры,
  * которые скрываются сразу после нажатия пользователем кнопки (см. ReplyKeyboardMarkup).
  *
- * @link https://core.telegram.org/bots/api#replykeyboardremove
+ * @see https://core.telegram.org/bots/api#replykeyboardremove
  */
 class ReplyKeyboardRemove implements ReplyKeyboardRemoveInterface
 {

@@ -15,7 +15,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * до тех пор, пока бот не отправит новую клавиатуру. Исключение составляют одноразовые клавиатуры,
  * которые скрываются сразу после нажатия пользователем кнопки (см. ReplyKeyboardMarkup).
  *
- * @link https://core.telegram.org/bots/api#replykeyboardremove
+ * @see https://core.telegram.org/bots/api#replykeyboardremove
  */
 interface ReplyKeyboardRemoveArgumentInterface
 {
@@ -23,8 +23,6 @@ interface ReplyKeyboardRemoveArgumentInterface
      * Запрос клиентов на удаление пользовательской клавиатуры (пользователь не сможет вызвать эту клавиату
      * ру; если вы хотите скрыть клавиатуру из виду, но оставить ее доступной, используйте параметр one_tim
      * e_keyboard в ReplyKeyboardMarkup).
-     *
-     * @return bool
      */
     public function wantRemoveKeyboard(): bool;
 
@@ -36,8 +34,6 @@ interface ReplyKeyboardRemoveArgumentInterface
      *
      * Пример: пользователь запрашивает изменение языка бота, бот отвечает на запрос с помощью клавиатуры д
      * ля выбора нового языка. Другие пользователи в группе не видят клавиатуру.
-     *
-     * @return bool|null
      */
     public function isSelective(): ?bool;
 }

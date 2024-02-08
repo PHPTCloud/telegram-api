@@ -6,10 +6,20 @@ namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LoginUrlArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 class InlineKeyboardButtonArgumentArraySerializer implements InlineKeyboardButtonArgumentArraySerializerInterface
 {
+    public function __construct(
+        private readonly WebAppInfoArgumentArraySerializerInterface $webAppInfoArgumentArraySerializer,
+        private readonly LoginUrlArgumentArraySerializerInterface $loginUrlArgumentArraySerializer,
+        private readonly SwitchInlineQueryChosenChatArgumentArraySerializerInterface $switchInlineQueryChosenChatArgumentArraySerializer,
+    ) {
+    }
+
     public function serialize(InlineKeyboardButtonArgumentInterface $argument): array
     {
         $data = [];
@@ -25,11 +35,13 @@ class InlineKeyboardButtonArgumentArraySerializer implements InlineKeyboardButto
         }
 
         if ($argument->getWebApp()) {
-            // @TODO: Сдеалть сериализатор
+            $data[TelegramApiFieldEnum::WEB_APP->value]
+                = $this->webAppInfoArgumentArraySerializer->serialize($argument->getWebApp());
         }
 
         if ($argument->getLoginUrl()) {
-            // @TODO: Сдеалть сериализатор
+            $data[TelegramApiFieldEnum::LOGIN_URL->value]
+                = $this->loginUrlArgumentArraySerializer->serialize($argument->getLoginUrl());
         }
 
         if ($argument->getSwitchInlineQuery()) {
@@ -37,11 +49,12 @@ class InlineKeyboardButtonArgumentArraySerializer implements InlineKeyboardButto
         }
 
         if ($argument->getSwitchInlineQueryCurrentChat()) {
-            $data[TelegramApiFieldEnum::SWITCH_INLINE_QUERY_CURRENT_CHAT->value] = $argument->getSwitchInlineQueryChosenChat();
+            $data[TelegramApiFieldEnum::SWITCH_INLINE_QUERY_CURRENT_CHAT->value] = $argument->getSwitchInlineQueryCurrentChat();
         }
 
         if ($argument->getSwitchInlineQueryChosenChat()) {
-            // @TODO: Сдеалть сериализатор
+            $data[TelegramApiFieldEnum::SWITCH_INLINE_QUERY_CHOSEN_CHAT->value]
+                = $this->switchInlineQueryChosenChatArgumentArraySerializer->serialize($argument->getSwitchInlineQueryChosenChat());
         }
 
         if (null !== $argument->isPay()) {

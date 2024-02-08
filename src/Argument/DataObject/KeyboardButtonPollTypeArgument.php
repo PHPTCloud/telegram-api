@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -14,16 +15,16 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonPollTypeA
  * Этот объект представляет собой тип опроса, который разрешено создавать и отправлять при нажатии соот
  * ветствующей кнопки.
  *
- * @link    https://core.telegram.org/bots/api#keyboardbuttonpolltype
+ * @see    https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
 class KeyboardButtonPollTypeArgument implements KeyboardButtonPollTypeArgumentInterface
 {
     public function __construct(
-        private readonly ?string $type = null,
+        private readonly string $type = '',
     ) {
     }
 
-    public function getType(): ?string
+    public function getType(): string
     {
         return $this->type;
     }

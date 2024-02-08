@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -22,15 +23,15 @@ class KeyboardButtonRequestChatArgumentArraySerializer implements KeyboardButton
         $data[TelegramApiFieldEnum::REQUEST_ID->value] = $argument->getRequestId();
         $data[TelegramApiFieldEnum::CHAT_IS_CHANNEL->value] = $argument->chatIsChannel();
 
-        if ($argument->chatIsForum() !== null) {
+        if (null !== $argument->chatIsForum()) {
             $data[TelegramApiFieldEnum::CHAT_IS_FORUM->value] = $argument->chatIsForum();
         }
 
-        if ($argument->chatHasUsername() !== null) {
+        if (null !== $argument->chatHasUsername()) {
             $data[TelegramApiFieldEnum::CHAT_HAS_USERNAME->value] = $argument->chatHasUsername();
         }
 
-        if ($argument->chatIsCreated() !== null) {
+        if (null !== $argument->chatIsCreated()) {
             $data[TelegramApiFieldEnum::CHAT_IS_CREATED->value] = $argument->chatIsCreated();
         }
 
@@ -44,7 +45,7 @@ class KeyboardButtonRequestChatArgumentArraySerializer implements KeyboardButton
                 = $this->chatAdministratorRightsArgumentArraySerializer->serialize($argument->getUserAdministratorRights());
         }
 
-        if ($argument->botIsMember() !== null) {
+        if (null !== $argument->botIsMember()) {
             $data[TelegramApiFieldEnum::BOT_IS_MEMBER->value] = $argument->botIsMember();
         }
 

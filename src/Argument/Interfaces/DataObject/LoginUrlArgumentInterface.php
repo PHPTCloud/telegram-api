@@ -15,8 +15,8 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * войти в систему.
  * Приложения Telegram поддерживают эти кнопки начиная с версии 5.7.
  *
- * @see     https://core.telegram.org/widgets/login
  * @see     https://core.telegram.org/bots/api#loginurl
+ * @see     https://core.telegram.org/widgets/login
  */
 interface LoginUrlArgumentInterface
 {

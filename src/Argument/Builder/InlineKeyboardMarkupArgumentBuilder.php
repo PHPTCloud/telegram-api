@@ -46,8 +46,6 @@ class InlineKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgument
      *
      * @TODO Надо написать алгоритм равномерного распределения кнопок по всем возможным строкам.
      *
-     * @param int $count
-     *
      * @return $this
      */
     public function setButtonsCountPerLine(int $count): self
@@ -83,6 +81,15 @@ class InlineKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgument
             $this->buttons = $this->prepareButtons();
         }
 
-        return new InlineKeyboardMarkupArgument($this->buttons);
+        $keyboard = new InlineKeyboardMarkupArgument($this->buttons);
+        $this->resetBuilder();
+
+        return $keyboard;
+    }
+
+    private function resetBuilder(): void
+    {
+        $this->buttons = null;
+        $this->buttonsCountPerLine = null;
     }
 }

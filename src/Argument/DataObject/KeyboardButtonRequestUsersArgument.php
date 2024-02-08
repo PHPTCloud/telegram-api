@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -14,16 +15,16 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonRequestUs
  * ыбранных пользователей будут переданы боту при нажатии соответствующей кнопки. Подробнее о запросе п
  * ользователей » (@see https://core.telegram.org/bots/features#chat-and-user-selection)
  *
- * @link    https://core.telegram.org/bots/api#keyboardbuttonrequestusers
- * @link    https://core.telegram.org/bots/features#chat-and-user-selection
+ * @see    https://core.telegram.org/bots/api#keyboardbuttonrequestusers
+ * @see    https://core.telegram.org/bots/features#chat-and-user-selection
  */
 class KeyboardButtonRequestUsersArgument implements KeyboardButtonRequestUsersArgumentInterface
 {
     public function __construct(
         private readonly int|float $requestId,
-        private readonly ?bool     $userIsBot = null,
-        private readonly ?bool     $userIsPremium = null,
-        private readonly ?int      $maxQuantity = null,
+        private readonly ?bool $userIsBot = null,
+        private readonly ?bool $userIsPremium = null,
+        private readonly ?int $maxQuantity = null,
     ) {
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -13,18 +14,18 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReplyKeyboardMarkupInterfac
  * Этот объект представляет собой пользовательскую клавиатуру с опциями ответа (подробности и примеры с
  * м. в разделе Знакомство с ботами).
  *
- * @link    https://core.telegram.org/bots/api#replykeyboardmarkup
- * @link    https://core.telegram.org/bots/features#keyboards
+ * @see    https://core.telegram.org/bots/api#replykeyboardmarkup
+ * @see    https://core.telegram.org/bots/features#keyboards
  */
 class ReplyKeyboardMarkup implements ReplyKeyboardMarkupInterface
 {
     public function __construct(
-        private readonly array   $keyboard,
-        private readonly ?bool   $persistent = null,
-        private readonly ?bool   $resizeKeyboard = null,
-        private readonly ?bool   $oneTimeKeyboard = null,
+        private readonly array $keyboard,
+        private readonly ?bool $persistent = null,
+        private readonly ?bool $resizeKeyboard = null,
+        private readonly ?bool $oneTimeKeyboard = null,
         private readonly ?string $inputFieldPlaceholder = null,
-        private readonly ?bool   $selective = null,
+        private readonly ?bool $selective = null,
     ) {
     }
 

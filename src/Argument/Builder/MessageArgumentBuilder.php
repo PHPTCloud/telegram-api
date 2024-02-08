@@ -172,12 +172,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
     public function build(): MessageArgumentInterface
     {
         if (!$this->messageArgument) {
-            throw new \RuntimeException(
-                sprintf(
-                    'Объект %s невозможно построить. Убедитесь в том, что все обязательные поля заполнены.',
-                    $this->messageArgument::class,
-                )
-            );
+            throw new \RuntimeException(sprintf('Объект %s невозможно построить. Убедитесь в том, что все обязательные поля заполнены.', $this->messageArgument::class));
         }
 
         $argument = $this->messageArgument;

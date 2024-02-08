@@ -105,7 +105,8 @@ $messageWithQuote = $messageBuilder->setChatId($chatId)
 $result = $manager->sendMessage($messageWithQuote);
 dump($result);
 
-// Управление inline клавиатурой
+// ########## УПРАВЛЕНИЕ INLINE КЛАВИАТУРОЙ ##########
+
 // Отправка кнопки в виде ссылки
 $inlineKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\InlineKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
@@ -117,39 +118,117 @@ $message = $messageBuilder->setChatId($chatId)
                 'https://example.com',
             ),
         )
-            ->build(),
+        ->build(),
     )
     ->build();
 $result = $manager->sendMessage($message);
 dump($result);
 
 // Отправка нескольких кнопок
-$inlineKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\InlineKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
     ->setText('Какой-то текст.')
     ->setInlineKeyboardMarkup(
         // Можно продолжить добавлять кнопки через метод addButton
-        $inlineKeyboardBuilder->addButton(
+        $inlineKeyboardBuilder
+        ->addButton(
             new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
                 'Кнопка 1',
                 'https://example.com',
             ),
         )
-            ->addButton(
-                new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
-                    'Кнопка 2',
-                    null,
-                    'CALLBACK_DATA',
+        ->addButton(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Кнопка 2',
+                null,
+                'CALLBACK_DATA',
+            ),
+        )
+        ->addButton(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Кнопка с WebApp',
+                null,
+                null,
+                new \PHPTCloud\TelegramApi\Argument\DataObject\WebAppInfoArgument(
+                    'https://core.telegram.org/bots/webapps',
                 ),
-            )
-            ->build(),
+            ),
+        )
+        // ->addButton(
+        //     new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+        //         'Кнопка для авторизации на сайте',
+        //         null,
+        //         null,
+        //         null,
+        //         new \PHPTCloud\TelegramApi\Argument\DataObject\LoginUrlArgument(
+        //             // Тут будет ошибка BotDomainInvalidException, тк нет привязки бота к вашему домену.
+        //             // Для использования этой кнопки вы должны привязать бота к вашему домену.
+        //             // https://core.telegram.org/bots/api#loginurl
+        //             'https://google.com',
+        //         ),
+        //     ),
+        // )
+        ->addButton(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Использование Inline режима в выбранном чате',
+                null,
+                null,
+                null,
+                null,
+                'Текст, который подставится в inline запрос.',
+            ),
+        )
+        ->addButton(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Использование Inline режима в текущем чате',
+                null,
+                null,
+                null,
+                null,
+                null,
+                'Текст, который подставится в inline запрос.',
+            ),
+        )
+        ->addButton(
+            new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+                'Использование Inline режима с доп. параметрами',
+                null,
+                null,
+                null,
+                null,
+                null,
+                'Текст, который подставится в текущий чат.',
+                new \PHPTCloud\TelegramApi\Argument\DataObject\SwitchInlineQueryChosenChatArgument(
+                    'Текст, который подставится в inline запрос.',
+                    null, // редиректнит в выбранный чат
+                    null, // редиректнит в выбранного бота
+                    null, // редиректнит в выбранную группу
+                    true, // редиректнит в выбранный канал
+                ),
+            ),
+        )
+        // ->addButton(
+        //     new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
+        //         'Кнопка оплаты',
+        //         null,
+        //         null,
+        //         null,
+        //         null,
+        //         null,
+        //         null,
+        //         null,
+        //         // Возникнет ошибка ButtonTypeInvalidException, так как данный тип
+        //         // кнопок можно вызывать только через метод sendInvoice.
+        //         // https://core.telegram.org/bots/api#inlinekeyboardbutton
+        //         true,
+        //     ),
+        // )
+        ->build(),
     )
     ->build();
 $result = $manager->sendMessage($message);
 dump($result);
 
 // Отправка нескольких кнопок вместе с сообщением.
-$inlineKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\InlineKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
     ->setText('Какой-то текст.')
     ->setInlineKeyboardMarkup(
@@ -206,6 +285,8 @@ $message = $messageBuilder->setChatId($chatId)
 $result = $manager->sendMessage($message);
 dump($result);
 
+// ########## УПРАВЛЕНИЕ ВСТРОЕННОЙ КЛАВИАТУРОЙ ##########
+
 // Отправка кнопок под поле ввода сообщения
 $replyKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
@@ -238,18 +319,17 @@ $result = $manager->sendMessage($message);
 dump($result);
 
 // Отправка кнопок под поле ввода сообщения
-$replyKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
     ->setText('В результате должны появиться 2 кнопки под полем ввода')
     ->setReplyKeyboardMarkup(
         $replyKeyboardBuilder->setResizeKeyboard(true)
-            ->setPersistent(true)
+            ->setPersistent(false)
             ->setInputFieldPlaceholder('Информация будет находиться в вашем поле ввода...')
             ->addButton(
                 new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
                     'Кнопка запроса пользователей',
                     new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonRequestUsersArgument(
-                        1,
+                        5,
                     )
                 )
             )
@@ -258,8 +338,89 @@ $message = $messageBuilder->setChatId($chatId)
                     'Кнопка запроса только каналов',
                     null,
                     new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonRequestChatArgument(
-                        2,
+                        4,
                         true,
+                    ),
+                )
+            )
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса каналов и форумов',
+                    null,
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonRequestChatArgument(
+                        3,
+                        true,
+                        true,
+                    ),
+                )
+            )
+            ->addButton(
+                // Кнопка позволит отправить вашу карточку контакта в чат.
+                // Также появится соответствующий Update в виде объекта Сontact.
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса контакта',
+                    null,
+                    null,
+                    true,
+                )
+            )
+            ->addButton(
+                // Кнопка позволит отправить вашу локацию в чат.
+                // Также появится соответствующий Update в виде объекта Location.
+                // Функционал не будет работать если на устройстве нет соответствующих
+                // устройств определения геолокации.
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса локации',
+                    null,
+                    null,
+                    null,
+                    true,
+                )
+            )
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса создания любого типа опроса',
+                    null,
+                    null,
+                    null,
+                    null,
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonPollTypeArgument(),
+                )
+            )
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса создания обычного опроса',
+                    null,
+                    null,
+                    null,
+                    null,
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonPollTypeArgument(
+                        \PHPTCloud\TelegramApi\Type\Enums\PollTypeEnum::REGULAR->value,
+                    ),
+                )
+            )
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса создания опроса с правильным ответом',
+                    null,
+                    null,
+                    null,
+                    null,
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonPollTypeArgument(
+                        \PHPTCloud\TelegramApi\Type\Enums\PollTypeEnum::QUIZ->value,
+                    ),
+                )
+            )
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка, которая откроет Web App',
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\WebAppInfoArgument(
+                        'https://core.telegram.org/bots/webapps',
                     ),
                 )
             )

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -27,30 +28,30 @@ class KeyboardButtonArgumentArraySerializer implements KeyboardButtonArgumentArr
 
         $data[TelegramApiFieldEnum::TEXT->value] = $argument->getText();
 
-        if ($argument->getRequestUsers() !== null) {
+        if (null !== $argument->getRequestUsers()) {
             $data[TelegramApiFieldEnum::REQUEST_USERS->value]
                 = $this->keyboardButtonRequestUsersArgumentArraySerializer->serialize($argument->getRequestUsers());
         }
 
-        if ($argument->getRequestChat() !== null) {
+        if (null !== $argument->getRequestChat()) {
             $data[TelegramApiFieldEnum::REQUEST_CHAT->value]
                 = $this->keyboardButtonRequestChatArgumentArraySerializer->serialize($argument->getRequestChat());
         }
 
-        if ($argument->getRequestPoll() !== null) {
+        if (null !== $argument->getRequestPoll()) {
             $data[TelegramApiFieldEnum::REQUEST_POLL->value]
                 = $this->keyboardButtonPollTypeArgumentArraySerializer->serialize($argument->getRequestPoll());
         }
 
-        if ($argument->isRequestContact() !== null) {
+        if (null !== $argument->isRequestContact()) {
             $data[TelegramApiFieldEnum::REQUEST_CONTACT->value] = $argument->isRequestContact();
         }
 
-        if ($argument->isRequestLocation() !== null) {
+        if (null !== $argument->isRequestLocation()) {
             $data[TelegramApiFieldEnum::REQUEST_LOCATION->value] = $argument->isRequestLocation();
         }
 
-        if ($argument->getWebApp() !== null) {
+        if (null !== $argument->getWebApp()) {
             $data[TelegramApiFieldEnum::WEB_APP->value]
                 = $this->webAppInfoArgumentArraySerializer->serialize($argument->getWebApp());
         }

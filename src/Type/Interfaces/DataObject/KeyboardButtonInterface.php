@@ -18,15 +18,13 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * Примечание. Параметры request_users и request_chat будут работать только в версиях Telegram, выпущен
  * ных после 3 февраля 2023 г. В старых клиентах будет отображаться неподдерживаемое сообщение.
  *
- * @link    https://core.telegram.org/bots/api#keyboardbutton
+ * @see    https://core.telegram.org/bots/api#keyboardbutton
  */
 interface KeyboardButtonInterface
 {
     /**
      * Текст кнопки. Если ни одно из необязательных полей не используется, оно будет отправлено в виде сооб
      * щения при нажатии кнопки.
-     *
-     * @return string
      */
     public function getText(): string;
 
@@ -34,8 +32,6 @@ interface KeyboardButtonInterface
      * Необязательный. Если указано, нажатие кнопки откроет список подходящих пользователей. Идентификаторы
      * выбранных пользователей будут отправлены боту в служебном сообщении «users_shared». Доступно только
      * в приватных чатах.
-     *
-     * @return KeyboardButtonRequestUsersInterface|null
      */
     public function getRequestUsers(): ?KeyboardButtonRequestUsersInterface;
 
@@ -43,40 +39,30 @@ interface KeyboardButtonInterface
      * Необязательный. Если указано, нажатие кнопки откроет список подходящих чатов. При нажатии на чат боту
      * будет отправлен его идентификатор в служебном сообщении «chat_shared». Доступно только в приватных
      * чатах.
-     *
-     * @return KeyboardButtonRequestChatInterface|null
      */
     public function getRequestChat(): ?KeyboardButtonRequestChatInterface;
 
     /**
      * Необязательный. Если установлено значение True, номер телефона пользователя будет отправлен в качест
      * ве контакта при нажатии кнопки. Доступно только в приватных чатах.
-     *
-     * @return bool|null
      */
     public function isRequestContact(): ?bool;
 
     /**
      * Необязательный. Если True, текущее местоположение пользователя будет отправлено при нажатии кнопки.
      * Доступно только в приватных чатах.
-     *
-     * @return bool|null
      */
     public function isRequestLocation(): ?bool;
 
     /**
      * Необязательный. Если указано, пользователю будет предложено создать опрос и отправить его боту при н
      * ажатии кнопки. Доступно только в приватных чатах.
-     *
-     * @return KeyboardButtonPollTypeInterface|null
      */
     public function getRequestPoll(): ?KeyboardButtonPollTypeInterface;
 
     /**
      * Необязательный. Если указано, описанное веб-приложение будет запускаться при нажатии кнопки. Веб-при
      * ложение сможет отправлять служебное сообщение «web_app_data». Доступно только в приватных чатах.
-     *
-     * @return WebAppInfoInterface|null
      */
     public function getWebApp(): ?WebAppInfoInterface;
 }

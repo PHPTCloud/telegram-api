@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
@@ -18,14 +19,14 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInte
 class ChatAdministratorRights implements ChatAdministratorRightsInterface
 {
     public function __construct(
-        private readonly bool  $anonymous,
-        private readonly bool  $manageChat,
-        private readonly bool  $deleteMessages,
-        private readonly bool  $manageVideoChats,
-        private readonly bool  $restrictMembers,
-        private readonly bool  $promoteMembers,
-        private readonly bool  $changeInfo,
-        private readonly bool  $inviteUsers,
+        private readonly bool $anonymous,
+        private readonly bool $manageChat,
+        private readonly bool $deleteMessages,
+        private readonly bool $manageVideoChats,
+        private readonly bool $restrictMembers,
+        private readonly bool $promoteMembers,
+        private readonly bool $changeInfo,
+        private readonly bool $inviteUsers,
         private readonly ?bool $postMessages = null,
         private readonly ?bool $editMessages = null,
         private readonly ?bool $pinMessages = null,

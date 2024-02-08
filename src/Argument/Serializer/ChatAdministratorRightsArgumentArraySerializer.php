@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -22,31 +23,31 @@ class ChatAdministratorRightsArgumentArraySerializer implements ChatAdministrato
         $data[TelegramApiFieldEnum::CAN_CHANGE_INFO->value] = $argument->canChangeInfo();
         $data[TelegramApiFieldEnum::CAN_INVITE_USERS->value] = $argument->canInviteUsers();
 
-        if ($argument->canPostMessages() !== null) {
+        if (null !== $argument->canPostMessages()) {
             $data[TelegramApiFieldEnum::CAN_POST_MESSAGES->value] = $argument->canPostMessages();
         }
 
-        if ($argument->canEditMessages() !== null) {
+        if (null !== $argument->canEditMessages()) {
             $data[TelegramApiFieldEnum::CAN_EDIT_MESSAGES->value] = $argument->canEditMessages();
         }
 
-        if ($argument->canPinMessages() !== null) {
+        if (null !== $argument->canPinMessages()) {
             $data[TelegramApiFieldEnum::CAN_PIN_MESSAGES->value] = $argument->canPinMessages();
         }
 
-        if ($argument->canPostStories() !== null) {
+        if (null !== $argument->canPostStories()) {
             $data[TelegramApiFieldEnum::CAN_POST_STORIES->value] = $argument->canPostStories();
         }
 
-        if ($argument->canEditStories() !== null) {
+        if (null !== $argument->canEditStories()) {
             $data[TelegramApiFieldEnum::CAN_EDIT_STORIES->value] = $argument->canEditStories();
         }
 
-        if ($argument->canDeleteStories() !== null) {
+        if (null !== $argument->canDeleteStories()) {
             $data[TelegramApiFieldEnum::CAN_DELETE_STORIES->value] = $argument->canDeleteStories();
         }
 
-        if ($argument->canManageTopics() !== null) {
+        if (null !== $argument->canManageTopics()) {
             $data[TelegramApiFieldEnum::CAN_MANAGE_TOPICS->value] = $argument->canManageTopics();
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -15,19 +16,19 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonRequestCh
  * чата будет передан боту при нажатии соответствующей кнопки.
  * Подробнее о запросе чатов » (@see https://core.telegram.org/bots/features#chat-and-user-selection)
  *
- * @link    https://core.telegram.org/bots/api#keyboardbuttonrequestchat
+ * @see    https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  */
 class KeyboardButtonRequestChatArgument implements KeyboardButtonRequestChatArgumentInterface
 {
     public function __construct(
-        private readonly int|float                                 $requestId,
-        private readonly bool                                      $chatIsChannel,
-        private readonly ?bool                                     $chatIsForum = null,
-        private readonly ?bool                                     $chatHasUsername = null,
-        private readonly ?bool                                     $chatIsCreated = null,
+        private readonly int|float $requestId,
+        private readonly bool $chatIsChannel,
+        private readonly ?bool $chatIsForum = null,
+        private readonly ?bool $chatHasUsername = null,
+        private readonly ?bool $chatIsCreated = null,
         private readonly ?ChatAdministratorRightsArgumentInterface $userAdministratorRights = null,
         private readonly ?ChatAdministratorRightsArgumentInterface $botAdministratorRights = null,
-        private readonly ?bool                                     $botIsMember = null,
+        private readonly ?bool $botIsMember = null,
     ) {
     }
 

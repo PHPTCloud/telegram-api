@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Builder;
@@ -50,8 +51,6 @@ class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentB
      * ]
      *
      * @TODO Надо написать алгоритм равномерного распределения кнопок по всем возможным строкам.
-     *
-     * @param int $count
      *
      * @return $this
      */
@@ -123,7 +122,7 @@ class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentB
             $this->buttons = $this->prepareButtons();
         }
 
-        return new ReplyKeyboardMarkupArgument(
+        $keyboard = new ReplyKeyboardMarkupArgument(
             $this->buttons,
             $this->persistent,
             $this->resizeKeyboard,
@@ -131,5 +130,19 @@ class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentB
             $this->inputFieldPlaceholder,
             $this->selective,
         );
+        $this->resetBuilder();
+
+        return $keyboard;
+    }
+
+    private function resetBuilder(): void
+    {
+        $this->buttons = null;
+        $this->inputFieldPlaceholder = null;
+        $this->buttonsCountPerLine = null;
+        $this->persistent = false;
+        $this->oneTimeKeyboard = false;
+        $this->selective = false;
+        $this->resizeKeyboard = false;
     }
 }

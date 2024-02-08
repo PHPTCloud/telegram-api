@@ -13,7 +13,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * Этот объект представляет собой тип опроса, который разрешено создавать и отправлять при нажатии соот
  * ветствующей кнопки.
  *
- * @link    https://core.telegram.org/bots/api#keyboardbuttonpolltype
+ * @see    https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
 interface KeyboardButtonPollTypeInterface
 {
@@ -22,7 +22,6 @@ interface KeyboardButtonPollTypeInterface
      * ме викторины. Если указан параметр regular, будут разрешены только регулярные опросы. В противном сл
      * учае пользователю будет разрешено создать опрос любого типа.
      *
-     * @return string|null
      * @see \PHPTCloud\TelegramApi\Type\Enums\PollTypeEnum
      */
     public function getType(): ?string;

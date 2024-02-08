@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -12,7 +13,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * Этот объект представляет собой тип опроса, который разрешено создавать и отправлять при нажатии соот
  * ветствующей кнопки.
  *
- * @link    https://core.telegram.org/bots/api#keyboardbuttonpolltype
+ * @see    https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
 interface KeyboardButtonPollTypeArgumentInterface
 {
@@ -21,8 +22,12 @@ interface KeyboardButtonPollTypeArgumentInterface
      * ме викторины. Если указан параметр regular, будут разрешены только регулярные опросы. В противном сл
      * учае пользователю будет разрешено создать опрос любого типа.
      *
+     * Примечание: Хоть поле и опциональное, но если вы хотите использовать любой тип опроса, то нужно ука-
+     * зывать пустую строку. При null значении произойдет ошибка парсинга сущностей сообщения.
+     *
      * @return string|null
+     *
      * @see \PHPTCloud\TelegramApi\Type\Enums\PollTypeEnum
      */
-    public function getType(): ?string;
+    public function getType(): string;
 }

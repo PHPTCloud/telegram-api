@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -15,15 +16,15 @@ class KeyboardButtonRequestUsersArgumentArraySerializer implements KeyboardButto
 
         $data[TelegramApiFieldEnum::REQUEST_ID->value] = $argument->getRequestId();
 
-        if ($argument->userIsBot() !== null) {
+        if (null !== $argument->userIsBot()) {
             $data[TelegramApiFieldEnum::USER_IS_BOT->value] = $argument->userIsBot();
         }
 
-        if ($argument->userIsPremium() !== null) {
+        if (null !== $argument->userIsPremium()) {
             $data[TelegramApiFieldEnum::USER_IS_PREMIUM->value] = $argument->userIsPremium();
         }
 
-        if ($argument->getMaxQuantity() !== null) {
+        if (null !== $argument->getMaxQuantity()) {
             $data[TelegramApiFieldEnum::MAX_QUANTITY->value] = $argument->getMaxQuantity();
         }
 

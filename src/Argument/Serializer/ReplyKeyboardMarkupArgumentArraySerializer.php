@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -28,23 +29,23 @@ class ReplyKeyboardMarkupArgumentArraySerializer implements ReplyKeyboardMarkupA
         }
         $data[TelegramApiFieldEnum::KEYBOARD->value] = $buttons;
 
-        if ($argument->isPersistent() !== null) {
+        if (null !== $argument->isPersistent()) {
             $data[TelegramApiFieldEnum::IS_PERSISTENT->value] = $argument->isPersistent();
         }
 
-        if ($argument->wantResizeKeyboard() !== null) {
+        if (null !== $argument->wantResizeKeyboard()) {
             $data[TelegramApiFieldEnum::RESIZE_KEYBOARD->value] = $argument->wantResizeKeyboard();
         }
 
-        if ($argument->isOneTimeKeyboard() !== null) {
+        if (null !== $argument->isOneTimeKeyboard()) {
             $data[TelegramApiFieldEnum::ONE_TIME_KEYBOARD->value] = $argument->isOneTimeKeyboard();
         }
 
-        if ($argument->getInputFieldPlaceholder() !== null) {
+        if (null !== $argument->getInputFieldPlaceholder()) {
             $data[TelegramApiFieldEnum::INPUT_FIELD_PLACEHOLDER->value] = $argument->getInputFieldPlaceholder();
         }
 
-        if ($argument->isSelective() !== null) {
+        if (null !== $argument->isSelective()) {
             $data[TelegramApiFieldEnum::SELECTIVE->value] = $argument->isSelective();
         }
 

@@ -140,5 +140,13 @@ enum TelegramApiFieldEnum: string
     case CAN_EDIT_MESSAGES = 'can_edit_messages';
     case CAN_POST_STORIES = 'can_post_stories';
     case CAN_EDIT_STORIES = 'can_edit_stories';
-    case CAN_DELETE_STORIES	= 'can_delete_stories';
+    case CAN_DELETE_STORIES = 'can_delete_stories';
+    case FORWARD_TEXT = 'forward_text';
+    case BOT_USERNAME = 'bot_username';
+    case REQUEST_WRITE_ACCESS = 'request_write_access';
+    case QUERY = 'query';
+    case ALLOW_USER_CHATS = 'allow_user_chats';
+    case ALLOW_BOT_CHATS = 'allow_bot_chats';
+    case ALLOW_GROUP_CHATS = 'allow_group_chats';
+    case ALLOW_CHANNEL_CHATS = 'allow_channel_chats';
 }

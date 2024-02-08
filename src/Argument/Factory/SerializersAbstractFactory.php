@@ -14,11 +14,13 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonPollTypeA
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestUsersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LoginUrlArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArraySerializer;
@@ -30,11 +32,13 @@ use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonPollTypeArgumentArra
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonRequestChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonRequestUsersArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\LoginUrlArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardRemoveArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyParametersArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\WebAppInfoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\SerializerInterface;
@@ -94,6 +98,12 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case KeyboardButtonPollTypeArgumentArraySerializer::class:
             case KeyboardButtonPollTypeArgumentArraySerializerInterface::class:
                 return $this->createKeyboardButtonPollTypeArgumentArraySerializer();
+            case LoginUrlArgumentArraySerializer::class:
+            case LoginUrlArgumentArraySerializerInterface::class:
+                return $this->createLoginUrlArgumentArraySerializer();
+            case SwitchInlineQueryChosenChatArgumentArraySerializer::class:
+            case SwitchInlineQueryChosenChatArgumentArraySerializerInterface::class:
+                return $this->createSwitchInlineQueryChosenChatArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -149,7 +159,11 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
 
     public function createInlineKeyboardButtonArgumentArraySerializer(): InlineKeyboardButtonArgumentArraySerializerInterface
     {
-        return new InlineKeyboardButtonArgumentArraySerializer();
+        return new InlineKeyboardButtonArgumentArraySerializer(
+            $this->createWebAppInfoArgumentArraySerializer(),
+            $this->createLoginUrlArgumentArraySerializer(),
+            $this->createSwitchInlineQueryChosenChatArgumentArraySerializer(),
+        );
     }
 
     public function createReplyKeyboardRemoveArgumentArraySerializer(): ReplyKeyboardRemoveArgumentArraySerializerInterface
@@ -199,5 +213,15 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createKeyboardButtonPollTypeArgumentArraySerializer(): KeyboardButtonPollTypeArgumentArraySerializerInterface
     {
         return new KeyboardButtonPollTypeArgumentArraySerializer();
+    }
+
+    public function createLoginUrlArgumentArraySerializer(): LoginUrlArgumentArraySerializerInterface
+    {
+        return new LoginUrlArgumentArraySerializer();
+    }
+
+    public function createSwitchInlineQueryChosenChatArgumentArraySerializer(): SwitchInlineQueryChosenChatArgumentArraySerializerInterface
+    {
+        return new SwitchInlineQueryChosenChatArgumentArraySerializer();
     }
 }
