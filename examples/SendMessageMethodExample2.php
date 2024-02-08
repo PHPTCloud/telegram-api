@@ -15,7 +15,7 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 $messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 
-// Отправка запроса на удаление кнопок под поле ввода сообщения
+// Отправка запроса на удаление кнопок под полем ввода сообщения
 $replyRemoveBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardRemoveArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
     ->setText('Какой-то текст.')

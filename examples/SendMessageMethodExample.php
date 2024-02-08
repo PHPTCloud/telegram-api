@@ -209,15 +209,49 @@ dump($result);
 // Отправка кнопок под поле ввода сообщения
 $replyKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardMarkupArgumentBuilder();
 $message = $messageBuilder->setChatId($chatId)
-    ->setText('Какой-то текст.')
+    ->setText('В результате должна появиться 1 кнопка под полем ввода')
     ->setReplyKeyboardMarkup(
         $replyKeyboardBuilder->setResizeKeyboard(true)
         ->setPersistent(true)
-        ->setInputFieldPlaceholder('Заглушка.')
+        ->setInputFieldPlaceholder('Информация будет находиться в вашем поле ввода...')
         ->addButton(
             new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument('Кнопка 1️⃣')
         )
         ->build(),
+    )
+    ->build()
+;
+$result = $manager->sendMessage($message);
+dump($result);
+
+// Отправка запроса на удаление кнопок под полем ввода сообщения
+$replyRemoveBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardRemoveArgumentBuilder();
+$message = $messageBuilder->setChatId($chatId)
+    ->setText('В результате "Кнопка 1" должна удалиться.')
+    ->setReplyKeyboardRemove(
+        $replyRemoveBuilder->wantRemoveKeyboard(true)
+            ->build(),
+    )
+    ->build()
+;
+$result = $manager->sendMessage($message);
+dump($result);
+
+// Отправка кнопок под поле ввода сообщения
+$replyKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\ReplyKeyboardMarkupArgumentBuilder();
+$message = $messageBuilder->setChatId($chatId)
+    ->setText('В результате должны появиться 2 кнопки под полем ввода')
+    ->setReplyKeyboardMarkup(
+        $replyKeyboardBuilder->setResizeKeyboard(true)
+            ->setPersistent(true)
+            ->setInputFieldPlaceholder('Информация будет находиться в вашем поле ввода...')
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument('Кнопка 2️⃣')
+            )
+            ->addButton(
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument('Кнопка 3️⃣')
+            )
+            ->build(),
     )
     ->build()
 ;

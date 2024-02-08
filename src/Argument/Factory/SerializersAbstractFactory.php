@@ -8,18 +8,22 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactory
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardRemoveArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyParametersArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
@@ -62,6 +66,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case ReplyKeyboardRemoveArgumentArraySerializer::class:
             case ReplyKeyboardRemoveArgumentArraySerializerInterface::class:
                 return $this->createReplyKeyboardRemoveArgumentArraySerializer();
+            case ReplyKeyboardMarkupArgumentArraySerializer::class:
+            case ReplyKeyboardMarkupArgumentArraySerializerInterface::class:
+                return $this->createReplyKeyboardMarkupArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -74,7 +81,8 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createLinkPreviewOptionsArgumentArraySerializer(),
             $this->createReplyParametersArgumentArraySerializer(),
             $this->createInlineKeyboardMarkupArgumentArraySerializer(),
-            $this->createReplyKeyboardRemoveArgumentArraySerializer()
+            $this->createReplyKeyboardRemoveArgumentArraySerializer(),
+            $this->createReplyKeyboardMarkupArgumentArraySerializer(),
         );
     }
 
@@ -122,5 +130,17 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createReplyKeyboardRemoveArgumentArraySerializer(): ReplyKeyboardRemoveArgumentArraySerializerInterface
     {
         return new ReplyKeyboardRemoveArgumentArraySerializer();
+    }
+
+    public function createReplyKeyboardMarkupArgumentArraySerializer(): ReplyKeyboardMarkupArgumentArraySerializerInterface
+    {
+        return new ReplyKeyboardMarkupArgumentArraySerializer(
+            $this->createKeyboardButtonArgumentArraySerializer(),
+        );
+    }
+
+    public function createKeyboardButtonArgumentArraySerializer(): KeyboardButtonArgumentArraySerializerInterface
+    {
+        return new KeyboardButtonArgumentArraySerializer();
     }
 }

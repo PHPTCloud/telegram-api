@@ -109,4 +109,14 @@ enum TelegramApiFieldEnum: string
     case PAY = 'pay';
     case REMOVE_KEYBOARD = 'remove_keyboard';
     case SELECTIVE = 'selective';
+    case KEYBOARD = 'keyboard';
+    case IS_PERSISTENT = 'is_persistent';
+    case RESIZE_KEYBOARD = 'resize_keyboard';
+    case ONE_TIME_KEYBOARD = 'one_time_keyboard';
+    case INPUT_FIELD_PLACEHOLDER = 'input_field_placeholder';
+    case REQUEST_USERS = 'request_users';
+    case REQUEST_CHAT = 'request_chat';
+    case REQUEST_CONTACT = 'request_contact';
+    case REQUEST_LOCATION = 'request_location';
+    case REQUEST_POLL = 'request_poll';
 }

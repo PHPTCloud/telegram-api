@@ -25,9 +25,11 @@ class InlineKeyboardButtonArgumentArraySerializer implements InlineKeyboardButto
         }
 
         if ($argument->getWebApp()) {
+            // @TODO: Сдеалть сериализатор
         }
 
         if ($argument->getLoginUrl()) {
+            // @TODO: Сдеалть сериализатор
         }
 
         if ($argument->getSwitchInlineQuery()) {
@@ -39,6 +41,7 @@ class InlineKeyboardButtonArgumentArraySerializer implements InlineKeyboardButto
         }
 
         if ($argument->getSwitchInlineQueryChosenChat()) {
+            // @TODO: Сдеалть сериализатор
         }
 
         if (null !== $argument->isPay()) {

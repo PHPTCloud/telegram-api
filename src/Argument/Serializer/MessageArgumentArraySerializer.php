@@ -11,6 +11,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
@@ -28,6 +29,7 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
         private readonly ReplyParametersArgumentArraySerializerInterface $replyParametersArgumentArraySerializer,
         private readonly InlineKeyboardMarkupArgumentArraySerializerInterface $inlineKeyboardMarkupArgumentArraySerializer,
         private readonly ReplyKeyboardRemoveArgumentArraySerializerInterface $replyKeyboardRemoveArgumentArraySerializer,
+        private readonly ReplyKeyboardMarkupArgumentArraySerializerInterface $replyKeyboardMarkupArgumentArraySerializer,
     ) {
     }
 
@@ -78,6 +80,11 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
         if ($argument->getInlineKeyboardMarkup()) {
             $data[TelegramApiFieldEnum::REPLY_MARKUP->value]
                 = $this->inlineKeyboardMarkupArgumentArraySerializer->serialize($argument->getReplyMarkup());
+        }
+
+        if ($argument->getReplyKeyboardMarkup()) {
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value]
+                = $this->replyKeyboardMarkupArgumentArraySerializer->serialize($argument->getReplyKeyboardMarkup());
         }
 
         if (empty($data)) {
