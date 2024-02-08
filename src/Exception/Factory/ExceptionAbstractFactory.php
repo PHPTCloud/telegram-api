@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Exception\Factory;
 
+use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
@@ -28,6 +29,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new CantFindFieldException($message);
         } elseif (str_contains($message, $this->getCantParseInlineKeyboardButtonMessagePart())) {
             return new CantParseInlineKeyboardButtonException($message);
+        } elseif ($this->getButtonQuantityMaxInvalidMessagePart()) {
+            return new ButtonQuantityMaxInvalidException($message);
         }
 
         return new TelegramApiException($message);
@@ -46,5 +49,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getCantParseInlineKeyboardButtonMessagePart(): string
     {
         return 'can\'t parse inline keyboard button';
+    }
+
+    private function getButtonQuantityMaxInvalidMessagePart(): string
+    {
+        return 'button_quantity_max_invalid';
     }
 }

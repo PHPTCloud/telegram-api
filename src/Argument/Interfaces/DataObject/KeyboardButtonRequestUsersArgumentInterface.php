@@ -22,6 +22,9 @@ interface KeyboardButtonRequestUsersArgumentInterface
      * Знаковый 32-битный идентификатор запроса, который будет получен обратно в объекте UsersShared.
      * Должно быть уникальным в сообщении.
      *
+     * Примечание: Уникальность этого параметры вы должны обеспечить самостоятельно в своей системе.
+     * Telegram API не проверяет уникальность этого параметра.
+     *
      * @return int
      */
     public function getRequestId(): int|float;

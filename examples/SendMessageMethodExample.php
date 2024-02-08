@@ -246,10 +246,22 @@ $message = $messageBuilder->setChatId($chatId)
             ->setPersistent(true)
             ->setInputFieldPlaceholder('Информация будет находиться в вашем поле ввода...')
             ->addButton(
-                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument('Кнопка 2️⃣')
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса пользователей',
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonRequestUsersArgument(
+                        1,
+                    )
+                )
             )
             ->addButton(
-                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument('Кнопка 3️⃣')
+                new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonArgument(
+                    'Кнопка запроса только каналов',
+                    null,
+                    new \PHPTCloud\TelegramApi\Argument\DataObject\KeyboardButtonRequestChatArgument(
+                        2,
+                        true,
+                    ),
+                )
             )
             ->build(),
     )

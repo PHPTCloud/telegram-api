@@ -119,4 +119,26 @@ enum TelegramApiFieldEnum: string
     case REQUEST_CONTACT = 'request_contact';
     case REQUEST_LOCATION = 'request_location';
     case REQUEST_POLL = 'request_poll';
+    case REQUEST_ID = 'request_id';
+    case USER_IS_BOT = 'user_is_bot';
+    case USER_IS_PREMIUM = 'user_is_premium';
+    case MAX_QUANTITY = 'max_quantity';
+    case CHAT_IS_CHANNEL = 'chat_is_channel';
+    case CHAT_IS_FORUM = 'chat_is_forum';
+    case CHAT_HAS_USERNAME = 'chat_has_username';
+    case CHAT_IS_CREATED = 'chat_is_created';
+    case USER_ADMINISTRATOR_RIGHTS = 'user_administrator_rights';
+    case BOT_ADMINISTRATOR_RIGHTS = 'bot_administrator_rights';
+    case BOT_IS_MEMBER = 'bot_is_member';
+    case IS_ANONYMOUS = 'is_anonymous';
+    case CAN_MANAGE_CHAT = 'can_manage_chat';
+    case CAN_DELETE_MESSAGES = 'can_delete_messages';
+    case CAN_MANAGE_VIDEO_CHATS = 'can_manage_video_chats';
+    case CAN_RESTRICT_MEMBERS = 'can_restrict_members';
+    case CAN_PROMOTE_MEMBERS = 'can_promote_members';
+    case CAN_POST_MESSAGES = 'can_post_messages';
+    case CAN_EDIT_MESSAGES = 'can_edit_messages';
+    case CAN_POST_STORIES = 'can_post_stories';
+    case CAN_EDIT_STORIES = 'can_edit_stories';
+    case CAN_DELETE_STORIES	= 'can_delete_stories';
 }

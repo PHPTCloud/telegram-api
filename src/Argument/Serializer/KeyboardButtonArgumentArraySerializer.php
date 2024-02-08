@@ -5,10 +5,22 @@ namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonPollTypeArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestChatArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestUsersArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 class KeyboardButtonArgumentArraySerializer implements KeyboardButtonArgumentArraySerializerInterface
 {
+    public function __construct(
+        private readonly WebAppInfoArgumentArraySerializerInterface $webAppInfoArgumentArraySerializer,
+        private readonly KeyboardButtonRequestUsersArgumentArraySerializerInterface $keyboardButtonRequestUsersArgumentArraySerializer,
+        private readonly KeyboardButtonRequestChatArgumentArraySerializerInterface $keyboardButtonRequestChatArgumentArraySerializer,
+        private readonly KeyboardButtonPollTypeArgumentArraySerializerInterface $keyboardButtonPollTypeArgumentArraySerializer,
+    ) {
+    }
+
     public function serialize(KeyboardButtonArgumentInterface $argument): array
     {
         $data = [];
@@ -16,15 +28,18 @@ class KeyboardButtonArgumentArraySerializer implements KeyboardButtonArgumentArr
         $data[TelegramApiFieldEnum::TEXT->value] = $argument->getText();
 
         if ($argument->getRequestUsers() !== null) {
-            // @TODO: Сделать сериализатор
+            $data[TelegramApiFieldEnum::REQUEST_USERS->value]
+                = $this->keyboardButtonRequestUsersArgumentArraySerializer->serialize($argument->getRequestUsers());
         }
 
         if ($argument->getRequestChat() !== null) {
-            // @TODO: Сделать сериализатор
+            $data[TelegramApiFieldEnum::REQUEST_CHAT->value]
+                = $this->keyboardButtonRequestChatArgumentArraySerializer->serialize($argument->getRequestChat());
         }
 
         if ($argument->getRequestPoll() !== null) {
-            // @TODO: Сделать сериализатор
+            $data[TelegramApiFieldEnum::REQUEST_POLL->value]
+                = $this->keyboardButtonPollTypeArgumentArraySerializer->serialize($argument->getRequestPoll());
         }
 
         if ($argument->isRequestContact() !== null) {
@@ -36,7 +51,8 @@ class KeyboardButtonArgumentArraySerializer implements KeyboardButtonArgumentArr
         }
 
         if ($argument->getWebApp() !== null) {
-            // @TODO: Сделать сериализатор
+            $data[TelegramApiFieldEnum::WEB_APP->value]
+                = $this->webAppInfoArgumentArraySerializer->serialize($argument->getWebApp());
         }
 
         if (empty($data)) {
