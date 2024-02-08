@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -17,19 +18,19 @@ class SwitchInlineQueryChosenChatArgumentArraySerializer implements SwitchInline
             $data[TelegramApiFieldEnum::QUERY->value] = $argument->getQuery();
         }
 
-        if ($argument->allowUserChats() !== null) {
+        if (null !== $argument->allowUserChats()) {
             $data[TelegramApiFieldEnum::ALLOW_USER_CHATS->value] = $argument->allowUserChats();
         }
 
-        if ($argument->allowBotChats() !== null) {
+        if (null !== $argument->allowBotChats()) {
             $data[TelegramApiFieldEnum::ALLOW_BOT_CHATS->value] = $argument->allowBotChats();
         }
 
-        if ($argument->allowGroupChats() !== null) {
+        if (null !== $argument->allowGroupChats()) {
             $data[TelegramApiFieldEnum::ALLOW_GROUP_CHATS->value] = $argument->allowGroupChats();
         }
 
-        if ($argument->allowChannelChats() !== null) {
+        if (null !== $argument->allowChannelChats()) {
             $data[TelegramApiFieldEnum::ALLOW_CHANNEL_CHATS->value] = $argument->allowChannelChats();
         }
 
