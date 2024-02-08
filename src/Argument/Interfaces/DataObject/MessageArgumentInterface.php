@@ -105,17 +105,22 @@ interface MessageArgumentInterface
     public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface|null;
 
     public function setReplyMarkup(
-        InlineKeyboardMarkupArgumentInterface
-        |ReplyKeyboardMarkupArgumentInterface
-        |ReplyKeyboardRemoveArgumentInterface
-        |ForceReplyInterface $replyMarkup = null
+        InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface $replyMarkup = null
     ): void;
+
+    public function getInlineKeyboardMarkup(): ?InlineKeyboardMarkupArgumentInterface;
 
     public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
+    public function getReplyKeyboardMarkup(): ?ReplyKeyboardMarkupArgumentInterface;
+
     public function setReplyKeyboardMarkup(ReplyKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
+    public function getReplyKeyboardRemove(): ?ReplyKeyboardRemoveArgumentInterface;
+
     public function setReplyKeyboardRemove(ReplyKeyboardRemoveArgumentInterface $replyMarkup = null): void;
+
+    public function getForceReply(): ?ForceReplyInterface;
 
     public function setForceReply(ForceReplyInterface $replyMarkup = null): void;
 }

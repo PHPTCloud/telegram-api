@@ -69,13 +69,15 @@ class MessageArgumentArraySerializer implements MessageArgumentArraySerializerIn
             $data[TelegramApiFieldEnum::REPLY_PARAMETERS->value]
                 = $this->replyParametersArgumentArraySerializer->serialize($argument->getReplyParameters());
         }
-        if ($argument->getReplyMarkup()) {
-            $argumentInterface = array_key_first(class_implements(get_class($argument->getReplyMarkup())));
 
-            $data[TelegramApiFieldEnum::REPLY_MARKUP->value] = match ($argumentInterface) {
-                ReplyKeyboardRemoveArgumentInterface::class => $this->replyKeyboardRemoveArgumentArraySerializer->serialize($argument->getReplyMarkup()),
-                default => $this->inlineKeyboardMarkupArgumentArraySerializer->serialize($argument->getReplyMarkup()),
-            };
+        if ($argument->getReplyKeyboardRemove()) {
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value]
+                = $this->replyKeyboardRemoveArgumentArraySerializer->serialize($argument->getReplyMarkup());
+        }
+
+        if ($argument->getInlineKeyboardMarkup()) {
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value]
+                = $this->inlineKeyboardMarkupArgumentArraySerializer->serialize($argument->getReplyMarkup());
         }
 
         if (empty($data)) {

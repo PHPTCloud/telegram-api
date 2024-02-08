@@ -162,4 +162,24 @@ class MessageArgument implements MessageArgumentInterface
     {
         $this->replyMarkup = $replyMarkup;
     }
+
+    public function getInlineKeyboardMarkup(): ?InlineKeyboardMarkupArgumentInterface
+    {
+        return $this->replyMarkup;
+    }
+
+    public function getReplyKeyboardMarkup(): ?ReplyKeyboardMarkupArgumentInterface
+    {
+        return $this->replyMarkup;
+    }
+
+    public function getReplyKeyboardRemove(): ?ReplyKeyboardRemoveArgumentInterface
+    {
+        return $this->replyMarkup;
+    }
+
+    public function getForceReply(): ?ForceReplyInterface
+    {
+        return $this->replyMarkup;
+    }
 }
