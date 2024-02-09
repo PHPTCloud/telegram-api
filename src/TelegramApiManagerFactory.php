@@ -11,6 +11,7 @@ use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactory;
 use PHPTCloud\TelegramApi\Exception\Factory\ExceptionAbstractFactory;
 use PHPTCloud\TelegramApi\Type\Factory\DeserializersAbstractFactory;
 use PHPTCloud\TelegramApi\Type\Factory\TypeFactoriesAbstractFactory;
+use PHPTCloud\TelegramApi\Utils\Factory\SortingAlgorithmServiceFactory;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -35,6 +36,7 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
             $deserializersAbstractFactory,
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
+            new SortingAlgorithmServiceFactory(),
         );
 
         $chatDomainServiceFactory = new ChatDomainServiceFactory(

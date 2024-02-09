@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
-class ForwardMessageArgumentArraySerializer implements ForwardMessageArgumentArraySerializerInterface
+class ForwardMessagesArgumentArraySerializer implements ForwardMessagesArgumentArraySerializerInterface
 {
-    public function serialize(ForwardMessageArgumentInterface $argument): array
+    public function serialize(ForwardMessagesArgumentInterface $argument): array
     {
         $data = [];
 
         $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
         $data[TelegramApiFieldEnum::FROM_CHAT_ID->value] = $argument->getFromChatId();
-        $data[TelegramApiFieldEnum::MESSAGE_ID->value] = $argument->getMessageId();
+        $data[TelegramApiFieldEnum::MESSAGE_IDS->value] = $argument->getMessageIds();
 
         if ($argument->getMessageThreadId()) {
             $data[TelegramApiFieldEnum::MESSAGE_THREAD_ID->value] = $argument->getMessageThreadId();

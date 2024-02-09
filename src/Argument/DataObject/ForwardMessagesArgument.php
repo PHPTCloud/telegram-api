@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 
-class ForwardMessageArgument implements ForwardMessageArgumentInterface
+class ForwardMessagesArgument implements ForwardMessagesArgumentInterface
 {
     public function __construct(
         private readonly int|float|string $chatId,
         private readonly int|float|string $fromChatId,
-        private readonly int $messageId,
+        private readonly array $messageIds,
         private readonly ?bool $disableNotification = null,
         private readonly ?bool $protectContent = null,
         private readonly ?int $messageThreadId = null,
@@ -30,7 +30,7 @@ class ForwardMessageArgument implements ForwardMessageArgumentInterface
 
     public function getMessageId(): int
     {
-        return $this->messageId;
+        throw new \BadMethodCallException(sprintf('В контексте класса %s запрещено использование метода %s.', __CLASS__, __METHOD__));
     }
 
     public function wantDisableNotification(): ?bool
@@ -46,5 +46,10 @@ class ForwardMessageArgument implements ForwardMessageArgumentInterface
     public function getMessageThreadId(): ?int
     {
         return $this->messageThreadId;
+    }
+
+    public function getMessageIds(): array
+    {
+        return $this->messageIds;
     }
 }

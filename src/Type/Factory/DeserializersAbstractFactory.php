@@ -11,6 +11,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\MessageIdDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeCustomEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
@@ -21,6 +22,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializ
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageIdDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeCustomEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
@@ -31,6 +33,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
@@ -82,6 +85,9 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case LocationDeserializer::class:
             case LocationDeserializerInterface::class:
                 return $this->createLocationDeserializer();
+            case MessageIdDeserializer::class:
+            case MessageIdDeserializerInterface::class:
+                return $this->createMessageIdDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -184,5 +190,13 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         $typeFactory = $this->typeFactoriesAbstractFactory->create(LocationTypeFactoryInterface::class);
 
         return new LocationDeserializer($typeFactory);
+    }
+
+    public function createMessageIdDeserializer(): MessageIdDeserializerInterface
+    {
+        /** @var MessageIdTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(MessageIdTypeFactoryInterface::class);
+
+        return new MessageIdDeserializer($typeFactory);
     }
 }

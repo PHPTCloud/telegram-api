@@ -13,6 +13,7 @@ use PHPTCloud\TelegramApi\Request\Request;
 use PHPTCloud\TelegramApi\TelegramApiManagerInterface;
 use PHPTCloud\TelegramApi\TelegramBotInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Utils\Interface\Factory\SortingAlgorithmServiceFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -25,6 +26,7 @@ class MessageDomainServiceFactory implements MessageDomainServiceFactoryInterfac
         private readonly DeserializersAbstractFactoryInterface $deserializersAbstractFactory,
         private readonly SerializersAbstractFactoryInterface $serializersAbstractFactory,
         private readonly ExceptionAbstractFactoryInterface $exceptionAbstractFactory,
+        private readonly SortingAlgorithmServiceFactoryInterface $sortingAlgorithmServiceFactory,
     ) {
     }
 
@@ -37,6 +39,7 @@ class MessageDomainServiceFactory implements MessageDomainServiceFactoryInterfac
             $this->deserializersAbstractFactory,
             $this->serializersAbstractFactory,
             $this->exceptionAbstractFactory,
+            $this->sortingAlgorithmServiceFactory->createDefault(),
         );
     }
 }

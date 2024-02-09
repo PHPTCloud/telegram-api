@@ -12,6 +12,7 @@ use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
+use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
@@ -49,6 +50,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new BotIsNotAMemberOfTheChatException($message);
         } elseif (str_contains($message, $this->getMessageCantBeForwardedMessagePart())) {
             return new MessageCantBeForwardedException($message);
+        } elseif (str_contains($message, $this->getMessageIdsMustBeInIncreasingOrderMessagePart())) {
+            return new MessageIdsMustBeInIncreasingOrderException($message);
         }
 
         return new TelegramApiException($message);
@@ -102,5 +105,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getMessageCantBeForwardedMessagePart(): string
     {
         return 'message can\'t be forwarded';
+    }
+
+    private function getMessageIdsMustBeInIncreasingOrderMessagePart(): string
+    {
+        return 'message identifiers must be in a strictly increasing order';
     }
 }

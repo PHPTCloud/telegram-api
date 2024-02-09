@@ -4,8 +4,120 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9db1538552e007360f4140b0abf9b890",
+    "content-hash": "0219454effb8edad6b1d0b3e552351e6",
     "packages": [
+        {
+            "name": "doganoo/php-algorithms",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doganoo/PHPAlgorithms.git",
+                "reference": "1b6c3ac3448289b103d92bc75c2c7c4974eceae8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doganoo/PHPAlgorithms/zipball/1b6c3ac3448289b103d92bc75c2c7c4974eceae8",
+                "reference": "1b6c3ac3448289b103d92bc75c2c7c4974eceae8",
+                "shasum": ""
+            },
+            "require": {
+                "doganoo/php-util": "0.5.*",
+                "ext-json": "*",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.9",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpstan/phpstan": "^0.12.54",
+                "phpunit/phpunit": "^8.0",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "doganoo\\PHPAlgorithms\\": "src/",
+                    "doganoo\\PHPAlgorithmsTest\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dogan Ucar",
+                    "email": "dogan@dogan-ucar.de",
+                    "homepage": "https://www.dogan-ucar.de"
+                }
+            ],
+            "description": "A collection of common algorithms implemented in PHP. The collection is based on \"Cracking the Coding Interview\" by Gayle Laakmann McDowell",
+            "homepage": "https://www.dogan-ucar.de/phpalgorithms-2/",
+            "keywords": [
+                "algorithms",
+                "data structures"
+            ],
+            "support": {
+                "issues": "https://github.com/doganoo/PHPAlgorithms/issues",
+                "source": "https://github.com/doganoo/PHPAlgorithms/tree/2.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/doganoo",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-05-28T10:12:23+00:00"
+        },
+        {
+            "name": "doganoo/php-util",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doganoo/PHPUtil.git",
+                "reference": "f8ce213c221e1a35b45479a4336027c8cd20c6cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doganoo/PHPUtil/zipball/f8ce213c221e1a35b45479a4336027c8cd20c6cc",
+                "reference": "f8ce213c221e1a35b45479a4336027c8cd20c6cc",
+                "shasum": ""
+            },
+            "require": {
+                "doganoo/php-algorithms": "*",
+                "ext-fileinfo": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-pdo": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "doganoo\\PHPUtil\\": "src/",
+                    "doganoo\\PHPUtil\\Test\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dogan Ucar",
+                    "email": "dogan@dogan-ucar.de"
+                }
+            ],
+            "description": "A collection of common classes and methods that I am usually working with",
+            "support": {
+                "issues": "https://github.com/doganoo/PHPUtil/issues",
+                "source": "https://github.com/doganoo/PHPUtil/tree/0.5.0"
+            },
+            "time": "2021-09-11T07:04:55+00:00"
+        },
         {
             "name": "guzzlehttp/guzzle",
             "version": "7.8.1",
@@ -601,6 +713,89 @@
                 }
             ],
             "time": "2023-05-23T14:45:45+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.28.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "42292d99c55abe617799667f454222c54c60e229"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
+                "reference": "42292d99c55abe617799667f454222c54c60e229",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-mbstring": "*"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.28-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-07-28T09:04:16+00:00"
         }
     ],
     "packages-dev": [
@@ -1937,89 +2132,6 @@
                 }
             ],
             "time": "2023-01-26T09:26:14+00:00"
-        },
-        {
-            "name": "symfony/polyfill-mbstring",
-            "version": "v1.28.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "42292d99c55abe617799667f454222c54c60e229"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
-                "reference": "42292d99c55abe617799667f454222c54c60e229",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "provide": {
-                "ext-mbstring": "*"
-            },
-            "suggest": {
-                "ext-mbstring": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for the Mbstring extension",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "mbstring",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-07-28T09:04:16+00:00"
         },
         {
             "name": "symfony/polyfill-php80",

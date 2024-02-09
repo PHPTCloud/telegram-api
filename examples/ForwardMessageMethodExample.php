@@ -10,8 +10,6 @@ $dotenv->load(__DIR__ . '/.env');
 
 $token = $_ENV['TELEGRAM_BOT_TOKEN'];
 $chatId = $_ENV['TELEGRAM_CHAT_ID'];
-$fromChatId = $_ENV['TELEGRAM_NEWS_CHAT_ID'];
-$fromMessageId = (int)$_ENV['TELEGRAM_NEW_MESSAGE_ID'];
 
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
@@ -45,7 +43,6 @@ try {
         $chatId,
         $message->getMessageId(),
     ));
-    dump($result);
 } catch (\PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException $exception) {
-    dump($exception);
+    dump($exception->getMessage());
 }

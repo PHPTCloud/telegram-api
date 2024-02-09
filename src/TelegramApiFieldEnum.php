@@ -151,4 +151,5 @@ enum TelegramApiFieldEnum: string
     case ALLOW_CHANNEL_CHATS = 'allow_channel_chats';
     case FORCE_REPLY = 'force_reply';
     case FROM_CHAT_ID = 'from_chat_id';
+    case MESSAGE_IDS = 'message_ids';
 }

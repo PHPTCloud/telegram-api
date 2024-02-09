@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInte
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
@@ -57,6 +58,9 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case ReactionTypeTypeFactory::class:
             case ReactionTypeTypeFactoryInterface::class:
                 return $this->createReactionTypeTypeFactory();
+            case MessageIdTypeFactory::class:
+            case MessageIdTypeFactoryInterface::class:
+                return $this->createMessageIdTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -113,5 +117,10 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             $this->createReactionTypeCustomEmojiTypeFactory(),
             $this->createReactionTypeEmojiTypeFactory(),
         );
+    }
+
+    public function createMessageIdTypeFactory(): MessageIdTypeFactoryInterface
+    {
+        return new MessageIdTypeFactory();
     }
 }

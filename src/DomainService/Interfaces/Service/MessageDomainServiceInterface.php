@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 
 /**
@@ -32,4 +34,16 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#forwardmessage
      */
     public function forwardMessage(ForwardMessageArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод для пересылки нескольких сообщений любого типа. Если некоторые из указанных с
+     * ообщений не удается найти или переслать, они пропускаются. Служебные сообщения и сообщения с защищен
+     * ным содержимым пересылаться не могут. Группировка альбомов сохраняется для пересылаемых сообщений. В
+     * случае успеха возвращается массив MessageId отправленных сообщений.
+     *
+     * @see https://core.telegram.org/bots/api#forwardmessages
+     *
+     * @return MessageIdInterface[]
+     */
+    public function forwardMessages(ForwardMessagesArgumentInterface $argument, bool $sortIds = false): array;
 }
