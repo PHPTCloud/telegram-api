@@ -152,4 +152,6 @@ enum TelegramApiFieldEnum: string
     case FORCE_REPLY = 'force_reply';
     case FROM_CHAT_ID = 'from_chat_id';
     case MESSAGE_IDS = 'message_ids';
+    case CAPTION = 'caption';
+    case CAPTION_ENTITIES = 'caption_entities';
 }

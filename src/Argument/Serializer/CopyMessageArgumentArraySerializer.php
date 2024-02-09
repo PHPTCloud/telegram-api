@@ -1,73 +1,64 @@
 <?php
-
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
-/**
- * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
- */
-class MessageArgumentArraySerializer implements MessageArgumentArraySerializerInterface
+class CopyMessageArgumentArraySerializer implements CopyMessageArgumentArraySerializerInterface
 {
     public function __construct(
-        private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
-        private readonly LinkPreviewOptionsArgumentArraySerializerInterface $linkPreviewOptionsArgumentArraySerializer,
-        private readonly ReplyParametersArgumentArraySerializerInterface $replyParametersArgumentArraySerializer,
+        private readonly MessageEntityArgumentArraySerializerInterface        $messageEntityArgumentArraySerializer,
+        private readonly ReplyParametersArgumentArraySerializerInterface      $replyParametersArgumentArraySerializer,
         private readonly InlineKeyboardMarkupArgumentArraySerializerInterface $inlineKeyboardMarkupArgumentArraySerializer,
-        private readonly ReplyKeyboardRemoveArgumentArraySerializerInterface $replyKeyboardRemoveArgumentArraySerializer,
-        private readonly ReplyKeyboardMarkupArgumentArraySerializerInterface $replyKeyboardMarkupArgumentArraySerializer,
-        private readonly ForceReplyArgumentArraySerializerInterface $forceReplyArgumentArraySerializer,
+        private readonly ReplyKeyboardRemoveArgumentArraySerializerInterface  $replyKeyboardRemoveArgumentArraySerializer,
+        private readonly ReplyKeyboardMarkupArgumentArraySerializerInterface  $replyKeyboardMarkupArgumentArraySerializer,
+        private readonly ForceReplyArgumentArraySerializerInterface           $forceReplyArgumentArraySerializer,
     ) {
     }
 
-    public function serialize(MessageArgumentInterface $argument): array
+    public function serialize(CopyMessageArgumentInterface $argument): array
     {
         $data = [];
 
-        if ($argument->getChatId()) {
-            $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
+        $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
+        $data[TelegramApiFieldEnum::FROM_CHAT_ID->value] = $argument->getFromChatId();
+        $data[TelegramApiFieldEnum::MESSAGE_ID->value] = $argument->getMessageId();
+
+        if ($argument->getCaption()) {
+            $data[TelegramApiFieldEnum::CAPTION->value] = $argument->getCaption();
         }
-        if ($argument->getMessageThreadId()) {
-            $data[TelegramApiFieldEnum::MESSAGE_THREAD_ID->value] = $argument->getMessageThreadId();
-        }
-        if ($argument->getText()) {
-            $data[TelegramApiFieldEnum::TEXT->value] = $argument->getText();
-        }
+
         if ($argument->getParseMode()) {
             $data[TelegramApiFieldEnum::PARSE_MODE->value] = $argument->getParseMode();
         }
-        if ($argument->getEntities()) {
-            $data[TelegramApiFieldEnum::ENTITIES->value] = array_map(
-                function (MessageEntityArgumentInterface $argument) {
-                    return $this->messageEntityArgumentArraySerializer->serialize($argument);
+
+        if ($argument->getCaptionEntities()) {
+            $data[TelegramApiFieldEnum::CAPTION_ENTITIES->value] = array_map(
+                function (MessageEntityArgumentInterface $messageEntity) {
+                    return $this->messageEntityArgumentArraySerializer->serialize($messageEntity);
                 },
-                $argument->getEntities(),
+                $argument->getCaptionEntities(),
             );
         }
-        if ($argument->getLinkPreviewOptions()) {
-            $data[TelegramApiFieldEnum::LINK_PREVIEW_OPTIONS->value]
-                = $this->linkPreviewOptionsArgumentArraySerializer->serialize($argument->getLinkPreviewOptions());
+
+        if ($argument->wantDisableNotification() !== null) {
+            $data[TelegramApiFieldEnum::DISABLE_NOTIFICATION->value] = $argument->wantDisableNotification();
         }
-        if ($argument->isNotificationDisabled()) {
-            $data[TelegramApiFieldEnum::DISABLE_NOTIFICATION->value] = $argument->isNotificationDisabled();
+
+        if ($argument->wantProtectContent() !== null) {
+            $data[TelegramApiFieldEnum::PROTECT_CONTENT->value] = $argument->wantProtectContent();
         }
-        if ($argument->isContentProtected()) {
-            $data[TelegramApiFieldEnum::PROTECT_CONTENT->value] = $argument->isContentProtected();
-        }
+
         if ($argument->getReplyParameters()) {
             $data[TelegramApiFieldEnum::REPLY_PARAMETERS->value]
                 = $this->replyParametersArgumentArraySerializer->serialize($argument->getReplyParameters());

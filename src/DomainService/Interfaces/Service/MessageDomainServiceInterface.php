@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 
@@ -46,4 +48,15 @@ interface MessageDomainServiceInterface
      * @return MessageIdInterface[]
      */
     public function forwardMessages(ForwardMessagesArgumentInterface $argument, bool $sortIds = false): array;
+
+    /**
+     * Используйте этот метод для копирования сообщений любого типа. Служебные сообщения, сообщения о розыг
+     * рышах, сообщения о победителях розыгрышей и сообщения о счетах не могут быть скопированы. Опрос викт
+     * орины можно скопировать только в том случае, если боту известно значение поля correct_option_id. Мет
+     * од аналогичен методу forwardMessage, но скопированное сообщение не имеет ссылки на исходное сообщени
+     * е. Возвращает MessageId отправленного сообщения в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#copymessage
+     */
+    public function copyMessage(CopyMessageArgumentInterface $argument): MessageId;
 }

@@ -15,7 +15,6 @@ class TimSortAlgorithmService implements SortingAlgorithmServiceInterface
     }
 
     /**
-     * @param array $array
      * @param bool $direction - направление сортировки. True - по возрастанию, False - по убыванию.
      *
      * @return array|int[]
@@ -27,8 +26,8 @@ class TimSortAlgorithmService implements SortingAlgorithmServiceInterface
         $max = $sorted[count($sorted) - 1];
 
         if (
-            ($min > $max && $direction === true)
-            || ($min < $max && $direction === false)
+            ($min > $max && true === $direction)
+            || ($min < $max && false === $direction)
         ) {
             $sorted = array_reverse($sorted);
         }
