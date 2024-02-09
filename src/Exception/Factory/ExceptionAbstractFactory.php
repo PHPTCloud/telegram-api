@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Exception\Factory;
 
 use PHPTCloud\TelegramApi\Exception\Error\BotDomainInvalidException;
+use PHPTCloud\TelegramApi\Exception\Error\BotIsNotAMemberOfTheChatException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonIdInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
+use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
+use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
@@ -40,6 +43,12 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new BotDomainInvalidException($message);
         } elseif (str_contains($message, $this->getButtonTypeInvalidMessagePart())) {
             return new ButtonTypeInvalidException($message);
+        } elseif (str_contains($message, $this->getMessageToForwardNotFoundMessagePart())) {
+            return new MessageToForwardNotFoundException($message);
+        } elseif (str_contains($message, $this->getBotIsNotAMemberOfTheChatMessagePart())) {
+            return new BotIsNotAMemberOfTheChatException($message);
+        } elseif (str_contains($message, $this->getMessageCantBeForwardedMessagePart())) {
+            return new MessageCantBeForwardedException($message);
         }
 
         return new TelegramApiException($message);
@@ -78,5 +87,20 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getButtonTypeInvalidMessagePart(): string
     {
         return 'button_type_invalid';
+    }
+
+    private function getMessageToForwardNotFoundMessagePart(): string
+    {
+        return 'message to forward not found';
+    }
+
+    private function getBotIsNotAMemberOfTheChatMessagePart(): string
+    {
+        return 'bot is not a member of the channel chat';
+    }
+
+    private function getMessageCantBeForwardedMessagePart(): string
+    {
+        return 'message can\'t be forwarded';
     }
 }

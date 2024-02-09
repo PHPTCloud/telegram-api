@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\ValueObject;
 
+use PHPTCloud\TelegramApi\Type\Interfaces\ValueObject\StringValueObjectInterface;
+
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
  * @version 1.0.0
  */
-class Code
+class Code implements StringValueObjectInterface
 {
     public function __construct(
         private readonly string $code,

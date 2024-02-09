@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\Argument\Builder;
 
 use PHPTCloud\TelegramApi\Argument\DataObject\MessageArgument;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\MessageArgumentBuilderInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForceReplyArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
@@ -13,7 +14,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -124,7 +124,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
         InlineKeyboardMarkupArgumentInterface
         |ReplyKeyboardMarkupArgumentInterface
         |ReplyKeyboardRemoveArgumentInterface
-        |ForceReplyInterface $replyMarkup
+        |ForceReplyArgumentInterface $replyMarkup
     ): MessageArgumentBuilderInterface {
         $this->initializeArgumentInstance();
 
@@ -160,7 +160,7 @@ class MessageArgumentBuilder implements MessageArgumentBuilderInterface
         return $this;
     }
 
-    public function setForceReply(ForceReplyInterface $replyMarkup): MessageArgumentBuilderInterface
+    public function setForceReply(ForceReplyArgumentInterface $replyMarkup): MessageArgumentBuilderInterface
     {
         $this->initializeArgumentInstance();
 

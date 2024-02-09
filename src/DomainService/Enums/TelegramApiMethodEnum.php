@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Enums;
 
 /**
- * @author Юдов Алексей tcloud.ax@gmail.com
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Пешко Илья peshkoi@mail.ru
  *
  * @version 1.0.0
  */
@@ -56,4 +57,12 @@ enum TelegramApiMethodEnum: string
      * кт с типом Chat (https://core.telegram.org/bots/api#chat).
      */
     case GET_CHAT = 'getChat';
+
+    /**
+     * @see https://core.telegram.org/bots/api#forwardmessage
+     *
+     * Используйте этот метод для пересылки сообщений любого типа. Служебные сообщения и сообщения с защище
+     * нным содержимым пересылаться не могут. В случае успеха отправленное сообщение возвращается.
+     */
+    case FORWARD_MESSAGE = 'forwardMessage';
 }

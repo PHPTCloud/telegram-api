@@ -149,4 +149,6 @@ enum TelegramApiFieldEnum: string
     case ALLOW_BOT_CHATS = 'allow_bot_chats';
     case ALLOW_GROUP_CHATS = 'allow_group_chats';
     case ALLOW_CHANNEL_CHATS = 'allow_channel_chats';
+    case FORCE_REPLY = 'force_reply';
+    case FROM_CHAT_ID = 'from_chat_id';
 }

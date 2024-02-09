@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
@@ -84,6 +85,18 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->messageDomainService->sendMessage($argument);
+    }
+
+    public function forwardMessage(ForwardMessageArgumentInterface $argument): MessageInterface
+    {
+        if (null === $this->messageDomainService) {
+            $this->messageDomainService = $this->messageDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->messageDomainService->forwardMessage($argument);
     }
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface

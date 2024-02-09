@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
+namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- * @author  Юдов Никита yudov.nikita@bk.ru
  *
  * @version 1.0.0
  *
@@ -17,7 +16,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#forcereply
  */
-interface ForceReplyInterface
+interface ForceReplyArgumentInterface
 {
     /**
      * Показывает пользователю интерфейс ответа, как если бы он вручную выбрал сообщение бота и нажал «Repl

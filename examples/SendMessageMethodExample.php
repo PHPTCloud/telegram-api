@@ -319,6 +319,21 @@ $result = $manager->sendMessage($message);
 dump($result);
 
 // Отправка кнопок под поле ввода сообщения
+// Предыдущая клавиатура будет удалена.
+$message = $messageBuilder->setChatId($chatId)
+    ->setText('Отправка ForceReply')
+    ->setForceReply(
+        new \PHPTCloud\TelegramApi\Argument\DataObject\ForceReplyArgument(
+            true,
+            'Какой-то текст в плейсхолдере поля ввода сообщения.',
+        ),
+    )
+    ->build()
+;
+$result = $manager->sendMessage($message);
+dump($result);
+
+// Отправка кнопок под поле ввода сообщения
 $message = $messageBuilder->setChatId($chatId)
     ->setText('В результате должны появиться 2 кнопки под полем ввода')
     ->setReplyKeyboardMarkup(

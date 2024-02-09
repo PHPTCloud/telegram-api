@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
@@ -43,6 +45,28 @@ class MessageDomainService implements MessageDomainServiceInterface
         }
 
         $response = $this->request::post(TelegramApiMethodEnum::SEND_MESSAGE->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var MessageDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function forwardMessage(ForwardMessageArgumentInterface $argument): MessageInterface
+    {
+        /** @var ForwardMessageArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(ForwardMessageArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $response = $this->request::post(TelegramApiMethodEnum::FORWARD_MESSAGE->value, $data);
 
         if ($response->isError()) {
             $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());

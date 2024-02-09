@@ -7,6 +7,8 @@ namespace PHPTCloud\TelegramApi\Argument\Factory;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonArgumentArraySerializerInterface;
@@ -25,6 +27,8 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerial
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonArgumentArraySerializer;
@@ -104,6 +108,12 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SwitchInlineQueryChosenChatArgumentArraySerializer::class:
             case SwitchInlineQueryChosenChatArgumentArraySerializerInterface::class:
                 return $this->createSwitchInlineQueryChosenChatArgumentArraySerializer();
+            case ForceReplyArgumentArraySerializerInterface::class:
+            case ForceReplyArgumentArraySerializer::class:
+                return $this->createForceReplyArgumentArraySerializer();
+            case ForwardMessageArgumentArraySerializer::class:
+            case ForwardMessageArgumentArraySerializerInterface::class:
+                return $this->createForwardMessageArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -118,6 +128,7 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createInlineKeyboardMarkupArgumentArraySerializer(),
             $this->createReplyKeyboardRemoveArgumentArraySerializer(),
             $this->createReplyKeyboardMarkupArgumentArraySerializer(),
+            $this->createForceReplyArgumentArraySerializer(),
         );
     }
 
@@ -223,5 +234,15 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createSwitchInlineQueryChosenChatArgumentArraySerializer(): SwitchInlineQueryChosenChatArgumentArraySerializerInterface
     {
         return new SwitchInlineQueryChosenChatArgumentArraySerializer();
+    }
+
+    public function createForceReplyArgumentArraySerializer(): ForceReplyArgumentArraySerializerInterface
+    {
+        return new ForceReplyArgumentArraySerializer();
+    }
+
+    public function createForwardMessageArgumentArraySerializer(): ForwardMessageArgumentArraySerializerInterface
+    {
+        return new ForwardMessageArgumentArraySerializer();
     }
 }

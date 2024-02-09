@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForceReplyArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
@@ -11,7 +12,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
-use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForceReplyInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -30,7 +30,7 @@ class MessageArgument implements MessageArgumentInterface
         private ?bool $notificationDisabled = null,
         private ?bool $contentProtected = null,
         private ?ReplyParametersArgumentInterface $replyParameters = null,
-        private InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface|null $replyMarkup = null,
+        private InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyArgumentInterface|null $replyMarkup = null,
     ) {
     }
 
@@ -129,7 +129,7 @@ class MessageArgument implements MessageArgumentInterface
         $this->replyParameters = $replyParameters;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyInterface|null
+    public function getReplyMarkup(): InlineKeyboardMarkupArgumentInterface|ReplyKeyboardMarkupArgumentInterface|ReplyKeyboardRemoveArgumentInterface|ForceReplyArgumentInterface|null
     {
         return $this->replyMarkup;
     }
@@ -138,7 +138,7 @@ class MessageArgument implements MessageArgumentInterface
         InlineKeyboardMarkupArgumentInterface
         |ReplyKeyboardMarkupArgumentInterface
         |ReplyKeyboardRemoveArgumentInterface
-        |ForceReplyInterface $replyMarkup = null
+        |ForceReplyArgumentInterface $replyMarkup = null
     ): void {
         $this->replyMarkup = $replyMarkup;
     }
@@ -158,7 +158,7 @@ class MessageArgument implements MessageArgumentInterface
         $this->replyMarkup = $replyMarkup;
     }
 
-    public function setForceReply(ForceReplyInterface $replyMarkup = null): void
+    public function setForceReply(ForceReplyArgumentInterface $replyMarkup = null): void
     {
         $this->replyMarkup = $replyMarkup;
     }
@@ -178,8 +178,8 @@ class MessageArgument implements MessageArgumentInterface
         return $this->replyMarkup instanceof ReplyKeyboardRemoveArgumentInterface ? $this->replyMarkup : null;
     }
 
-    public function getForceReply(): ?ForceReplyInterface
+    public function getForceReply(): ?ForceReplyArgumentInterface
     {
-        return $this->replyMarkup instanceof ForceReplyInterface ? $this->replyMarkup : null;
+        return $this->replyMarkup instanceof ForceReplyArgumentInterface ? $this->replyMarkup : null;
     }
 }
