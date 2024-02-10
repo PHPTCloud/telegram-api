@@ -99,4 +99,11 @@ enum TelegramApiMethodEnum: string
      * d отправленных сообщений.
      */
     case COPY_MESSAGES = 'copyMessages';
+
+    /**
+     * @see https://core.telegram.org/bots/api#sendphoto
+     *
+     * Используйте этот метод для отправки фотографий. В случае успеха отправленное сообщение возвращается.
+     */
+    case SEND_PHOTO = 'sendPhoto';
 }
