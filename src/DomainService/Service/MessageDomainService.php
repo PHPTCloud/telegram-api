@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
-use GuzzleHttp\RequestOptions;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
@@ -18,6 +18,8 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
@@ -47,6 +49,7 @@ class MessageDomainService implements MessageDomainServiceInterface
         private readonly SerializersAbstractFactoryInterface $serializersAbstractFactory,
         private readonly ExceptionAbstractFactoryInterface $exceptionAbstractFactory,
         private readonly SortingAlgorithmServiceInterface $sortingAlgorithmService,
+        private readonly MultipartArraySerializerInterface $multipartArraySerializer,
     ) {
     }
 
@@ -190,25 +193,40 @@ class MessageDomainService implements MessageDomainServiceInterface
         /** @var SendPhotoArgumentArraySerializerInterface $serializer */
         $serializer = $this->serializersAbstractFactory->create(SendPhotoArgumentArraySerializerInterface::class);
         $data = $serializer->serialize($argument);
-        $headers = [];
-        $multipart = [];
 
-        foreach ($data as $name => $value) {
-            if ($value instanceof LocalFileArgumentInterface) {
-                $multipart[] = [
-                    'name' => $name,
-                    'contents' => fopen($value->getFilePath(), 'r'),
-                ];
-                continue;
+        $multipart = $this->multipartArraySerializer->serialize($data);
+
+        $response = $this->request::post(
+            method: TelegramApiMethodEnum::SEND_PHOTO->value,
+            multipart: $multipart,
+        );
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
             }
-
-            $multipart[] = [
-                'name' => $name,
-                'contents' => $value,
-            ];
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
         }
 
-        $response = $this->request::post(TelegramApiMethodEnum::SEND_PHOTO->value, null, null, $headers, $multipart);
+        /** @var MessageDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function sendAudio(SendAudioArgumentInterface $argument): MessageInterface
+    {
+        /** @var SendAudioArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendAudioArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $multipart = $this->multipartArraySerializer->serialize($data);
+
+        $response = $this->request::post(
+            method: TelegramApiMethodEnum::SEND_AUDIO->value,
+            multipart: $multipart,
+        );
 
         if ($response->isError()) {
             $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());

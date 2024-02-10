@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -17,11 +18,11 @@ class CopyMessagesArgumentArraySerializer implements CopyMessagesArgumentArraySe
         $data[TelegramApiFieldEnum::FROM_CHAT_ID->value] = $argument->getFromChatId();
         $data[TelegramApiFieldEnum::MESSAGE_IDS->value] = $argument->getMessageIds();
 
-        if ($argument->wantDisableNotification() !== null) {
+        if (null !== $argument->wantDisableNotification()) {
             $data[TelegramApiFieldEnum::DISABLE_NOTIFICATION->value] = $argument->wantDisableNotification();
         }
 
-        if ($argument->wantProtectContent() !== null) {
+        if (null !== $argument->wantProtectContent()) {
             $data[TelegramApiFieldEnum::PROTECT_CONTENT->value] = $argument->wantProtectContent();
         }
 
@@ -29,7 +30,7 @@ class CopyMessagesArgumentArraySerializer implements CopyMessagesArgumentArraySe
             $data[TelegramApiFieldEnum::MESSAGE_THREAD_ID->value] = $argument->getMessageThreadId();
         }
 
-        if ($argument->wantRemoveCaption() !== null) {
+        if (null !== $argument->wantRemoveCaption()) {
             $data[TelegramApiFieldEnum::REMOVE_CAPTION->value] = $argument->wantRemoveCaption();
         }
 

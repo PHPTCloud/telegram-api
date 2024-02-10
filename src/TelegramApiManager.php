@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
@@ -36,10 +37,10 @@ class TelegramApiManager implements TelegramApiManagerInterface
     private ?ChatDomainServiceInterface $chatDomainService = null;
 
     public function __construct(
-        private readonly TelegramBotInterface                     $bot,
+        private readonly TelegramBotInterface $bot,
         private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
-        private readonly MessageDomainServiceFactoryInterface     $messageDomainServiceFactory,
-        private readonly ChatDomainServiceFactoryInterface        $chatDomainServiceFactory,
+        private readonly MessageDomainServiceFactoryInterface $messageDomainServiceFactory,
+        private readonly ChatDomainServiceFactoryInterface $chatDomainServiceFactory,
     ) {
     }
 
@@ -150,6 +151,18 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->messageDomainService->sendPhoto($argument);
+    }
+
+    public function sendAudio(SendAudioArgumentInterface $argument): MessageInterface
+    {
+        if (null === $this->messageDomainService) {
+            $this->messageDomainService = $this->messageDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->messageDomainService->sendAudio($argument);
     }
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface

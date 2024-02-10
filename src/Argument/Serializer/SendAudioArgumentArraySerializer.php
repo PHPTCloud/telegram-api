@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
-class CopyMessageArgumentArraySerializer implements CopyMessageArgumentArraySerializerInterface
+class SendAudioArgumentArraySerializer implements SendAudioArgumentArraySerializerInterface
 {
     public function __construct(
         private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
@@ -27,13 +27,28 @@ class CopyMessageArgumentArraySerializer implements CopyMessageArgumentArraySeri
     ) {
     }
 
-    public function serialize(CopyMessageArgumentInterface $argument): array
+    public function serialize(SendAudioArgumentInterface $argument): array
     {
         $data = [];
 
         $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
-        $data[TelegramApiFieldEnum::FROM_CHAT_ID->value] = $argument->getFromChatId();
-        $data[TelegramApiFieldEnum::MESSAGE_ID->value] = $argument->getMessageId();
+        $data[TelegramApiFieldEnum::AUDIO->value] = $argument->getAudio();
+
+        if ($argument->getDuration()) {
+            $data[TelegramApiFieldEnum::DURATION->value] = $argument->getDuration();
+        }
+
+        if ($argument->getPerformer()) {
+            $data[TelegramApiFieldEnum::PERFORMER->value] = $argument->getPerformer();
+        }
+
+        if ($argument->getTitle()) {
+            $data[TelegramApiFieldEnum::TITLE->value] = $argument->getTitle();
+        }
+
+        if ($argument->getThumbnail()) {
+            $data[TelegramApiFieldEnum::THUMBNAIL->value] = $argument->getThumbnail();
+        }
 
         if ($argument->getCaption()) {
             $data[TelegramApiFieldEnum::CAPTION->value] = $argument->getCaption();

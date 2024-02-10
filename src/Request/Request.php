@@ -87,10 +87,10 @@ class Request implements RequestInterface
 
     public static function post(
         string $method,
-        ?array $json = null,
-        ?array $formData = null,
-        ?array $headers = null,
-        ?array $multipart = null,
+        array $json = null,
+        array $formData = null,
+        array $headers = null,
+        array $multipart = null,
     ): ResponseInterface {
         try {
             $url = self::buildUrl(self::$host, self::$telegramBot->getToken(), $method);

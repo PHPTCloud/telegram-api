@@ -25,6 +25,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentAr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
@@ -49,6 +50,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializ
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardRemoveArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyParametersArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SendAudioArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
@@ -134,6 +136,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SendPhotoArgumentArraySerializer::class:
             case SendPhotoArgumentArraySerializerInterface::class:
                 return $this->createSendPhotoArgumentArraySerializer();
+            case SendAudioArgumentArraySerializer::class:
+            case SendAudioArgumentArraySerializerInterface::class:
+                return $this->createSendAudioArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -291,6 +296,18 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createSendPhotoArgumentArraySerializer(): SendPhotoArgumentArraySerializerInterface
     {
         return new SendPhotoArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+            $this->createReplyParametersArgumentArraySerializer(),
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
+            $this->createReplyKeyboardRemoveArgumentArraySerializer(),
+            $this->createReplyKeyboardMarkupArgumentArraySerializer(),
+            $this->createForceReplyArgumentArraySerializer(),
+        );
+    }
+
+    public function createSendAudioArgumentArraySerializer(): SendAudioArgumentArraySerializerInterface
+    {
+        return new SendAudioArgumentArraySerializer(
             $this->createMessageEntityArgumentArraySerializer(),
             $this->createReplyParametersArgumentArraySerializer(),
             $this->createInlineKeyboardMarkupArgumentArraySerializer(),

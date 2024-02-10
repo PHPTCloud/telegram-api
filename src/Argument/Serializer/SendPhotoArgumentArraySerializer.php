@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
@@ -18,12 +18,12 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 class SendPhotoArgumentArraySerializer implements SendPhotoArgumentArraySerializerInterface
 {
     public function __construct(
-        private readonly MessageEntityArgumentArraySerializerInterface        $messageEntityArgumentArraySerializer,
-        private readonly ReplyParametersArgumentArraySerializerInterface      $replyParametersArgumentArraySerializer,
+        private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
+        private readonly ReplyParametersArgumentArraySerializerInterface $replyParametersArgumentArraySerializer,
         private readonly InlineKeyboardMarkupArgumentArraySerializerInterface $inlineKeyboardMarkupArgumentArraySerializer,
-        private readonly ReplyKeyboardRemoveArgumentArraySerializerInterface  $replyKeyboardRemoveArgumentArraySerializer,
-        private readonly ReplyKeyboardMarkupArgumentArraySerializerInterface  $replyKeyboardMarkupArgumentArraySerializer,
-        private readonly ForceReplyArgumentArraySerializerInterface           $forceReplyArgumentArraySerializer,
+        private readonly ReplyKeyboardRemoveArgumentArraySerializerInterface $replyKeyboardRemoveArgumentArraySerializer,
+        private readonly ReplyKeyboardMarkupArgumentArraySerializerInterface $replyKeyboardMarkupArgumentArraySerializer,
+        private readonly ForceReplyArgumentArraySerializerInterface $forceReplyArgumentArraySerializer,
     ) {
     }
 
@@ -51,15 +51,15 @@ class SendPhotoArgumentArraySerializer implements SendPhotoArgumentArraySerializ
             );
         }
 
-        if ($argument->hasSpoiler() !== null) {
+        if (null !== $argument->hasSpoiler()) {
             $data[TelegramApiFieldEnum::HAS_SPOILER->value] = $argument->hasSpoiler();
         }
 
-        if ($argument->wantDisableNotification() !== null) {
+        if (null !== $argument->wantDisableNotification()) {
             $data[TelegramApiFieldEnum::DISABLE_NOTIFICATION->value] = $argument->wantDisableNotification();
         }
 
-        if ($argument->wantProtectContent() !== null) {
+        if (null !== $argument->wantProtectContent()) {
             $data[TelegramApiFieldEnum::PROTECT_CONTENT->value] = $argument->wantProtectContent();
         }
 

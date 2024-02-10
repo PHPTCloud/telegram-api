@@ -11,6 +11,7 @@ use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
+use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
@@ -52,6 +53,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new MessageCantBeForwardedException($message);
         } elseif (str_contains($message, $this->getMessageIdsMustBeInIncreasingOrderMessagePart())) {
             return new MessageIdsMustBeInIncreasingOrderException($message);
+        } elseif (str_contains($message, $this->getInvalidResourceTypeMessagePart())) {
+            return new InvalidResourceTypeException($message);
         }
 
         return new TelegramApiException($message);
@@ -110,5 +113,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getMessageIdsMustBeInIncreasingOrderMessagePart(): string
     {
         return 'message identifiers must be in a strictly increasing order';
+    }
+
+    private function getInvalidResourceTypeMessagePart(): string
+    {
+        return 'invalid resource type';
     }
 }

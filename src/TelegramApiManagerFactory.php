@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi;
 
 use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactory;
+use PHPTCloud\TelegramApi\Argument\Serializer\MultipartArraySerializer;
 use PHPTCloud\TelegramApi\DomainService\Factory\ChatDomainServiceFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactory;
@@ -37,6 +38,7 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
             new SortingAlgorithmServiceFactory(),
+            new MultipartArraySerializer(),
         );
 
         $chatDomainServiceFactory = new ChatDomainServiceFactory(

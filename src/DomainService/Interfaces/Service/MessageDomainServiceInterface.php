@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
@@ -83,4 +84,17 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#sendphoto
      */
     public function sendPhoto(SendPhotoArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод для отправки аудиофайлов, если вы хотите, чтобы клиенты Telegram отображали и
+     * х в музыкальном проигрывателе. Ваш звук должен быть в формате .MP3 или .M4A. В случае успеха отправл
+     * енное сообщение возвращается. Боты в настоящее время могут отправлять аудиофайлы размером до 50 МБ,
+     * в будущем этот лимит может быть изменен.
+     *
+     * @see  https://core.telegram.org/bots/api#sendaudio
+     *
+     * Вместо этого для отправки голосовых сообщений используйте метод sendVoice.
+     * @see  https://core.telegram.org/bots/api#sendvoice
+     */
+    public function sendAudio(SendAudioArgumentInterface $argument): MessageInterface;
 }

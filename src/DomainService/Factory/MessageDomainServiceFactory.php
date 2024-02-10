@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Factory;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Service\MessageDomainService;
@@ -27,6 +28,7 @@ class MessageDomainServiceFactory implements MessageDomainServiceFactoryInterfac
         private readonly SerializersAbstractFactoryInterface $serializersAbstractFactory,
         private readonly ExceptionAbstractFactoryInterface $exceptionAbstractFactory,
         private readonly SortingAlgorithmServiceFactoryInterface $sortingAlgorithmServiceFactory,
+        private readonly MultipartArraySerializerInterface $multipartArraySerializer,
     ) {
     }
 
@@ -40,6 +42,7 @@ class MessageDomainServiceFactory implements MessageDomainServiceFactoryInterfac
             $this->serializersAbstractFactory,
             $this->exceptionAbstractFactory,
             $this->sortingAlgorithmServiceFactory->createDefault(),
+            $this->multipartArraySerializer,
         );
     }
 }

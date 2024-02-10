@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
@@ -50,6 +51,8 @@ interface TelegramApiManagerInterface
     public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array;
 
     public function sendPhoto(SendPhotoArgumentInterface $argument): MessageInterface;
+
+    public function sendAudio(SendAudioArgumentInterface $argument): MessageInterface;
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface;
 }
