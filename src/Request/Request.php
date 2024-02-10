@@ -58,7 +58,7 @@ class Request implements RequestInterface
         return self::getInstance($telegramBot, $host);
     }
 
-    public static function get(string $method, array $query = []): ResponseInterface
+    public static function get(string $method, array $query = [], array $headers = []): ResponseInterface
     {
         try {
             $url = self::buildUrl(self::$host, self::$telegramBot->getToken(), $method, $query);
@@ -85,14 +85,28 @@ class Request implements RequestInterface
         }
     }
 
-    public static function post(string $method, array $json = null): ResponseInterface
-    {
+    public static function post(
+        string $method,
+        ?array $json = null,
+        ?array $formData = null,
+        ?array $headers = null,
+        ?array $multipart = null,
+    ): ResponseInterface {
         try {
             $url = self::buildUrl(self::$host, self::$telegramBot->getToken(), $method);
             $options = [];
 
+            if ($headers) {
+                $options[RequestOptions::HEADERS] = $headers;
+            }
             if ($json) {
                 $options[RequestOptions::JSON] = $json;
+            }
+            if ($formData) {
+                $options[RequestOptions::FORM_PARAMS] = $formData;
+            }
+            if ($multipart) {
+                $options[RequestOptions::MULTIPART] = $multipart;
             }
 
             $response = self::$client->post($url, $options);

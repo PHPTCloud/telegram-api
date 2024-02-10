@@ -155,4 +155,5 @@ enum TelegramApiFieldEnum: string
     case CAPTION = 'caption';
     case CAPTION_ENTITIES = 'caption_entities';
     case REMOVE_CAPTION = 'remove_caption';
+    case HAS_SPOILER = 'has_spoiler';
 }

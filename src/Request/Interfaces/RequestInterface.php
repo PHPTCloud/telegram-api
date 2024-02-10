@@ -27,7 +27,13 @@ interface RequestInterface
         string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface;
 
-    public static function get(string $method, array $query = []): ResponseInterface;
+    public static function get(string $method, array $query = [], array $headers = []): ResponseInterface;
 
-    public static function post(string $method, array $json = null): ResponseInterface;
+    public static function post(
+        string $method,
+        ?array $json = null,
+        ?array $formData = null,
+        ?array $headers = null,
+        ?array $multipart = null,
+    ): ResponseInterface;
 }

@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
+use GuzzleHttp\RequestOptions;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
@@ -179,5 +183,44 @@ class MessageDomainService implements MessageDomainServiceInterface
         return array_map(static function (array $item) use ($deserializer) {
             return $deserializer->deserialize($item);
         }, $response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function sendPhoto(SendPhotoArgumentInterface $argument): MessageInterface
+    {
+        /** @var SendPhotoArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendPhotoArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+        $headers = [];
+        $multipart = [];
+
+        foreach ($data as $name => $value) {
+            if ($value instanceof LocalFileArgumentInterface) {
+                $multipart[] = [
+                    'name' => $name,
+                    'contents' => fopen($value->getFilePath(), 'r'),
+                ];
+                continue;
+            }
+
+            $multipart[] = [
+                'name' => $name,
+                'contents' => $value,
+            ];
+        }
+
+        $response = $this->request::post(TelegramApiMethodEnum::SEND_PHOTO->value, null, null, $headers, $multipart);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var MessageDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 }

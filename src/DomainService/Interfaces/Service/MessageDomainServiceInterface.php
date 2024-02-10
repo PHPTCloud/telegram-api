@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
@@ -75,4 +76,11 @@ interface MessageDomainServiceInterface
      * @return MessageIdInterface[]
      */
     public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array;
+
+    /**
+     * Используйте этот метод для отправки фотографий. В случае успеха отправленное сообщение возвращается.
+     *
+     * @see https://core.telegram.org/bots/api#sendphoto
+     */
+    public function sendPhoto(SendPhotoArgumentInterface $argument): MessageInterface;
 }
