@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
@@ -59,4 +60,19 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#copymessage
      */
     public function copyMessage(CopyMessageArgumentInterface $argument): MessageId;
+
+    /**
+     * Используйте этот метод для копирования сообщений любого типа. Если некоторые из указанных сообщений
+     * невозможно найти или скопировать, они пропускаются. Служебные сообщения, сообщения о розыгрышах, соо
+     * бщения о победителях розыгрышей и сообщения о счетах не могут быть скопированы. Опрос викторины можн
+     * о скопировать только в том случае, если значение поля Correct_option_id известно боту. Метод аналоги
+     * чен методу forwardMessages, но скопированные сообщения не имеют ссылки на исходное сообщение. Группи
+     * ровка альбомов сохраняется для скопированных сообщений. В случае успеха возвращается массив MessageI
+     * d отправленных сообщений.
+     *
+     * @see https://core.telegram.org/bots/api#copymessages
+     *
+     * @return MessageIdInterface[]
+     */
+    public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array;
 }

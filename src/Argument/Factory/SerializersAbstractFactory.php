@@ -8,6 +8,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactory
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
@@ -30,6 +31,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArray
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
@@ -124,6 +126,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case CopyMessageArgumentArraySerializer::class:
             case CopyMessageArgumentArraySerializerInterface::class:
                 return $this->createCopyMessageArgumentArraySerializer();
+            case CopyMessagesArgumentArraySerializer::class:
+            case CopyMessagesArgumentArraySerializerInterface::class:
+                return $this->createCopyMessagesArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -271,5 +276,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createReplyKeyboardMarkupArgumentArraySerializer(),
             $this->createForceReplyArgumentArraySerializer(),
         );
+    }
+
+    public function createCopyMessagesArgumentArraySerializer(): CopyMessagesArgumentArraySerializerInterface
+    {
+        return new CopyMessagesArgumentArraySerializer();
     }
 }

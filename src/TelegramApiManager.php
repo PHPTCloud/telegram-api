@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
@@ -34,10 +35,10 @@ class TelegramApiManager implements TelegramApiManagerInterface
     private ?ChatDomainServiceInterface $chatDomainService = null;
 
     public function __construct(
-        private readonly TelegramBotInterface $bot,
+        private readonly TelegramBotInterface                     $bot,
         private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
-        private readonly MessageDomainServiceFactoryInterface $messageDomainServiceFactory,
-        private readonly ChatDomainServiceFactoryInterface $chatDomainServiceFactory,
+        private readonly MessageDomainServiceFactoryInterface     $messageDomainServiceFactory,
+        private readonly ChatDomainServiceFactoryInterface        $chatDomainServiceFactory,
     ) {
     }
 
@@ -124,6 +125,18 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->messageDomainService->copyMessage($argument);
+    }
+
+    public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array
+    {
+        if (null === $this->messageDomainService) {
+            $this->messageDomainService = $this->messageDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->messageDomainService->copyMessages($argument, $sortIds);
     }
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface

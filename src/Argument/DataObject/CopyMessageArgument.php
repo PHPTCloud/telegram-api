@@ -14,21 +14,21 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgument
 class CopyMessageArgument implements CopyMessageArgumentInterface
 {
     public function __construct(
-        private readonly int|float|string $chatId,
-        private readonly int|float|string $fromChatId,
-        private readonly int $messageId,
-        private readonly ?string $caption = null,
-        private readonly ?string $parseMode = null,
-        private readonly ?array $captionEntities = null,
-        private readonly ?bool $disableNotification = null,
-        private readonly ?bool $protectContent = null,
-        private readonly ?ReplyParametersArgumentInterface $replyParameters = null,
-        private readonly InlineKeyboardMarkupArgumentInterface
-                        |ReplyKeyboardMarkupArgumentInterface
-                        |ReplyKeyboardRemoveArgumentInterface
-                        |ForceReplyArgumentInterface
-                        |null $replyMarkup = null,
-        private readonly ?int $messageThreadId = null,
+        protected readonly int|float|string $chatId,
+        protected readonly int|float|string $fromChatId,
+        protected readonly int $messageId,
+        protected readonly ?string $caption = null,
+        protected readonly ?string $parseMode = null,
+        protected readonly ?array $captionEntities = null,
+        protected readonly ?bool $disableNotification = null,
+        protected readonly ?bool $protectContent = null,
+        protected readonly ?ReplyParametersArgumentInterface $replyParameters = null,
+        protected readonly InlineKeyboardMarkupArgumentInterface
+                           |ReplyKeyboardMarkupArgumentInterface
+                           |ReplyKeyboardRemoveArgumentInterface
+                           |ForceReplyArgumentInterface
+                           |null $replyMarkup = null,
+        protected readonly ?int $messageThreadId = null,
     ) {
     }
 

@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
@@ -44,6 +45,8 @@ interface TelegramApiManagerInterface
     public function forwardMessages(ForwardMessagesArgumentInterface $argument, bool $sortIds = false): array;
 
     public function copyMessage(CopyMessageArgumentInterface $argument): MessageId;
+
+    public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array;
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface;
 }

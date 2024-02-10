@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
@@ -148,5 +150,34 @@ class MessageDomainService implements MessageDomainServiceInterface
         $deserializer = $this->deserializersAbstractFactory->create(MessageIdDeserializerInterface::class);
 
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array
+    {
+        /** @var CopyMessagesArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(CopyMessagesArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        if ($sortIds) {
+            $data[TelegramApiFieldEnum::MESSAGE_IDS->value]
+                = $this->sortingAlgorithmService->sortArrayOfNumbers($data[TelegramApiFieldEnum::MESSAGE_IDS->value]);
+        }
+
+        $response = $this->request::post(TelegramApiMethodEnum::COPY_MESSAGES->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var MessageIdDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(MessageIdDeserializerInterface::class);
+
+        return array_map(static function (array $item) use ($deserializer) {
+            return $deserializer->deserialize($item);
+        }, $response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 }

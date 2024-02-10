@@ -154,4 +154,5 @@ enum TelegramApiFieldEnum: string
     case MESSAGE_IDS = 'message_ids';
     case CAPTION = 'caption';
     case CAPTION_ENTITIES = 'caption_entities';
+    case REMOVE_CAPTION = 'remove_caption';
 }

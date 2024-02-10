@@ -84,6 +84,10 @@ class CopyMessageArgumentArraySerializer implements CopyMessageArgumentArraySeri
                 = $this->forceReplyArgumentArraySerializer->serialize($argument->getForceReply());
         }
 
+        if ($argument->getMessageThreadId()) {
+            $data[TelegramApiFieldEnum::MESSAGE_THREAD_ID->value] = $argument->getMessageThreadId();
+        }
+
         if (empty($data)) {
             throw new \InvalidArgumentException('Обязательные поля аргумента не заполнены.');
         }

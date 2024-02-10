@@ -45,5 +45,4 @@ $result = $manager->copyMessage(
         null,
     ),
 );
-
 dump($result);
