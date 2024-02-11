@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 
 /**
@@ -36,12 +37,20 @@ interface ChatDomainServiceInterface
      * авки текстового сообщения типа «Получение изображения, пожалуйста, подождите…» бот может использоват
      * ь sendChatAction с action = upload_photo. Пользователь увидит статус бота «отправка фото».
      *
-     * @link https://t.me/imagebot
+     * @see  https://t.me/imagebot
      *
      * Мы рекомендуем использовать этот метод только в том случае, если получение ответа от бота займет зам
      * етное время.
-     *
      * @see  https://core.telegram.org/bots/api#sendchataction
      */
     public function sendChatAction(SendChatActionArgumentInterface $argument): bool;
+
+    /**
+     * Используйте этот метод, чтобы установить новую фотографию профиля для чата. Фотографии нельзя измени
+     * ть в приватных чатах. Для этого бот должен быть администратором в чате и иметь соответствующие права
+     * администратора. Возвращает True в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#setchatphoto
+     */
+    public function setChatPhoto(SetChatPhotoArgumentInterface $argument): bool;
 }

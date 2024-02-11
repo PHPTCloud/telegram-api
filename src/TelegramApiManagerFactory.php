@@ -45,6 +45,7 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
             $deserializersAbstractFactory,
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
+            new MultipartArraySerializer(),
         );
 
         return new TelegramApiManager(

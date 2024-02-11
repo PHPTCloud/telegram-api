@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Exception\Error\BotIsNotAMemberOfTheChatException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonIdInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
+use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatPhotoException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
 use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
@@ -58,6 +59,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new MessageIdsMustBeInIncreasingOrderException($message);
         } elseif (str_contains($message, $this->getInvalidResourceTypeMessagePart())) {
             return new InvalidResourceTypeException($message);
+        } elseif (str_contains($message, $this->getCantChangePrivateChatPhotoMessagePart())) {
+            return new CantChangePrivateChatPhotoException($message);
         }
 
         return new TelegramApiException($message);
@@ -126,5 +129,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getTextButtonsAreUnallowedInInlineKeyboardExceptionMessagePart(): string
     {
         return 'text buttons are unallowed in the inline keyboard';
+    }
+
+    private function getCantChangePrivateChatPhotoMessagePart(): string
+    {
+        return 'can\'t change private chat photo';
     }
 }

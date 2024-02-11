@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -12,11 +13,10 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * авки текстового сообщения типа «Получение изображения, пожалуйста, подождите…» бот может использоват
  * ь sendChatAction с action = upload_photo. Пользователь увидит статус бота «отправка фото».
  *
- * @link https://t.me/imagebot
+ * @see https://t.me/imagebot
  *
  * Мы рекомендуем использовать этот метод только в том случае, если получение ответа от бота займет зам
  * етное время.
- *
  * @see  https://core.telegram.org/bots/api#sendchataction
  */
 interface SendChatActionArgumentInterface extends ArgumentInterface
