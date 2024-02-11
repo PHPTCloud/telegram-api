@@ -59,6 +59,24 @@ enum TelegramApiMethodEnum: string
     case GET_CHAT = 'getChat';
 
     /**
+     * @see  https://core.telegram.org/bots/api#sendchataction
+     *
+     * Используйте этот метод, когда вам нужно сообщить пользователю, что что-то происходит на стороне бота.
+     * Статус устанавливается на 5 секунд или меньше (при поступлении сообщения от вашего бота клиенты Te
+     * legram очищают его статус набора). Возвращает True в случае успеха.
+     *
+     * Пример: ImageBot требуется некоторое время для обработки запроса и загрузки изображения. Вместо отпр
+     * авки текстового сообщения типа «Получение изображения, пожалуйста, подождите…» бот может использоват
+     * ь sendChatAction с action = upload_photo. Пользователь увидит статус бота «отправка фото».
+     *
+     * @link https://t.me/imagebot
+     *
+     * Мы рекомендуем использовать этот метод только в том случае, если получение ответа от бота займет зам
+     * етное время.
+     */
+    case SEND_CHAT_ACTION = 'sendChatAction';
+
+    /**
      * @see https://core.telegram.org/bots/api#forwardmessage
      *
      * Используйте этот метод для пересылки сообщений любого типа. Служебные сообщения и сообщения с защище
@@ -116,7 +134,7 @@ enum TelegramApiMethodEnum: string
      * в будущем этот лимит может быть изменен.
      *
      * Вместо этого для отправки голосовых сообщений используйте метод sendVoice.
-     * @see https://core.telegram.org/bots/api#sendvoice
+     * @see  https://core.telegram.org/bots/api#sendvoice
      */
     case SEND_AUDIO = 'sendAudio';
 

@@ -11,6 +11,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
@@ -58,4 +59,6 @@ interface TelegramApiManagerInterface
     public function sendDocument(SendDocumentArgumentInterface $argument): MessageInterface;
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface;
+
+    public function sendChatAction(SendChatActionArgumentInterface $argument): bool;
 }
