@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#switchinlinequerychosenchat
  */
-interface SwitchInlineQueryChosenChatArgumentInterface
+interface SwitchInlineQueryChosenChatArgumentInterface extends ArgumentInterface
 {
     /**
      * Необязательный. Встроенный запрос по умолчанию, который будет вставлен в поле ввода. Если оставить п

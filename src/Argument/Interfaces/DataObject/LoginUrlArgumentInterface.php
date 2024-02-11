@@ -18,7 +18,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @see     https://core.telegram.org/bots/api#loginurl
  * @see     https://core.telegram.org/widgets/login
  */
-interface LoginUrlArgumentInterface
+interface LoginUrlArgumentInterface extends ArgumentInterface
 {
     /**
      * URL-адрес HTTPS, который будет открыт с данными авторизации пользователя, добавленными в строку запр

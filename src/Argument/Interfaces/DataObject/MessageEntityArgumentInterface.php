@@ -11,7 +11,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#messageentity
  */
-interface MessageEntityArgumentInterface
+interface MessageEntityArgumentInterface extends ArgumentInterface
 {
     /**
      * Тип сущности. В настоящее время можно использовать:

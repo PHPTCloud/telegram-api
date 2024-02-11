@@ -17,7 +17,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see https://core.telegram.org/bots/api#replykeyboardremove
  */
-interface ReplyKeyboardRemoveArgumentInterface
+interface ReplyKeyboardRemoveArgumentInterface extends ArgumentInterface
 {
     /**
      * Запрос клиентов на удаление пользовательской клавиатуры (пользователь не сможет вызвать эту клавиату

@@ -19,7 +19,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#copymessages
  */
-interface CopyMessagesArgumentInterface
+interface CopyMessagesArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевого чата или имя пользователя целевого канала (в формате @channelusern

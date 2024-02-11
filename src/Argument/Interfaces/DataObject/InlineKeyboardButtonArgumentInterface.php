@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see    https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
-interface InlineKeyboardButtonArgumentInterface
+interface InlineKeyboardButtonArgumentInterface extends ArgumentInterface
 {
     /**
      * Текст метки на кнопке.

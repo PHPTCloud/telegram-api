@@ -13,7 +13,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#sendphoto
  */
-interface SendPhotoArgumentInterface
+interface SendPhotoArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевого чата или имя пользователя целевого канала (в формате @channelusern
@@ -31,8 +31,6 @@ interface SendPhotoArgumentInterface
      * @see https://core.telegram.org/bots/api#sending-files
      */
     public function getPhoto(): LocalFileArgumentInterface|string;
-
-    public function isLocalFile(): bool;
 
     /**
      * Уникальный идентификатор целевой ветки сообщений (темы) форума; только для супергрупп форума.

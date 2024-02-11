@@ -13,7 +13,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * Данный файл будет обрабатываться через resource php, поэтому убедитесь в том,
  * что у php скрипта есть доступ к файлу.
  */
-interface LocalFileArgumentInterface
+interface LocalFileArgumentInterface extends ArgumentInterface
 {
     public function getFilePath(): string;
 }

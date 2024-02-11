@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
-interface ReplyParametersArgumentInterface
+interface ReplyParametersArgumentInterface extends ArgumentInterface
 {
     /**
      * Идентификатор сообщения, на которое будет дан ответ в текущем чате или в чате chat_id, если он указа

@@ -16,7 +16,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#forcereply
  */
-interface ForceReplyArgumentInterface
+interface ForceReplyArgumentInterface extends ArgumentInterface
 {
     /**
      * Показывает пользователю интерфейс ответа, как если бы он вручную выбрал сообщение бота и нажал «Repl

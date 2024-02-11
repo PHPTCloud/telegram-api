@@ -16,7 +16,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see    https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  */
-interface KeyboardButtonRequestChatArgumentInterface
+interface KeyboardButtonRequestChatArgumentInterface extends ArgumentInterface
 {
     /**
      * Знаковый 32-битный идентификатор запроса, который будет получен обратно в объекте ChatShared. Должно

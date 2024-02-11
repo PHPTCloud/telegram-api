@@ -9,6 +9,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @version 1.0.0
  */
-interface LinkPreviewOptionsArgumentInterface
+interface LinkPreviewOptionsArgumentInterface extends ArgumentInterface
 {
 }

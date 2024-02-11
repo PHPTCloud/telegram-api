@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ArgumentInterface;
+
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
@@ -15,7 +17,7 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * @see    https://core.telegram.org/bots/api#user
  * Этот объект представляет пользователя или бота Telegram.
  */
-interface UserInterface
+interface UserInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор этого пользователя или бота. Это число может иметь более 32 значащих битов,

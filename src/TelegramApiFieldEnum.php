@@ -160,4 +160,6 @@ enum TelegramApiFieldEnum: string
     case DURATION = 'duration';
     case PERFORMER = 'performer';
     case THUMBNAIL = 'thumbnail';
+    case DISABLE_CONTENT_TYPE_DETECTION = 'disable_content_type_detection';
+    case DOCUMENT = 'document';
 }

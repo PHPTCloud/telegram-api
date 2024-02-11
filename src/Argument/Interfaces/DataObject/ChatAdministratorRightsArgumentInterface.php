@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see    https://core.telegram.org/bots/api#chatadministratorrights
  */
-interface ChatAdministratorRightsArgumentInterface
+interface ChatAdministratorRightsArgumentInterface extends ArgumentInterface
 {
     /**
      * Правда, если присутствие пользователя в чате скрыто.

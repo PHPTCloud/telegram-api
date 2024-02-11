@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#forwardmessage
  */
-interface ForwardMessageArgumentInterface
+interface ForwardMessageArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевого чата или имя пользователя целевого канала (в формате @channelusern

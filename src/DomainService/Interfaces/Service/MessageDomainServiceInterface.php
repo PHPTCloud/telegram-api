@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
@@ -97,4 +98,13 @@ interface MessageDomainServiceInterface
      * @see  https://core.telegram.org/bots/api#sendvoice
      */
     public function sendAudio(SendAudioArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод для отправки общих файлов. В случае успеха отправленное сообщение возвращаетс
+     * я. Боты на данный момент могут отправлять файлы любого типа размером до 50 МБ, в будущем этот лимит
+     * может быть изменен.
+     *
+     * @see https://core.telegram.org/bots/api#senddocument
+     */
+    public function sendDocument(SendDocumentArgumentInterface $argument): MessageInterface;
 }

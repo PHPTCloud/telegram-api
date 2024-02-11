@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @see     https://core.telegram.org/bots/webapps
  * @see     https://core.telegram.org/bots/api#webappinfo
  */
-interface WebAppInfoArgumentInterface
+interface WebAppInfoArgumentInterface extends ArgumentInterface
 {
     /**
      * URL-адрес HTTPS веб-приложения, который необходимо открыть с дополнительными данными, как указано в

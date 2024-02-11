@@ -119,4 +119,13 @@ enum TelegramApiMethodEnum: string
      * @see https://core.telegram.org/bots/api#sendvoice
      */
     case SEND_AUDIO = 'sendAudio';
+
+    /**
+     * @see https://core.telegram.org/bots/api#senddocument
+     *
+     * Используйте этот метод для отправки общих файлов. В случае успеха отправленное сообщение возвращаетс
+     * я. Боты на данный момент могут отправлять файлы любого типа размером до 50 МБ, в будущем этот лимит
+     * может быть изменен.
+     */
+    case SEND_DOCUMENT = 'sendDocument';
 }

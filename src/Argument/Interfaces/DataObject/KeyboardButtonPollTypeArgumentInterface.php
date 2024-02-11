@@ -15,7 +15,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see    https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
-interface KeyboardButtonPollTypeArgumentInterface
+interface KeyboardButtonPollTypeArgumentInterface extends ArgumentInterface
 {
     /**
      * Необязательный. Если викторина пройдена, пользователю будет разрешено создавать только опросы в режи

@@ -15,7 +15,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @see    https://core.telegram.org/bots/api#replykeyboardmarkup
  * @see    https://core.telegram.org/bots/features#keyboards
  */
-interface ReplyKeyboardMarkupArgumentInterface
+interface ReplyKeyboardMarkupArgumentInterface extends ArgumentInterface
 {
     /**
      * Массив строк кнопок, каждая из которых представлена массивом объектов KeyboardButton.

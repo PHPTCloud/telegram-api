@@ -16,6 +16,7 @@ use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
+use PHPTCloud\TelegramApi\Exception\Error\TextButtonsAreUnallowedInInlineKeyboardException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Exception\Interfaces\TelegramApiExceptionInterface;
@@ -35,6 +36,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new UnsupportedParseModeException($message);
         } elseif (str_contains($message, $this->getCantFindFieldMessagePart())) {
             return new CantFindFieldException($message);
+        } elseif (str_contains($message, $this->getTextButtonsAreUnallowedInInlineKeyboardExceptionMessagePart())) {
+            return new TextButtonsAreUnallowedInInlineKeyboardException($message);
         } elseif (str_contains($message, $this->getCantParseInlineKeyboardButtonMessagePart())) {
             return new CantParseInlineKeyboardButtonException($message);
         } elseif (str_contains($message, $this->getButtonQuantityMaxInvalidMessagePart())) {
@@ -118,5 +121,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getInvalidResourceTypeMessagePart(): string
     {
         return 'invalid resource type';
+    }
+
+    private function getTextButtonsAreUnallowedInInlineKeyboardExceptionMessagePart(): string
+    {
+        return 'text buttons are unallowed in the inline keyboard';
     }
 }

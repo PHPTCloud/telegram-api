@@ -20,7 +20,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see    https://core.telegram.org/bots/api#keyboardbutton
  */
-interface KeyboardButtonArgumentInterface
+interface KeyboardButtonArgumentInterface extends ArgumentInterface
 {
     /**
      * Текст кнопки. Если ни одно из необязательных полей не используется, оно будет отправлено в виде сооб

@@ -9,17 +9,13 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @version 1.0.0
  *
- * Используйте этот метод для отправки аудиофайлов, если вы хотите, чтобы клиенты Telegram отображали и
- * х в музыкальном проигрывателе. Ваш звук должен быть в формате .MP3 или .M4A. В случае успеха отправл
- * енное сообщение возвращается. Боты в настоящее время могут отправлять аудиофайлы размером до 50 МБ,
- * в будущем этот лимит может быть изменен.
+ * Используйте этот метод для отправки общих файлов. В случае успеха отправленное сообщение возвращаетс
+ * я. Боты на данный момент могут отправлять файлы любого типа размером до 50 МБ, в будущем этот лимит
+ * может быть изменен.
  *
- * Вместо этого для отправки голосовых сообщений используйте метод sendVoice.
- *
- * @see     https://core.telegram.org/bots/api#sendvoice
- * @see     https://core.telegram.org/bots/api#sendaudio
+ * @see     https://core.telegram.org/bots/api#senddocument
  */
-interface SendAudioArgumentInterface extends ArgumentInterface
+interface SendDocumentArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевого чата или имя пользователя целевого канала (в формате @channelusern
@@ -33,28 +29,20 @@ interface SendAudioArgumentInterface extends ArgumentInterface
     public function getMessageThreadId(): ?int;
 
     /**
-     * Аудиофайл для отправки. Передайте file_id как строку, чтобы отправить аудиофайл, существующий на сер
-     * верах Telegram (рекомендуется), передайте URL-адрес HTTP в качестве строки для Telegram, чтобы получ
-     * ить аудиофайл из Интернета, или загрузите новый, используя multipart/form-data. Подробнее об отправк
-     * е файлов».
+     * Файл для отправки. Передайте file_id как строку, чтобы отправить файл, который существует на сервера
+     * х Telegram (рекомендуется), передайте URL-адрес HTTP как строку, чтобы Telegram получил файл из Инте
+     * рнета, или загрузите новый, используя multipart/form-data. Дополнительная информация об отправке фай
+     * лов ».
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    public function getAudio(): LocalFileArgumentInterface|string;
+    public function getDocument(): LocalFileArgumentInterface|string;
 
     /**
-     * Новая подпись для мультимедиа, 0–1024 символа после анализа сущностей. Если не указано, исходный заг
-     * оловок сохраняется.
+     * Заголовок документа (также может использоваться при повторной отправке документов по file_id), 0–102
+     * 4 символа после анализа сущностей.
      */
     public function getCaption(): ?string;
-
-    /**
-     * Режим разбора сущностей в новой подписи. Дополнительные сведения см. в разделе «Параметры форматиров
-     * ания».
-     *
-     * @see https://core.telegram.org/bots/api#formatting-options
-     */
-    public function getParseMode(): ?string;
 
     /**
      * Сериализованный в формате JSON список специальных объектов, отображаемых в заголовке, который можно
@@ -63,21 +51,6 @@ interface SendAudioArgumentInterface extends ArgumentInterface
      * @return MessageEntityArgumentInterface[]|null
      */
     public function getCaptionEntities(): ?array;
-
-    /**
-     * Продолжительность звука в секундах.
-     */
-    public function getDuration(): ?int;
-
-    /**
-     * Исполнитель.
-     */
-    public function getPerformer(): ?string;
-
-    /**
-     * Название трека.
-     */
-    public function getTitle(): ?string;
 
     /**
      * Миниатюра отправленного файла; можно игнорировать, если создание миниатюр для файла поддерживается н
@@ -90,6 +63,14 @@ interface SendAudioArgumentInterface extends ArgumentInterface
      * @see https://core.telegram.org/bots/api#sending-files
      */
     public function getThumbnail(): LocalFileArgumentInterface|string|null;
+
+    /**
+     * Режим разбора сущностей в новой подписи. Дополнительные сведения см. в разделе «Параметры форматиров
+     * ания».
+     *
+     * @see https://core.telegram.org/bots/api#formatting-options
+     */
+    public function getParseMode(): ?string;
 
     /**
      * Необязательный. Отправляет сообщение молча. Пользователи получат уведомление без звука.
@@ -133,4 +114,10 @@ interface SendAudioArgumentInterface extends ArgumentInterface
      * принудительному ответу пользователя.
      */
     public function getForceReply(): ?ForceReplyArgumentInterface;
+
+    /**
+     * Отключает автоматическое определение типа контента на стороне сервера для файлов, загруженных с испо
+     * льзованием multipart/form-data.
+     */
+    public function wantDisableContentTypeDetection(): ?bool;
 }

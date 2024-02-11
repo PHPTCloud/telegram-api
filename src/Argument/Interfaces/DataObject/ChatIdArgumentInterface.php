@@ -10,7 +10,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @version 1.0.0
  */
-interface ChatIdArgumentInterface
+interface ChatIdArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевого чата или имя пользователя целевой супергруппы или канала (в формат

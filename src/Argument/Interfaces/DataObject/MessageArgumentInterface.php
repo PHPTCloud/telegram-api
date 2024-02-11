@@ -16,7 +16,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @see     https://core.telegram.org/bots/api#sendmessage
  * @see     https://core.telegram.org/bots/api#message
  */
-interface MessageArgumentInterface
+interface MessageArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевого чата или имя пользователя целевого канала (в формате.

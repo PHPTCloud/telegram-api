@@ -10,20 +10,21 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 
-class SendPhotoArgument implements SendPhotoArgumentInterface
+class SendDocumentArgument implements SendDocumentArgumentInterface
 {
     public function __construct(
         private readonly int|float|string $chatId,
-        private readonly LocalFileArgumentInterface|string $photo,
+        private readonly LocalFileArgumentInterface|string $document,
         private readonly ?int $messageThreadId = null,
         private readonly ?string $caption = null,
-        private readonly ?string $parseMode = null,
         private readonly ?array $captionEntities = null,
-        private readonly ?bool $spoiler = null,
+        private readonly LocalFileArgumentInterface|string|null $thumbnail = null,
+        private readonly ?string $parseMode = null,
         private readonly ?bool $disableNotification = null,
         private readonly ?bool $protectContent = null,
+        private readonly ?bool $disableContentTypeDetection = null,
         private readonly ?ReplyParametersArgumentInterface $replyParameters = null,
         private readonly InlineKeyboardMarkupArgumentInterface
                         |ReplyKeyboardMarkupArgumentInterface
@@ -38,9 +39,9 @@ class SendPhotoArgument implements SendPhotoArgumentInterface
         return $this->chatId;
     }
 
-    public function getPhoto(): LocalFileArgumentInterface|string
+    public function getDocument(): LocalFileArgumentInterface|string
     {
-        return $this->photo;
+        return $this->document;
     }
 
     public function getMessageThreadId(): ?int
@@ -53,19 +54,19 @@ class SendPhotoArgument implements SendPhotoArgumentInterface
         return $this->caption;
     }
 
-    public function getParseMode(): ?string
-    {
-        return $this->parseMode;
-    }
-
     public function getCaptionEntities(): ?array
     {
         return $this->captionEntities;
     }
 
-    public function hasSpoiler(): ?bool
+    public function getThumbnail(): LocalFileArgumentInterface|string|null
     {
-        return $this->spoiler;
+        return $this->thumbnail;
+    }
+
+    public function getParseMode(): ?string
+    {
+        return $this->parseMode;
     }
 
     public function wantDisableNotification(): ?bool
@@ -85,21 +86,26 @@ class SendPhotoArgument implements SendPhotoArgumentInterface
 
     public function getInlineKeyboardMarkup(): ?InlineKeyboardMarkupArgumentInterface
     {
-        return $this->replyMarkup;
+        return $this->replyMarkup instanceof InlineKeyboardMarkupArgumentInterface ? $this->replyMarkup : null;
     }
 
     public function getReplyKeyboardMarkup(): ?ReplyKeyboardMarkupArgumentInterface
     {
-        return $this->replyMarkup;
+        return $this->replyMarkup instanceof ReplyKeyboardMarkupArgumentInterface ? $this->replyMarkup : null;
     }
 
     public function getReplyKeyboardRemove(): ?ReplyKeyboardRemoveArgumentInterface
     {
-        return $this->replyMarkup;
+        return $this->replyMarkup instanceof ReplyKeyboardRemoveArgumentInterface ? $this->replyMarkup : null;
     }
 
     public function getForceReply(): ?ForceReplyArgumentInterface
     {
-        return $this->replyMarkup;
+        return $this->replyMarkup instanceof ForceReplyArgumentInterface ? $this->replyMarkup : null;
+    }
+
+    public function wantDisableContentTypeDetection(): ?bool
+    {
+        return $this->disableContentTypeDetection;
     }
 }

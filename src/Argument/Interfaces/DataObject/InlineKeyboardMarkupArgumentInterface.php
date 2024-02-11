@@ -14,7 +14,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @see     https://core.telegram.org/bots/api#inlinekeyboardmarkup
  */
-interface InlineKeyboardMarkupArgumentInterface
+interface InlineKeyboardMarkupArgumentInterface extends ArgumentInterface
 {
     /**
      * @return InlineKeyboardButtonArgumentInterface[][]
