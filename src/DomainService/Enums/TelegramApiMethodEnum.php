@@ -162,4 +162,13 @@ enum TelegramApiMethodEnum: string
      * е успеха.
      */
     case LEAVE_CHAT = 'leaveChat';
+
+    /**
+     * @see https://core.telegram.org/bots/api#setchattitle
+     *
+     * Использйте этот метод, чтобы изменить название чата. Название нельзя изменить в приватных чатах. Для
+     * этого бот должен быть администратором в чате и иметь соответствующие права администратора. Возвраща
+     * ет True в случае успеха.
+     */
+    case SET_CHAT_TITLE = 'setChatTitle';
 }

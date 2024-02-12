@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 
 /**
@@ -61,4 +62,13 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#leavechat
      */
     public function leaveChat(ChatIdArgumentInterface $argument): bool;
+
+    /**
+     * Использйте этот метод, чтобы изменить название чата. Название нельзя изменить в приватных чатах. Для
+     * этого бот должен быть администратором в чате и иметь соответствующие права администратора. Возвраща
+     * ет True в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#setchattitle
+     */
+    public function setChatTitle(SetChatTitleArgumentInterface $argument): bool;
 }
