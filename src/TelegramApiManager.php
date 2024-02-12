@@ -215,4 +215,16 @@ class TelegramApiManager implements TelegramApiManagerInterface
 
         return $this->chatDomainService->setChatPhoto($argument);
     }
+
+    public function leaveChat(ChatIdArgumentInterface $argument): bool
+    {
+        if (null === $this->chatDomainService) {
+            $this->chatDomainService = $this->chatDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->chatDomainService->leaveChat($argument);
+    }
 }

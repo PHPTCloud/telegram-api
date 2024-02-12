@@ -154,4 +154,12 @@ enum TelegramApiMethodEnum: string
      * может быть изменен.
      */
     case SEND_DOCUMENT = 'sendDocument';
+
+    /**
+     * @see https://core.telegram.org/bots/api#leavechat
+     *
+     * Используйте этот метод, чтобы ваш бот покинул группу, супергруппу или канал. Возвращает True в случа
+     * е успеха.
+     */
+    case LEAVE_CHAT = 'leaveChat';
 }

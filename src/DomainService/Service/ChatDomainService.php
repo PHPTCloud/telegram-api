@@ -93,4 +93,23 @@ class ChatDomainService implements
 
         return $response->getResponseData()[RequestInterface::RESULT_KEY] ?? false;
     }
+
+    public function leaveChat(ChatIdArgumentInterface $argument): bool
+    {
+        /** @var ChatIdArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(ChatIdArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $response = $this->request::post(TelegramApiMethodEnum::LEAVE_CHAT->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return $response->getResponseData()[RequestInterface::RESULT_KEY] ?? false;
+    }
 }

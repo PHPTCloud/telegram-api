@@ -64,4 +64,6 @@ interface TelegramApiManagerInterface
     public function sendChatAction(SendChatActionArgumentInterface $argument): bool;
 
     public function setChatPhoto(SetChatPhotoArgumentInterface $argument): bool;
+
+    public function leaveChat(ChatIdArgumentInterface $argument): bool;
 }

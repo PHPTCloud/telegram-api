@@ -53,4 +53,12 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#setchatphoto
      */
     public function setChatPhoto(SetChatPhotoArgumentInterface $argument): bool;
+
+    /**
+     * Используйте этот метод, чтобы ваш бот покинул группу, супергруппу или канал. Возвращает True в случа
+     * е успеха.
+     *
+     * @see https://core.telegram.org/bots/api#leavechat
+     */
+    public function leaveChat(ChatIdArgumentInterface $argument): bool;
 }

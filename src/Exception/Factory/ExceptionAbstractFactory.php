@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Exception\Error\BotIsNotAMemberOfTheChatException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonIdInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
+use PHPTCloud\TelegramApi\Exception\Error\ChatMemberStatusCantBeChangedInPrivateChatsException;
 use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatPhotoException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
@@ -61,6 +62,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new InvalidResourceTypeException($message);
         } elseif (str_contains($message, $this->getCantChangePrivateChatPhotoMessagePart())) {
             return new CantChangePrivateChatPhotoException($message);
+        } elseif (str_contains($message, $this->getChatMemberStatusCantBeChangedInPrivateChatsMessagePart())) {
+            return new ChatMemberStatusCantBeChangedInPrivateChatsException($message);
         }
 
         return new TelegramApiException($message);
@@ -134,5 +137,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getCantChangePrivateChatPhotoMessagePart(): string
     {
         return 'can\'t change private chat photo';
+    }
+
+    private function getChatMemberStatusCantBeChangedInPrivateChatsMessagePart(): string
+    {
+        return 'chat member status can\'t be changed in private chats';
     }
 }
