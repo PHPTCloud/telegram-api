@@ -13,6 +13,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterfac
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
@@ -23,6 +24,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerialize
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendDocumentArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\SupportsSendingMultipartInterface;
@@ -219,6 +221,14 @@ class MessageDomainService implements
         $serializer = $this->serializersAbstractFactory->create(SendDocumentArgumentArraySerializerInterface::class);
 
         return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_DOCUMENT->value);
+    }
+
+    public function sendVideo(SendVideoArgumentInterface $argument): MessageInterface
+    {
+        /** @var SendVideoArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendVideoArgumentArraySerializerInterface::class);
+
+        return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_VIDEO->value);
     }
 
     private function sendMultipartMessage(

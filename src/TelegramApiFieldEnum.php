@@ -163,4 +163,8 @@ enum TelegramApiFieldEnum: string
     case DISABLE_CONTENT_TYPE_DETECTION = 'disable_content_type_detection';
     case DOCUMENT = 'document';
     case ACTION = 'action';
+    case VIDEO = 'video';
+    case WIDTH = 'width';
+    case HEIGHT = 'height';
+    case SUPPORTS_STREAMING = 'supports_streaming';
 }

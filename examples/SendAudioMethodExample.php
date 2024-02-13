@@ -13,7 +13,6 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
-$messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 
 $inlineKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\InlineKeyboardMarkupArgumentBuilder();
 $message = $manager->sendAudio(

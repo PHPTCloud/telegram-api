@@ -12,6 +12,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterfac
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
@@ -107,4 +108,14 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#senddocument
      */
     public function sendDocument(SendDocumentArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод для отправки видео файлов. Клиенты Telegram поддерживают видео MPEG4 (другие ф
+     * орматы могут быть отправлены как документ). В случае успеха отправленное сообщение возвращается. Бот
+     * ы на данный момент могут отправлять видеофайлы размером до 50 МБ, в будущем этот лимит может быть из
+     * менен.
+     *
+     * @see https://core.telegram.org/bots/api#sendvideo
+     */
+    public function sendVideo(SendVideoArgumentInterface $argument): MessageInterface;
 }
