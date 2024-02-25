@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
+if (!str_starts_with(phpversion(), '8')) {
+    throw new \RuntimeException('Примеры использования библиотеки не работают с PHP ниже 8 версии.');
+}
+
 // Загружаем переменные из .env
 $dotenv = new Symfony\Component\Dotenv\Dotenv();
 $dotenv->load(__DIR__ . '/.env');
@@ -15,18 +19,15 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 $messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 
-// Отправка файла с локального диска.
+// Пример отправки изображения.
 $message = $manager->sendPhoto(
     new \PHPTCloud\TelegramApi\Argument\DataObject\SendPhotoArgument(
-        $chatId,
-        new \PHPTCloud\TelegramApi\Argument\DataObject\LocalFileArgument(
+        chatId: $chatId,
+        photo: new \PHPTCloud\TelegramApi\Argument\DataObject\LocalFileArgument(
             __DIR__ . '/assets/photo-min.png',
         ),
-        null,
-        'Локальный файл.',
-        null,
-        null,
-        true,
+        caption: 'Локальный файл.',
+        spoiler: true,
     ),
 );
 dump($message);
@@ -35,12 +36,9 @@ dump($message);
 $message = $manager->sendPhoto(
     new \PHPTCloud\TelegramApi\Argument\DataObject\SendPhotoArgument(
         $chatId,
-        'https://osx.telegram.org/updates/site/artboard.png',
-        null,
-        'Файл из Интернета файл.',
-        null,
-        null,
-        true,
+        photo: 'https://osx.telegram.org/updates/site/artboard.png',
+        caption: 'Файл из Интернета файл.',
+        spoiler: true,
     ),
 );
 dump($message);

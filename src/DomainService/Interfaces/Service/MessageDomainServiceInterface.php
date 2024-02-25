@@ -9,10 +9,12 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
@@ -118,4 +120,24 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#sendvideo
      */
     public function sendVideo(SendVideoArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод для отправки файлов анимации (видео GIF или H.264/MPEG-4 AVC без звука). В сл
+     * учае успеха отправленное сообщение возвращается. Боты в настоящее время могут отправлять файлы анима
+     * ции размером до 50 МБ, в будущем этот предел может быть изменен.
+     *
+     * @see https://core.telegram.org/bots/api#sendanimation
+     */
+    public function sendAnimation(SendAnimationArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод для отправки аудиофайлов, если вы хотите, чтобы клиенты Telegram отображали ф
+     * айл как воспроизводимое голосовое сообщение. Чтобы это работало, ваш звук должен быть в файле .OGG,
+     * закодированном с помощью OPUS (другие форматы могут быть отправлены как аудио или документ). В случа
+     * е успеха отправленное сообщение возвращается. Боты на данный момент могут отправлять голосовые сообщ
+     * ения размером до 50 МБ, в будущем этот лимит может быть изменен.
+     *
+     * @see https://core.telegram.org/bots/api#sendvoice
+     */
+    public function sendVoice(SendVoiceArgumentInterface $argument): MessageInterface;
 }

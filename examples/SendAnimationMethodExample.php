@@ -17,36 +17,20 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
-$messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 $inlineKeyboardBuilder = new \PHPTCloud\TelegramApi\Argument\Builder\InlineKeyboardMarkupArgumentBuilder();
 
-$message = $messageBuilder->setChatId($chatId)
-    ->setText('Какой-то текст.')
-    ->setInlineKeyboardMarkup(
-        $inlineKeyboardBuilder->addButton(
+$message = $manager->sendAnimation(
+    new \PHPTCloud\TelegramApi\Argument\DataObject\SendAnimationArgument(
+        chatId: $chatId,
+        animation: new \PHPTCloud\TelegramApi\Argument\DataObject\LocalFileArgument(__DIR__.'/assets/video-min.mp4'),
+        caption: 'Отправка анимации файла с клавиатурой.',
+        replyMarkup: $inlineKeyboardBuilder->addButton(
             new \PHPTCloud\TelegramApi\Argument\DataObject\InlineKeyboardButtonArgument(
                 'Кнопка 1',
                 'https://example.com',
             ),
         )
         ->build(),
-    )
-    ->build();
-$message = $manager->sendMessage($message);
-
-$result = $manager->copyMessage(
-    new \PHPTCloud\TelegramApi\Argument\DataObject\CopyMessageArgument(
-        $chatId,
-        $chatId,
-        $message->getMessageId(),
-        null,
-        \PHPTCloud\TelegramApi\FormattingLanguagesEnum::MARKDOWN->value,
-        null,
-        null,
-        null,
-        null,
-        $message->getInlineKeyboardMarkup(),
-        null,
     ),
 );
-dump($result);
+dump($message);

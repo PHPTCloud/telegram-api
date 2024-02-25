@@ -21,6 +21,7 @@ use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Error\TextButtonsAreUnallowedInInlineKeyboardException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
+use PHPTCloud\TelegramApi\Exception\Error\VoiceMessageForbiddenException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Exception\Interfaces\TelegramApiExceptionInterface;
 
@@ -67,6 +68,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new ChatMemberStatusCantBeChangedInPrivateChatsException($message);
         } elseif (str_contains($message, $this->getCantChangePrivateChatTitleMessagePart())) {
             return new CantChangePrivateChatTitleException($message);
+        } elseif (str_contains($message, $this->getVoiceMessageForbiddenMessagePart())) {
+            return new VoiceMessageForbiddenException($message);
         }
 
         return new TelegramApiException($message);
@@ -150,5 +153,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getCantChangePrivateChatTitleMessagePart(): string
     {
         return 'can\'t change private chat title';
+    }
+
+    public function getVoiceMessageForbiddenMessagePart(): string
+    {
+        return 'voice_messages_forbidden';
     }
 }

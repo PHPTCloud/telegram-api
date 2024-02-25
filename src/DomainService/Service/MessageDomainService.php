@@ -10,10 +10,12 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
@@ -21,10 +23,12 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentA
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAnimationArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendDocumentArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\SupportsSendingMultipartInterface;
@@ -229,6 +233,22 @@ class MessageDomainService implements
         $serializer = $this->serializersAbstractFactory->create(SendVideoArgumentArraySerializerInterface::class);
 
         return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_VIDEO->value);
+    }
+
+    public function sendAnimation(SendAnimationArgumentInterface $argument): MessageInterface
+    {
+        /** @var SendAnimationArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendAnimationArgumentArraySerializerInterface::class);
+
+        return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_ANIMATION->value);
+    }
+
+    public function sendVoice(SendVoiceArgumentInterface $argument): MessageInterface
+    {
+        /** @var SendVoiceArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendVoiceArgumentArraySerializerInterface::class);
+
+        return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_VOCIE->value);
     }
 
     private function sendMultipartMessage(

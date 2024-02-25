@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
+if (!str_starts_with(phpversion(), '8')) {
+    throw new \RuntimeException('Примеры использования библиотеки не работают с PHP ниже 8 версии.');
+}
+
 // Загружаем переменные из .env
 $dotenv = new Symfony\Component\Dotenv\Dotenv();
 $dotenv->load(__DIR__ . '/.env');
