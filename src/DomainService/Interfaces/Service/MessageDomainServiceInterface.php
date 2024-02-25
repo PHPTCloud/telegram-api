@@ -14,6 +14,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
@@ -140,4 +141,13 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#sendvoice
      */
     public function sendVoice(SendVoiceArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Начиная с версии 4.0, клиенты Telegram поддерживают видео MPEG4 со скругленными квадратами продолжит
+     * ельностью до 1 минуты. Используйте этот метод для отправки видеосообщений. В случае успеха отправлен
+     * ное сообщение возвращается.
+     *
+     * @see https://core.telegram.org/bots/api#sendvideonote
+     */
+    public function sendVideoNote(SendVideoNoteArgumentInterface $argument): MessageInterface;
 }

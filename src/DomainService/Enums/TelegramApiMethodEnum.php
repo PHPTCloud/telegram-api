@@ -183,7 +183,16 @@ enum TelegramApiMethodEnum: string
      * е успеха отправленное сообщение возвращается. Боты на данный момент могут отправлять голосовые сообщ
      * ения размером до 50 МБ, в будущем этот лимит может быть изменен.
      */
-    case SEND_VOCIE = 'sendVoice';
+    case SEND_VOICE = 'sendVoice';
+
+    /**
+     * @see https://core.telegram.org/bots/api#sendvideonote
+     *
+     * Начиная с версии 4.0, клиенты Telegram поддерживают видео MPEG4 со скругленными квадратами продолжит
+     * ельностью до 1 минуты. Используйте этот метод для отправки видеосообщений. В случае успеха отправлен
+     * ное сообщение возвращается.
+     */
+    case SEND_VIDEO_NOTE = 'sendVideoNote';
 
     /**
      * @see https://core.telegram.org/bots/api#leavechat

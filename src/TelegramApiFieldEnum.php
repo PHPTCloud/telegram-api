@@ -169,4 +169,5 @@ enum TelegramApiFieldEnum: string
     case SUPPORTS_STREAMING = 'supports_streaming';
     case ANIMATION = 'animation';
     case VOICE = 'voice';
+    case VIDEO_NOTE = 'video_note';
 }
