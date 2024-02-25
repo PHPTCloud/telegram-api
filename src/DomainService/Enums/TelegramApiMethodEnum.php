@@ -195,6 +195,15 @@ enum TelegramApiMethodEnum: string
     case SEND_VIDEO_NOTE = 'sendVideoNote';
 
     /**
+     * @see https://core.telegram.org/bots/api#sendmediagroup
+     *
+     * Используйте этот метод, чтобы отправить группу фотографий, видео, документов или аудио в виде альбом
+     * а. Документы и аудиофайлы можно группировать только в альбоме с однотипными сообщениями. В случае ус
+     * пеха возвращается массив отправленных сообщений.
+     */
+    case SEND_MEDIA_GROUP = 'sendMediaGroup';
+
+    /**
      * @see https://core.telegram.org/bots/api#leavechat
      *
      * Используйте этот метод, чтобы ваш бот покинул группу, супергруппу или канал. Возвращает True в случа
