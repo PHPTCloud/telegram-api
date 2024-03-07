@@ -85,6 +85,15 @@ enum TelegramApiMethodEnum: string
     case SET_CHAT_PHOTO = 'setChatPhoto';
 
     /**
+     * @see https://core.telegram.org/bots/api#deletechatphoto
+     *
+     * Используйте этот метод, чтобы удалить фотографию чата. Фотографии нельзя изменить в приватных чатах.
+     * Для этого бот должен быть администратором в чате и иметь соответствующие права администратора. Возв
+     * ращает True в случае успеха.
+     */
+    case DELETE_CHAT_PHOTO = 'deleteChatPhoto';
+
+    /**
      * @see https://core.telegram.org/bots/api#forwardmessage
      *
      * Используйте этот метод для пересылки сообщений любого типа. Служебные сообщения и сообщения с защище

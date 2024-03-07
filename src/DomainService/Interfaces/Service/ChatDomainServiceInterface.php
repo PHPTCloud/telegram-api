@@ -56,6 +56,15 @@ interface ChatDomainServiceInterface
     public function setChatPhoto(SetChatPhotoArgumentInterface $argument): bool;
 
     /**
+     * Используйте этот метод, чтобы удалить фотографию чата. Фотографии нельзя изменить в приватных чатах.
+     * Для этого бот должен быть администратором в чате и иметь соответствующие права администратора. Возв
+     * ращает True в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#deletechatphoto
+     */
+    public function deleteChatPhoto(ChatIdArgumentInterface $argument): bool;
+
+    /**
      * Используйте этот метод, чтобы ваш бот покинул группу, супергруппу или канал. Возвращает True в случа
      * е успеха.
      *

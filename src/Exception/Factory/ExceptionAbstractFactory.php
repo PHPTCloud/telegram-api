@@ -14,6 +14,7 @@ use PHPTCloud\TelegramApi\Exception\Error\ChatMemberStatusCantBeChangedInPrivate
 use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatPhotoException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
+use PHPTCloud\TelegramApi\Exception\Error\ChatNotModifiedException;
 use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
@@ -70,6 +71,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new CantChangePrivateChatTitleException($message);
         } elseif (str_contains($message, $this->getVoiceMessageForbiddenMessagePart())) {
             return new VoiceMessageForbiddenException($message);
+        } elseif (str_contains($message, $this->getChatNotModifiedMessagePart())) {
+            return new ChatNotModifiedException($message);
         }
 
         return new TelegramApiException($message);
@@ -158,5 +161,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     public function getVoiceMessageForbiddenMessagePart(): string
     {
         return 'voice_messages_forbidden';
+    }
+
+    public function getChatNotModifiedMessagePart(): string
+    {
+        return 'chat_not_modified';
     }
 }

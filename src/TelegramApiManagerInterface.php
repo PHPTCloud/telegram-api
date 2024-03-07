@@ -77,6 +77,8 @@ interface TelegramApiManagerInterface
 
     public function setChatPhoto(SetChatPhotoArgumentInterface $argument): bool;
 
+    public function deleteChatPhoto(ChatIdArgumentInterface $argument): bool;
+
     public function leaveChat(ChatIdArgumentInterface $argument): bool;
 
     public function setChatTitle(SetChatTitleArgumentInterface $argument): bool;
