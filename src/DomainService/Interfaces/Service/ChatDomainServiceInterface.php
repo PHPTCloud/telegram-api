@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
@@ -80,4 +81,13 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#setchattitle
      */
     public function setChatTitle(SetChatTitleArgumentInterface $argument): bool;
+
+    /**
+     * Используйте этот метод, чтобы изменить описание группы, супергруппы или канала. Для этого бот должен
+     * быть администратором в чате и иметь соответствующие права администратора. Возвращает True в случае
+     * успеха.
+     *
+     * @see https://core.telegram.org/bots/api#setchatdescription
+     */
+    public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
 }

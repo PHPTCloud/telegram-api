@@ -18,6 +18,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
@@ -303,5 +304,17 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->chatDomainService->setChatTitle($argument);
+    }
+
+    public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool
+    {
+        if (null === $this->chatDomainService) {
+            $this->chatDomainService = $this->chatDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->chatDomainService->setChatDescription($argument);
     }
 }

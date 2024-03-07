@@ -33,6 +33,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
@@ -66,6 +67,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SendPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoNoteArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVoiceArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetChatDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
@@ -167,6 +169,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetChatTitleArgumentArraySerializer::class:
             case SetChatTitleArgumentArraySerializerInterface::class:
                 return $this->createSetChatTitleArgumentArraySerializer();
+            case SetChatDescriptionArgumentArraySerializer::class:
+            case SetChatDescriptionArgumentArraySerializerInterface::class:
+                return $this->createSetChatDescriptionTitleArgumentArraySerializer();
             case SendVideoArgumentArraySerializer::class:
             case SendVideoArgumentArraySerializerInterface::class:
                 return $this->createSendVideoArgumentArraySerializer();
@@ -382,6 +387,11 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createSetChatTitleArgumentArraySerializer(): SetChatTitleArgumentArraySerializerInterface
     {
         return new SetChatTitleArgumentArraySerializer();
+    }
+
+    public function createSetChatDescriptionTitleArgumentArraySerializer(): SetChatDescriptionArgumentArraySerializerInterface
+    {
+        return new SetChatDescriptionArgumentArraySerializer();
     }
 
     public function createSendVideoArgumentArraySerializer(): SendVideoArgumentArraySerializerInterface

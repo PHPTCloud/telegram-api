@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Exception\Error\BotIsNotAMemberOfTheChatException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonIdInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
+use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatDescriptionException;
 use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatTitleException;
 use PHPTCloud\TelegramApi\Exception\Error\ChatMemberStatusCantBeChangedInPrivateChatsException;
 use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatPhotoException;
@@ -69,6 +70,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new ChatMemberStatusCantBeChangedInPrivateChatsException($message);
         } elseif (str_contains($message, $this->getCantChangePrivateChatTitleMessagePart())) {
             return new CantChangePrivateChatTitleException($message);
+        } elseif (str_contains($message, $this->getCantChangePrivateChatDescriptionMessagePart())) {
+            return new CantChangePrivateChatDescriptionException($message);
         } elseif (str_contains($message, $this->getVoiceMessageForbiddenMessagePart())) {
             return new VoiceMessageForbiddenException($message);
         } elseif (str_contains($message, $this->getChatNotModifiedMessagePart())) {
@@ -156,6 +159,11 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     private function getCantChangePrivateChatTitleMessagePart(): string
     {
         return 'can\'t change private chat title';
+    }
+
+    private function getCantChangePrivateChatDescriptionMessagePart(): string
+    {
+        return 'can\'t change private chat description';
     }
 
     public function getVoiceMessageForbiddenMessagePart(): string

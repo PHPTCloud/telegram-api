@@ -18,6 +18,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
@@ -82,4 +83,6 @@ interface TelegramApiManagerInterface
     public function leaveChat(ChatIdArgumentInterface $argument): bool;
 
     public function setChatTitle(SetChatTitleArgumentInterface $argument): bool;
+
+    public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
 }

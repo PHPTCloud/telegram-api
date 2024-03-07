@@ -228,4 +228,13 @@ enum TelegramApiMethodEnum: string
      * ет True в случае успеха.
      */
     case SET_CHAT_TITLE = 'setChatTitle';
+
+    /**
+     * @see https://core.telegram.org/bots/api#setchatdescription
+     *
+     * Используйте этот метод, чтобы изменить описание группы, супергруппы или канала. Для этого бот должен
+     * быть администратором в чате и иметь соответствующие права администратора. Возвращает True в случае
+     * успеха.
+     */
+    case SET_CHAT_DESCRIPTION = 'setChatDescription';
 }
