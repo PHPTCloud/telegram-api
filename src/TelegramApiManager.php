@@ -317,4 +317,16 @@ class TelegramApiManager implements TelegramApiManagerInterface
 
         return $this->chatDomainService->setChatDescription($argument);
     }
+
+    public function getChatMemberCount(ChatIdArgumentInterface $argument): int
+    {
+        if (null === $this->chatDomainService) {
+            $this->chatDomainService = $this->chatDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->chatDomainService->getChatMemberCount($argument);
+    }
 }

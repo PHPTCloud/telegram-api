@@ -237,4 +237,11 @@ enum TelegramApiMethodEnum: string
      * успеха.
      */
     case SET_CHAT_DESCRIPTION = 'setChatDescription';
+
+    /**
+     * @see https://core.telegram.org/bots/api#getchatmembercount
+     *
+     * Используйте этот метод, чтобы получить количество участников в чате. Возвращает Int в случае успеха.
+     */
+    case GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
 }

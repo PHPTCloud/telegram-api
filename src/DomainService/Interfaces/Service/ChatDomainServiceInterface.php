@@ -90,4 +90,11 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#setchatdescription
      */
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
+
+    /**
+     * Используйте этот метод, чтобы получить количество участников в чате. Возвращает Int в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#getchatmembercount
+     */
+    public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 }

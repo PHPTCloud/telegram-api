@@ -172,4 +172,23 @@ class ChatDomainService implements
 
         return $response->getResponseData()[RequestInterface::RESULT_KEY] ?? false;
     }
+
+    public function getChatMemberCount(ChatIdArgumentInterface $argument): int
+    {
+        /** @var ChatIdArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(ChatIdArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $response = $this->request::post(TelegramApiMethodEnum::GET_CHAT_MEMBER_COUNT->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return $response->getResponseData()[RequestInterface::RESULT_KEY];
+    }
 }

@@ -85,4 +85,6 @@ interface TelegramApiManagerInterface
     public function setChatTitle(SetChatTitleArgumentInterface $argument): bool;
 
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
+
+    public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 }
