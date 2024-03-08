@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -28,7 +29,7 @@ interface SendVideoArgumentInterface extends ArgumentInterface
      * Видео для отправки. Передайте file_id в качестве строки, чтобы отправить видео, существующее на серв
      * ерах Telegram (рекомендуется), передайте URL-адрес HTTP в качестве строки для Telegram, чтобы получи
      * ть видео из Интернета, или загрузите новое видео, используя multipart/form-data. Дополнительная инфо
-     * рмация об отправке файлов »
+     * рмация об отправке файлов ».
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */

@@ -14,6 +14,10 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentA
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaDocumentArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaPhotoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonPollTypeArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestChatArgumentArraySerializerInterface;
@@ -29,6 +33,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAnimationArgumentAr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendChatActionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendDocumentArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendMediaGroupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentArraySerializerInterface;
@@ -48,6 +53,10 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySeriali
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaAudioArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaDocumentArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaPhotoArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaVideoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonPollTypeArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonRequestChatArgumentArraySerializer;
@@ -63,6 +72,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SendAnimationArgumentArraySerializ
 use PHPTCloud\TelegramApi\Argument\Serializer\SendAudioArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendChatActionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendDocumentArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SendMediaGroupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoNoteArgumentArraySerializer;
@@ -184,6 +194,21 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SendVideoNoteArgumentArraySerializer::class:
             case SendVideoNoteArgumentArraySerializerInterface::class:
                 return $this->createSendVideoNoteArgumentArraySerializer();
+            case InputMediaAudioArgumentArraySerializer::class:
+            case InputMediaAudioArgumentArraySerializerInterface::class:
+                return $this->createInputMediaAudioArgumentArraySerializer();
+            case InputMediaVideoArgumentArraySerializer::class:
+            case InputMediaVideoArgumentArraySerializerInterface::class:
+                return $this->createInputMediaVideoArgumentArraySerializer();
+            case InputMediaPhotoArgumentArraySerializer::class:
+            case InputMediaPhotoArgumentArraySerializerInterface::class:
+                return $this->createInputMediaPhotoArgumentArraySerializer();
+            case InputMediaDocumentArgumentArraySerializer::class:
+            case InputMediaDocumentArgumentArraySerializerInterface::class:
+                return $this->createInputMediaDocumentArgumentArraySerializer();
+            case SendMediaGroupArgumentArraySerializer::class:
+            case SendMediaGroupArgumentArraySerializerInterface::class:
+                return $this->createSendMediaGroupArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -438,6 +463,45 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createReplyKeyboardRemoveArgumentArraySerializer(),
             $this->createReplyKeyboardMarkupArgumentArraySerializer(),
             $this->createForceReplyArgumentArraySerializer(),
+        );
+    }
+
+    public function createInputMediaAudioArgumentArraySerializer(): InputMediaAudioArgumentArraySerializerInterface
+    {
+        return new InputMediaAudioArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+        );
+    }
+
+    public function createInputMediaVideoArgumentArraySerializer(): InputMediaVideoArgumentArraySerializerInterface
+    {
+        return new InputMediaVideoArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+        );
+    }
+
+    public function createInputMediaPhotoArgumentArraySerializer(): InputMediaPhotoArgumentArraySerializerInterface
+    {
+        return new InputMediaPhotoArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+        );
+    }
+
+    public function createInputMediaDocumentArgumentArraySerializer(): InputMediaDocumentArgumentArraySerializerInterface
+    {
+        return new InputMediaDocumentArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+        );
+    }
+
+    public function createSendMediaGroupArgumentArraySerializer(): SendMediaGroupArgumentArraySerializerInterface
+    {
+        return new SendMediaGroupArgumentArraySerializer(
+            $this->createInputMediaAudioArgumentArraySerializer(),
+            $this->createInputMediaDocumentArgumentArraySerializer(),
+            $this->createInputMediaPhotoArgumentArraySerializer(),
+            $this->createInputMediaVideoArgumentArraySerializer(),
+            $this->createReplyParametersArgumentArraySerializer(),
         );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -41,7 +42,7 @@ class SendVideoArgumentArraySerializer implements SendVideoArgumentArraySerializ
             $data[TelegramApiFieldEnum::HEIGHT->value] = $argument->getHeight();
         }
 
-        if ($argument->isSupportsStreaming() !== null) {
+        if (null !== $argument->isSupportsStreaming()) {
             $data[TelegramApiFieldEnum::SUPPORTS_STREAMING->value] = $argument->isSupportsStreaming();
         }
 

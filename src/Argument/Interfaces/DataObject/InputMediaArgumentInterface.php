@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -14,7 +15,7 @@ interface InputMediaArgumentInterface extends ArgumentInterface
      * Файл для отправки. Передайте file_id для отправки файла, существующего на серверах Telegram (рекомен
      * дуется), передайте URL-адрес HTTP для Telegram, чтобы получить файл из Интернета, или передайте «att
      * ach://<file_attach_name>», чтобы загрузить новый, используя multipart/ данные формы под именем <file
-     * _attach_name>. Дополнительная информация об отправке файлов »
+     * _attach_name>. Дополнительная информация об отправке файлов ».
      */
     public function getMedia(): LocalFileArgumentInterface|string;
 

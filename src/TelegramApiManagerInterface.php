@@ -66,6 +66,7 @@ interface TelegramApiManagerInterface
     public function sendDocument(SendDocumentArgumentInterface $argument): MessageInterface;
 
     public function sendVideo(SendVideoArgumentInterface $argument): MessageInterface;
+
     public function sendAnimation(SendAnimationArgumentInterface $argument): MessageInterface;
 
     public function sendVoice(SendVoiceArgumentInterface $argument): MessageInterface;
