@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForumTopicEditedInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой служебное сообщение об редактируемой теме форума.
  *
  * @see    https://core.telegram.org/bots/api#forumtopicedited

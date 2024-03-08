@@ -267,11 +267,6 @@ class MessageDomainService implements
     {
         /** @var SendMediaGroupArgumentArraySerializerInterface $serializer */
         $serializer = $this->serializersAbstractFactory->create(SendMediaGroupArgumentArraySerializerInterface::class);
-        $data = $serializer->serialize($argument);
-
-        // dd($data);
-        // /home/tcloud/Documents/02_projects/telegram_api_sdk/examples/assets/audio-min.mp3
-        // /home/tcloud/Documents/02_projects/telegram_api_sdk/examples/assets/video-min.mp4
 
         return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_MEDIA_GROUP->value);
     }

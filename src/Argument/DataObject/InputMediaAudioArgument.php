@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -11,9 +12,9 @@ class InputMediaAudioArgument extends AbstractInputMediaArgument implements Inpu
 {
     public function __construct(
         LocalFileArgumentInterface|string $media,
-        ?string $caption = null,
-        ?array $captionEntities = null,
-        ?string $parseMode = null,
+        string $caption = null,
+        array $captionEntities = null,
+        string $parseMode = null,
         private readonly LocalFileArgumentInterface|string|null $thumbnail = null,
         private readonly ?int $duration = null,
         private readonly ?string $performer = null,

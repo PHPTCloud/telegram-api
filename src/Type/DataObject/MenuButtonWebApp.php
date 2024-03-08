@@ -11,8 +11,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 /**
  * @author  Пешко Илья peshkoi@mail.ru
  *
- * @version 1.0.0
- *
  * Предоставляет кнопку меню, которая запускает веб-приложение.
  *
  * @see    https://core.telegram.org/bots/api#menubuttonwebapp

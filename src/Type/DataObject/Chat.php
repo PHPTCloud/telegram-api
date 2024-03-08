@@ -13,8 +13,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой чат.
  *
  * @see    https://core.telegram.org/bots/api#chat

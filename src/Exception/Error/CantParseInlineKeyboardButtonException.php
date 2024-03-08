@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Exception\Interfaces\BadRequestExceptionInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Ошибка возникает в случае когда пропущен один из опциональных параметров кнопки.
  */
 class CantParseInlineKeyboardButtonException extends TelegramApiException implements BadRequestExceptionInterface

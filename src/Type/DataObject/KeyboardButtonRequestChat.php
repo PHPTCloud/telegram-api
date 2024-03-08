@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonRequestChatIn
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект определяет критерии, используемые для запроса подходящего чата. Идентификатор выбранного
  * чата будет передан боту при нажатии соответствующей кнопки.
  * Подробнее о запросе чатов » (@see https://core.telegram.org/bots/features#chat-and-user-selection)

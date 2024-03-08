@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет уникальный идентификатор сообщения.
  *
  * @see     https://core.telegram.org/bots/api#messageid

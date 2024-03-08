@@ -29,8 +29,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\VoiceInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект содержит информацию о сообщении, которое может прийти из другого чата или темы форума.
  *
  * @see    https://core.telegram.org/bots/api#externalreplyinfo

@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\PhotoSizeInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой общий файл (в отличие от фотографий, голосовых сообщений и аудиофайло
  * в).
  *

@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ForumTopicCreatedInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой служебное сообщение о новой теме форума, созданной в чате.
  *
  * @see    https://core.telegram.org/bots/api#forumtopiccreated

@@ -45,10 +45,9 @@ class MultipartArraySerializer implements MultipartArraySerializerInterface
                         'contents' => fopen($value->getFilePath(), 'r+'),
                     ];
                     continue;
-                } else {
-                    $_multipart[$key] = $value;
-                    continue;
                 }
+                $_multipart[$key] = $value;
+                continue;
             }
 
             $multipart[] = $_multipart;

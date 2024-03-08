@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\DiceInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой анимированный смайлик, отображающий случайное значение.
  *
  * @see    https://core.telegram.org/bots/api#dice

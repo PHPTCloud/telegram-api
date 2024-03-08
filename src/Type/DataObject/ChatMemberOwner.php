@@ -11,8 +11,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Представляет участника чата, который владеет чатом и имеет все права администратора.
  *
  * @see    https://core.telegram.org/bots/api#chatmemberowner

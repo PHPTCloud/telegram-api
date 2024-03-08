@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class ResponseFactory implements ResponseFactoryInterface
 {

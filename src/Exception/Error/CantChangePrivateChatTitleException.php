@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Exception\Error;
 
-class CantChangePrivateChatTitleException extends TelegramApiException
+use PHPTCloud\TelegramApi\Exception\Interfaces\ForbiddenExceptionInterface;
+
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
+class CantChangePrivateChatTitleException extends TelegramApiException implements ForbiddenExceptionInterface
 {
     public const CODE = 'CantChangePrivateChatTitle';
 }

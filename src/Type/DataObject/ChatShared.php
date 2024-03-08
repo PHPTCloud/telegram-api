@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatSharedInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект содержит информацию о чате, идентификатор которого был передан боту с помощью кнопки
  * KeyboardButtonRequestChat.
  *

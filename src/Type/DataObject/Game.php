@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GameInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет игру. Используйте BotFather для создания и редактирования игр, их короткие
  * имена будут выступать в качестве уникальных идентификаторов.
  *

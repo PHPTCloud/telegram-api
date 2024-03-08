@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\Utils\Service;
 use doganoo\PHPAlgorithms\Algorithm\Sorting\TimSort;
 use PHPTCloud\TelegramApi\Utils\Interface\Service\SortingAlgorithmServiceInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class TimSortAlgorithmService implements SortingAlgorithmServiceInterface
 {
     public function __construct(

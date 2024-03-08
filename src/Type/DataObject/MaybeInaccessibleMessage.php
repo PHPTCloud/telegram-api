@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MaybeInaccessibleMessageInt
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект описывает сообщение, которое может быть недоступно боту. Это может быть один из:
  * - Message (https://core.telegram.org/bots/api#message);
  * - InaccessibleMessage (https://core.telegram.org/bots/api#inaccessiblemessage).

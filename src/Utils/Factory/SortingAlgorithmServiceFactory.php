@@ -9,6 +9,9 @@ use PHPTCloud\TelegramApi\Utils\Interface\Factory\SortingAlgorithmServiceFactory
 use PHPTCloud\TelegramApi\Utils\Interface\Service\SortingAlgorithmServiceInterface;
 use PHPTCloud\TelegramApi\Utils\Service\TimSortAlgorithmService;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SortingAlgorithmServiceFactory implements SortingAlgorithmServiceFactoryInterface
 {
     public function createDefault(): SortingAlgorithmServiceInterface

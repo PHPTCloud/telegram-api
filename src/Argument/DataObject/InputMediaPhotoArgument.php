@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -11,9 +12,9 @@ class InputMediaPhotoArgument extends AbstractInputMediaArgument implements Inpu
 {
     public function __construct(
         LocalFileArgumentInterface|string $media,
-        ?string $caption = null,
-        ?array $captionEntities = null,
-        ?string $parseMode = null,
+        string $caption = null,
+        array $captionEntities = null,
+        string $parseMode = null,
         private readonly ?bool $spoiler = null,
     ) {
         $type = InputMediaTypeEnum::PHOTO->value;

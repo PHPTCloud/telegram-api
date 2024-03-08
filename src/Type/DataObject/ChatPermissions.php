@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatPermissionsInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Описывает действия, которые разрешено выполнять в чате пользователю, не являющемуся администратором.
  *
  * @see    https://core.telegram.org/bots/api#chatpermissions

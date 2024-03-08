@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой особый объект в текстовом сообщении. Например, хэштеги, имена пользов
  * ателей, URL-адреса и т.д.
  *

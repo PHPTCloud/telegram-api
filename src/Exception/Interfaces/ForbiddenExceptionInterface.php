@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Exception\Interfaces;
 
-interface ForbiddenExceptionInterface
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
+interface ForbiddenExceptionInterface extends TelegramApiExceptionInterface
 {
 }

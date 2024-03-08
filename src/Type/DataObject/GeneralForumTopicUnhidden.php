@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GeneralForumTopicUnhiddenIn
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой служебное сообщение об общей теме форума, скрытой в чате. На данный м
  * омент не содержит никакой информации.
  *

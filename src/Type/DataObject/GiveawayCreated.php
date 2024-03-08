@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayCreatedInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой служебное сообщение о создании запланированной розыгрыша. На данный м
  * омент не содержит никакой информации.
  *

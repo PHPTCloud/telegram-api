@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\KeyboardButtonPollTypeInter
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой тип опроса, который разрешено создавать и отправлять при нажатии соот
  * ветствующей кнопки.
  *

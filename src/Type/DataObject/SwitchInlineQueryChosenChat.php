@@ -6,6 +6,14 @@ namespace PHPTCloud\TelegramApi\Type\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\SwitchInlineQueryChosenChatInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
+ * Этот объект представляет собой встроенную кнопку, которая переключает текущего пользователя во встро
+ * енный режим в выбранном чате с дополнительным встроенным запросом по умолчанию.
+ *
+ * @see     https://core.telegram.org/bots/api#switchinlinequerychosenchat
+ */
 class SwitchInlineQueryChosenChat implements SwitchInlineQueryChosenChatInterface
 {
     public function __construct(

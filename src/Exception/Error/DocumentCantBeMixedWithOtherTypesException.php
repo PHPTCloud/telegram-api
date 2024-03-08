@@ -1,9 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Exception\Error;
 
-class DocumentCantBeMixedWithOtherTypesException extends TelegramApiException
+use PHPTCloud\TelegramApi\Exception\Interfaces\BadRequestExceptionInterface;
+
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
+class DocumentCantBeMixedWithOtherTypesException extends TelegramApiException implements BadRequestExceptionInterface
 {
     public const CODE = 'DocumentCantBeMixedWithOtherTypes';
 }

@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayWinnersInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой сообщение о завершении розыгрыша с публичными победителями.
  *
  * @see    https://core.telegram.org/bots/api#giveawaywinners

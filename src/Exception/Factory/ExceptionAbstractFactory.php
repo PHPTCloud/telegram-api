@@ -32,8 +32,6 @@ use PHPTCloud\TelegramApi\Exception\Interfaces\TelegramApiExceptionInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
 {

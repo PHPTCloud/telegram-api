@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\GiveawayInterface;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой сообщение о запланированной раздаче подарков.
  *
  * @see    https://core.telegram.org/bots/api#giveaway

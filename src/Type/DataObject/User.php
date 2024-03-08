@@ -8,8 +8,10 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
+ * @see    https://core.telegram.org/bots/api#user
+ * Этот объект представляет пользователя или бота Telegram.
  */
 class User implements UserInterface
 {

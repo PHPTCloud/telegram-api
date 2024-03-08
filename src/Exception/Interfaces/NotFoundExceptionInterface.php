@@ -7,6 +7,6 @@ namespace PHPTCloud\TelegramApi\Exception\Interfaces;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  */
-interface BadRequestExceptionInterface extends TelegramApiExceptionInterface
+interface NotFoundExceptionInterface extends TelegramApiExceptionInterface
 {
 }

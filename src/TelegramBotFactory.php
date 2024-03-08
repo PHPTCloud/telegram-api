@@ -6,8 +6,6 @@ namespace PHPTCloud\TelegramApi;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class TelegramBotFactory implements TelegramBotFactoryInterface
 {

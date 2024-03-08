@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Exception\Error;
 
-class ChatNotModifiedException extends TelegramApiException
+use PHPTCloud\TelegramApi\Exception\Interfaces\BadRequestExceptionInterface;
+
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
+class ChatNotModifiedException extends TelegramApiException implements BadRequestExceptionInterface
 {
     public const CODE = 'ChatNotModified';
 }

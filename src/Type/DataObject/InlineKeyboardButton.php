@@ -10,6 +10,15 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LoginUrlInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\SwitchInlineQueryChosenChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ * @author  Юдов Никита yudov.nikita@bk.ru
+ *
+ * Этот объект представляет собой одну кнопку встроенной клавиатуры. Вы должны использовать только одно
+ * из необязательных полей.
+ *
+ * @see     hhttps://core.telegram.org/bots/api#inlinekeyboardbutton
+ */
 class InlineKeyboardButton implements InlineKeyboardButtonInterface
 {
     public function __construct(

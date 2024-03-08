@@ -11,8 +11,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Представляет расположение, к которому подключен чат.
  *
  * @see    https://core.telegram.org/bots/api#chatlocation

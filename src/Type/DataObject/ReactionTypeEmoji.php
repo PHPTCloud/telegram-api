@@ -6,6 +6,13 @@ namespace PHPTCloud\TelegramApi\Type\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ReactionTypeEmojiInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
+ * Реакция основана на смайлах.
+ *
+ * @see    https://core.telegram.org/bots/api#reactiontypeemoji
+ */
 class ReactionTypeEmoji implements ReactionTypeEmojiInterface
 {
     public function __construct(
