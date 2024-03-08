@@ -17,6 +17,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
@@ -162,4 +163,13 @@ interface MessageDomainServiceInterface
      * @return MessageInterface[]
      */
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
+
+    /**
+     * Используйте этот метод, чтобы изменить выбранные реакции на сообщение. На служебные сообщения нельзя
+     * реагировать. Автоматически пересылаемые сообщения из канала в его дискуссионную группу имеют те же
+     * доступные реакции, что и сообщения в канале. Возвращает True при успехе.
+     *
+     * @see https://core.telegram.org/bots/api#setmessagereaction
+     */
+    public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool;
 }

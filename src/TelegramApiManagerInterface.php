@@ -22,6 +22,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
@@ -76,6 +77,8 @@ interface TelegramApiManagerInterface
      * @return MessageInterface[]
      */
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
+
+    public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool;
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface;
 

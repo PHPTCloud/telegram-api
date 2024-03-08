@@ -18,6 +18,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
@@ -33,6 +34,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\SupportsSendingMultipartInterface;
@@ -269,6 +271,25 @@ class MessageDomainService implements
         $serializer = $this->serializersAbstractFactory->create(SendMediaGroupArgumentArraySerializerInterface::class);
 
         return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_MEDIA_GROUP->value);
+    }
+
+    public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool
+    {
+        /** @var SetMessageReactionArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SetMessageReactionArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $response = $this->request::post(TelegramApiMethodEnum::SET_MESSAGE_REACTION->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return $response->getResponseData()[RequestInterface::RESULT_KEY];
     }
 
     /**

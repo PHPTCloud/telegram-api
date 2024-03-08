@@ -26,6 +26,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LoginUrlArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReactionTypeArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReactionTypeCustomEmojiArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReactionTypeEmojiArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
@@ -41,6 +44,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
@@ -65,6 +69,9 @@ use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySer
 use PHPTCloud\TelegramApi\Argument\Serializer\LoginUrlArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ReactionTypeArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ReactionTypeCustomEmojiArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ReactionTypeEmojiArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyKeyboardRemoveArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReplyParametersArgumentArraySerializer;
@@ -80,6 +87,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SendVoiceArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\WebAppInfoArgumentArraySerializer;
@@ -209,6 +217,15 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SendMediaGroupArgumentArraySerializer::class:
             case SendMediaGroupArgumentArraySerializerInterface::class:
                 return $this->createSendMediaGroupArgumentArraySerializer();
+            case ReactionTypeEmojiArgumentArraySerializer::class:
+            case ReactionTypeEmojiArgumentArraySerializerInterface::class:
+                return $this->createReactionTypeEmojiArgumentArraySerializer();
+            case ReactionTypeCustomEmojiArgumentArraySerializer::class:
+            case ReactionTypeCustomEmojiArgumentArraySerializerInterface::class:
+                return $this->createReactionTypeCustomEmojiArgumentArraySerializer();
+            case SetMessageReactionArgumentArraySerializer::class:
+            case SetMessageReactionArgumentArraySerializerInterface::class:
+                return $this->createSetMessageReactionArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -502,6 +519,31 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createInputMediaPhotoArgumentArraySerializer(),
             $this->createInputMediaVideoArgumentArraySerializer(),
             $this->createReplyParametersArgumentArraySerializer(),
+        );
+    }
+
+    public function createReactionTypeEmojiArgumentArraySerializer(): ReactionTypeEmojiArgumentArraySerializerInterface
+    {
+        return new ReactionTypeEmojiArgumentArraySerializer();
+    }
+
+    public function createReactionTypeCustomEmojiArgumentArraySerializer(): ReactionTypeCustomEmojiArgumentArraySerializerInterface
+    {
+        return new ReactionTypeCustomEmojiArgumentArraySerializer();
+    }
+
+    public function createReactionTypeArgumentArraySerializer(): ReactionTypeArgumentArraySerializerInterface
+    {
+        return new ReactionTypeArgumentArraySerializer(
+            $this->createReactionTypeCustomEmojiArgumentArraySerializer(),
+            $this->createReactionTypeEmojiArgumentArraySerializer(),
+        );
+    }
+
+    public function createSetMessageReactionArgumentArraySerializer(): SetMessageReactionArgumentArraySerializerInterface
+    {
+        return new SetMessageReactionArgumentArraySerializer(
+            $this->createReactionTypeArgumentArraySerializer(),
         );
     }
 }

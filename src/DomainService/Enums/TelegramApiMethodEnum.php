@@ -244,4 +244,13 @@ enum TelegramApiMethodEnum: string
      * Используйте этот метод, чтобы получить количество участников в чате. Возвращает Int в случае успеха.
      */
     case GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
+
+    /**
+     * @see https://core.telegram.org/bots/api#setmessagereaction
+     *
+     * Используйте этот метод, чтобы изменить выбранные реакции на сообщение. На служебные сообщения нельзя
+     * реагировать. Автоматически пересылаемые сообщения из канала в его дискуссионную группу имеют те же
+     * доступные реакции, что и сообщения в канале. Возвращает True при успехе.
+     */
+    case SET_MESSAGE_REACTION = 'setMessageReaction';
 }
