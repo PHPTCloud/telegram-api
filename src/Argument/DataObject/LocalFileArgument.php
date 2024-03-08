@@ -26,4 +26,9 @@ class LocalFileArgument implements LocalFileArgumentInterface
     {
         return $this->filePath;
     }
+
+    public function getBaseName(): string
+    {
+        return pathinfo($this->filePath)['basename'] ?? $this->filePath;
+    }
 }

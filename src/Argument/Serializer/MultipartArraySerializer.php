@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
+use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 class MultipartArraySerializer implements MultipartArraySerializerInterface
 {
@@ -14,7 +15,10 @@ class MultipartArraySerializer implements MultipartArraySerializerInterface
         $multipart = [];
 
         foreach ($parameters as $key => $value) {
-            if ($value instanceof LocalFileArgumentInterface) {
+            if ($key === TelegramApiFieldEnum::MEDIA->value) {
+                $multipart[] = $this->createMediaGroupParameters($key, $value, $multipart);
+                continue;
+            } elseif ($value instanceof LocalFileArgumentInterface) {
                 $multipart[] = $this->createLocalFileParameter($key, $value);
                 continue;
             } elseif (is_array($value)) {
@@ -25,6 +29,35 @@ class MultipartArraySerializer implements MultipartArraySerializerInterface
         }
 
         return $multipart;
+    }
+
+    private function createMediaGroupParameters(string $name, array $contents, array &$originMultipart): array
+    {
+        $multipart = [];
+
+        foreach ($contents as $index => $media) {
+            $_multipart = [];
+            foreach ($media as $key => $value) {
+                if ($value instanceof LocalFileArgumentInterface) {
+                    $_multipart[$key] = sprintf('attach://%s', $value->getBaseName());
+                    $originMultipart[] = [
+                        'name' => $value->getBaseName(),
+                        'contents' => fopen($value->getFilePath(), 'r+'),
+                    ];
+                    continue;
+                } else {
+                    $_multipart[$key] = $value;
+                    continue;
+                }
+            }
+
+            $multipart[] = $_multipart;
+        }
+
+        return [
+            'name' => $name,
+            'contents' => json_encode($multipart),
+        ];
     }
 
     private function createArrayParameter(string $name, array $contents): array

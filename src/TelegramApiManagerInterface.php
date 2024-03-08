@@ -14,6 +14,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
@@ -72,6 +73,11 @@ interface TelegramApiManagerInterface
     public function sendVoice(SendVoiceArgumentInterface $argument): MessageInterface;
 
     public function sendVideoNote(SendVideoNoteArgumentInterface $argument): MessageInterface;
+
+    /**
+     * @return MessageInterface[]
+     */
+    public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface;
 

@@ -12,6 +12,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterfac
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
@@ -150,4 +151,15 @@ interface MessageDomainServiceInterface
      * @see https://core.telegram.org/bots/api#sendvideonote
      */
     public function sendVideoNote(SendVideoNoteArgumentInterface $argument): MessageInterface;
+
+    /**
+     * Используйте этот метод, чтобы отправить группу фотографий, видео, документов или аудио в виде альбом
+     * а. Документы и аудиофайлы можно группировать только в альбоме с однотипными сообщениями. В случае ус
+     * пеха возвращается массив отправленных сообщений.
+     *
+     * @see https://core.telegram.org/bots/api#sendmediagroup
+     *
+     * @return MessageInterface[]
+     */
+    public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
 }

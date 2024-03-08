@@ -13,6 +13,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterfac
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
@@ -27,6 +28,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerialize
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAnimationArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendDocumentArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendMediaGroupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentArraySerializerInterface;
@@ -261,16 +263,42 @@ class MessageDomainService implements
         return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_VIDEO_NOTE->value);
     }
 
+    public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array
+    {
+        /** @var SendMediaGroupArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendMediaGroupArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        // dd($data);
+        // /home/tcloud/Documents/02_projects/telegram_api_sdk/examples/assets/audio-min.mp3
+        // /home/tcloud/Documents/02_projects/telegram_api_sdk/examples/assets/video-min.mp4
+
+        return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::SEND_MEDIA_GROUP->value);
+    }
+
+    /**
+     * @return MessageInterface|MessageInterface[]
+     */
     private function sendMultipartMessage(
         SerializerInterface $serializer,
         ArgumentInterface $argument,
         string $method,
-    ): MessageInterface {
+    ): MessageInterface|array {
         $response = $this->sendMultipart($serializer, $argument, $method);
 
         /** @var MessageDeserializerInterface $deserializer */
         $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
 
-        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+        $data = $response->getResponseData()[RequestInterface::RESULT_KEY];
+        if (is_array($data)) {
+            $messages = [];
+            foreach ($data as $item) {
+                $messages[] = $deserializer->deserialize($item);
+            }
+
+            return $messages;
+        }
+
+        return $deserializer->deserialize($data);
     }
 }

@@ -16,4 +16,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 interface LocalFileArgumentInterface extends ArgumentInterface
 {
     public function getFilePath(): string;
+
+    public function getBaseName(): string;
 }

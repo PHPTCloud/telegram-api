@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Exception\Factory;
 
+use PHPTCloud\TelegramApi\Exception\Error\AudioCantBeMixedWithOtherTypesException;
 use PHPTCloud\TelegramApi\Exception\Error\BotDomainInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\BotIsNotAMemberOfTheChatException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonIdInvalidException;
@@ -14,8 +15,10 @@ use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatPhotoException;
 use PHPTCloud\TelegramApi\Exception\Error\CantChangePrivateChatTitleException;
 use PHPTCloud\TelegramApi\Exception\Error\CantFindFieldException;
 use PHPTCloud\TelegramApi\Exception\Error\CantParseInlineKeyboardButtonException;
+use PHPTCloud\TelegramApi\Exception\Error\CantParseInputMediaException;
 use PHPTCloud\TelegramApi\Exception\Error\ChatMemberStatusCantBeChangedInPrivateChatsException;
 use PHPTCloud\TelegramApi\Exception\Error\ChatNotModifiedException;
+use PHPTCloud\TelegramApi\Exception\Error\DocumentCantBeMixedWithOtherTypesException;
 use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
@@ -76,6 +79,12 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new VoiceMessageForbiddenException($message);
         } elseif (str_contains($message, $this->getChatNotModifiedMessagePart())) {
             return new ChatNotModifiedException($message);
+        } elseif (str_contains($message, $this->getCantParseInputMediaMessagePart())) {
+            return new CantParseInputMediaException($message);
+        } elseif (str_contains($message, $this->getAudioCantBeMixedWithOtherTypesMessagePart())) {
+            return new AudioCantBeMixedWithOtherTypesException($message);
+        } elseif (str_contains($message, $this->getDocumentCantBeMixedWithOtherTypesMessagePart())) {
+            return new DocumentCantBeMixedWithOtherTypesException($message);
         }
 
         return new TelegramApiException($message);
@@ -174,5 +183,20 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     public function getChatNotModifiedMessagePart(): string
     {
         return 'chat_not_modified';
+    }
+
+    public function getCantParseInputMediaMessagePart(): string
+    {
+        return 'can\'t parse inputmedia';
+    }
+
+    public function getAudioCantBeMixedWithOtherTypesMessagePart(): string
+    {
+        return 'audio can\'t be mixed with other media types';
+    }
+
+    public function getDocumentCantBeMixedWithOtherTypesMessagePart(): string
+    {
+        return 'document can\'t be mixed with other media types';
     }
 }
