@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
@@ -352,5 +353,17 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->chatDomainService->getChatMemberCount($argument);
+    }
+
+    public function banChatMember(BanChatMemberArgumentInterface $argument): bool
+    {
+        if (null === $this->chatDomainService) {
+            $this->chatDomainService = $this->chatDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->chatDomainService->banChatMember($argument);
     }
 }

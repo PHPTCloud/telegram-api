@@ -14,8 +14,13 @@ $dotenv->load(__DIR__ . '/.env');
 
 $token = $_ENV['TELEGRAM_BOT_TOKEN'];
 $chatId = $_ENV['TELEGRAM_GROUP_CHAT_ID'];
+$userId = (int) $_ENV['TELEGRAM_GROUP_MEMBER_ID'];
 
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 
-dump($manager->getChat(new PHPTCloud\TelegramApi\Argument\DataObject\ChatIdArgument($chatId)));
+$isOk = $manager->banChatMember(
+    new \PHPTCloud\TelegramApi\Argument\DataObject\BanChatMemberArgument($chatId, $userId),
+);
+
+dump($isOk);

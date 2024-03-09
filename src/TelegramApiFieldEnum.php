@@ -171,4 +171,7 @@ enum TelegramApiFieldEnum: string
     case MEDIA = 'media';
     case BIG = 'big';
     case REACTION = 'reaction';
+    case UNTIL_DATE = 'until_date';
+    case REVOKE_MESSAGES = 'revoke_messages';
+    case USER_ID = 'user_id';
 }

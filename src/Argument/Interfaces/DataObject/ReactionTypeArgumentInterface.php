@@ -10,7 +10,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * @link https://core.telegram.org/bots/api#reactiontype
  */
-interface ReactionTypeArgumentInterface
+interface ReactionTypeArgumentInterface extends ArgumentInterface
 {
     /**
      * Тип реакции.

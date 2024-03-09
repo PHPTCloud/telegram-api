@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Factory;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
@@ -48,6 +49,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Serializer\BanChatMemberArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer;
@@ -226,6 +228,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetMessageReactionArgumentArraySerializer::class:
             case SetMessageReactionArgumentArraySerializerInterface::class:
                 return $this->createSetMessageReactionArgumentArraySerializer();
+            case BanChatMemberArgumentArraySerializer::class:
+            case BanChatMemberArgumentArraySerializerInterface::class:
+                return $this->createBanChatMemberArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -545,5 +550,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
         return new SetMessageReactionArgumentArraySerializer(
             $this->createReactionTypeArgumentArraySerializer(),
         );
+    }
+
+    public function createBanChatMemberArgumentArraySerializer(): BanChatMemberArgumentArraySerializerInterface
+    {
+        return new BanChatMemberArgumentArraySerializer();
     }
 }

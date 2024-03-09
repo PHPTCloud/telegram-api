@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
@@ -95,4 +96,6 @@ interface TelegramApiManagerInterface
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
 
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
+
+    public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
 }

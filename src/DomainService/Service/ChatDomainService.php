@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendChatActionArgumentArraySerializerInterface;
@@ -180,6 +182,25 @@ class ChatDomainService implements
         $data = $serializer->serialize($argument);
 
         $response = $this->request::post(TelegramApiMethodEnum::GET_CHAT_MEMBER_COUNT->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return $response->getResponseData()[RequestInterface::RESULT_KEY];
+    }
+
+    public function banChatMember(BanChatMemberArgumentInterface $argument): bool
+    {
+        /** @var BanChatMemberArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(BanChatMemberArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $response = $this->request::post(TelegramApiMethodEnum::BAN_CHAT_MEMBER->value, $data);
 
         if ($response->isError()) {
             $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
