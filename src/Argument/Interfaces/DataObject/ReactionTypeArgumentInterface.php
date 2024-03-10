@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -8,7 +9,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  *
  * Этот объект описывает тип реакции.
  *
- * @link https://core.telegram.org/bots/api#reactiontype
+ * @see https://core.telegram.org/bots/api#reactiontype
  */
 interface ReactionTypeArgumentInterface extends ArgumentInterface
 {

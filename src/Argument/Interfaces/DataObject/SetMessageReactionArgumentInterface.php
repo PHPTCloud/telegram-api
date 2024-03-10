@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -10,7 +11,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * реагировать. Автоматически пересылаемые сообщения из канала в его дискуссионную группу имеют те же
  * доступные реакции, что и сообщения в канале. Возвращает True при успехе.
  *
- * @link https://core.telegram.org/bots/api#setmessagereaction
+ * @see https://core.telegram.org/bots/api#setmessagereaction
  */
 interface SetMessageReactionArgumentInterface extends ArgumentInterface
 {

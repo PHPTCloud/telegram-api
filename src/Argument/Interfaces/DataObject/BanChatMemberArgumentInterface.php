@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -11,7 +12,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * глашения и т. д., пока не будет разбанен. Для этого бот должен быть администратором чата и обладать
  * соответствующими правами администратора. Возвращает True в случае успеха.
  *
- * @link https://core.telegram.org/bots/api#banchatmember
+ * @see https://core.telegram.org/bots/api#banchatmember
  */
 interface BanChatMemberArgumentInterface extends ArgumentInterface
 {
