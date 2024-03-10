@@ -12,8 +12,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class LocationDeserializer extends AbstractDeserializer implements LocationDeserializerInterface
 {

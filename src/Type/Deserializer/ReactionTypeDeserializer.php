@@ -12,8 +12,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserial
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class ReactionTypeDeserializer implements ReactionTypeDeserializerInterface
 {

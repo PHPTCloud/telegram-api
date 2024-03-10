@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой одну кнопку клавиатуры ответа. Для простых текстовых кнопок вместо эт
  * ого объекта можно использовать String, чтобы указать текст кнопки. Необязательные поля web_app,
  * request_users, request_chat, request_contact, request_location и request_poll являются

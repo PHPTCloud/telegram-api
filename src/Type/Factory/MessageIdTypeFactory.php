@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class MessageIdTypeFactory implements MessageIdTypeFactoryInterface
 {
     public function create(int $messageId): MessageIdInterface

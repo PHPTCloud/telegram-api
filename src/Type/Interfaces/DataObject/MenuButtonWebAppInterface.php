@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author Пешко Илья peshkoi@mail.ru
  *
- * @version 1.0.0
- *
  * Предоставляет кнопку меню, которая запускает веб-приложение.
  *
  * @see https://core.telegram.org/bots/api#menubuttonwebapp

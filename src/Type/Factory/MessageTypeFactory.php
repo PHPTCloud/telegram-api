@@ -55,8 +55,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class MessageTypeFactory implements MessageTypeFactoryInterface
 {

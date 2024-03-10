@@ -17,7 +17,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\WebAppInfoInterface;
  * Этот объект представляет собой одну кнопку встроенной клавиатуры. Вы должны использовать только одно
  * из необязательных полей.
  *
- * @see     hhttps://core.telegram.org/bots/api#inlinekeyboardbutton
+ * @see     https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
 class InlineKeyboardButton implements InlineKeyboardButtonInterface
 {

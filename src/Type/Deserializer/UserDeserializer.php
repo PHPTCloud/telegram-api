@@ -11,8 +11,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class UserDeserializer extends AbstractDeserializer implements UserDeserializerInterface
 {

@@ -8,8 +8,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\LocationInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 interface LocationTypeFactoryInterface extends TypeFactoryInterface
 {

@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой служебное сообщение о том, что пользователь разрешает боту писать соо
  * бщения после добавления его в меню вложений, запуска веб-приложения по ссылке или принятия явного за
  * проса от веб-приложения, отправленного методом requestWriteAccess.

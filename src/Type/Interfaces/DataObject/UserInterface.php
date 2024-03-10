@@ -10,12 +10,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ArgumentInterface;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
- * Telegram API
+ * Этот объект представляет пользователя или бота Telegram.
  *
  * @see    https://core.telegram.org/bots/api#user
- * Этот объект представляет пользователя или бота Telegram.
  */
 interface UserInterface extends ArgumentInterface
 {

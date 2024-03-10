@@ -13,8 +13,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryIn
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class ReactionTypeEmojiDeserializer extends AbstractDeserializer implements ReactionTypeEmojiDeserializerInterface
 {

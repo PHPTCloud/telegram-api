@@ -17,8 +17,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class ChatDeserializer extends AbstractDeserializer implements ChatDeserializerInterface
 {

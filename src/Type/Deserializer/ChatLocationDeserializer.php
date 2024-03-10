@@ -13,8 +13,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterfa
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class ChatLocationDeserializer extends AbstractDeserializer implements ChatLocationDeserializerInterface
 {

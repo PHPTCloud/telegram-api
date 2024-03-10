@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Повышение было получено за счет создания розыгрыша Telegram Premium. Это прокачивает чат в 4 раза за
  * время действия соответствующей подписки Telegram Premium.
  *

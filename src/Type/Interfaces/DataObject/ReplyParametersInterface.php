@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Описывает параметры ответа для отправляемого сообщения.
  *
  * @see    https://core.telegram.org/bots/api#replyparameters

@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Представляет запрос на присоединение, отправленный в чат.
  *
  * @see    https://core.telegram.org/bots/api#chatjoinrequest
