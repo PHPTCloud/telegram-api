@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\TelegramBotInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
- *
- * @version 1.0.0
  */
 interface ChatDomainServiceFactoryInterface
 {

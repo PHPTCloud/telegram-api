@@ -55,8 +55,6 @@ use PHPTCloud\TelegramApi\Utils\Interface\Service\SortingAlgorithmServiceInterfa
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class MessageDomainService implements
     MessageDomainServiceInterface,

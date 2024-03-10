@@ -15,8 +15,6 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 /**
  * @author  Пешко Илья peshkoi@mail.ru
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 interface ChatDomainServiceInterface
 {

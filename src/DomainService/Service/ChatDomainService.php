@@ -31,8 +31,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryIn
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
- *
- * @version 1.0.0
+ * @author  Юдов Алексей tcloud.ax@gmail.com
  */
 class ChatDomainService implements
     ChatDomainServiceInterface,

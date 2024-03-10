@@ -9,6 +9,8 @@ use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
 use PHPTCloud\TelegramApi\SerializerInterface;
 
 /**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @see \PHPTCloud\TelegramApi\DomainService\Traits\SupportsSendingMultipartTrait
  */
 interface SupportsSendingMultipartInterface

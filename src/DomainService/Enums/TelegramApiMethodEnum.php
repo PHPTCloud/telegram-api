@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\DomainService\Enums;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Пешко Илья peshkoi@mail.ru
- *
- * @version 1.0.0
  */
 enum TelegramApiMethodEnum: string
 {

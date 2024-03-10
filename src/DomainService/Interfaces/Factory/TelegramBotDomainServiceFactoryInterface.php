@@ -8,8 +8,6 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServ
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 interface TelegramBotDomainServiceFactoryInterface
 {

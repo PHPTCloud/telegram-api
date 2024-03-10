@@ -14,6 +14,8 @@ use PHPTCloud\TelegramApi\SerializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 
 /**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * @see \PHPTCloud\TelegramApi\DomainService\Interfaces\Service\SupportsSendingMultipartInterface
  */
 trait SupportsSendingMultipartTrait
