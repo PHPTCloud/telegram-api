@@ -11,6 +11,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosen
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class InlineKeyboardButtonArgumentArraySerializer implements InlineKeyboardButtonArgumentArraySerializerInterface
 {
     public function __construct(

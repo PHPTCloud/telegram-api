@@ -15,6 +15,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SendVoiceArgumentArraySerializer implements SendVoiceArgumentArraySerializerInterface
 {
     public function __construct(

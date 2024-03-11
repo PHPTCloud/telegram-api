@@ -5,20 +5,17 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageEntityArgumentInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAnimationArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
-/**
- * @author  Юдов Алексей tcloud.ax@gmail.com
- */
-class SendVideoArgumentArraySerializer implements SendVideoArgumentArraySerializerInterface
+class SendAnimationArgumentArraySerializer implements SendAnimationArgumentArraySerializerInterface
 {
     public function __construct(
         private readonly MessageEntityArgumentArraySerializerInterface $messageEntityArgumentArraySerializer,
@@ -30,12 +27,12 @@ class SendVideoArgumentArraySerializer implements SendVideoArgumentArraySerializ
     ) {
     }
 
-    public function serialize(SendVideoArgumentInterface $argument): array
+    public function serialize(SendAnimationArgumentInterface $argument): array
     {
         $data = [];
 
         $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
-        $data[TelegramApiFieldEnum::VIDEO->value] = $argument->getVideo();
+        $data[TelegramApiFieldEnum::ANIMATION->value] = $argument->getAnimation();
 
         if ($argument->getWidth()) {
             $data[TelegramApiFieldEnum::WIDTH->value] = $argument->getWidth();
@@ -43,10 +40,6 @@ class SendVideoArgumentArraySerializer implements SendVideoArgumentArraySerializ
 
         if ($argument->getHeight()) {
             $data[TelegramApiFieldEnum::HEIGHT->value] = $argument->getHeight();
-        }
-
-        if (null !== $argument->isSupportsStreaming()) {
-            $data[TelegramApiFieldEnum::SUPPORTS_STREAMING->value] = $argument->isSupportsStreaming();
         }
 
         if (null !== $argument->hasSpoiler()) {
