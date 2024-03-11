@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LoginUrlArgumentInterfa
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LoginUrlArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class LoginUrlArgumentArraySerializer implements LoginUrlArgumentArraySerializerInterface
 {
     public function serialize(LoginUrlArgumentInterface $argument): array

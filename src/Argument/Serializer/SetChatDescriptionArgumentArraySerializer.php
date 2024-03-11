@@ -10,8 +10,6 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
- *
- * @version 1.0.0
  */
 class SetChatDescriptionArgumentArraySerializer implements SetChatDescriptionArgumentArraySerializerInterface
 {

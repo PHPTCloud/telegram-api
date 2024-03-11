@@ -15,6 +15,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgu
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyParametersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class CopyMessageArgumentArraySerializer implements CopyMessageArgumentArraySerializerInterface
 {
     public function __construct(

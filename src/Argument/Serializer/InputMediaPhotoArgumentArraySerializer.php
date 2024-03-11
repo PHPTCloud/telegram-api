@@ -10,6 +10,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaPhotoArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class InputMediaPhotoArgumentArraySerializer implements InputMediaPhotoArgumentArraySerializerInterface
 {
     public function __construct(

@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class MultipartArraySerializer implements MultipartArraySerializerInterface
 {
     public function serialize(array $parameters): array

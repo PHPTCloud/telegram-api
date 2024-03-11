@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerial
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class UserArgumentArraySerializer implements UserArgumentArraySerializerInterface
 {

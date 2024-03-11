@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgu
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardRemoveArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ReplyKeyboardRemoveArgumentArraySerializer implements ReplyKeyboardRemoveArgumentArraySerializerInterface
 {
     public function serialize(ReplyKeyboardRemoveArgumentInterface $argument): array

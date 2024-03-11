@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SwitchInlineQueryChosen
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SwitchInlineQueryChosenChatArgumentArraySerializer implements SwitchInlineQueryChosenChatArgumentArraySerializerInterface
 {
     public function serialize(SwitchInlineQueryChosenChatArgumentInterface $argument): array

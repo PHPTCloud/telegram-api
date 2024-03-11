@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class CopyMessagesArgumentArraySerializer implements CopyMessagesArgumentArraySerializerInterface
 {
     public function serialize(CopyMessagesArgumentInterface $argument): array

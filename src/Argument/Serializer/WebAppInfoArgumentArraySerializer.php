@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\WebAppInfoArgumentInter
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class WebAppInfoArgumentArraySerializer implements WebAppInfoArgumentArraySerializerInterface
 {
     public function serialize(WebAppInfoArgumentInterface $argument): array

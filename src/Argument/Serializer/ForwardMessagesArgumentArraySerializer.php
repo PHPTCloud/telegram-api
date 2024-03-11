@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ForwardMessagesArgumentArraySerializer implements ForwardMessagesArgumentArraySerializerInterface
 {
     public function serialize(ForwardMessagesArgumentInterface $argument): array

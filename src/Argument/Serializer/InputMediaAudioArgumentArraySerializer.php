@@ -10,6 +10,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class InputMediaAudioArgumentArraySerializer implements InputMediaAudioArgumentArraySerializerInterface
 {
     public function __construct(

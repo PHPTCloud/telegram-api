@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatAdministratorRights
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ChatAdministratorRightsArgumentArraySerializer implements ChatAdministratorRightsArgumentArraySerializerInterface
 {
     public function serialize(ChatAdministratorRightsArgumentInterface $argument): array

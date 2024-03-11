@@ -9,6 +9,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRights
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class KeyboardButtonRequestChatArgumentArraySerializer implements KeyboardButtonRequestChatArgumentArraySerializerInterface
 {
     public function __construct(

@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SetChatPhotoArgumentArraySerializer implements SetChatPhotoArgumentArraySerializerInterface
 {
     public function serialize(SetChatPhotoArgumentInterface $argument): array

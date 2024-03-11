@@ -12,6 +12,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestUs
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class KeyboardButtonArgumentArraySerializer implements KeyboardButtonArgumentArraySerializerInterface
 {
     public function __construct(

@@ -9,6 +9,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\ReplyKeyboardMarkupArgumen
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ReplyKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentBuilder implements ReplyKeyboardMarkupArgumentBuilderInterface
 {
     private bool $resizeKeyboard = false;

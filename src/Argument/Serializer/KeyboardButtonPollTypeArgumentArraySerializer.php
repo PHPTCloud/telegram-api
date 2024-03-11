@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonPollTypeA
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonPollTypeArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class KeyboardButtonPollTypeArgumentArraySerializer implements KeyboardButtonPollTypeArgumentArraySerializerInterface
 {
     public function serialize(KeyboardButtonPollTypeArgumentInterface $argument): array

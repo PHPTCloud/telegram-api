@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForceReplyArgumentInter
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ForceReplyArgumentArraySerializer implements ForceReplyArgumentArraySerializerInterface
 {
     public function serialize(ForceReplyArgumentInterface $argument): array

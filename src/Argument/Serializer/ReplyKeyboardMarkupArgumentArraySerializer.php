@@ -10,6 +10,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonArgumentA
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReplyKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ReplyKeyboardMarkupArgumentArraySerializer implements ReplyKeyboardMarkupArgumentArraySerializerInterface
 {
     public function __construct(

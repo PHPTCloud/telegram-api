@@ -9,6 +9,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\InlineKeyboardMarkupArgume
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InlineKeyboardMarkupArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class InlineKeyboardMarkupArgumentBuilder extends AbstractKeyboardMarkupArgumentBuilder implements InlineKeyboardMarkupArgumentBuilderInterface
 {
     /**

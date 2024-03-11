@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\DataObject\ReplyKeyboardRemoveArgument;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Builder\ReplyKeyboardRemoveArgumentBuilderInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ReplyKeyboardRemoveArgumentBuilder implements ReplyKeyboardRemoveArgumentBuilderInterface
 {
     private bool $removeKeyboard = true;

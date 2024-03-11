@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class BanChatMemberArgumentArraySerializer implements BanChatMemberArgumentArraySerializerInterface
 {
     public function serialize(BanChatMemberArgumentInterface $argument): array
