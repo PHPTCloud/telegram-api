@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\Serializer;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\SerializerInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 interface ForwardMessagesArgumentArraySerializerInterface extends SerializerInterface
 {
     public function serialize(ForwardMessagesArgumentInterface $argument): array;

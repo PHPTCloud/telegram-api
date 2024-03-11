@@ -6,6 +6,9 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\Builder;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 interface ReplyKeyboardRemoveArgumentBuilderInterface
 {
     public function wantRemoveKeyboard(bool $removeKeyboard): ReplyKeyboardRemoveArgumentBuilderInterface;

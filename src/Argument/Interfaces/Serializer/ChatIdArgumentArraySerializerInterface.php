@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\SerializerInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
- *
- * @version 1.0.0
  */
 interface ChatIdArgumentArraySerializerInterface extends SerializerInterface
 {

@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\Builder;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\KeyboardButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 interface ReplyKeyboardMarkupArgumentBuilderInterface
 {
     public function addButton(KeyboardButtonArgumentInterface $button): ReplyKeyboardMarkupArgumentBuilderInterface;
