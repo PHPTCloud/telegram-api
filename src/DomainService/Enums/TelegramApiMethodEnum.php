@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\DomainService\Enums;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Пешко Илья peshkoi@mail.ru
+ *
+ * API Changelog
+ * @link    https://core.telegram.org/bots/api-changelog#recent-changes
  */
 enum TelegramApiMethodEnum: string
 {
@@ -66,7 +69,7 @@ enum TelegramApiMethodEnum: string
      * Пример: ImageBot требуется некоторое время для обработки запроса и загрузки изображения. Вместо отпр
      * авки текстового сообщения типа «Получение изображения, пожалуйста, подождите…» бот может использоват
      * ь sendChatAction с action = upload_photo. Пользователь увидит статус бота «отправка фото».
-     * @see https://t.me/imagebot
+     * @see  https://t.me/imagebot
      *
      * Мы рекомендуем использовать этот метод только в том случае, если получение ответа от бота займет зам
      * етное время.
@@ -279,6 +282,9 @@ enum TelegramApiMethodEnum: string
      *
      * Используйте этот метод, чтобы установить собственный титул для администратора в супергруппе, продвиг
      * аемой ботом. Возвращает True в случае успеха.
+     *
+     * ПРИМЕЧАНИЕ: Бот имеет возможность поменять это название только тогда, когда он сам выдал пользовател
+     * ю права администратора.
      */
     case SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE = 'setChatAdministratorCustomTitle';
 }

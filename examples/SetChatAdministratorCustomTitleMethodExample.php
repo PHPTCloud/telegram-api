@@ -19,6 +19,8 @@ $userId = (int) $_ENV['TELEGRAM_GROUP_MEMBER_ID'];
 // Инициализируем менеджер для интеграции с Telegram API
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 
+// @TODO: Доработать пример, когда бот сможет назначать админов.
+
 $isOk = $manager->setChatAdministratorCustomTitle(
     new \PHPTCloud\TelegramApi\Argument\DataObject\SetChatAdministratorCustomTitleArgument(
         $chatId,
