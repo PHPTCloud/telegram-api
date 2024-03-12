@@ -42,6 +42,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatAdministratorCustomTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
@@ -87,6 +88,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SendPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoNoteArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVoiceArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetChatAdministratorCustomTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
@@ -234,6 +236,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case UnbanChatMemberArgumentArraySerializer::class:
             case UnbanChatMemberArgumentArraySerializerInterface::class:
                 return $this->createUnbanChatMemberArgumentArraySerializer();
+            case SetChatAdministratorCustomTitleArgumentArraySerializer::class:
+            case SetChatAdministratorCustomTitleArgumentArraySerializerInterface::class:
+                return $this->createSetChatAdministratorCustomTitleArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -563,5 +568,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createUnbanChatMemberArgumentArraySerializer(): UnbanChatMemberArgumentArraySerializerInterface
     {
         return new UnbanChatMemberArgumentArraySerializer();
+    }
+
+    public function createSetChatAdministratorCustomTitleArgumentArraySerializer(): SetChatAdministratorCustomTitleArgumentArraySerializerInterface
+    {
+        return new SetChatAdministratorCustomTitleArgumentArraySerializer();
     }
 }

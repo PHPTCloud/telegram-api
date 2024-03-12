@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -7,7 +6,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  */
-interface UnbanChatMemberArgumentInterface extends ArgumentInterface
+interface SetChatAdministratorCustomTitleArgumentInterface extends ArgumentInterface
 {
     /**
      * Уникальный идентификатор целевой группы или имя пользователя целевой супергруппы или канала (в форма
@@ -21,7 +20,7 @@ interface UnbanChatMemberArgumentInterface extends ArgumentInterface
     public function getUserId(): int|float;
 
     /**
-     * Ничего не делает, если пользователь не забанен.
+     * Новый пользовательский титул для администратора; Длина от 0 до 16 символов, смайлы не допускаются.
      */
-    public function isOnlyIfBanned(): ?bool;
+    public function getCustomTitle(): string;
 }

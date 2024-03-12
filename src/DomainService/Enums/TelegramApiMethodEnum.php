@@ -273,4 +273,12 @@ enum TelegramApiMethodEnum: string
      * етр only_if_banned. Возвращает True в случае успеха.
      */
     case UNBAN_CHAT_MEMBER = 'unbanChatMember';
+
+    /**
+     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+     *
+     * Используйте этот метод, чтобы установить собственный титул для администратора в супергруппе, продвиг
+     * аемой ботом. Возвращает True в случае успеха.
+     */
+    case SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE = 'setChatAdministratorCustomTitle';
 }

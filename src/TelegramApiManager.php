@@ -20,6 +20,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatAdministratorCustomTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
@@ -67,316 +68,168 @@ class TelegramApiManager implements TelegramApiManagerInterface
 
     public function getMe(): UserInterface
     {
-        if (null === $this->telegramBotDomainService) {
-            $this->telegramBotDomainService = $this->telegramBotDomainServiceFactory->create($this->bot, $this->host);
-        }
-
-        return $this->telegramBotDomainService->getMe();
+        return $this->getTelegramBotDomainService()->getMe();
     }
 
     public function logOut(): bool
     {
-        if (null === $this->telegramBotDomainService) {
-            $this->telegramBotDomainService = $this->telegramBotDomainServiceFactory->create($this->bot, $this->host);
-        }
-
-        return $this->telegramBotDomainService->logOut();
+        return $this->getTelegramBotDomainService()->logOut();
     }
 
     public function close(): bool
     {
-        if (null === $this->telegramBotDomainService) {
-            $this->telegramBotDomainService = $this->telegramBotDomainServiceFactory->create($this->bot, $this->host);
-        }
-
-        return $this->telegramBotDomainService->close();
+        return $this->getTelegramBotDomainService()->close();
     }
 
     public function sendMessage(MessageArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendMessage($argument);
+        return $this->getMessageDomainService()->sendMessage($argument);
     }
 
     public function forwardMessage(ForwardMessageArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->forwardMessage($argument);
+        return $this->getMessageDomainService()->forwardMessage($argument);
     }
 
     public function forwardMessages(ForwardMessagesArgumentInterface $argument, bool $sortIds = false): array
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->forwardMessages($argument, $sortIds);
+        return $this->getMessageDomainService()->forwardMessages($argument, $sortIds);
     }
 
     public function copyMessage(CopyMessageArgumentInterface $argument): MessageId
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->copyMessage($argument);
+        return $this->getMessageDomainService()->copyMessage($argument);
     }
 
     public function copyMessages(CopyMessagesArgumentInterface $argument, bool $sortIds = false): array
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->copyMessages($argument, $sortIds);
+        return $this->getMessageDomainService()->copyMessages($argument, $sortIds);
     }
 
     public function sendPhoto(SendPhotoArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendPhoto($argument);
+        return $this->getMessageDomainService()->sendPhoto($argument);
     }
 
     public function sendAudio(SendAudioArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendAudio($argument);
+        return $this->getMessageDomainService()->sendAudio($argument);
     }
 
     public function sendDocument(SendDocumentArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendDocument($argument);
+        return $this->getMessageDomainService()->sendDocument($argument);
     }
 
     public function sendVideo(SendVideoArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendVideo($argument);
+        return $this->getMessageDomainService()->sendVideo($argument);
     }
 
     public function sendAnimation(SendAnimationArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendAnimation($argument);
+        return $this->getMessageDomainService()->sendAnimation($argument);
     }
 
     public function sendVoice(SendVoiceArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendVoice($argument);
+        return $this->getMessageDomainService()->sendVoice($argument);
     }
 
     public function sendVideoNote(SendVideoNoteArgumentInterface $argument): MessageInterface
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendVideoNote($argument);
+        return $this->getMessageDomainService()->sendVideoNote($argument);
     }
 
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->sendMediaGroup($argument);
+        return $this->getMessageDomainService()->sendMediaGroup($argument);
     }
 
     public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool
     {
-        if (null === $this->messageDomainService) {
-            $this->messageDomainService = $this->messageDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->messageDomainService->setMessageReaction($argument);
+        return $this->getMessageDomainService()->setMessageReaction($argument);
     }
 
     public function getChat(ChatIdArgumentInterface $argument): ChatInterface
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->getChat($argument);
+        return $this->getChatDomainService()->getChat($argument);
     }
 
     public function sendChatAction(SendChatActionArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->sendChatAction($argument);
+        return $this->getChatDomainService()->sendChatAction($argument);
     }
 
     public function setChatPhoto(SetChatPhotoArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->setChatPhoto($argument);
+        return $this->getChatDomainService()->setChatPhoto($argument);
     }
 
     public function deleteChatPhoto(ChatIdArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->deleteChatPhoto($argument);
+        return $this->getChatDomainService()->deleteChatPhoto($argument);
     }
 
     public function leaveChat(ChatIdArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->leaveChat($argument);
+        return $this->getChatDomainService()->leaveChat($argument);
     }
 
     public function setChatTitle(SetChatTitleArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->setChatTitle($argument);
+        return $this->getChatDomainService()->setChatTitle($argument);
     }
 
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->setChatDescription($argument);
+        return $this->getChatDomainService()->setChatDescription($argument);
     }
 
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->getChatMemberCount($argument);
+        return $this->getChatDomainService()->getChatMemberCount($argument);
     }
 
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool
     {
-        if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
-        }
-
-        return $this->chatDomainService->banChatMember($argument);
+        return $this->getChatDomainService()->banChatMember($argument);
     }
 
     public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool
     {
+        return $this->getChatDomainService()->unbanChatMember($argument);
+    }
+
+    public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleArgumentInterface $argument): bool
+    {
+        return $this->getChatDomainService()->setChatAdministratorCustomTitle($argument);
+    }
+
+    private function getChatDomainService(): ChatDomainServiceInterface
+    {
         if (null === $this->chatDomainService) {
-            $this->chatDomainService = $this->chatDomainServiceFactory->create(
-                $this->bot,
-                $this->host,
-            );
+            $this->chatDomainService = $this->chatDomainServiceFactory->create($this->bot, $this->host);
         }
 
-        return $this->chatDomainService->unbanChatMember($argument);
+        return $this->chatDomainService;
+    }
+
+    private function getMessageDomainService(): MessageDomainServiceInterface
+    {
+        if (null === $this->messageDomainService) {
+            $this->messageDomainService = $this->messageDomainServiceFactory->create($this->bot, $this->host);
+        }
+
+        return $this->messageDomainService;
+    }
+
+    private function getTelegramBotDomainService(): TelegramBotDomainServiceInterface
+    {
+        if (null === $this->telegramBotDomainService) {
+            $this->telegramBotDomainService = $this->telegramBotDomainServiceFactory->create($this->bot, $this->host);
+        }
+
+        return $this->telegramBotDomainService;
     }
 }

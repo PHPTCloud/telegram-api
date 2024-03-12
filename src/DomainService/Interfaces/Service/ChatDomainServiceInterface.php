@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatAdministratorCustomTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
@@ -119,4 +120,12 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#unbanchatmember
      */
     public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
+
+    /**
+     * Используйте этот метод, чтобы установить собственный титул для администратора в супергруппе, продвиг
+     * аемой ботом. Возвращает True в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+     */
+    public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleArgumentInterface $argument): bool;
 }

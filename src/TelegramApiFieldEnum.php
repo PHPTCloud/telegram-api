@@ -175,4 +175,5 @@ enum TelegramApiFieldEnum: string
     case REVOKE_MESSAGES = 'revoke_messages';
     case USER_ID = 'user_id';
     case ONLY_IF_BANNED = 'only_if_banned';
+    case CUSTOM_TITLE = 'custom_title';
 }
