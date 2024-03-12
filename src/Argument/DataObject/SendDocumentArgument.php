@@ -12,6 +12,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardRemoveArgu
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SendDocumentArgument implements SendDocumentArgumentInterface
 {
     public function __construct(

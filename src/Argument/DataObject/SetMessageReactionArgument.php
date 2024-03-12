@@ -6,6 +6,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SetMessageReactionArgument implements SetMessageReactionArgumentInterface
 {
     public function __construct(

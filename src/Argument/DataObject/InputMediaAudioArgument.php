@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Enums\InputMediaTypeEnum;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class InputMediaAudioArgument extends AbstractInputMediaArgument implements InputMediaAudioArgumentInterface
 {
     public function __construct(

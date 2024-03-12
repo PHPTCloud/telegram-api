@@ -6,6 +6,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class CopyMessagesArgument implements CopyMessagesArgumentInterface
 {
     public function __construct(

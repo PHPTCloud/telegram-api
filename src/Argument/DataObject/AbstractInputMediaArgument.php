@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 abstract class AbstractInputMediaArgument implements InputMediaArgumentInterface
 {
     public function __construct(

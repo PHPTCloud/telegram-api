@@ -6,6 +6,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ForwardMessagesArgument implements ForwardMessagesArgumentInterface
 {
     public function __construct(

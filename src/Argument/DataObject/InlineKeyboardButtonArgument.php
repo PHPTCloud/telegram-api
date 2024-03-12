@@ -11,8 +11,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\WebAppInfoArgumentInter
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class InlineKeyboardButtonArgument implements InlineKeyboardButtonArgumentInterface
 {

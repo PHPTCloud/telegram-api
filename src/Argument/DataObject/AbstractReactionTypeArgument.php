@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReactionTypeArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Enums\ReactionTypeTypeEnum;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 abstract class AbstractReactionTypeArgument implements ReactionTypeArgumentInterface
 {
     public function __construct(

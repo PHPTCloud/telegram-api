@@ -8,8 +8,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SwitchInlineQueryChosen
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class SwitchInlineQueryChosenChatArgument implements SwitchInlineQueryChosenChatArgumentInterface
 {

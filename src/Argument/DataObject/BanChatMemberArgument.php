@@ -6,6 +6,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class BanChatMemberArgument implements BanChatMemberArgumentInterface
 {
     public function __construct(

@@ -8,8 +8,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LoginUrlArgumentInterfa
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class LoginUrlArgument implements LoginUrlArgumentInterface
 {

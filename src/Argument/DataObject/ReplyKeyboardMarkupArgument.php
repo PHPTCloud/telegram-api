@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyKeyboardMarkupArgu
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой пользовательскую клавиатуру с опциями ответа (подробности и примеры с
  * м. в разделе Знакомство с ботами).
  *

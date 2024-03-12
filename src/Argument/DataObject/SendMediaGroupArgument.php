@@ -7,6 +7,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ReplyParametersArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class SendMediaGroupArgument implements SendMediaGroupArgumentInterface
 {
     public function __construct(

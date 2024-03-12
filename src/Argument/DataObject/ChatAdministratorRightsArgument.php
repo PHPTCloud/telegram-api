@@ -6,6 +6,9 @@ namespace PHPTCloud\TelegramApi\Argument\DataObject;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatAdministratorRightsArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class ChatAdministratorRightsArgument implements ChatAdministratorRightsArgumentInterface
 {
     public function __construct(

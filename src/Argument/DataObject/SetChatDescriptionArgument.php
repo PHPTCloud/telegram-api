@@ -9,8 +9,6 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgum
 /**
  * @author  Пешко Илья peshkoi@mail.ru
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 class SetChatDescriptionArgument implements SetChatDescriptionArgumentInterface
 {

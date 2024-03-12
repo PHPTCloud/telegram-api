@@ -8,6 +8,8 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 
 /**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
  * Используйте этот метод, чтобы установить новую фотографию профиля для чата. Фотографии нельзя измени
  * ть в приватных чатах. Для этого бот должен быть администратором в чате и иметь соответствующие права
  * администратора. Возвращает True в случае успеха.

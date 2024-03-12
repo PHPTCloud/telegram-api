@@ -8,6 +8,9 @@ use PHPTCloud\TelegramApi\Argument\Enums\InputMediaTypeEnum;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ */
 class InputMediaVideoArgument extends AbstractInputMediaArgument implements InputMediaVideoArgumentInterface
 {
     public function __construct(
