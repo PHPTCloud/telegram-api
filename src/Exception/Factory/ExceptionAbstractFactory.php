@@ -23,6 +23,7 @@ use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
+use PHPTCloud\TelegramApi\Exception\Error\NotEnoughRightToChangeCustomTitleException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Error\TextButtonsAreUnallowedInInlineKeyboardException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
@@ -83,6 +84,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new AudioCantBeMixedWithOtherTypesException($message);
         } elseif (str_contains($message, $this->getDocumentCantBeMixedWithOtherTypesMessagePart())) {
             return new DocumentCantBeMixedWithOtherTypesException($message);
+        } elseif (str_contains($message, $this->getNotEnoughRightToChangeCustomTitleMessagePart())) {
+            return new NotEnoughRightToChangeCustomTitleException($message);
         }
 
         return new TelegramApiException($message);
@@ -196,5 +199,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     public function getDocumentCantBeMixedWithOtherTypesMessagePart(): string
     {
         return 'document can\'t be mixed with other media types';
+    }
+
+    public function getNotEnoughRightToChangeCustomTitleMessagePart(): string
+    {
+        return 'not enough rights to change custom title of the user';
     }
 }
