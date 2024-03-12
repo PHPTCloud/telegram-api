@@ -24,6 +24,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
@@ -98,4 +99,6 @@ interface TelegramApiManagerInterface
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
+
+    public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
 }

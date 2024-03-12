@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Используйте этот метод для отправки фотографий. В случае успеха отправленное сообщение возвращается.
  *
  * @see     https://core.telegram.org/bots/api#sendphoto

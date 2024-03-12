@@ -24,6 +24,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\TelegramBotDomainServiceFactoryInterface;
@@ -365,5 +366,17 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->chatDomainService->banChatMember($argument);
+    }
+
+    public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool
+    {
+        if (null === $this->chatDomainService) {
+            $this->chatDomainService = $this->chatDomainServiceFactory->create(
+                $this->bot,
+                $this->host,
+            );
+        }
+
+        return $this->chatDomainService->unbanChatMember($argument);
     }
 }

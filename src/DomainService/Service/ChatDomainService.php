@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
@@ -18,6 +19,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendChatActionArgumentA
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UnbanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\ChatDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\SupportsSendingMultipartInterface;
@@ -200,6 +202,25 @@ class ChatDomainService implements
         $data = $serializer->serialize($argument);
 
         $response = $this->request::post(TelegramApiMethodEnum::BAN_CHAT_MEMBER->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return $response->getResponseData()[RequestInterface::RESULT_KEY];
+    }
+
+    public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool
+    {
+        /** @var UnbanChatMemberArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(UnbanChatMemberArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        $response = $this->request::post(TelegramApiMethodEnum::UNBAN_CHAT_MEMBER->value, $data);
 
         if ($response->isError()) {
             $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());

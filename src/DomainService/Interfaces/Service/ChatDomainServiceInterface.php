@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 
 /**
@@ -106,4 +107,16 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#banchatmember
      */
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
+
+    /**
+     * Используйте этот метод, чтобы разбанить ранее заблокированного пользователя в супергруппе или канале
+     * . Пользователь не вернется в группу или канал автоматически, но сможет присоединиться по ссылке и т.
+     * д. Для этого бот должен быть администратором. По умолчанию этот метод гарантирует, что после звонка
+     * пользователь не станет участником чата, но сможет к нему присоединиться. Поэтому, если пользователь
+     * является участником чата, он также будет удален из чата. Если вы этого не хотите, используйте парам
+     * етр only_if_banned. Возвращает True в случае успеха.
+     *
+     * @see https://core.telegram.org/bots/api#unbanchatmember
+     */
+    public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
 }
