@@ -305,8 +305,7 @@ enum TelegramApiMethodEnum: string
      * звана, новая ссылка создается автоматически. Для этого бот должен быть администратором в чате и имет
      * ь соответствующие права администратора. Возвращает отозванную ссылку приглашения как объект ChatInvi
      * teLink.
-     *
-     * @link https://core.telegram.org/bots/api#chatinvitelink
+     * @see https://core.telegram.org/bots/api#chatinvitelink
      */
     case REVOKE_CHAT_INVITE_LINK = 'revokeChatInviteLink';
 }

@@ -148,8 +148,7 @@ interface ChatDomainServiceInterface
      * ь соответствующие права администратора. Возвращает отозванную ссылку приглашения как объект ChatInvi
      * teLink.
      *
-     * @link https://core.telegram.org/bots/api#chatinvitelink
-     *
+     * @see https://core.telegram.org/bots/api#chatinvitelink
      * @see https://core.telegram.org/bots/api#revokechatinvitelink
      */
     public function revokeChatInviteLink(RevokeChatInviteLinkArgumentInterface $argument): ChatInviteLinkInterface;
