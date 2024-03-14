@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRights
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ExportChatInviteLinkArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
@@ -56,6 +57,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArr
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessagesArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\ExportChatInviteLinkArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
@@ -239,6 +241,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetChatAdministratorCustomTitleArgumentArraySerializer::class:
             case SetChatAdministratorCustomTitleArgumentArraySerializerInterface::class:
                 return $this->createSetChatAdministratorCustomTitleArgumentArraySerializer();
+            case ExportChatInviteLinkArgumentArraySerializer::class:
+            case ExportChatInviteLinkArgumentArraySerializerInterface::class:
+                return $this->createExportChatInviteLinkArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -573,5 +578,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createSetChatAdministratorCustomTitleArgumentArraySerializer(): SetChatAdministratorCustomTitleArgumentArraySerializerInterface
     {
         return new SetChatAdministratorCustomTitleArgumentArraySerializer();
+    }
+
+    public function createExportChatInviteLinkArgumentArraySerializer(): ExportChatInviteLinkArgumentArraySerializerInterface
+    {
+        return new ExportChatInviteLinkArgumentArraySerializer();
     }
 }

@@ -287,4 +287,13 @@ enum TelegramApiMethodEnum: string
      * ю права администратора.
      */
     case SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE = 'setChatAdministratorCustomTitle';
+
+    /**
+     * @see https://core.telegram.org/bots/api#exportchatinvitelink
+     *
+     * Используйте этот метод, чтобы создать новую основную ссылку для приглашения в чат; любая ранее созда
+     * нная первичная ссылка отменяется. Для этого бот должен быть администратором в чате и иметь соответст
+     * вующие права администратора. В случае успеха возвращает новую ссылку для приглашения в виде строки.
+     */
+    case EXPORT_CHAT_INVITE_LINK = 'exportChatInviteLink';
 }
