@@ -176,4 +176,12 @@ enum TelegramApiFieldEnum: string
     case USER_ID = 'user_id';
     case ONLY_IF_BANNED = 'only_if_banned';
     case CUSTOM_TITLE = 'custom_title';
+    case CREATOR = 'creator';
+    case CREATES_JOIN_REQUEST = 'creates_join_request';
+    case IS_PRIMARY = 'is_primary';
+    case IS_REVOKED = 'is_revoked';
+    case NAME = 'name';
+    case EXPIRE_DATE = 'expire_date';
+    case MEMBER_LIMIT = 'member_limit';
+    case PENDING_JOIN_REQUEST_COUNT = 'pending_join_request_count';
 }

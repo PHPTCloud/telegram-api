@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatAdministratorCustomTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
@@ -15,6 +16,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInviteLinkInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
@@ -139,4 +141,16 @@ interface ChatDomainServiceInterface
      * @see https://core.telegram.org/bots/api#exportchatinvitelink
      */
     public function exportChatInviteLink(ExportChatInviteLinkArgumentInterface $argument): UrlValueObjectInterface;
+
+    /**
+     * Используйте этот метод, чтобы отозвать ссылку-приглашение, созданную ботом. Если основная ссылка ото
+     * звана, новая ссылка создается автоматически. Для этого бот должен быть администратором в чате и имет
+     * ь соответствующие права администратора. Возвращает отозванную ссылку приглашения как объект ChatInvi
+     * teLink.
+     *
+     * @link https://core.telegram.org/bots/api#chatinvitelink
+     *
+     * @see https://core.telegram.org/bots/api#revokechatinvitelink
+     */
+    public function revokeChatInviteLink(RevokeChatInviteLinkArgumentInterface $argument): ChatInviteLinkInterface;
 }

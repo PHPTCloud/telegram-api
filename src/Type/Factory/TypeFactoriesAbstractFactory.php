@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
@@ -59,6 +60,9 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case MessageIdTypeFactory::class:
             case MessageIdTypeFactoryInterface::class:
                 return $this->createMessageIdTypeFactory();
+            case ChatInviteLinkTypeFactory::class:
+            case ChatInviteLinkTypeFactoryInterface::class:
+                return $this->createChatInviteLinkTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -120,5 +124,10 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createMessageIdTypeFactory(): MessageIdTypeFactoryInterface
     {
         return new MessageIdTypeFactory();
+    }
+
+    public function createChatInviteLinkTypeFactory(): ChatInviteLinkTypeFactoryInterface
+    {
+        return new ChatInviteLinkTypeFactory();
     }
 }

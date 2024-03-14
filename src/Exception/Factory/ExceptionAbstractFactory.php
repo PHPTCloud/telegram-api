@@ -20,6 +20,7 @@ use PHPTCloud\TelegramApi\Exception\Error\ChatMemberStatusCantBeChangedInPrivate
 use PHPTCloud\TelegramApi\Exception\Error\ChatNotModifiedException;
 use PHPTCloud\TelegramApi\Exception\Error\DocumentCantBeMixedWithOtherTypesException;
 use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
+use PHPTCloud\TelegramApi\Exception\Error\InviteHashExpiredException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
@@ -86,6 +87,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new DocumentCantBeMixedWithOtherTypesException($message);
         } elseif (str_contains($message, $this->getNotEnoughRightToChangeCustomTitleMessagePart())) {
             return new NotEnoughRightToChangeCustomTitleException($message);
+        } elseif (str_contains($message, $this->getInviteHashExpiredMessagePart())) {
+            return new InviteHashExpiredException($message);
         }
 
         return new TelegramApiException($message);
@@ -204,5 +207,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     public function getNotEnoughRightToChangeCustomTitleMessagePart(): string
     {
         return 'not enough rights to change custom title of the user';
+    }
+
+    public function getInviteHashExpiredMessagePart(): string
+    {
+        return 'invite_hash_expired';
     }
 }

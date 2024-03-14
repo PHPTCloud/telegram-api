@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\DeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatInviteLinkDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatLocationDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
@@ -17,6 +18,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatInviteLinkDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatLocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
@@ -27,6 +29,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeCustomEmojiDe
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
@@ -86,6 +89,9 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case MessageIdDeserializer::class:
             case MessageIdDeserializerInterface::class:
                 return $this->createMessageIdDeserializer();
+            case ChatInviteLinkDeserializer::class:
+            case ChatInviteLinkDeserializerInterface::class:
+                return $this->createChatInviteLinkDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -196,5 +202,13 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         $typeFactory = $this->typeFactoriesAbstractFactory->create(MessageIdTypeFactoryInterface::class);
 
         return new MessageIdDeserializer($typeFactory);
+    }
+
+    public function createChatInviteLinkDeserializer(): ChatInviteLinkDeserializerInterface
+    {
+        /** @var ChatInviteLinkTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatInviteLinkTypeFactoryInterface::class);
+
+        return new ChatInviteLinkDeserializer($typeFactory, $this->createUserDeserializer());
     }
 }
