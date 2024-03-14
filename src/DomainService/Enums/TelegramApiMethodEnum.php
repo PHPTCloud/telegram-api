@@ -9,7 +9,8 @@ namespace PHPTCloud\TelegramApi\DomainService\Enums;
  * @author  Пешко Илья peshkoi@mail.ru
  *
  * API Changelog
- * @link    https://core.telegram.org/bots/api-changelog#recent-changes
+ *
+ * @see    https://core.telegram.org/bots/api-changelog#recent-changes
  */
 enum TelegramApiMethodEnum: string
 {

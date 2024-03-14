@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\ValueObject;
@@ -57,7 +58,7 @@ class Link implements UrlValueObjectInterface
         return $this->value;
     }
 
-    public function __toString() : string
+    public function __toString(): string
     {
         return $this->getValue();
     }
