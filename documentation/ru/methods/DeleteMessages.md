@@ -1,5 +1,7 @@
 # Метод deleteMessages
 
+[<<< Назад](./../../)
+
 ## Общее
 
 Ссылка: https://core.telegram.org/bots/api#deletemessages
