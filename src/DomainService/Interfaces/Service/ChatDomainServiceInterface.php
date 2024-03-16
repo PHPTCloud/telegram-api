@@ -128,30 +128,17 @@ interface ChatDomainServiceInterface
     public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
 
     /**
-     * Используйте этот метод, чтобы установить собственный титул для администратора в супергруппе, продвиг
-     * аемой ботом. Возвращает True в случае успеха.
-     *
-     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
      */
     public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleArgumentInterface $argument): bool;
 
     /**
-     * Используйте этот метод, чтобы создать новую основную ссылку для приглашения в чат; любая ранее созда
-     * нная первичная ссылка отменяется. Для этого бот должен быть администратором в чате и иметь соответст
-     * вующие права администратора. В случае успеха возвращает новую ссылку для приглашения в виде строки.
-     *
-     * @see https://core.telegram.org/bots/api#exportchatinvitelink
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
      */
     public function exportChatInviteLink(ExportChatInviteLinkArgumentInterface $argument): UrlValueObjectInterface;
 
     /**
-     * Используйте этот метод, чтобы отозвать ссылку-приглашение, созданную ботом. Если основная ссылка ото
-     * звана, новая ссылка создается автоматически. Для этого бот должен быть администратором в чате и имет
-     * ь соответствующие права администратора. Возвращает отозванную ссылку приглашения как объект ChatInvi
-     * teLink.
-     *
-     * @see https://core.telegram.org/bots/api#chatinvitelink
-     * @see https://core.telegram.org/bots/api#revokechatinvitelink
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/RevokeChatInviteLink.md
      */
     public function revokeChatInviteLink(RevokeChatInviteLinkArgumentInterface $argument): ChatInviteLinkInterface;
 
