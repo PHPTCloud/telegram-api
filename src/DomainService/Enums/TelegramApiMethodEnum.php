@@ -299,13 +299,7 @@ enum TelegramApiMethodEnum: string
     case EXPORT_CHAT_INVITE_LINK = 'exportChatInviteLink';
 
     /**
-     * @see https://core.telegram.org/bots/api#revokechatinvitelink
-     *
-     * Используйте этот метод, чтобы отозвать ссылку-приглашение, созданную ботом. Если основная ссылка ото
-     * звана, новая ссылка создается автоматически. Для этого бот должен быть администратором в чате и имет
-     * ь соответствующие права администратора. Возвращает отозванную ссылку приглашения как объект ChatInvi
-     * teLink.
-     * @see https://core.telegram.org/bots/api#chatinvitelink
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/RevokeChatInviteLink.md
      */
     case REVOKE_CHAT_INVITE_LINK = 'revokeChatInviteLink';
 
