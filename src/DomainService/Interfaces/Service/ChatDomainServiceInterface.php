@@ -99,31 +99,17 @@ interface ChatDomainServiceInterface
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
 
     /**
-     * Используйте этот метод, чтобы получить количество участников в чате. Возвращает Int в случае успеха.
-     *
-     * @see https://core.telegram.org/bots/api#getchatmembercount
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
      */
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 
     /**
-     * Используйте этот метод, чтобы забанить пользователя в группе, супергруппе или канале. В случае с суп
-     * ергруппами и каналами пользователь не сможет самостоятельно вернуться в чат, используя ссылки на при
-     * глашения и т. д., пока не будет разбанен. Для этого бот должен быть администратором чата и обладать
-     * соответствующими правами администратора. Возвращает True в случае успеха.
-     *
-     * @see https://core.telegram.org/bots/api#banchatmember
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
      */
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
 
     /**
-     * Используйте этот метод, чтобы разбанить ранее заблокированного пользователя в супергруппе или канале
-     * . Пользователь не вернется в группу или канал автоматически, но сможет присоединиться по ссылке и т.
-     * д. Для этого бот должен быть администратором. По умолчанию этот метод гарантирует, что после звонка
-     * пользователь не станет участником чата, но сможет к нему присоединиться. Поэтому, если пользователь
-     * является участником чата, он также будет удален из чата. Если вы этого не хотите, используйте парам
-     * етр only_if_banned. Возвращает True в случае успеха.
-     *
-     * @see https://core.telegram.org/bots/api#unbanchatmember
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
      */
     public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
 

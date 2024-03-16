@@ -241,40 +241,22 @@ enum TelegramApiMethodEnum: string
     case SET_CHAT_DESCRIPTION = 'setChatDescription';
 
     /**
-     * @see https://core.telegram.org/bots/api#getchatmembercount
-     *
-     * Используйте этот метод, чтобы получить количество участников в чате. Возвращает Int в случае успеха.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
      */
     case GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
 
     /**
-     * @see https://core.telegram.org/bots/api#setmessagereaction
-     *
-     * Используйте этот метод, чтобы изменить выбранные реакции на сообщение. На служебные сообщения нельзя
-     * реагировать. Автоматически пересылаемые сообщения из канала в его дискуссионную группу имеют те же
-     * доступные реакции, что и сообщения в канале. Возвращает True при успехе.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     case SET_MESSAGE_REACTION = 'setMessageReaction';
 
     /**
-     * @see https://core.telegram.org/bots/api#banchatmember
-     *
-     * Используйте этот метод, чтобы забанить пользователя в группе, супергруппе или канале. В случае с суп
-     * ергруппами и каналами пользователь не сможет самостоятельно вернуться в чат, используя ссылки на при
-     * глашения и т. д., пока не будет разбанен. Для этого бот должен быть администратором чата и обладать
-     * соответствующими правами администратора. Возвращает True в случае успеха.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
      */
     case BAN_CHAT_MEMBER = 'banChatMember';
 
     /**
-     * @see https://core.telegram.org/bots/api#unbanchatmember
-     *
-     * Используйте этот метод, чтобы разбанить ранее заблокированного пользователя в супергруппе или канале
-     * . Пользователь не вернется в группу или канал автоматически, но сможет присоединиться по ссылке и т.
-     * д. Для этого бот должен быть администратором. По умолчанию этот метод гарантирует, что после звонка
-     * пользователь не станет участником чата, но сможет к нему присоединиться. Поэтому, если пользователь
-     * является участником чата, он также будет удален из чата. Если вы этого не хотите, используйте парам
-     * етр only_if_banned. Возвращает True в случае успеха.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
      */
     case UNBAN_CHAT_MEMBER = 'unbanChatMember';
 
