@@ -128,19 +128,12 @@ interface ChatDomainServiceInterface
     public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
 
     /**
-     * Используйте этот метод, чтобы установить собственный титул для администратора в супергруппе, продвиг
-     * аемой ботом. Возвращает True в случае успеха.
-     *
-     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
      */
     public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleArgumentInterface $argument): bool;
 
     /**
-     * Используйте этот метод, чтобы создать новую основную ссылку для приглашения в чат; любая ранее созда
-     * нная первичная ссылка отменяется. Для этого бот должен быть администратором в чате и иметь соответст
-     * вующие права администратора. В случае успеха возвращает новую ссылку для приглашения в виде строки.
-     *
-     * @see https://core.telegram.org/bots/api#exportchatinvitelink
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
      */
     public function exportChatInviteLink(ExportChatInviteLinkArgumentInterface $argument): UrlValueObjectInterface;
 

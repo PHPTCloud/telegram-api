@@ -279,22 +279,12 @@ enum TelegramApiMethodEnum: string
     case UNBAN_CHAT_MEMBER = 'unbanChatMember';
 
     /**
-     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
-     *
-     * Используйте этот метод, чтобы установить собственный титул для администратора в супергруппе, продвиг
-     * аемой ботом. Возвращает True в случае успеха.
-     *
-     * ПРИМЕЧАНИЕ: Бот имеет возможность поменять это название только тогда, когда он сам выдал пользовател
-     * ю права администратора.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
      */
     case SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE = 'setChatAdministratorCustomTitle';
 
     /**
-     * @see https://core.telegram.org/bots/api#exportchatinvitelink
-     *
-     * Используйте этот метод, чтобы создать новую основную ссылку для приглашения в чат; любая ранее созда
-     * нная первичная ссылка отменяется. Для этого бот должен быть администратором в чате и иметь соответст
-     * вующие права администратора. В случае успеха возвращает новую ссылку для приглашения в виде строки.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
      */
     case EXPORT_CHAT_INVITE_LINK = 'exportChatInviteLink';
 
