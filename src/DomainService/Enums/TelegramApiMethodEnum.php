@@ -308,4 +308,9 @@ enum TelegramApiMethodEnum: string
      * @see https://core.telegram.org/bots/api#chatinvitelink
      */
     case REVOKE_CHAT_INVITE_LINK = 'revokeChatInviteLink';
+
+    /**
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
+     */
+    case DELETE_MESSAGES = 'deleteMessages';
 }
