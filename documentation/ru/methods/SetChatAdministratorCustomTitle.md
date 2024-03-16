@@ -1,6 +1,6 @@
 # Метод setChatAdministratorCustomTitle
 
-[<<< Назад](./../../)
+[<<< Назад](./../)
 
 ## Общее
 
