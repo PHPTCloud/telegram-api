@@ -106,12 +106,7 @@ interface ChatDomainServiceInterface
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 
     /**
-     * Используйте этот метод, чтобы забанить пользователя в группе, супергруппе или канале. В случае с суп
-     * ергруппами и каналами пользователь не сможет самостоятельно вернуться в чат, используя ссылки на при
-     * глашения и т. д., пока не будет разбанен. Для этого бот должен быть администратором чата и обладать
-     * соответствующими правами администратора. Возвращает True в случае успеха.
-     *
-     * @see https://core.telegram.org/bots/api#banchatmember
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
      */
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
 
