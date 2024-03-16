@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRights
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ExportChatInviteLinkArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
@@ -59,6 +60,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArr
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessagesArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ExportChatInviteLinkArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
@@ -254,6 +256,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case DeleteMessagesArgumentArraySerializer::class:
             case DeleteMessagesArgumentArraySerializerInterface::class:
                 return $this->createDeleteMessagesArgumentArraySerializer();
+            case DeleteMessageArgumentArraySerializer::class:
+            case DeleteMessageArgumentArraySerializerInterface::class:
+                return $this->createDeleteMessageArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -603,5 +608,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createDeleteMessagesArgumentArraySerializer(): DeleteMessagesArgumentArraySerializerInterface
     {
         return new DeleteMessagesArgumentArraySerializer();
+    }
+
+    public function createDeleteMessageArgumentArraySerializer(): DeleteMessageArgumentArraySerializerInterface
+    {
+        return new DeleteMessageArgumentArraySerializer();
     }
 }
