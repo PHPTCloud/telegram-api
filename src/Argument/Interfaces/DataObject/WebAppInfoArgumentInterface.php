@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Описывает веб-приложение.
  *
  * @see     https://core.telegram.org/bots/webapps

@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * Используйте этот метод для пересылки сообщений любого типа. Служебные сообщения и сообщения с защище
  * нным содержимым пересылаться не могут. В случае успеха отправленное Message возвращается.
  *

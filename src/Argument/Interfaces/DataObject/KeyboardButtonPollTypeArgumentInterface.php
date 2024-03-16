@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Этот объект представляет собой тип опроса, который разрешено создавать и отправлять при нажатии соот
  * ветствующей кнопки.
  *

@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 /**
  * @author  Пешко Илья peshkoi@mail.ru
  * @author  Юдов Алексей tcloud.ax@gmail.com
- *
- * @version 1.0.0
  */
 interface ChatIdArgumentInterface extends ArgumentInterface
 {

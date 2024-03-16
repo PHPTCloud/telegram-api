@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Представляет права администратора в чате.
  *
  * @see    https://core.telegram.org/bots/api#chatadministratorrights

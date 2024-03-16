@@ -8,8 +8,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
  * @author  Юдов Алексей tcloud.ax@gmail.com
  * @author  Юдов Никита yudov.nikita@bk.ru
  *
- * @version 1.0.0
- *
  * Этот объект определяет критерии, используемые для запроса подходящих пользователей. Идентификаторы в
  * ыбранных пользователей будут переданы боту при нажатии соответствующей кнопки. Подробнее о запросе п
  * ользователей » (@see https://core.telegram.org/bots/features#chat-and-user-selection)

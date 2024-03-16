@@ -7,8 +7,6 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
  *
- * @version 1.0.0
- *
  * @see     https://core.telegram.org/bots/api#messageentity
  */
 interface MessageEntityArgumentInterface extends ArgumentInterface

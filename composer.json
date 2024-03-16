@@ -3,17 +3,16 @@
   "description": "Библиотека для работы с Telegram API",
   "version": "1.0.0",
   "type": "library",
-  "keywords": [
-    "php",
-    "sdk",
-    "telegram",
-    "bot",
-    "api"
-  ],
+  "keywords": ["telegram", "bot", "api"],
   "authors": [
     {
       "name": "Юдов Алексей",
       "email": "tcloud.ax@gmail.com",
+      "role": "Автор"
+    },
+    {
+      "name": "Пешко Илья",
+      "email": "peshkoi@mail.ru",
       "role": "Автор"
     }
   ],
