@@ -267,14 +267,7 @@ enum TelegramApiMethodEnum: string
     case BAN_CHAT_MEMBER = 'banChatMember';
 
     /**
-     * @see https://core.telegram.org/bots/api#unbanchatmember
-     *
-     * Используйте этот метод, чтобы разбанить ранее заблокированного пользователя в супергруппе или канале
-     * . Пользователь не вернется в группу или канал автоматически, но сможет присоединиться по ссылке и т.
-     * д. Для этого бот должен быть администратором. По умолчанию этот метод гарантирует, что после звонка
-     * пользователь не станет участником чата, но сможет к нему присоединиться. Поэтому, если пользователь
-     * является участником чата, он также будет удален из чата. Если вы этого не хотите, используйте парам
-     * етр only_if_banned. Возвращает True в случае успеха.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
      */
     case UNBAN_CHAT_MEMBER = 'unbanChatMember';
 
