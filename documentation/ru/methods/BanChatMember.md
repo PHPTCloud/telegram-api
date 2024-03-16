@@ -1,5 +1,7 @@
 # Метод banChatMember
 
+[<<< Назад](./../../)
+
 ## Общее
 
 Ссылка: https://core.telegram.org/bots/api#banchatmember

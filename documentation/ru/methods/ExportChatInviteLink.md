@@ -1,5 +1,7 @@
 # Метод exportChatInviteLink
 
+[<<< Назад](./../../)
+
 ## Общее
 
 Ссылка: https://core.telegram.org/bots/api#exportchatinvitelink

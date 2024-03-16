@@ -1,5 +1,7 @@
 # Метод setMessageReaction
 
+[<<< Назад](./../../)
+
 ## Общее
 
 Ссылка: https://core.telegram.org/bots/api#setmessagereaction
