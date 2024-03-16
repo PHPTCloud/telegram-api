@@ -163,11 +163,7 @@ interface MessageDomainServiceInterface
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
 
     /**
-     * Используйте этот метод, чтобы изменить выбранные реакции на сообщение. На служебные сообщения нельзя
-     * реагировать. Автоматически пересылаемые сообщения из канала в его дискуссионную группу имеют те же
-     * доступные реакции, что и сообщения в канале. Возвращает True при успехе.
-     *
-     * @see https://core.telegram.org/bots/api#setmessagereaction
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool;
 }

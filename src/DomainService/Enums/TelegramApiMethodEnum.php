@@ -241,18 +241,12 @@ enum TelegramApiMethodEnum: string
     case SET_CHAT_DESCRIPTION = 'setChatDescription';
 
     /**
-     * @see https://core.telegram.org/bots/api#getchatmembercount
-     *
-     * Используйте этот метод, чтобы получить количество участников в чате. Возвращает Int в случае успеха.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
      */
     case GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
 
     /**
-     * @see https://core.telegram.org/bots/api#setmessagereaction
-     *
-     * Используйте этот метод, чтобы изменить выбранные реакции на сообщение. На служебные сообщения нельзя
-     * реагировать. Автоматически пересылаемые сообщения из канала в его дискуссионную группу имеют те же
-     * доступные реакции, что и сообщения в канале. Возвращает True при успехе.
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     case SET_MESSAGE_REACTION = 'setMessageReaction';
 
