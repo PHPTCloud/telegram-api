@@ -8,6 +8,13 @@ use PHPTCloud\TelegramApi\DeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatInviteLinkDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatLocationDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberAdministratorDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberBannedDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberLeftDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberMemberDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberOwnerDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberRestrictedDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializer;
@@ -20,6 +27,13 @@ use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatInviteLinkDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatLocationDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberAdministratorDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberBannedDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberLeftDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberMemberDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberOwnerDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberRestrictedDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
@@ -31,6 +45,12 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserial
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberAdministratorTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberBannedTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberLeftTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberMemberTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberOwnerTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberRestrictedTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
@@ -92,6 +112,27 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case ChatInviteLinkDeserializer::class:
             case ChatInviteLinkDeserializerInterface::class:
                 return $this->createChatInviteLinkDeserializer();
+            case ChatMemberDeserializer::class:
+            case ChatMemberDeserializerInterface::class:
+                return $this->createChatMemberDeserializer();
+            case ChatMemberBannedDeserializer::class:
+            case ChatMemberBannedDeserializerInterface::class:
+                return $this->createChatMemberBannedDeserializer();
+            case ChatMemberAdministratorDeserializer::class:
+            case ChatMemberAdministratorDeserializerInterface::class:
+                return $this->createChatMemberAdministratorDeserializer();
+            case ChatMemberOwnerDeserializer::class:
+            case ChatMemberOwnerDeserializerInterface::class:
+                return $this->createChatMemberOwnerDeserializer();
+            case ChatMemberRestrictedDeserializer::class:
+            case ChatMemberRestrictedDeserializerInterface::class:
+                return $this->createChatMemberRestrictedDeserializer();
+            case ChatMemberLeftDeserializer::class:
+            case ChatMemberLeftDeserializerInterface::class:
+                return $this->createChatMemberLeftDeserializer();
+            case ChatMemberMemberDeserializer::class:
+            case ChatMemberMemberDeserializerInterface::class:
+                return $this->createChatMemberMemberDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -210,5 +251,65 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatInviteLinkTypeFactoryInterface::class);
 
         return new ChatInviteLinkDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createChatMemberDeserializer(): ChatMemberDeserializerInterface
+    {
+        return new ChatMemberDeserializer(
+            $this->createChatMemberAdministratorDeserializer(),
+            $this->createChatMemberOwnerDeserializer(),
+            $this->createChatMemberLeftDeserializer(),
+            $this->createChatMemberRestrictedDeserializer(),
+            $this->createChatMemberMemberDeserializer(),
+            $this->createChatMemberBannedDeserializer(),
+        );
+    }
+
+    public function createChatMemberBannedDeserializer(): ChatMemberBannedDeserializerInterface
+    {
+        /** @var ChatMemberBannedTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberBannedTypeFactoryInterface::class);
+
+        return new ChatMemberBannedDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createChatMemberAdministratorDeserializer(): ChatMemberAdministratorDeserializerInterface
+    {
+        /** @var ChatMemberAdministratorTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberAdministratorTypeFactoryInterface::class);
+
+        return new ChatMemberAdministratorDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createChatMemberOwnerDeserializer(): ChatMemberOwnerDeserializerInterface
+    {
+        /** @var ChatMemberOwnerTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberOwnerTypeFactoryInterface::class);
+
+        return new ChatMemberOwnerDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createChatMemberMemberDeserializer(): ChatMemberMemberDeserializerInterface
+    {
+        /** @var ChatMemberMemberTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberMemberTypeFactoryInterface::class);
+
+        return new ChatMemberMemberDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createChatMemberRestrictedDeserializer(): ChatMemberRestrictedDeserializerInterface
+    {
+        /** @var ChatMemberRestrictedTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberRestrictedTypeFactoryInterface::class);
+
+        return new ChatMemberRestrictedDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createChatMemberLeftDeserializer(): ChatMemberLeftDeserializerInterface
+    {
+        /** @var ChatMemberLeftTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberLeftTypeFactoryInterface::class);
+
+        return new ChatMemberLeftDeserializer($typeFactory, $this->createUserDeserializer());
     }
 }

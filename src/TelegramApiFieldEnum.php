@@ -184,4 +184,7 @@ enum TelegramApiFieldEnum: string
     case EXPIRE_DATE = 'expire_date';
     case MEMBER_LIMIT = 'member_limit';
     case PENDING_JOIN_REQUEST_COUNT = 'pending_join_request_count';
+    case STATUS = 'status';
+    case IS_MEMBER = 'is_member';
+    case CAN_BE_EDITED = 'can_be_edited';
 }
