@@ -13,6 +13,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
@@ -40,6 +41,7 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInt
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInviteLinkInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatMemberInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
@@ -195,6 +197,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int
     {
         return $this->getChatDomainService()->getChatMemberCount($argument);
+    }
+
+    public function getChatMember(GetChatMemberArgumentInterface $argument): ChatMemberInterface
+    {
+        return $this->getChatDomainService()->getChatMember($argument);
     }
 
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool
