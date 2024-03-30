@@ -10,9 +10,11 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ChatInviteLinkDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatLocationDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\FileDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageIdDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\PhotoSizeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeCustomEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
@@ -22,9 +24,11 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatInviteLinkDeserialize
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatLocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\FileDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageIdDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\PhotoSizeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeCustomEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
@@ -35,9 +39,11 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInte
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\PhotoSizeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\TypeFactoriesAbstractFactoryInterface;
@@ -92,6 +98,12 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case ChatInviteLinkDeserializer::class:
             case ChatInviteLinkDeserializerInterface::class:
                 return $this->createChatInviteLinkDeserializer();
+            case PhotoSizeDeserializer::class:
+            case PhotoSizeDeserializerInterface::class:
+                return $this->createPhotoSizeDeserializer();
+            case FileDeserializer::class:
+            case FileDeserializerInterface::class:
+                return $this->createFileDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -113,6 +125,7 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         return new MessageDeserializer(
             $typeFactory,
             $this->createChatDeserializer($wantCreateMessageDeserializer),
+            $this->createPhotoSizeDeserializer(),
         );
     }
 
@@ -210,5 +223,21 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatInviteLinkTypeFactoryInterface::class);
 
         return new ChatInviteLinkDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createPhotoSizeDeserializer(): PhotoSizeDeserializerInterface
+    {
+        /** @var PhotoSizeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(PhotoSizeFactoryInterface::class);
+
+        return new PhotoSizeDeserializer($typeFactory);
+    }
+
+    public function createFileDeserializer(): FileDeserializerInterface
+    {
+        /** @var FileFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(FileFactoryInterface::class);
+
+        return new FileDeserializer($typeFactory);
     }
 }

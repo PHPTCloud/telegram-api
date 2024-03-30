@@ -299,12 +299,11 @@ class MessageDomainService implements
         string $method,
     ): MessageInterface|array {
         $response = $this->sendMultipart($serializer, $argument, $method);
-
         /** @var MessageDeserializerInterface $deserializer */
         $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
 
         $data = $response->getResponseData()[RequestInterface::RESULT_KEY];
-        if (is_array($data)) {
+        if (is_array($data) && !isset($data['message_id'])) {
             $messages = [];
             foreach ($data as $item) {
                 $messages[] = $deserializer->deserialize($item);

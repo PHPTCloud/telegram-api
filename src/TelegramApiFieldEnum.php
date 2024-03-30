@@ -184,4 +184,8 @@ enum TelegramApiFieldEnum: string
     case EXPIRE_DATE = 'expire_date';
     case MEMBER_LIMIT = 'member_limit';
     case PENDING_JOIN_REQUEST_COUNT = 'pending_join_request_count';
+    case FILE_ID = 'file_id';
+    case FILE_UNIQUE_ID = 'file_unique_id';
+    case FILE_SIZE = 'file_size';
+    case FILE_PATH = 'file_path';
 }
