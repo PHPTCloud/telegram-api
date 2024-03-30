@@ -163,7 +163,7 @@ interface MessageDomainServiceInterface
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool;
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -7,7 +8,8 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetFileArgumentInterfac
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- * @link    https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetFile.md
+ *
+ * @see    https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetFile.md
  */
 class GetFileArgument implements GetFileArgumentInterface
 {

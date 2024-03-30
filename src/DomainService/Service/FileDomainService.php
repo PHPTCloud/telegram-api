@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
@@ -11,7 +12,6 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\FileDomainServiceInte
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
-use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\FileInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\FileDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
