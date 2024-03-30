@@ -19,7 +19,6 @@ $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 $manager = PHPTCloud\TelegramApi\TelegramApiManagerFactory::create($token);
 $messageBuilder = new PHPTCloud\TelegramApi\Argument\Builder\MessageArgumentBuilder();
 
-// Пример отправки изображения.
 $message = $manager->sendPhoto(
     new \PHPTCloud\TelegramApi\Argument\DataObject\SendPhotoArgument(
         chatId: $chatId,
@@ -35,4 +34,4 @@ $response = $manager->getFile(new \PHPTCloud\TelegramApi\Argument\DataObject\Get
     $message->getPhoto()[0]->getFileId(),
 ));
 
-dd($response);
+dump($response);
