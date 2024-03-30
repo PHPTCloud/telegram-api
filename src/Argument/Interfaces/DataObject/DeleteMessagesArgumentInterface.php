@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
+ *
+ * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
  */
 interface DeleteMessagesArgumentInterface extends ArgumentInterface
 {

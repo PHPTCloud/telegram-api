@@ -1,10 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\DataObject;
 
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\PhotoSizeInterface;
 
+/**
+ * @author  Юдов Алексей tcloud.ax@gmail.com
+ *
+ * @see    https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/responses/PhotoSizeType.md
+ */
 class PhotoSize implements PhotoSizeInterface
 {
     public function __construct(
