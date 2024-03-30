@@ -284,4 +284,9 @@ enum TelegramApiMethodEnum: string
      * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessage.md
      */
     case DELETE_MESSAGE = 'deleteMessage';
+
+    /**
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetFile.md
+     */
+    case GET_FILE = 'getFile';
 }

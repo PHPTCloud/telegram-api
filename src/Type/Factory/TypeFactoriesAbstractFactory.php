@@ -9,9 +9,11 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterfa
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\PhotoSizeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeTypeFactoryInterface;
@@ -63,6 +65,12 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case ChatInviteLinkTypeFactory::class:
             case ChatInviteLinkTypeFactoryInterface::class:
                 return $this->createChatInviteLinkTypeFactory();
+            case PhotoSizeFactory::class:
+            case PhotoSizeFactoryInterface::class:
+                return $this->createPhotoSizeFactory();
+            case FileFactory::class:
+            case FileFactoryInterface::class:
+                return $this->createFileFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -129,5 +137,15 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createChatInviteLinkTypeFactory(): ChatInviteLinkTypeFactoryInterface
     {
         return new ChatInviteLinkTypeFactory();
+    }
+
+    public function createPhotoSizeFactory(): PhotoSizeFactoryInterface
+    {
+        return new PhotoSizeFactory();
+    }
+
+    public function createFileFactory(): FileFactoryInterface
+    {
+        return new FileFactory();
     }
 }

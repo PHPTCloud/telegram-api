@@ -7,8 +7,10 @@ namespace PHPTCloud\TelegramApi\Type\Deserializer;
 use PHPTCloud\TelegramApi\AbstractDeserializer;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\PhotoSizeInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\PhotoSizeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 
 /**
@@ -19,6 +21,7 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
     public function __construct(
         private readonly MessageTypeFactoryInterface $messageTypeFactory,
         private readonly ChatDeserializerInterface $chatDeserializer,
+        private readonly PhotoSizeDeserializerInterface $photoSizeDeserializer,
     ) {
     }
 
@@ -28,6 +31,7 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
         $date = $data[TelegramApiFieldEnum::DATE->value] ?? null;
         $text = $data[TelegramApiFieldEnum::TEXT->value] ?? null;
         $chat = $data[TelegramApiFieldEnum::CHAT->value] ?? null;
+        $photo = $data[TelegramApiFieldEnum::PHOTO->value] ?? null;
 
         $messageId = $this->filterNumeric($messageId);
         $date = $this->filterNumeric($date);
@@ -36,12 +40,19 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
         if (!empty($chat)) {
             $chat = $this->chatDeserializer->deserialize($chat);
         }
+        $photo = $this->filterArray($photo);
+        if (!empty($photo)) {
+            $photo = array_map(function (array $item): PhotoSizeInterface {
+                return $this->photoSizeDeserializer->deserialize($item);
+            }, $photo);
+        }
 
         return $this->messageTypeFactory->create(
             messageId: $messageId,
             date: $date,
             chat: $chat,
             text: $text,
+            photo: $photo,
         );
     }
 }

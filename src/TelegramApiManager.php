@@ -13,6 +13,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
@@ -31,15 +32,18 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\FileDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\MessageDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\TelegramBotDomainServiceFactoryInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\ChatDomainServiceInterface;
+use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\FileDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\MessageDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInviteLinkInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\FileInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 
@@ -53,12 +57,14 @@ class TelegramApiManager implements TelegramApiManagerInterface
     private ?MessageDomainServiceInterface $messageDomainService = null;
     private ?TelegramBotDomainServiceInterface $telegramBotDomainService = null;
     private ?ChatDomainServiceInterface $chatDomainService = null;
+    private ?FileDomainServiceInterface $fileDomainService = null;
 
     public function __construct(
         private readonly TelegramBotInterface $bot,
         private readonly TelegramBotDomainServiceFactoryInterface $telegramBotDomainServiceFactory,
         private readonly MessageDomainServiceFactoryInterface $messageDomainServiceFactory,
         private readonly ChatDomainServiceFactoryInterface $chatDomainServiceFactory,
+        private readonly FileDomainServiceFactoryInterface $fileDomainServiceFactory,
     ) {
     }
 
@@ -232,6 +238,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
         return $this->getChatDomainService()->deleteMessage($argument);
     }
 
+    public function getFile(GetFileArgumentInterface $argument): FileInterface
+    {
+        return $this->getFileDomainService()->getFile($argument);
+    }
+
     private function getChatDomainService(): ChatDomainServiceInterface
     {
         if (null === $this->chatDomainService) {
@@ -257,5 +268,14 @@ class TelegramApiManager implements TelegramApiManagerInterface
         }
 
         return $this->telegramBotDomainService;
+    }
+
+    private function getFileDomainService(): FileDomainServiceInterface
+    {
+        if (null === $this->fileDomainService) {
+            $this->fileDomainService = $this->fileDomainServiceFactory->create($this->bot, $this->host);
+        }
+
+        return $this->fileDomainService;
     }
 }
