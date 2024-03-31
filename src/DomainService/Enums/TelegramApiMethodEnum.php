@@ -15,65 +15,32 @@ namespace PHPTCloud\TelegramApi\DomainService\Enums;
 enum TelegramApiMethodEnum: string
 {
     /**
-     * @see https://core.telegram.org/bots/api#getme
-     *
-     * Простой метод проверки токена аутентификации вашего бота. Не требует параметров. Возвращает основную
-     * информацию о боте в виде объекта User (https://core.telegram.org/bots/api#user).
+     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/GetMe.md
      */
     case GET_ME = 'getMe';
 
     /**
-     * @see https://core.telegram.org/bots/api#logout
-     *
-     * Используйте этот метод для выхода из облачного сервера API бота перед локальным запуском бота. Вы до
-     * лжны выйти из системы бота перед его локальным запуском, иначе нет никакой гарантии, что бот будет п
-     * олучать обновления. После успешного звонка вы сразу сможете авторизоваться на локальном сервере, но
-     * не сможете зайти обратно на сервер Cloud Bot API в течение 10 минут. Возвращает True в случае успеха
-     * . Не требует параметров. Примечание: метод может понадобиться если вы используете локаьлный Telegram
-     * API (https://github.com/tdlib/telegram-bot-api).
+     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/LogOut.md
      */
     case LOG_OUT = 'logOut';
 
     /**
-     * @see https://core.telegram.org/bots/api#close
-     *
-     * Используйте этот метод, чтобы закрыть экземпляр бота перед его перемещением с одного локального серв
-     * ера на другой. Вам необходимо удалить веб-перехватчик перед вызовом этого метода, чтобы гарантироват
-     * ь, что бот не запустится снова после перезапуска сервера. Метод вернет ошибку 429 в первые 10 минут
-     * после запуска бота. Возвращает True в случае успеха. Не требует параметров.
+     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/Close.md
      */
     case CLOSE = 'close';
 
     /**
-     * @see https://core.telegram.org/bots/api#sendmessage
-     *
-     * Используйте этот метод для отправки текстовых сообщений. В случае успеха отправленное сообщение возв
-     * ращается с типом Message (https://core.telegram.org/bots/api#message).
+     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/SendMessage.md
      */
     case SEND_MESSAGE = 'sendMessage';
 
     /**
-     * @see https://core.telegram.org/bots/api#getchat
-     *
-     * Используйте этот метод, чтобы получить актуальную информацию о чате. В случае успеха возвращает объе
-     * кт с типом Chat (https://core.telegram.org/bots/api#chat).
+     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/GetChat.md
      */
     case GET_CHAT = 'getChat';
 
     /**
-     * @see  https://core.telegram.org/bots/api#sendchataction
-     *
-     * Используйте этот метод, когда вам нужно сообщить пользователю, что что-то происходит на стороне бота.
-     * Статус устанавливается на 5 секунд или меньше (при поступлении сообщения от вашего бота клиенты Te
-     * legram очищают его статус набора). Возвращает True в случае успеха.
-     *
-     * Пример: ImageBot требуется некоторое время для обработки запроса и загрузки изображения. Вместо отпр
-     * авки текстового сообщения типа «Получение изображения, пожалуйста, подождите…» бот может использоват
-     * ь sendChatAction с action = upload_photo. Пользователь увидит статус бота «отправка фото».
-     * @see  https://t.me/imagebot
-     *
-     * Мы рекомендуем использовать этот метод только в том случае, если получение ответа от бота займет зам
-     * етное время.
+     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/SendChatAction.md
      */
     case SEND_CHAT_ACTION = 'sendChatAction';
 
