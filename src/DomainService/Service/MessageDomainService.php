@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageTextArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
@@ -22,6 +23,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageTextArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
@@ -288,6 +290,32 @@ class MessageDomainService implements
         }
 
         return $response->getResponseData()[RequestInterface::RESULT_KEY];
+    }
+
+    public function editMessageText(EditMessageTextArgumentInterface $argument): MessageInterface
+    {
+        /** @var EditMessageTextArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(EditMessageTextArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        if (isset($data[TelegramApiFieldEnum::REPLY_MARKUP->value])) {
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value] = json_encode($data[TelegramApiFieldEnum::REPLY_MARKUP->value]);
+        }
+
+        $response = $this->request::post(TelegramApiMethodEnum::EDIT_MESSAGE_TEXT->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var MessageDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 
     /**
