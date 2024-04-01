@@ -256,4 +256,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetFile.md
      */
     case GET_FILE = 'getFile';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
+     */
+    case EDIT_MESSAGE_TEXT = 'editMessageText';
 }
