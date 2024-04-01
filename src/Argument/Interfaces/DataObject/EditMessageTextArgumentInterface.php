@@ -5,7 +5,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 interface EditMessageTextArgumentInterface extends ArgumentInterface
 {
-    public function getChatId(): string|int|float;
+    public function getChatId(): int|float|string|null;
 
     public function getMessageId(): ?int;
 

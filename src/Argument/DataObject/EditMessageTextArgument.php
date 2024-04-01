@@ -10,7 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LinkPreviewOptionsArgum
 class EditMessageTextArgument implements EditMessageTextArgumentInterface
 {
     public function __construct(
-        private readonly int|float|string $chatId,
+        private readonly int|float|string|null $chatId,
         private readonly string $text,
         private readonly ?int $messageId = null,
         private readonly ?string $inlineMessageId = null,
@@ -21,7 +21,7 @@ class EditMessageTextArgument implements EditMessageTextArgumentInterface
     ) {
     }
 
-    public function getChatId(): float|int|string
+    public function getChatId(): int|float|string|null
     {
         return $this->chatId;
     }
