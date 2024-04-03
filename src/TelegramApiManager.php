@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInte
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageCaptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageTextArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
@@ -247,6 +248,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function editMessageText(EditMessageTextArgumentInterface $argument): MessageInterface
     {
         return $this->getMessageDomainService()->editMessageText($argument);
+    }
+
+    public function editMessageCaption(EditMessageCaptionArgumentInterface $argument): MessageInterface
+    {
+        return $this->getMessageDomainService()->editMessageCaption($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface
