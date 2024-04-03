@@ -8,6 +8,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageCaptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageMediaArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageTextArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
@@ -25,6 +26,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactory
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageCaptionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageMediaArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageTextArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
@@ -344,6 +346,14 @@ class MessageDomainService implements
         $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
 
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function editMessageMedia(EditMessageMediaArgumentInterface $argument): MessageInterface
+    {
+        /** @var EditMessageMediaArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(EditMessageMediaArgumentArraySerializerInterface::class);
+
+        return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::EDIT_MESSAGE_MEDIA->value);
     }
 
     /**

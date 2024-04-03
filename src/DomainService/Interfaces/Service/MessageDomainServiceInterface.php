@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageCaptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageMediaArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageTextArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
@@ -165,14 +166,22 @@ interface MessageDomainServiceInterface
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
 
     /**
-     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool;
 
     /**
-     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
      */
     public function editMessageText(EditMessageTextArgumentInterface $argument): MessageInterface;
 
+    /**
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageCaption.md
+     */
     public function editMessageCaption(EditMessageCaptionArgumentInterface $argument): MessageInterface;
+
+    /**
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageMedia.md
+     */
+    public function editMessageMedia(EditMessageMediaArgumentInterface $argument): MessageInterface;
 }

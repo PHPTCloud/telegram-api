@@ -37,14 +37,24 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
             new SortingAlgorithmServiceFactory(),
-            new MultipartArraySerializer(),
+            new MultipartArraySerializer(
+                $serializersAbstractFactory->createInputMediaDocumentArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaPhotoArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaAudioArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaVideoArgumentArraySerializer(),
+            ),
         );
 
         $chatDomainServiceFactory = new ChatDomainServiceFactory(
             $deserializersAbstractFactory,
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
-            new MultipartArraySerializer(),
+            new MultipartArraySerializer(
+                $serializersAbstractFactory->createInputMediaDocumentArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaPhotoArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaAudioArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaVideoArgumentArraySerializer(),
+            ),
         );
 
         $fileDomainServiceFactory = new FileDomainServiceFactory(
