@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageCaptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\EditMessageTextArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
@@ -172,4 +173,6 @@ interface MessageDomainServiceInterface
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
      */
     public function editMessageText(EditMessageTextArgumentInterface $argument): MessageInterface;
+
+    public function editMessageCaption(EditMessageCaptionArgumentInterface $argument): MessageInterface;
 }

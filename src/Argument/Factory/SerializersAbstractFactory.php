@@ -12,6 +12,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArra
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageCaptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageTextArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ExportChatInviteLinkArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
@@ -64,6 +65,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessagesArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\EditMessageCaptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\EditMessageTextArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ExportChatInviteLinkArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
@@ -269,6 +271,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case EditMessageTextArgumentArraySerializer::class:
             case EditMessageTextArgumentArraySerializerInterface::class:
                 return $this->createEditMessageTextArgumentArraySerializer();
+            case EditMessageCaptionArgumentArraySerializer::class:
+            case EditMessageCaptionArgumentArraySerializerInterface::class:
+                return $this->createEditMessageCaptionArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -636,6 +641,14 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createMessageEntityArgumentArraySerializer(),
             $this->createInlineKeyboardMarkupArgumentArraySerializer(),
             $this->createLinkPreviewOptionsArgumentArraySerializer(),
+        );
+    }
+
+    public function createEditMessageCaptionArgumentArraySerializer(): EditMessageCaptionArgumentArraySerializerInterface
+    {
+        return new EditMessageCaptionArgumentArraySerializer(
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
+            $this->createMessageEntityArgumentArraySerializer(),
         );
     }
 }
