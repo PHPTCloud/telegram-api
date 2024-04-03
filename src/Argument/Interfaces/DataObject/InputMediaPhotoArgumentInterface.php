@@ -10,7 +10,7 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 interface InputMediaPhotoArgumentInterface extends InputMediaArgumentInterface
 {
     /**
-     * Передайте True, если фотография должна быть покрыта анимацией спойлера.
+     * Передайте True, если медиа файл должен быть покрыт анимацией спойлера.
      */
     public function hasSpoiler(): ?bool;
 }

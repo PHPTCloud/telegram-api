@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaDocumentArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaPhotoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MultipartArraySerializerInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 
@@ -13,12 +19,23 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
  */
 class MultipartArraySerializer implements MultipartArraySerializerInterface
 {
+    public function __construct(
+        private readonly InputMediaDocumentArgumentArraySerializerInterface $inputMediaDocumentArgumentArraySerializer,
+        private readonly InputMediaPhotoArgumentArraySerializerInterface $inputMediaPhotoArgumentArraySerializer,
+        private readonly InputMediaAudioArgumentArraySerializerInterface $inputMediaAudioArgumentArraySerializer,
+        private readonly InputMediaVideoArgumentArraySerializerInterface $inputMediaVideoArgumentArraySerializer,
+    ) {
+    }
+
     public function serialize(array $parameters): array
     {
         $multipart = [];
 
         foreach ($parameters as $key => $value) {
-            if ($key === TelegramApiFieldEnum::MEDIA->value) {
+            if ($value instanceof InputMediaArgumentInterface) {
+                $multipart[] = $this->createInputMediaParameters(TelegramApiFieldEnum::MEDIA->value, $value, $multipart);
+                continue;
+            } elseif ($key === TelegramApiFieldEnum::MEDIA->value) {
                 $multipart[] = $this->createMediaGroupParameters($key, $value, $multipart);
                 continue;
             } elseif ($value instanceof LocalFileArgumentInterface) {
@@ -32,6 +49,30 @@ class MultipartArraySerializer implements MultipartArraySerializerInterface
         }
 
         return $multipart;
+    }
+
+    private function createInputMediaParameters(string $key, InputMediaArgumentInterface $inputMedia, array &$multipart): array
+    {
+        $contents = [];
+
+        $parameters = [];
+        if ($inputMedia instanceof InputMediaVideoArgumentInterface) {
+            $parameters = $this->inputMediaVideoArgumentArraySerializer->serialize($inputMedia);
+        }
+
+        foreach ($parameters as $index => $value) {
+            if ($value instanceof LocalFileArgumentInterface) {
+                $multipart[] = $this->createLocalFileParameter($value->getBaseName(), $value);
+                $contents[$index] = sprintf('attach://%s', $value->getBaseName());
+                continue;
+            }
+            $contents[$index] = $value;
+        }
+
+        return [
+            'name' => $key,
+            'contents' => json_encode($contents),
+        ];
     }
 
     private function createMediaGroupParameters(string $name, array $contents, array &$originMultipart): array
