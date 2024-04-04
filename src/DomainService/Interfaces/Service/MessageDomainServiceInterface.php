@@ -166,22 +166,22 @@ interface MessageDomainServiceInterface
     public function sendMediaGroup(SendMediaGroupArgumentInterface $argument): array;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     public function setMessageReaction(SetMessageReactionArgumentInterface $argument): bool;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
      */
     public function editMessageText(EditMessageTextArgumentInterface $argument): MessageInterface;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageCaption.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageCaption.md
      */
     public function editMessageCaption(EditMessageCaptionArgumentInterface $argument): MessageInterface;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageMedia.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageMedia.md
      */
     public function editMessageMedia(EditMessageMediaArgumentInterface $argument): MessageInterface;
 }

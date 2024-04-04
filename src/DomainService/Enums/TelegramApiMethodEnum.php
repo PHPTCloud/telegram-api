@@ -15,32 +15,32 @@ namespace PHPTCloud\TelegramApi\DomainService\Enums;
 enum TelegramApiMethodEnum: string
 {
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/GetMe.md
+     * @see https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/GetMe.md
      */
     case GET_ME = 'getMe';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/LogOut.md
+     * @see https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/LogOut.md
      */
     case LOG_OUT = 'logOut';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/Close.md
+     * @see https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/Close.md
      */
     case CLOSE = 'close';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/SendMessage.md
+     * @see https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/SendMessage.md
      */
     case SEND_MESSAGE = 'sendMessage';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/GetChat.md
+     * @see https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/GetChat.md
      */
     case GET_CHAT = 'getChat';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/SendChatAction.md
+     * @see https://github.com/PHPTCloud/telegram-api/blob/master/documentation/ru/methods/SendChatAction.md
      */
     case SEND_CHAT_ACTION = 'sendChatAction';
 
@@ -208,67 +208,67 @@ enum TelegramApiMethodEnum: string
     case SET_CHAT_DESCRIPTION = 'setChatDescription';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
      */
     case GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     case SET_MESSAGE_REACTION = 'setMessageReaction';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
      */
     case BAN_CHAT_MEMBER = 'banChatMember';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
      */
     case UNBAN_CHAT_MEMBER = 'unbanChatMember';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
      */
     case SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE = 'setChatAdministratorCustomTitle';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
      */
     case EXPORT_CHAT_INVITE_LINK = 'exportChatInviteLink';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/RevokeChatInviteLink.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/RevokeChatInviteLink.md
      */
     case REVOKE_CHAT_INVITE_LINK = 'revokeChatInviteLink';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
      */
     case DELETE_MESSAGES = 'deleteMessages';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessage.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessage.md
      */
     case DELETE_MESSAGE = 'deleteMessage';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetFile.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetFile.md
      */
     case GET_FILE = 'getFile';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageText.md
      */
     case EDIT_MESSAGE_TEXT = 'editMessageText';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageCaption.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageCaption.md
      */
     case EDIT_MESSAGE_CAPTION = 'editMessageCaption';
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageMedia.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageMedia.md
      */
     case EDIT_MESSAGE_MEDIA = 'editMessageMedia';
 }

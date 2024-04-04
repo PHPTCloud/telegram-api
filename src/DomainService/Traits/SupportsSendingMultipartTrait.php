@@ -11,7 +11,6 @@ use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\ResponseInterface;
 use PHPTCloud\TelegramApi\SerializerInterface;
-use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 
 /**
