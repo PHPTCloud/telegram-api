@@ -189,4 +189,5 @@ enum TelegramApiFieldEnum: string
     case FILE_SIZE = 'file_size';
     case FILE_PATH = 'file_path';
     case INLINE_MESSAGE_ID = 'inline_message_id';
+    case FOR_CHANNELS = 'for_channels';
 }

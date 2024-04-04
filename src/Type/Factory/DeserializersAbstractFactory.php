@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\DeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Deserializer\ChatAdministratorRightsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatInviteLinkDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatLocationDeserializer;
@@ -19,6 +20,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeCustomEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatAdministratorRightsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatInviteLinkDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatLocationDeserializerInterface;
@@ -33,6 +35,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeCustomEmojiDe
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatAdministratorRightsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
@@ -104,6 +107,9 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case FileDeserializer::class:
             case FileDeserializerInterface::class:
                 return $this->createFileDeserializer();
+            case ChatAdministratorRightsDeserializer::class:
+            case ChatAdministratorRightsDeserializerInterface::class:
+                return $this->createChatAdministratorRightsDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -239,5 +245,13 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         $typeFactory = $this->typeFactoriesAbstractFactory->create(FileFactoryInterface::class);
 
         return new FileDeserializer($typeFactory);
+    }
+
+    public function createChatAdministratorRightsDeserializer(): ChatAdministratorRightsDeserializerInterface
+    {
+        /** @var ChatAdministratorRightsTypeFactoryInterface $typeFactory */
+        $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatAdministratorRightsTypeFactoryInterface::class);
+
+        return new ChatAdministratorRightsDeserializer($typeFactory);
     }
 }

@@ -271,4 +271,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/EditMessageMedia.md
      */
     case EDIT_MESSAGE_MEDIA = 'editMessageMedia';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/getMyDefaultAdministratorRights.md
+     */
+    case GET_MY_DEFAULT_ADMINISTRATOR_RIGHTS = 'getMyDefaultAdministratorRights';
 }

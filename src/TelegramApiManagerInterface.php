@@ -17,6 +17,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetFileArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
@@ -36,6 +37,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInviteLinkInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\FileInterface;
@@ -131,4 +133,8 @@ interface TelegramApiManagerInterface
     public function editMessageCaption(EditMessageCaptionArgumentInterface $argument): MessageInterface;
 
     public function editMessageMedia(EditMessageMediaArgumentInterface $argument): MessageInterface;
+
+    public function getMyDefaultAdministratorRights(
+        GetMyDefaultAdministratorRightsArgumentInterface $argument
+    ): ChatAdministratorRightsInterface;
 }
