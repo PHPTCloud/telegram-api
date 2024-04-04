@@ -20,6 +20,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArray
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetFileArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgumentArraySerializerInterface;
@@ -74,6 +75,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetFileArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaAudioArgumentArraySerializer;
@@ -279,6 +281,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case EditMessageMediaArgumentArraySerializer::class:
             case EditMessageMediaArgumentArraySerializerInterface::class:
                 return $this->createEditMessageMediaArgumentArraySerializer();
+            case GetMyDefaultAdministratorRightsArgumentArraySerializer::class:
+            case GetMyDefaultAdministratorRightsArgumentArraySerializerInterface::class:
+                return $this->createGetMyDefaultAdministratorRightsArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -666,5 +671,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createInputMediaAudioArgumentArraySerializer(),
             $this->createInputMediaDocumentArgumentArraySerializer(),
         );
+    }
+
+    public function createGetMyDefaultAdministratorRightsArgumentArraySerializer(): GetMyDefaultAdministratorRightsArgumentArraySerializerInterface
+    {
+        return new GetMyDefaultAdministratorRightsArgumentArraySerializer();
     }
 }

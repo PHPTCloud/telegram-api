@@ -31,7 +31,11 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
         $deserializersAbstractFactory = new DeserializersAbstractFactory(new TypeFactoriesAbstractFactory());
         $serializersAbstractFactory = new SerializersAbstractFactory();
 
-        $telegramBotDomainServiceFactory = new TelegramBotDomainServiceFactory($deserializersAbstractFactory);
+        $telegramBotDomainServiceFactory = new TelegramBotDomainServiceFactory(
+            $deserializersAbstractFactory,
+            $serializersAbstractFactory,
+            new ExceptionAbstractFactory(),
+        );
         $messageDomainServiceFactory = new MessageDomainServiceFactory(
             $deserializersAbstractFactory,
             $serializersAbstractFactory,
