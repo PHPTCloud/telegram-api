@@ -84,7 +84,7 @@ setMyShortDescription
 getMyShortDescription
 setChatMenuButton
 getChatMenuButton
-setMyDefaultAdministratorRights
+setMyDefaultAdministratorRights ✅
 getMyDefaultAdministratorRights ✅
 editMessageText ✅
 editMessageCaption ✅
