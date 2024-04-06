@@ -56,6 +56,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UnbanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
@@ -111,6 +112,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SetChatDescriptionArgumentArraySer
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UnbanChatMemberArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
@@ -284,6 +286,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case GetMyDefaultAdministratorRightsArgumentArraySerializer::class:
             case GetMyDefaultAdministratorRightsArgumentArraySerializerInterface::class:
                 return $this->createGetMyDefaultAdministratorRightsArgumentArraySerializer();
+            case SetMyDefaultAdministratorRightsArgumentArraySerializer::class:
+            case SetMyDefaultAdministratorRightsArgumentArraySerializerInterface::class:
+                return $this->createSetMyDefaultAdministratorRightsArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -676,5 +681,12 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createGetMyDefaultAdministratorRightsArgumentArraySerializer(): GetMyDefaultAdministratorRightsArgumentArraySerializerInterface
     {
         return new GetMyDefaultAdministratorRightsArgumentArraySerializer();
+    }
+
+    public function createSetMyDefaultAdministratorRightsArgumentArraySerializer(): SetMyDefaultAdministratorRightsArgumentArraySerializerInterface
+    {
+        return new SetMyDefaultAdministratorRightsArgumentArraySerializer(
+            $this->createChatAdministratorRightsArgumentArraySerializer(),
+        );
     }
 }
