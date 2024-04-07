@@ -101,7 +101,7 @@ interface ChatDomainServiceInterface
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
      */
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 
@@ -111,37 +111,37 @@ interface ChatDomainServiceInterface
     public function getChatMember(GetChatMemberArgumentInterface $argument): ChatMemberInterface;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
      */
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/UnbanChaUMember.md
      */
     public function unbanChatMember(UnbanChatMemberArgumentInterface $argument): bool;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatAdministratorCustomTitle.md
      */
     public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleArgumentInterface $argument): bool;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/ExportChatInviteLink.md
      */
     public function exportChatInviteLink(ExportChatInviteLinkArgumentInterface $argument): UrlValueObjectInterface;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/RevokeChatInviteLink.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/RevokeChatInviteLink.md
      */
     public function revokeChatInviteLink(RevokeChatInviteLinkArgumentInterface $argument): ChatInviteLinkInterface;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
      */
     public function deleteMessages(DeleteMessagesArgumentInterface $argument): bool;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessage.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessage.md
      */
     public function deleteMessage(DeleteMessageArgumentInterface $argument): bool;
 }

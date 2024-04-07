@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi;
 use PHPTCloud\TelegramApi\Argument\Factory\SerializersAbstractFactory;
 use PHPTCloud\TelegramApi\Argument\Serializer\MultipartArraySerializer;
 use PHPTCloud\TelegramApi\DomainService\Factory\ChatDomainServiceFactory;
+use PHPTCloud\TelegramApi\DomainService\Factory\FileDomainServiceFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\MessageDomainServiceFactory;
 use PHPTCloud\TelegramApi\DomainService\Factory\TelegramBotDomainServiceFactory;
 use PHPTCloud\TelegramApi\Exception\Factory\ExceptionAbstractFactory;
@@ -30,20 +31,40 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
         $deserializersAbstractFactory = new DeserializersAbstractFactory(new TypeFactoriesAbstractFactory());
         $serializersAbstractFactory = new SerializersAbstractFactory();
 
-        $telegramBotDomainServiceFactory = new TelegramBotDomainServiceFactory($deserializersAbstractFactory);
+        $telegramBotDomainServiceFactory = new TelegramBotDomainServiceFactory(
+            $deserializersAbstractFactory,
+            $serializersAbstractFactory,
+            new ExceptionAbstractFactory(),
+        );
         $messageDomainServiceFactory = new MessageDomainServiceFactory(
             $deserializersAbstractFactory,
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
             new SortingAlgorithmServiceFactory(),
-            new MultipartArraySerializer(),
+            new MultipartArraySerializer(
+                $serializersAbstractFactory->createInputMediaDocumentArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaPhotoArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaAudioArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaVideoArgumentArraySerializer(),
+            ),
         );
 
         $chatDomainServiceFactory = new ChatDomainServiceFactory(
             $deserializersAbstractFactory,
             $serializersAbstractFactory,
             new ExceptionAbstractFactory(),
-            new MultipartArraySerializer(),
+            new MultipartArraySerializer(
+                $serializersAbstractFactory->createInputMediaDocumentArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaPhotoArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaAudioArgumentArraySerializer(),
+                $serializersAbstractFactory->createInputMediaVideoArgumentArraySerializer(),
+            ),
+        );
+
+        $fileDomainServiceFactory = new FileDomainServiceFactory(
+            $deserializersAbstractFactory,
+            $serializersAbstractFactory,
+            new ExceptionAbstractFactory(),
         );
 
         return new TelegramApiManager(
@@ -51,6 +72,7 @@ class TelegramApiManagerFactory implements TelegramApiManagerFactoryInterface
             $telegramBotDomainServiceFactory,
             $messageDomainServiceFactory,
             $chatDomainServiceFactory,
+            $fileDomainServiceFactory,
         );
     }
 }

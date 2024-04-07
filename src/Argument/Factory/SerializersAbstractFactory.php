@@ -12,11 +12,16 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArra
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageCaptionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageMediaArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\EditMessageTextArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ExportChatInviteLinkArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMemberArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetFileArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgumentArraySerializerInterface;
@@ -52,6 +57,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgum
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UnbanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
@@ -63,11 +69,16 @@ use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessagesArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\EditMessageCaptionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\EditMessageMediaArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\EditMessageTextArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ExportChatInviteLinkArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMemberArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetFileArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaAudioArgumentArraySerializer;
@@ -103,6 +114,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SetChatDescriptionArgumentArraySer
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UnbanChatMemberArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
@@ -264,6 +276,24 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case DeleteMessageArgumentArraySerializer::class:
             case DeleteMessageArgumentArraySerializerInterface::class:
                 return $this->createDeleteMessageArgumentArraySerializer();
+            case GetFileArgumentArraySerializer::class:
+            case GetFileArgumentArraySerializerInterface::class:
+                return $this->createGetFileArgumentArraySerializer();
+            case EditMessageTextArgumentArraySerializer::class:
+            case EditMessageTextArgumentArraySerializerInterface::class:
+                return $this->createEditMessageTextArgumentArraySerializer();
+            case EditMessageCaptionArgumentArraySerializer::class:
+            case EditMessageCaptionArgumentArraySerializerInterface::class:
+                return $this->createEditMessageCaptionArgumentArraySerializer();
+            case EditMessageMediaArgumentArraySerializer::class:
+            case EditMessageMediaArgumentArraySerializerInterface::class:
+                return $this->createEditMessageMediaArgumentArraySerializer();
+            case GetMyDefaultAdministratorRightsArgumentArraySerializer::class:
+            case GetMyDefaultAdministratorRightsArgumentArraySerializerInterface::class:
+                return $this->createGetMyDefaultAdministratorRightsArgumentArraySerializer();
+            case SetMyDefaultAdministratorRightsArgumentArraySerializer::class:
+            case SetMyDefaultAdministratorRightsArgumentArraySerializerInterface::class:
+                return $this->createSetMyDefaultAdministratorRightsArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -623,5 +653,50 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createDeleteMessageArgumentArraySerializer(): DeleteMessageArgumentArraySerializerInterface
     {
         return new DeleteMessageArgumentArraySerializer();
+    }
+
+    public function createGetFileArgumentArraySerializer(): GetFileArgumentArraySerializerInterface
+    {
+        return new GetFileArgumentArraySerializer();
+    }
+
+    public function createEditMessageTextArgumentArraySerializer(): EditMessageTextArgumentArraySerializerInterface
+    {
+        return new EditMessageTextArgumentArraySerializer(
+            $this->createMessageEntityArgumentArraySerializer(),
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
+            $this->createLinkPreviewOptionsArgumentArraySerializer(),
+        );
+    }
+
+    public function createEditMessageCaptionArgumentArraySerializer(): EditMessageCaptionArgumentArraySerializerInterface
+    {
+        return new EditMessageCaptionArgumentArraySerializer(
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
+            $this->createMessageEntityArgumentArraySerializer(),
+        );
+    }
+
+    public function createEditMessageMediaArgumentArraySerializer(): EditMessageMediaArgumentArraySerializerInterface
+    {
+        return new EditMessageMediaArgumentArraySerializer(
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
+            $this->createInputMediaVideoArgumentArraySerializer(),
+            $this->createInputMediaPhotoArgumentArraySerializer(),
+            $this->createInputMediaAudioArgumentArraySerializer(),
+            $this->createInputMediaDocumentArgumentArraySerializer(),
+        );
+    }
+
+    public function createGetMyDefaultAdministratorRightsArgumentArraySerializer(): GetMyDefaultAdministratorRightsArgumentArraySerializerInterface
+    {
+        return new GetMyDefaultAdministratorRightsArgumentArraySerializer();
+    }
+
+    public function createSetMyDefaultAdministratorRightsArgumentArraySerializer(): SetMyDefaultAdministratorRightsArgumentArraySerializerInterface
+    {
+        return new SetMyDefaultAdministratorRightsArgumentArraySerializer(
+            $this->createChatAdministratorRightsArgumentArraySerializer(),
+        );
     }
 }

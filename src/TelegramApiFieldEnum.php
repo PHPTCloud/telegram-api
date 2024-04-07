@@ -187,4 +187,11 @@ enum TelegramApiFieldEnum: string
     case STATUS = 'status';
     case IS_MEMBER = 'is_member';
     case CAN_BE_EDITED = 'can_be_edited';
+    case FILE_ID = 'file_id';
+    case FILE_UNIQUE_ID = 'file_unique_id';
+    case FILE_SIZE = 'file_size';
+    case FILE_PATH = 'file_path';
+    case INLINE_MESSAGE_ID = 'inline_message_id';
+    case FOR_CHANNELS = 'for_channels';
+    case RIGHTS = 'rights';
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatAdministratorRightsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberAdministratorTypeFactoryInterface;
@@ -15,9 +16,11 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberRestrictedTypeFactor
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\PhotoSizeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeTypeFactoryInterface;
@@ -87,6 +90,15 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case ChatMemberBannedTypeFactory::class:
             case ChatMemberBannedTypeFactoryInterface::class:
                 return $this->createChatMemberBannedTypeFactory();
+            case PhotoSizeFactory::class:
+            case PhotoSizeFactoryInterface::class:
+                return $this->createPhotoSizeFactory();
+            case FileFactory::class:
+            case FileFactoryInterface::class:
+                return $this->createFileFactory();
+            case ChatAdministratorRightsTypeFactory::class:
+            case ChatAdministratorRightsTypeFactoryInterface::class:
+                return $this->createChatAdministratorRightsTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -183,5 +195,20 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createChatMemberBannedTypeFactory(): ChatMemberBannedTypeFactoryInterface
     {
         return new ChatMemberBannedTypeFactory();
+    }
+
+    public function createPhotoSizeFactory(): PhotoSizeFactoryInterface
+    {
+        return new PhotoSizeFactory();
+    }
+
+    public function createFileFactory(): FileFactoryInterface
+    {
+        return new FileFactory();
+    }
+
+    public function createChatAdministratorRightsTypeFactory(): ChatAdministratorRightsTypeFactoryInterface
+    {
+        return new ChatAdministratorRightsTypeFactory();
     }
 }

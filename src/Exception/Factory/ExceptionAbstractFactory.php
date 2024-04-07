@@ -23,6 +23,7 @@ use PHPTCloud\TelegramApi\Exception\Error\InvalidResourceTypeException;
 use PHPTCloud\TelegramApi\Exception\Error\InviteHashExpiredException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageCantBeForwardedException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageIdsMustBeInIncreasingOrderException;
+use PHPTCloud\TelegramApi\Exception\Error\MessageToEditNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\NotEnoughRightToChangeCustomTitleException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
@@ -89,6 +90,8 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new NotEnoughRightToChangeCustomTitleException($message);
         } elseif (str_contains($message, $this->getInviteHashExpiredMessagePart())) {
             return new InviteHashExpiredException($message);
+        } elseif (str_contains($message, $this->getMessageToEditNotFoundMessagePart())) {
+            return new MessageToEditNotFoundException($message);
         }
 
         return new TelegramApiException($message);
@@ -212,5 +215,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     public function getInviteHashExpiredMessagePart(): string
     {
         return 'invite_hash_expired';
+    }
+
+    public function getMessageToEditNotFoundMessagePart(): string
+    {
+        return 'message to edit not found';
     }
 }

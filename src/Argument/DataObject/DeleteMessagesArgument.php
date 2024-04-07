@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\DataObject;
@@ -7,7 +8,8 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentI
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
- * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
+ *
+ * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMessages.md
  */
 class DeleteMessagesArgument implements DeleteMessagesArgumentInterface
 {
