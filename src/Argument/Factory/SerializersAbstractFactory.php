@@ -19,6 +19,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ExportChatInviteLinkArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetFileArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
@@ -75,6 +76,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ExportChatInviteLinkArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMemberArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetFileArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
@@ -250,6 +252,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetMessageReactionArgumentArraySerializer::class:
             case SetMessageReactionArgumentArraySerializerInterface::class:
                 return $this->createSetMessageReactionArgumentArraySerializer();
+            case GetChatMemberArgumentArraySerializer::class:
+            case GetChatMemberArgumentArraySerializerInterface::class:
+                return $this->createGetChatMemberArgumentArraySerializer();
             case BanChatMemberArgumentArraySerializer::class:
             case BanChatMemberArgumentArraySerializerInterface::class:
                 return $this->createBanChatMemberArgumentArraySerializer();
@@ -608,6 +613,11 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
         return new SetMessageReactionArgumentArraySerializer(
             $this->createReactionTypeArgumentArraySerializer(),
         );
+    }
+
+    public function createGetChatMemberArgumentArraySerializer(): GetChatMemberArgumentArraySerializerInterface
+    {
+        return new GetChatMemberArgumentArraySerializer();
     }
 
     public function createBanChatMemberArgumentArraySerializer(): BanChatMemberArgumentArraySerializerInterface

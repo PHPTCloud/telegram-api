@@ -18,6 +18,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessageArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
@@ -41,6 +42,7 @@ use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInviteLinkInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatMemberInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\FileInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageIdInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
@@ -112,6 +114,8 @@ interface TelegramApiManagerInterface
     public function setChatDescription(SetChatDescriptionArgumentInterface $argument): bool;
 
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
+
+    public function getChatMember(GetChatMemberArgumentInterface $argument): ChatMemberInterface;
 
     public function banChatMember(BanChatMemberArgumentInterface $argument): bool;
 

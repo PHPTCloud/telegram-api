@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
+namespace PHPTCloud\TelegramApi\Type\DataObject;
+
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatMemberLeftInterface;
 
 /**
- * @author  Юдов Алексей tcloud.ax@gmail.com
- * @author  Юдов Никита yudov.nikita@bk.ru
  * @author  Илья Пешко peshkoi@mail.ru
  *
  * Представляет участника чата, который в данный момент не является участником чата, но может присоедин
@@ -14,6 +14,6 @@ namespace PHPTCloud\TelegramApi\Type\Interfaces\DataObject;
  *
  * @see    https://core.telegram.org/bots/api#chatmemberleft
  */
-interface ChatMemberLeftInterface extends ChatMemberInterface
+class ChatMemberLeft extends ChatMember implements ChatMemberLeftInterface
 {
 }

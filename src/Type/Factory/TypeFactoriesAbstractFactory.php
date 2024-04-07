@@ -7,6 +7,12 @@ namespace PHPTCloud\TelegramApi\Type\Factory;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatAdministratorRightsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberAdministratorTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberBannedTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberLeftTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberMemberTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberOwnerTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberRestrictedTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
@@ -66,6 +72,24 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case ChatInviteLinkTypeFactory::class:
             case ChatInviteLinkTypeFactoryInterface::class:
                 return $this->createChatInviteLinkTypeFactory();
+            case ChatMemberAdministratorTypeFactory::class:
+            case ChatMemberAdministratorTypeFactoryInterface::class:
+                return $this->createChatMemberAdministratorTypeFactory();
+            case ChatMemberLeftTypeFactory::class:
+            case ChatMemberLeftTypeFactoryInterface::class:
+                return $this->createChatMemberLeftTypeFactory();
+            case ChatMemberMemberTypeFactory::class:
+            case ChatMemberMemberTypeFactoryInterface::class:
+                return $this->createChatMemberMemberTypeFactory();
+            case ChatMemberOwnerTypeFactory::class:
+            case ChatMemberOwnerTypeFactoryInterface::class:
+                return $this->createChatMemberOwnerTypeFactory();
+            case ChatMemberRestrictedTypeFactory::class:
+            case ChatMemberRestrictedTypeFactoryInterface::class:
+                return $this->createChatMemberRestrictedTypeFactory();
+            case ChatMemberBannedTypeFactory::class:
+            case ChatMemberBannedTypeFactoryInterface::class:
+                return $this->createChatMemberBannedTypeFactory();
             case PhotoSizeFactory::class:
             case PhotoSizeFactoryInterface::class:
                 return $this->createPhotoSizeFactory();
@@ -141,6 +165,36 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createChatInviteLinkTypeFactory(): ChatInviteLinkTypeFactoryInterface
     {
         return new ChatInviteLinkTypeFactory();
+    }
+
+    public function createChatMemberAdministratorTypeFactory(): ChatMemberAdministratorTypeFactoryInterface
+    {
+        return new ChatMemberAdministratorTypeFactory();
+    }
+
+    public function createChatMemberRestrictedTypeFactory(): ChatMemberRestrictedTypeFactoryInterface
+    {
+        return new ChatMemberRestrictedTypeFactory();
+    }
+
+    public function createChatMemberMemberTypeFactory(): ChatMemberMemberTypeFactoryInterface
+    {
+        return new ChatMemberMemberTypeFactory();
+    }
+
+    public function createChatMemberOwnerTypeFactory(): ChatMemberOwnerTypeFactoryInterface
+    {
+        return new ChatMemberOwnerTypeFactory();
+    }
+
+    public function createChatMemberLeftTypeFactory(): ChatMemberLeftTypeFactoryInterface
+    {
+        return new ChatMemberLeftTypeFactory();
+    }
+
+    public function createChatMemberBannedTypeFactory(): ChatMemberBannedTypeFactoryInterface
+    {
+        return new ChatMemberBannedTypeFactory();
     }
 
     public function createPhotoSizeFactory(): PhotoSizeFactoryInterface

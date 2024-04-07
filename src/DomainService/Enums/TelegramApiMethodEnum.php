@@ -213,6 +213,11 @@ enum TelegramApiMethodEnum: string
     case GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
 
     /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMember.md
+     */
+    case GET_CHAT_MEMBER = 'getChatMember';
+
+    /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMessageReaction.md
      */
     case SET_MESSAGE_REACTION = 'setMessageReaction';

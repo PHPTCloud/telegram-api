@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatAdministratorCustomTitleArgumentInterface;
@@ -19,6 +20,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgument
 use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInviteLinkInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatMemberInterface;
 
 /**
  * @author  Пешко Илья peshkoi@mail.ru
@@ -102,6 +104,11 @@ interface ChatDomainServiceInterface
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMemberCount.md
      */
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
+
+    /**
+     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMember.md
+     */
+    public function getChatMember(GetChatMemberArgumentInterface $argument): ChatMemberInterface;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/BanChatMember.md
