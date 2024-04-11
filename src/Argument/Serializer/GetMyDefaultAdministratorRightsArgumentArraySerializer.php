@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
@@ -13,7 +14,7 @@ class GetMyDefaultAdministratorRightsArgumentArraySerializer implements GetMyDef
     {
         $data = [];
 
-        if ($argument->isForChannels() !== null) {
+        if (null !== $argument->isForChannels()) {
             $data[TelegramApiFieldEnum::FOR_CHANNELS->value] = $argument->isForChannels();
         }
 

@@ -7,7 +7,6 @@ namespace PHPTCloud\TelegramApi\DomainService\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
-use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
@@ -106,7 +105,6 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         if (isset($data[TelegramApiFieldEnum::RIGHTS->value])) {
             $data[TelegramApiFieldEnum::RIGHTS->value] = json_encode($data[TelegramApiFieldEnum::RIGHTS->value]);
         }
-
 
         $response = $this->request::get(TelegramApiMethodEnum::SET_MY_DEFAULT_ADMINISTRATOR_RIGHTS->value, $data);
 

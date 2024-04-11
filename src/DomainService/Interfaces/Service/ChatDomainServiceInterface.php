@@ -110,7 +110,7 @@ interface ChatDomainServiceInterface
     public function getChatMemberCount(ChatIdArgumentInterface $argument): int;
 
     /**
-     * @link https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMember.md
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMember.md
      */
     public function getChatMember(GetChatMemberArgumentInterface $argument): ChatMemberInterface;
 
