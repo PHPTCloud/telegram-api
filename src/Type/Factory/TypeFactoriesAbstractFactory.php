@@ -18,6 +18,9 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonCommandsTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonDefaultTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonWebAppTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\PhotoSizeFactoryInterface;
@@ -27,6 +30,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeTypeFactoryInterfa
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\TypeFactoriesAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\TypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\WebAppInfoTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -99,6 +103,18 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case ChatAdministratorRightsTypeFactory::class:
             case ChatAdministratorRightsTypeFactoryInterface::class:
                 return $this->createChatAdministratorRightsTypeFactory();
+            case MenuButtonCommandsTypeFactory::class:
+            case MenuButtonCommandsTypeFactoryInterface::class:
+                return $this->createMenuButtonCommandsTypeFactory();
+            case MenuButtonDefaultTypeFactory::class:
+            case MenuButtonDefaultTypeFactoryInterface::class:
+                return $this->createMenuButtonDefaultTypeFactory();
+            case MenuButtonWebAppTypeFactory::class:
+            case MenuButtonWebAppTypeFactoryInterface::class:
+                return $this->createMenuButtonWebAppTypeFactory();
+            case WebAppInfoTypeFactory::class:
+            case WebAppInfoTypeFactoryInterface::class:
+                return $this->createWebAppInfoTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -210,5 +226,25 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createChatAdministratorRightsTypeFactory(): ChatAdministratorRightsTypeFactoryInterface
     {
         return new ChatAdministratorRightsTypeFactory();
+    }
+
+    public function createMenuButtonCommandsTypeFactory(): MenuButtonCommandsTypeFactoryInterface
+    {
+        return new MenuButtonCommandsTypeFactory();
+    }
+
+    public function createMenuButtonDefaultTypeFactory(): MenuButtonDefaultTypeFactoryInterface
+    {
+        return new MenuButtonDefaultTypeFactory();
+    }
+
+    public function createMenuButtonWebAppTypeFactory(): MenuButtonWebAppTypeFactoryInterface
+    {
+        return new MenuButtonWebAppTypeFactory();
+    }
+
+    public function createWebAppInfoTypeFactory(): WebAppInfoTypeFactoryInterface
+    {
+        return new WebAppInfoTypeFactory();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Factory;
@@ -18,13 +19,13 @@ class ChatAdministratorRightsTypeFactory implements ChatAdministratorRightsTypeF
         bool $promoteMembers,
         bool $changeInfo,
         bool $inviteUsers,
-        ?bool $postMessages = null,
-        ?bool $editMessages = null,
-        ?bool $pinMessages = null,
-        ?bool $postStories = null,
-        ?bool $editStories = null,
-        ?bool $deleteStories = null,
-        ?bool $manageTopics = null,
+        bool $postMessages = null,
+        bool $editMessages = null,
+        bool $pinMessages = null,
+        bool $postStories = null,
+        bool $editStories = null,
+        bool $deleteStories = null,
+        bool $manageTopics = null,
     ): ChatAdministratorRightsInterface {
         return new ChatAdministratorRights(
             $anonymous,

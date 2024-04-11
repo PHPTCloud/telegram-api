@@ -20,6 +20,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\FileDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\MenuButtonDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\MessageIdDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\PhotoSizeDeserializer;
@@ -27,6 +28,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeCustomEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\WebAppInfoDeserializer;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatAdministratorRightsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatInviteLinkDeserializerInterface;
@@ -42,6 +44,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializ
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\FileDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MenuButtonDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageIdDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\PhotoSizeDeserializerInterface;
@@ -49,6 +52,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeCustomEmojiDe
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\WebAppInfoDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatAdministratorRightsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatInviteLinkTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatLocationTypeFactoryInterface;
@@ -64,6 +68,9 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonCommandsTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonDefaultTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonWebAppTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageIdTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\PhotoSizeFactoryInterface;
@@ -71,6 +78,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeCustomEmojiTypeFac
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ReactionTypeEmojiTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\TypeFactoriesAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\UserTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\WebAppInfoTypeFactoryInterface;
 
 /**
  * @author  Юдов Алексей tcloud.ax@gmail.com
@@ -151,6 +159,12 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case ChatMemberMemberDeserializer::class:
             case ChatMemberMemberDeserializerInterface::class:
                 return $this->createChatMemberMemberDeserializer();
+            case MenuButtonDeserializerInterface::class:
+            case MenuButtonDeserializer::class:
+                return $this->createMenuButtonDeserializer();
+            case WebAppInfoDeserializerInterface::class:
+            case WebAppInfoDeserializer::class:
+                return $this->createWebAppInfoDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -354,5 +368,22 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
         $typeFactory = $this->typeFactoriesAbstractFactory->create(ChatMemberLeftTypeFactoryInterface::class);
 
         return new ChatMemberLeftDeserializer($typeFactory, $this->createUserDeserializer());
+    }
+
+    public function createMenuButtonDeserializer(): MenuButtonDeserializerInterface
+    {
+        return new MenuButtonDeserializer(
+            $this->typeFactoriesAbstractFactory->create(MenuButtonDefaultTypeFactoryInterface::class),
+            $this->typeFactoriesAbstractFactory->create(MenuButtonCommandsTypeFactoryInterface::class),
+            $this->typeFactoriesAbstractFactory->create(MenuButtonWebAppTypeFactoryInterface::class),
+            $this->createWebAppInfoDeserializer(),
+        );
+    }
+
+    public function createWebAppInfoDeserializer(): WebAppInfoDeserializerInterface
+    {
+        return new WebAppInfoDeserializer(
+            $this->typeFactoriesAbstractFactory->create(WebAppInfoTypeFactoryInterface::class),
+        );
     }
 }

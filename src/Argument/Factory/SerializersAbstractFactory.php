@@ -20,6 +20,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForceReplyArgumentArray
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ForwardMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMemberArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMenuButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetFileArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
@@ -77,6 +78,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ForceReplyArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ForwardMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMemberArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMenuButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetFileArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
@@ -294,6 +296,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetMyDefaultAdministratorRightsArgumentArraySerializer::class:
             case SetMyDefaultAdministratorRightsArgumentArraySerializerInterface::class:
                 return $this->createSetMyDefaultAdministratorRightsArgumentArraySerializer();
+            case GetChatMenuButtonArgumentArraySerializer::class:
+            case GetChatMenuButtonArgumentArraySerializerInterface::class:
+                return $this->createGetChatMenuButtonArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -698,5 +703,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
         return new SetMyDefaultAdministratorRightsArgumentArraySerializer(
             $this->createChatAdministratorRightsArgumentArraySerializer(),
         );
+    }
+
+    public function createGetChatMenuButtonArgumentArraySerializer(): GetChatMenuButtonArgumentArraySerializerInterface
+    {
+        return new GetChatMenuButtonArgumentArraySerializer();
     }
 }
