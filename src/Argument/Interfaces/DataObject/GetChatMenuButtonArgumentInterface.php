@@ -6,5 +6,5 @@ namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
 
 interface GetChatMenuButtonArgumentInterface extends ArgumentInterface
 {
-    public function getChatId(): int|float|string;
+    public function getChatId(): int|float|string|null;
 }

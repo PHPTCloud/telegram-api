@@ -14,10 +14,8 @@ class GetChatMenuButtonArgumentArraySerializer implements GetChatMenuButtonArgum
     {
         $data = [];
 
-        $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
-
-        if (empty($data)) {
-            throw new \InvalidArgumentException('Обязательные поля аргумента не заполнены.');
+        if ($argument->getChatId()) {
+            $data[TelegramApiFieldEnum::CHAT_ID->value] = $argument->getChatId();
         }
 
         return $data;

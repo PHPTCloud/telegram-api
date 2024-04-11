@@ -9,11 +9,11 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMenuButtonArgume
 class GetChatMenuButtonArgument implements GetChatMenuButtonArgumentInterface
 {
     public function __construct(
-        private readonly int|float|string $chatId,
+        private readonly int|float|string|null $chatId,
     ) {
     }
 
-    public function getChatId(): float|int|string
+    public function getChatId(): float|int|string|null
     {
         return $this->chatId;
     }
