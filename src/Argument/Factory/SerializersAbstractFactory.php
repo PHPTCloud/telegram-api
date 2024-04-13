@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\Argument\Factory;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BanChatMemberArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BotCommandArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\BotCommandScopeArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
@@ -68,6 +69,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatMenuButtonArgume
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyCommandsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyNameArgumentArraySerializerInterface;
@@ -77,6 +79,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UnbanChatMemberArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\WebAppInfoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Serializer\BanChatMemberArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\BotCommandArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\BotCommandScopeArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
@@ -139,6 +142,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SetChatMenuButtonArgumentArraySeri
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetMyCommandsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyNameArgumentArraySerializer;
@@ -364,8 +368,14 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case DeleteMyCommandsArgumentArraySerializer::class:
             case DeleteMyCommandsArgumentArraySerializerInterface::class:
                 return $this->createDeleteMyCommandsArgumentArraySerializer();
+            case BotCommandArgumentArraySerializer::class:
+            case BotCommandArgumentArraySerializerInterface::class:
+                return $this->createBotCommandArgumentArraySerializer();
+            case SetMyCommandsArgumentArraySerializer::class:
+            case SetMyCommandsArgumentArraySerializerInterface::class:
+                return $this->createSetMyCommandsArgumentArraySerializer();
             default:
-                throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
+                throw new \InvalidArgumentException(sprintf('Невозможно определить сериализатор для данного типа (%s).', $type));
         }
     }
 
@@ -846,6 +856,19 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createDeleteMyCommandsArgumentArraySerializer(): DeleteMyCommandsArgumentArraySerializerInterface
     {
         return new DeleteMyCommandsArgumentArraySerializer(
+            $this->createBotCommandScopeArraySerializer(),
+        );
+    }
+
+    public function createBotCommandArgumentArraySerializer(): BotCommandArgumentArraySerializerInterface
+    {
+        return new BotCommandArgumentArraySerializer();
+    }
+
+    public function createSetMyCommandsArgumentArraySerializer(): SetMyCommandsArgumentArraySerializerInterface
+    {
+        return new SetMyCommandsArgumentArraySerializer(
+            $this->createBotCommandArgumentArraySerializer(),
             $this->createBotCommandScopeArraySerializer(),
         );
     }
