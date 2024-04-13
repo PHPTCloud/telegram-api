@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
@@ -14,6 +15,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumen
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMyCommandsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyCommandsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDescriptionArgumentArraySerializerInterface;
@@ -316,5 +318,31 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return array_map(static function (array $attributes) use ($deserializer) {
             return $deserializer->deserialize($attributes);
         }, $response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool
+    {
+        $data = [];
+        if ($argument) {
+            /** @var DeleteMyCommandsArgumentArraySerializerInterface $serializer */
+            $serializer = $this->serializersAbstractFactory->create(DeleteMyCommandsArgumentArraySerializerInterface::class);
+            $data = $serializer->serialize($argument);
+        }
+
+        if (isset($data[TelegramApiFieldEnum::SCOPE->value])) {
+            $data[TelegramApiFieldEnum::SCOPE->value] = json_encode($data[TelegramApiFieldEnum::SCOPE->value]);
+        }
+
+        $response = $this->request::post(TelegramApiMethodEnum::DELETE_MY_COMMANDS->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return true;
     }
 }

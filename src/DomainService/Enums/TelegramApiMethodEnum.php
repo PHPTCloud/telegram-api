@@ -331,4 +331,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyCommands.md
      */
     case GET_MY_COMMANDS = 'getMyCommands';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMyCommands.md
+     */
+    case DELETE_MY_COMMANDS = 'deleteMyCommands';
 }
