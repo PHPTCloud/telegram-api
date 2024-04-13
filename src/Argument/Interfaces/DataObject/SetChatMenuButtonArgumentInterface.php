@@ -7,5 +7,5 @@ interface SetChatMenuButtonArgumentInterface
 {
     public function getChatId(): int|float|string|null;
 
-    public function getMenuButton(): MenuButtonWebAppArgumentInterface|MenuButtonCommandsArgumentInterface|MenuButtonDefaultArgumentInterface;
+    public function getMenuButton(): MenuButtonWebAppArgumentInterface|MenuButtonCommandsArgumentInterface|MenuButtonDefaultArgumentInterface|null;
 }

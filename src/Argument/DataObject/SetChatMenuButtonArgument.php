@@ -11,10 +11,11 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatMenuButtonArgume
 class SetChatMenuButtonArgument implements SetChatMenuButtonArgumentInterface
 {
     public function __construct(
-        private readonly int|float|string|null $chatId,
+        private readonly int|float|string|null $chatId = null,
         private readonly MenuButtonWebAppArgumentInterface
                         |MenuButtonCommandsArgumentInterface
-                        |MenuButtonDefaultArgumentInterface $menuButton,
+                        |MenuButtonDefaultArgumentInterface
+                        |null $menuButton = null,
     ) {
     }
 
@@ -23,7 +24,7 @@ class SetChatMenuButtonArgument implements SetChatMenuButtonArgumentInterface
         return $this->chatId;
     }
 
-    public function getMenuButton(): MenuButtonDefaultArgumentInterface|MenuButtonCommandsArgumentInterface|MenuButtonWebAppArgumentInterface
+    public function getMenuButton(): MenuButtonDefaultArgumentInterface|MenuButtonCommandsArgumentInterface|MenuButtonWebAppArgumentInterface|null
     {
         return $this->menuButton;
     }
