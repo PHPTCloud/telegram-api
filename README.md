@@ -80,7 +80,7 @@ setMyName
 getMyName
 setMyDescription
 getMyDescription
-setMyShortDescription
+setMyShortDescription ✅
 getMyShortDescription ✅
 setChatMenuButton ✅
 getChatMenuButton ✅

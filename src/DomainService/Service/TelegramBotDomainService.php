@@ -7,10 +7,12 @@ namespace PHPTCloud\TelegramApi\DomainService\Service;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServiceInterface;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
@@ -147,5 +149,27 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         $deserializer = $this->deserializersAbstractFactory->create(BotShortDescriptionDeserializerInterface::class);
 
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
+    }
+
+    public function setMyShortDescription(?SetMyShortDescriptionArgumentInterface $argument = null): bool
+    {
+        $data = [];
+        if ($argument) {
+            /** @var SetMyShortDescriptionArgumentArraySerializerInterface $serializer */
+            $serializer = $this->serializersAbstractFactory->create(SetMyShortDescriptionArgumentArraySerializerInterface::class);
+            $data = $serializer->serialize($argument);
+        }
+
+        $response = $this->request::get(TelegramApiMethodEnum::SET_MY_SHORT_DESCRIPTION->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        return true;
     }
 }
