@@ -23,6 +23,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMemberArgumentAr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMenuButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetFileArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
@@ -87,6 +88,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMemberArgumentArraySerializ
 use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMenuButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetFileArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetMyShortDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
@@ -329,6 +331,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetMyShortDescriptionArgumentArraySerializer::class:
             case SetMyShortDescriptionArgumentArraySerializerInterface::class:
                 return $this->createSetMyShortDescriptionArgumentArraySerializer();
+            case GetMyDescriptionArgumentArraySerializer::class:
+            case GetMyDescriptionArgumentArraySerializerInterface::class:
+                return $this->createGetMyDescriptionArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -774,5 +779,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createSetMyShortDescriptionArgumentArraySerializer(): SetMyShortDescriptionArgumentArraySerializerInterface
     {
         return new SetMyShortDescriptionArgumentArraySerializer();
+    }
+
+    public function createGetMyDescriptionArgumentArraySerializer(): GetMyShortDescriptionArgumentArraySerializerInterface
+    {
+        return new GetMyDescriptionArgumentArraySerializer();
     }
 }

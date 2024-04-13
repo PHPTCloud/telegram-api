@@ -79,7 +79,7 @@ getMyCommands
 setMyName
 getMyName
 setMyDescription
-getMyDescription
+getMyDescription ✅
 setMyShortDescription ✅
 getMyShortDescription ✅
 setChatMenuButton ✅
