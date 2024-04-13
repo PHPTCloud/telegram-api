@@ -10,6 +10,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyNameArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotNameInterface;
@@ -64,4 +65,9 @@ interface TelegramBotDomainServiceInterface extends DomainServiceInterface
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyName.md
      */
     public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface;
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyName.md
+     */
+    public function setMyName(?SetMyNameArgumentInterface $argument = null): bool;
 }
