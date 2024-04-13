@@ -77,7 +77,7 @@ setMyCommands
 deleteMyCommands
 getMyCommands
 setMyName
-getMyName
+getMyName ✅
 setMyDescription ✅
 getMyDescription ✅
 setMyShortDescription ✅
