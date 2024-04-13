@@ -39,6 +39,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
@@ -159,4 +160,6 @@ interface TelegramApiManagerInterface
     public function setChatMenuButton(SetChatMenuButtonArgumentInterface $argument): bool;
 
     public function getMyShortDescription(?GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface;
+
+    public function setMyShortDescription(?SetMyShortDescriptionArgumentInterface $argument = null): bool;
 }

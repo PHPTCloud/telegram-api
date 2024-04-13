@@ -64,6 +64,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UnbanChatMemberArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UserArgumentArraySerializerInterface;
@@ -127,6 +128,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerialize
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetMyShortDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UnbanChatMemberArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UserArgumentArraySerializer;
@@ -324,6 +326,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case GetMyShortDescriptionArgumentArraySerializer::class:
             case GetMyShortDescriptionArgumentArraySerializerInterface::class:
                 return $this->createGetMyShortDescriptionArgumentArraySerializer();
+            case SetMyShortDescriptionArgumentArraySerializer::class:
+            case SetMyShortDescriptionArgumentArraySerializerInterface::class:
+                return $this->createSetMyShortDescriptionArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -764,5 +769,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createGetMyShortDescriptionArgumentArraySerializer(): GetMyShortDescriptionArgumentArraySerializerInterface
     {
         return new GetMyShortDescriptionArgumentArraySerializer();
+    }
+
+    public function createSetMyShortDescriptionArgumentArraySerializer(): SetMyShortDescriptionArgumentArraySerializerInterface
+    {
+        return new SetMyShortDescriptionArgumentArraySerializer();
     }
 }
