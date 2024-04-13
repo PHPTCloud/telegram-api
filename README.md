@@ -74,7 +74,7 @@ answerCallbackQuery
 getUserChatBoosts
 getBusinessConnection
 setMyCommands
-deleteMyCommands
+deleteMyCommands ✅
 getMyCommands ✅
 setMyName ✅
 getMyName ✅

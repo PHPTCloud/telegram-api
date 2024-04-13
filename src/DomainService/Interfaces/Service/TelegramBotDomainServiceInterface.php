@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
@@ -78,4 +79,9 @@ interface TelegramBotDomainServiceInterface extends DomainServiceInterface
      * @return BotCommandInterface[]
      */
     public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array;
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMyCommands.md
+     */
+    public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool;
 }
