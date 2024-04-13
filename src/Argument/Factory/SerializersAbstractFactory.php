@@ -23,6 +23,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMemberArgumentAr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetChatMenuButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetFileArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InlineKeyboardMarkupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgumentArraySerializerInterface;
@@ -85,6 +86,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMemberArgumentArraySerializ
 use PHPTCloud\TelegramApi\Argument\Serializer\GetChatMenuButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetFileArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\GetMyShortDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InlineKeyboardMarkupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\InputMediaAudioArgumentArraySerializer;
@@ -319,6 +321,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SetChatMenuButtonArgumentArraySerializer::class:
             case SetChatMenuButtonArgumentArraySerializerInterface::class:
                 return $this->createSetChatMenuButtonArgumentArraySerializer();
+            case GetMyShortDescriptionArgumentArraySerializer::class:
+            case GetMyShortDescriptionArgumentArraySerializerInterface::class:
+                return $this->createGetMyShortDescriptionArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -754,5 +759,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createMenuButtonCommandsArgumentArraySerializer(),
             $this->createMenuButtonWebAppArgumentArraySerializer(),
         );
+    }
+
+    public function createGetMyShortDescriptionArgumentArraySerializer(): GetMyShortDescriptionArgumentArraySerializerInterface
+    {
+        return new GetMyShortDescriptionArgumentArraySerializer();
     }
 }

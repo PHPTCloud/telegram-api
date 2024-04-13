@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\DomainService\Enums\TelegramApiMethodEnum;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServiceInterface;
@@ -15,8 +17,11 @@ use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
+use PHPTCloud\TelegramApi\Type\DataObject\BotShortDescription;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotShortDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotShortDescriptionDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatAdministratorRightsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
@@ -117,5 +122,30 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         }
 
         return true;
+    }
+
+    public function getMyShortDescription(?GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface
+    {
+        $data = [];
+        if ($argument) {
+            /** @var GetMyShortDescriptionArgumentArraySerializerInterface $serializer */
+            $serializer = $this->serializersAbstractFactory->create(GetMyShortDescriptionArgumentArraySerializerInterface::class);
+            $data = $serializer->serialize($argument);
+        }
+
+        $response = $this->request::get(TelegramApiMethodEnum::GET_MY_SHORT_DESCRIPTION->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var BotShortDescriptionDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(BotShortDescriptionDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 }
