@@ -21,6 +21,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMenuButtonArgume
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArgumentInterface;
@@ -54,6 +55,7 @@ use PHPTCloud\TelegramApi\DomainService\Interfaces\Service\TelegramBotDomainServ
 use PHPTCloud\TelegramApi\DomainService\Interfaces\ValueObject\UrlValueObjectInterface;
 use PHPTCloud\TelegramApi\Type\DataObject\MessageId;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotDescriptionInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotNameInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotShortDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatInterface;
@@ -322,6 +324,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function setMyDescription(?SetMyDescriptionArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->setMyDescription($argument);
+    }
+
+    public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface
+    {
+        return $this->getTelegramBotDomainService()->getMyName($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface

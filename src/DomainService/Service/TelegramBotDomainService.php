@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumentInterface;
@@ -13,6 +14,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionAr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDescriptionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyNameArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDescriptionArgumentArraySerializerInterface;
@@ -25,10 +27,12 @@ use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\DataObject\BotShortDescription;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotDescriptionInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotNameInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotShortDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotDescriptionDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotNameDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotShortDescriptionDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatAdministratorRightsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
@@ -224,5 +228,30 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         }
 
         return true;
+    }
+
+    public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface
+    {
+        $data = [];
+        if ($argument) {
+            /** @var GetMyNameArgumentArraySerializerInterface $serializer */
+            $serializer = $this->serializersAbstractFactory->create(GetMyNameArgumentArraySerializerInterface::class);
+            $data = $serializer->serialize($argument);
+        }
+
+        $response = $this->request::get(TelegramApiMethodEnum::GET_MY_NAME->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var BotNameDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(BotNameDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 }
