@@ -76,7 +76,7 @@ getBusinessConnection
 setMyCommands
 deleteMyCommands
 getMyCommands
-setMyName
+setMyName ✅
 getMyName ✅
 setMyDescription ✅
 getMyDescription ✅
