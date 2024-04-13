@@ -199,4 +199,5 @@ enum TelegramApiFieldEnum: string
     case SHORT_DESCRIPTION = 'short_description';
     case COMMAND = 'command';
     case SCOPE = 'scope';
+    case COMMANDS = 'commands';
 }

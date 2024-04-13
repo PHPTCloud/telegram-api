@@ -73,7 +73,7 @@ unpinAllGeneralForumTopicMessages
 answerCallbackQuery
 getUserChatBoosts
 getBusinessConnection
-setMyCommands
+setMyCommands ✅
 deleteMyCommands ✅
 getMyCommands ✅
 setMyName ✅

@@ -42,6 +42,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatMenuButtonArgume
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyNameArgumentInterface;
@@ -347,6 +348,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->deleteMyCommands($argument);
+    }
+
+    public function setMyCommands(SetMyCommandsArgumentInterface $argument): bool
+    {
+        return $this->getTelegramBotDomainService()->setMyCommands($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface
