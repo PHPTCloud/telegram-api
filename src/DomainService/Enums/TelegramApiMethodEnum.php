@@ -311,4 +311,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyDescription.md
      */
     case GET_MY_DESCRIPTION = 'getMyDescription';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyDescription.md
+     */
+    case SET_MY_DESCRIPTION = 'setMyDescription';
 }
