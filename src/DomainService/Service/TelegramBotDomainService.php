@@ -33,7 +33,6 @@ use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Request\Interfaces\RequestInterface;
 use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
-use PHPTCloud\TelegramApi\Type\DataObject\BotShortDescription;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotNameInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotShortDescriptionInterface;
@@ -145,7 +144,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return true;
     }
 
-    public function getMyShortDescription(?GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface
+    public function getMyShortDescription(GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface
     {
         $data = [];
         if ($argument) {
@@ -170,7 +169,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 
-    public function setMyShortDescription(?SetMyShortDescriptionArgumentInterface $argument = null): bool
+    public function setMyShortDescription(SetMyShortDescriptionArgumentInterface $argument = null): bool
     {
         $data = [];
         if ($argument) {
@@ -192,7 +191,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return true;
     }
 
-    public function getMyDescription(?GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface
+    public function getMyDescription(GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface
     {
         $data = [];
         if ($argument) {
@@ -217,7 +216,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 
-    public function setMyDescription(?SetMyDescriptionArgumentInterface $argument = null): bool
+    public function setMyDescription(SetMyDescriptionArgumentInterface $argument = null): bool
     {
         $data = [];
         if ($argument) {
@@ -239,7 +238,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return true;
     }
 
-    public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface
+    public function getMyName(GetMyNameArgumentInterface $argument = null): BotNameInterface
     {
         $data = [];
         if ($argument) {
@@ -264,7 +263,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 
-    public function setMyName(?SetMyNameArgumentInterface $argument = null): bool
+    public function setMyName(SetMyNameArgumentInterface $argument = null): bool
     {
         $data = [];
         if ($argument) {
@@ -291,7 +290,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         return true;
     }
 
-    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array
+    public function getMyCommands(GetMyCommandsArgumentInterface $argument = null): array
     {
         $data = [];
         if ($argument) {
@@ -322,7 +321,7 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         }, $response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 
-    public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool
+    public function deleteMyCommands(DeleteMyCommandsArgumentInterface $argument = null): bool
     {
         $data = [];
         if ($argument) {

@@ -169,24 +169,24 @@ interface TelegramApiManagerInterface
 
     public function setChatMenuButton(SetChatMenuButtonArgumentInterface $argument): bool;
 
-    public function getMyShortDescription(?GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface;
+    public function getMyShortDescription(GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface;
 
-    public function setMyShortDescription(?SetMyShortDescriptionArgumentInterface $argument = null): bool;
+    public function setMyShortDescription(SetMyShortDescriptionArgumentInterface $argument = null): bool;
 
-    public function getMyDescription(?GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface;
+    public function getMyDescription(GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface;
 
-    public function setMyDescription(?SetMyDescriptionArgumentInterface $argument = null): bool;
+    public function setMyDescription(SetMyDescriptionArgumentInterface $argument = null): bool;
 
-    public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface;
+    public function getMyName(GetMyNameArgumentInterface $argument = null): BotNameInterface;
 
-    public function setMyName(?SetMyNameArgumentInterface $argument = null): bool;
+    public function setMyName(SetMyNameArgumentInterface $argument = null): bool;
 
     /**
      * @return BotCommandInterface[]
      */
-    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array;
+    public function getMyCommands(GetMyCommandsArgumentInterface $argument = null): array;
 
-    public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool;
+    public function deleteMyCommands(DeleteMyCommandsArgumentInterface $argument = null): bool;
 
     public function setMyCommands(SetMyCommandsArgumentInterface $argument): bool;
 }

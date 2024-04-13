@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
-use PHPTCloud\TelegramApi\Argument\DataObject\SetChatMenuButtonArgument;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessageArgumentInterface;

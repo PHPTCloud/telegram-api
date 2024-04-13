@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Argument\Interfaces\DataObject;
@@ -9,7 +10,6 @@ interface GetMyCommandsArgumentInterface extends ArgumentInterface
      * @return BotCommandScopeAllChatAdministratorsArgumentInterface
      * @return BotCommandScopeAllGroupChatsArgumentInterface
      * @return BotCommandScopeAllPrivateChatsArgumentInterface
-     * @return BotCommandScopeArgumentInterface
      * @return BotCommandScopeChatAdministratorsArgumentInterface
      * @return BotCommandScopeChatArgumentInterface
      * @return BotCommandScopeChatMemberArgumentInterface
