@@ -194,4 +194,5 @@ enum TelegramApiFieldEnum: string
     case INLINE_MESSAGE_ID = 'inline_message_id';
     case FOR_CHANNELS = 'for_channels';
     case RIGHTS = 'rights';
+    case MENU_BUTTON = 'menu_button';
 }

@@ -291,4 +291,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetChatMenuButton.md
      */
     case GET_CHAT_MENU_BUTTON = 'getChatMenuButton';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatMenuButton.md
+     */
+    case SET_CHAT_MENU_BUTTON = 'setChatMenuButton';
 }

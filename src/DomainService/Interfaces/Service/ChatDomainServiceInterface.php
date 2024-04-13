@@ -15,6 +15,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatAdministratorCustomTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatMenuButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
@@ -155,4 +156,9 @@ interface ChatDomainServiceInterface
     public function getChatMenuButton(
         GetChatMenuButtonArgumentInterface $argument,
     ): MenuButtonCommandsInterface|MenuButtonDefaultInterface|MenuButtonWebAppInterface;
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatMenuButton.md
+     */
+    public function setChatMenuButton(SetChatMenuButtonArgumentInterface $argument): bool;
 }

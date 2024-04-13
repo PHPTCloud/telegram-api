@@ -35,6 +35,9 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestCh
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\KeyboardButtonRequestUsersArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LinkPreviewOptionsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\LoginUrlArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MenuButtonCommandsArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MenuButtonDefaultArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MenuButtonWebAppArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\MessageEntityArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ReactionTypeArgumentArraySerializerInterface;
@@ -55,6 +58,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentAr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatAdministratorCustomTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatDescriptionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatMenuButtonArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatPhotoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
@@ -93,6 +97,9 @@ use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonRequestChatArgumentA
 use PHPTCloud\TelegramApi\Argument\Serializer\KeyboardButtonRequestUsersArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LinkPreviewOptionsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\LoginUrlArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\MenuButtonCommandsArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\MenuButtonDefaultArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\MenuButtonWebAppArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\MessageEntityArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\ReactionTypeArgumentArraySerializer;
@@ -113,6 +120,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SendVideoNoteArgumentArraySerializ
 use PHPTCloud\TelegramApi\Argument\Serializer\SendVoiceArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatAdministratorCustomTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatDescriptionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetChatMenuButtonArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatPhotoArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
@@ -299,6 +307,18 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case GetChatMenuButtonArgumentArraySerializer::class:
             case GetChatMenuButtonArgumentArraySerializerInterface::class:
                 return $this->createGetChatMenuButtonArgumentArraySerializer();
+            case MenuButtonWebAppArgumentArraySerializer::class:
+            case MenuButtonWebAppArgumentArraySerializerInterface::class:
+                return $this->createMenuButtonWebAppArgumentArraySerializer();
+            case MenuButtonCommandsArgumentArraySerializer::class:
+            case MenuButtonCommandsArgumentArraySerializerInterface::class:
+                return $this->createMenuButtonCommandsArgumentArraySerializer();
+            case MenuButtonDefaultArgumentArraySerializer::class:
+            case MenuButtonDefaultArgumentArraySerializerInterface::class:
+                return $this->createMenuButtonDefaultArgumentArraySerializer();
+            case SetChatMenuButtonArgumentArraySerializer::class:
+            case SetChatMenuButtonArgumentArraySerializerInterface::class:
+                return $this->createSetChatMenuButtonArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -708,5 +728,31 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createGetChatMenuButtonArgumentArraySerializer(): GetChatMenuButtonArgumentArraySerializerInterface
     {
         return new GetChatMenuButtonArgumentArraySerializer();
+    }
+
+    public function createMenuButtonWebAppArgumentArraySerializer(): MenuButtonWebAppArgumentArraySerializerInterface
+    {
+        return new MenuButtonWebAppArgumentArraySerializer(
+            $this->createWebAppInfoArgumentArraySerializer(),
+        );
+    }
+
+    public function createMenuButtonCommandsArgumentArraySerializer(): MenuButtonCommandsArgumentArraySerializerInterface
+    {
+        return new MenuButtonCommandsArgumentArraySerializer();
+    }
+
+    public function createMenuButtonDefaultArgumentArraySerializer(): MenuButtonDefaultArgumentArraySerializerInterface
+    {
+        return new MenuButtonDefaultArgumentArraySerializer();
+    }
+
+    public function createSetChatMenuButtonArgumentArraySerializer(): SetChatMenuButtonArgumentArraySerializerInterface
+    {
+        return new SetChatMenuButtonArgumentArraySerializer(
+            $this->createMenuButtonDefaultArgumentArraySerializer(),
+            $this->createMenuButtonCommandsArgumentArraySerializer(),
+            $this->createMenuButtonWebAppArgumentArraySerializer(),
+        );
     }
 }
