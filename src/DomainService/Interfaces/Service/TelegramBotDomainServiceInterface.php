@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyNameArgumentInterface;
@@ -12,6 +13,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministrat
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotCommandInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotNameInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotShortDescriptionInterface;
@@ -70,4 +72,10 @@ interface TelegramBotDomainServiceInterface extends DomainServiceInterface
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyName.md
      */
     public function setMyName(?SetMyNameArgumentInterface $argument = null): bool;
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyCommands.md
+     * @return BotCommandInterface[]
+     */
+    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array;
 }

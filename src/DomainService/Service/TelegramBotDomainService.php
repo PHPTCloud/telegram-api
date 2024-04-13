@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\DomainService\Service;
 
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyNameArgumentInterface;
@@ -13,6 +14,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumen
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Factory\SerializersAbstractFactoryInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyCommandsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\GetMyNameArgumentArraySerializerInterface;
@@ -33,6 +35,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotNameInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\BotShortDescriptionInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\ChatAdministratorRightsInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\UserInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotCommandDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotDescriptionDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotNameDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotShortDescriptionDeserializerInterface;
@@ -282,5 +285,36 @@ class TelegramBotDomainService implements TelegramBotDomainServiceInterface
         }
 
         return true;
+    }
+
+    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array
+    {
+        $data = [];
+        if ($argument) {
+            /** @var GetMyCommandsArgumentArraySerializerInterface $serializer */
+            $serializer = $this->serializersAbstractFactory->create(GetMyCommandsArgumentArraySerializerInterface::class);
+            $data = $serializer->serialize($argument);
+        }
+
+        if (isset($data[TelegramApiFieldEnum::SCOPE->value])) {
+            $data[TelegramApiFieldEnum::SCOPE->value] = json_encode($data[TelegramApiFieldEnum::SCOPE->value]);
+        }
+
+        $response = $this->request::get(TelegramApiMethodEnum::GET_MY_COMMANDS->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var BotCommandDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(BotCommandDeserializerInterface::class);
+
+        return array_map(static function (array $attributes) use ($deserializer) {
+            return $deserializer->deserialize($attributes);
+        }, $response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 }

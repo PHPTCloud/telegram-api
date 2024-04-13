@@ -75,7 +75,7 @@ getUserChatBoosts
 getBusinessConnection
 setMyCommands
 deleteMyCommands
-getMyCommands
+getMyCommands ✅
 setMyName ✅
 getMyName ✅
 setMyDescription ✅
