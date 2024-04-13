@@ -82,7 +82,7 @@ setMyDescription
 getMyDescription
 setMyShortDescription
 getMyShortDescription
-setChatMenuButton
+setChatMenuButton ✅
 getChatMenuButton ✅
 setMyDefaultAdministratorRights ✅
 getMyDefaultAdministratorRights ✅
