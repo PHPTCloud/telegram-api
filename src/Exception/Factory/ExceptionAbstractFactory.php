@@ -7,6 +7,7 @@ namespace PHPTCloud\TelegramApi\Exception\Factory;
 use PHPTCloud\TelegramApi\Exception\Error\AudioCantBeMixedWithOtherTypesException;
 use PHPTCloud\TelegramApi\Exception\Error\BotDomainInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\BotIsNotAMemberOfTheChatException;
+use PHPTCloud\TelegramApi\Exception\Error\BotTitleInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonIdInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonQuantityMaxInvalidException;
 use PHPTCloud\TelegramApi\Exception\Error\ButtonTypeInvalidException;
@@ -28,6 +29,7 @@ use PHPTCloud\TelegramApi\Exception\Error\MessageToForwardNotFoundException;
 use PHPTCloud\TelegramApi\Exception\Error\NotEnoughRightToChangeCustomTitleException;
 use PHPTCloud\TelegramApi\Exception\Error\TelegramApiException;
 use PHPTCloud\TelegramApi\Exception\Error\TextButtonsAreUnallowedInInlineKeyboardException;
+use PHPTCloud\TelegramApi\Exception\Error\TooManyRequestException;
 use PHPTCloud\TelegramApi\Exception\Error\UnsupportedParseModeException;
 use PHPTCloud\TelegramApi\Exception\Error\VoiceMessageForbiddenException;
 use PHPTCloud\TelegramApi\Exception\Interfaces\ExceptionAbstractFactoryInterface;
@@ -92,6 +94,10 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
             return new InviteHashExpiredException($message);
         } elseif (str_contains($message, $this->getMessageToEditNotFoundMessagePart())) {
             return new MessageToEditNotFoundException($message);
+        } elseif (str_contains($message, $this->getBotTitleInvalidMessagePart())) {
+            return new BotTitleInvalidException($message);
+        } elseif (str_contains($message, $this->getTooManyRequestMessagePart())) {
+            return new TooManyRequestException($message);
         }
 
         return new TelegramApiException($message);
@@ -220,5 +226,15 @@ class ExceptionAbstractFactory implements ExceptionAbstractFactoryInterface
     public function getMessageToEditNotFoundMessagePart(): string
     {
         return 'message to edit not found';
+    }
+
+    public function getBotTitleInvalidMessagePart(): string
+    {
+        return 'bot_title_invalid';
+    }
+
+    public function getTooManyRequestMessagePart(): string
+    {
+        return 'too many requests';
     }
 }

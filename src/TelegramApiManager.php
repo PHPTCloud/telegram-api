@@ -42,6 +42,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInt
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyNameArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMyShortDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\UnbanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\DomainService\Interfaces\Factory\ChatDomainServiceFactoryInterface;
@@ -329,6 +330,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface
     {
         return $this->getTelegramBotDomainService()->getMyName($argument);
+    }
+
+    public function setMyName(?SetMyNameArgumentInterface $argument = null): bool
+    {
+        return $this->getTelegramBotDomainService()->setMyName($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface

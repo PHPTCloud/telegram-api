@@ -67,6 +67,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetChatTitleArgumentArr
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMessageReactionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyDescriptionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyNameArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SetMyShortDescriptionArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\UnbanChatMemberArgumentArraySerializerInterface;
@@ -134,6 +135,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\SetChatTitleArgumentArraySerialize
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMessageReactionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDefaultAdministratorRightsArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyDescriptionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SetMyNameArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SetMyShortDescriptionArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SwitchInlineQueryChosenChatArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\UnbanChatMemberArgumentArraySerializer;
@@ -344,6 +346,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case GetMyNameArgumentArraySerializer::class:
             case GetMyNameArgumentArraySerializerInterface::class:
                 return $this->createGetMyNameArgumentArraySerializer();
+            case SetMyNameArgumentArraySerializer::class:
+            case SetMyNameArgumentArraySerializerInterface::class:
+                return $this->createSetMyNameArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Тип %s не может быть создан данной фабрикой.', $type));
         }
@@ -804,5 +809,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createGetMyNameArgumentArraySerializer(): GetMyNameArgumentArraySerializerInterface
     {
         return new GetMyNameArgumentArraySerializer();
+    }
+
+    public function createSetMyNameArgumentArraySerializer(): SetMyNameArgumentArraySerializerInterface
+    {
+        return new SetMyNameArgumentArraySerializer();
     }
 }
