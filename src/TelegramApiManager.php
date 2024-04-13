@@ -33,6 +33,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatAdministratorCustomTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatDescriptionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatMenuButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetChatTitleArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SetMessageReactionArgumentInterface;
@@ -290,6 +291,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
         GetChatMenuButtonArgumentInterface $argument,
     ): MenuButtonCommandsInterface|MenuButtonDefaultInterface|MenuButtonWebAppInterface {
         return $this->getChatDomainService()->getChatMenuButton($argument);
+    }
+
+    public function setChatMenuButton(SetChatMenuButtonArgumentInterface $argument): bool
+    {
+        return $this->getChatDomainService()->setChatMenuButton($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface
