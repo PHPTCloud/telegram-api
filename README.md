@@ -81,7 +81,7 @@ getMyName
 setMyDescription
 getMyDescription
 setMyShortDescription
-getMyShortDescription
+getMyShortDescription ✅
 setChatMenuButton ✅
 getChatMenuButton ✅
 setMyDefaultAdministratorRights ✅
