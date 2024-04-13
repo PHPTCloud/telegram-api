@@ -310,42 +310,42 @@ class TelegramApiManager implements TelegramApiManagerInterface
         return $this->getChatDomainService()->setChatMenuButton($argument);
     }
 
-    public function getMyShortDescription(?GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface
+    public function getMyShortDescription(GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface
     {
         return $this->getTelegramBotDomainService()->getMyShortDescription($argument);
     }
 
-    public function setMyShortDescription(?SetMyShortDescriptionArgumentInterface $argument = null): bool
+    public function setMyShortDescription(SetMyShortDescriptionArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->setMyShortDescription($argument);
     }
 
-    public function getMyDescription(?GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface
+    public function getMyDescription(GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface
     {
         return $this->getTelegramBotDomainService()->getMyDescription($argument);
     }
 
-    public function setMyDescription(?SetMyDescriptionArgumentInterface $argument = null): bool
+    public function setMyDescription(SetMyDescriptionArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->setMyDescription($argument);
     }
 
-    public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface
+    public function getMyName(GetMyNameArgumentInterface $argument = null): BotNameInterface
     {
         return $this->getTelegramBotDomainService()->getMyName($argument);
     }
 
-    public function setMyName(?SetMyNameArgumentInterface $argument = null): bool
+    public function setMyName(SetMyNameArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->setMyName($argument);
     }
 
-    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array
+    public function getMyCommands(GetMyCommandsArgumentInterface $argument = null): array
     {
         return $this->getTelegramBotDomainService()->getMyCommands($argument);
     }
 
-    public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool
+    public function deleteMyCommands(DeleteMyCommandsArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->deleteMyCommands($argument);
     }

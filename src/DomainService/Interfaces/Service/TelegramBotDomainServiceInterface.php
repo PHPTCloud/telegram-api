@@ -48,43 +48,44 @@ interface TelegramBotDomainServiceInterface extends DomainServiceInterface
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyShortDescription.md
      */
-    public function getMyShortDescription(?GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface;
+    public function getMyShortDescription(GetMyShortDescriptionArgumentInterface $argument = null): BotShortDescriptionInterface;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyShortDescription.md
      */
-    public function setMyShortDescription(?SetMyShortDescriptionArgumentInterface $argument = null): bool;
+    public function setMyShortDescription(SetMyShortDescriptionArgumentInterface $argument = null): bool;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyDescription.md
      */
-    public function getMyDescription(?GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface;
+    public function getMyDescription(GetMyDescriptionArgumentInterface $argument = null): BotDescriptionInterface;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyDescription.md
      */
-    public function setMyDescription(?SetMyDescriptionArgumentInterface $argument = null): bool;
+    public function setMyDescription(SetMyDescriptionArgumentInterface $argument = null): bool;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyName.md
      */
-    public function getMyName(?GetMyNameArgumentInterface $argument = null): BotNameInterface;
+    public function getMyName(GetMyNameArgumentInterface $argument = null): BotNameInterface;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyName.md
      */
-    public function setMyName(?SetMyNameArgumentInterface $argument = null): bool;
+    public function setMyName(SetMyNameArgumentInterface $argument = null): bool;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/GetMyCommands.md
+     *
      * @return BotCommandInterface[]
      */
-    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array;
+    public function getMyCommands(GetMyCommandsArgumentInterface $argument = null): array;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteMyCommands.md
      */
-    public function deleteMyCommands(?DeleteMyCommandsArgumentInterface $argument = null): bool;
+    public function deleteMyCommands(DeleteMyCommandsArgumentInterface $argument = null): bool;
 
     /**
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetMyCommands.md
