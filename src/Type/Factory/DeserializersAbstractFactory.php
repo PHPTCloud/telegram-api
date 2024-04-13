@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
 use PHPTCloud\TelegramApi\DeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Deserializer\BotCommandDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\BotDescriptionDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\BotNameDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\BotShortDescriptionDeserializer;
@@ -32,6 +33,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ReactionTypeEmojiDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\UserDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\WebAppInfoDeserializer;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotCommandDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotDescriptionDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotNameDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\BotShortDescriptionDeserializerInterface;
@@ -59,6 +61,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeDeserializerI
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ReactionTypeEmojiDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\UserDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\WebAppInfoDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotCommandTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotDescriptionTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotNameTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotShortDescriptionTypeFactoryInterface;
@@ -183,6 +186,9 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case BotNameDeserializer::class:
             case BotNameDeserializerInterface::class:
                 return $this->createBotNameDeserializer();
+            case BotCommandDeserializer::class:
+            case BotCommandDeserializerInterface::class:
+                return $this->createBotCommandDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -423,6 +429,13 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
     {
         return new BotNameDeserializer(
             $this->typeFactoriesAbstractFactory->create(BotNameTypeFactoryInterface::class),
+        );
+    }
+
+    public function createBotCommandDeserializer(): BotCommandDeserializerInterface
+    {
+        return new BotCommandDeserializer(
+            $this->typeFactoriesAbstractFactory->create(BotCommandTypeFactoryInterface::class),
         );
     }
 }

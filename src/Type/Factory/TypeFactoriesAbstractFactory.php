@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Factory;
 
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotCommandTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotDescriptionTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotNameTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\BotShortDescriptionTypeFactoryInterface;
@@ -127,6 +128,9 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case BotNameTypeFactory::class:
             case BotNameTypeFactoryInterface::class:
                 return $this->createBotNameTypeFactory();
+            case BotCommandTypeFactory::class:
+            case BotCommandTypeFactoryInterface::class:
+                return $this->createBotCommandTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -273,5 +277,10 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createBotNameTypeFactory(): BotNameTypeFactoryInterface
     {
         return new BotNameTypeFactory();
+    }
+
+    public function createBotCommandTypeFactory(): BotCommandTypeFactoryInterface
+    {
+        return new BotCommandTypeFactory();
     }
 }

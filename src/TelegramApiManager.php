@@ -19,6 +19,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetChatMenuButtonArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetFileArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyCommandsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDefaultAdministratorRightsArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyDescriptionArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\GetMyNameArgumentInterface;
@@ -335,6 +336,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function setMyName(?SetMyNameArgumentInterface $argument = null): bool
     {
         return $this->getTelegramBotDomainService()->setMyName($argument);
+    }
+
+    public function getMyCommands(?GetMyCommandsArgumentInterface $argument = null): array
+    {
+        return $this->getTelegramBotDomainService()->getMyCommands($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface

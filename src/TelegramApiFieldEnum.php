@@ -196,6 +196,7 @@ enum TelegramApiFieldEnum: string
     case RIGHTS = 'rights';
     case MENU_BUTTON = 'menu_button';
     case LANGUAGE_CODE = 'language_code';
-
     case SHORT_DESCRIPTION = 'short_description';
+    case COMMAND = 'command';
+    case SCOPE = 'scope';
 }
