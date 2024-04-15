@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace PHPTCloud\TelegramApi\Argument\Serializer;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaAudioArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaDocumentArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaPhotoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\InputMediaVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\LocalFileArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\InputMediaAudioArgumentArraySerializerInterface;
@@ -58,6 +61,18 @@ class MultipartArraySerializer implements MultipartArraySerializerInterface
         $parameters = [];
         if ($inputMedia instanceof InputMediaVideoArgumentInterface) {
             $parameters = $this->inputMediaVideoArgumentArraySerializer->serialize($inputMedia);
+        }
+
+        if ($inputMedia instanceof InputMediaPhotoArgumentInterface) {
+            $parameters = $this->inputMediaPhotoArgumentArraySerializer->serialize($inputMedia);
+        }
+
+        if ($inputMedia instanceof InputMediaDocumentArgumentInterface) {
+            $parameters = $this->inputMediaDocumentArgumentArraySerializer->serialize($inputMedia);
+        }
+
+        if ($inputMedia instanceof InputMediaAudioArgumentInterface) {
+            $parameters = $this->inputMediaAudioArgumentArraySerializer->serialize($inputMedia);
         }
 
         foreach ($parameters as $index => $value) {
