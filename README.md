@@ -38,7 +38,7 @@ sendMediaGroup ✅
 
 sendLocation ✅
 
-sendVenue
+sendVenue ✅
 
 sendContact
 
