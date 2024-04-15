@@ -33,6 +33,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentI
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVenueArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
@@ -353,6 +354,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function setMyCommands(SetMyCommandsArgumentInterface $argument): bool
     {
         return $this->getTelegramBotDomainService()->setMyCommands($argument);
+    }
+
+    public function sendVenue(SendVenueArgumentInterface $argument): MessageInterface
+    {
+        return $this->getMessageDomainService()->sendVenue($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface

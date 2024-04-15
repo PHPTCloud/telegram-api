@@ -18,6 +18,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterf
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVenueArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVideoNoteArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendVoiceArgumentInterface;
@@ -37,6 +38,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendDocumentArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendMediaGroupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVenueArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVideoNoteArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendVoiceArgumentArraySerializerInterface;
@@ -354,6 +356,32 @@ class MessageDomainService implements
         $serializer = $this->serializersAbstractFactory->create(EditMessageMediaArgumentArraySerializerInterface::class);
 
         return $this->sendMultipartMessage($serializer, $argument, TelegramApiMethodEnum::EDIT_MESSAGE_MEDIA->value);
+    }
+
+    public function sendVenue(SendVenueArgumentInterface $argument): MessageInterface
+    {
+        /** @var SendVenueArgumentArraySerializerInterface $serializer */
+        $serializer = $this->serializersAbstractFactory->create(SendVenueArgumentArraySerializerInterface::class);
+        $data = $serializer->serialize($argument);
+
+        if (isset($data[TelegramApiFieldEnum::REPLY_MARKUP->value])) {
+            $data[TelegramApiFieldEnum::REPLY_MARKUP->value] = json_encode($data[TelegramApiFieldEnum::REPLY_MARKUP->value]);
+        }
+
+        $response = $this->request::post(TelegramApiMethodEnum::SEND_VENUE->value, $data);
+
+        if ($response->isError()) {
+            $exception = $this->exceptionAbstractFactory->createByApiErrorMessage($response->getErrorMessage());
+            if ($exception) {
+                throw $exception;
+            }
+            throw new TelegramApiException($response->getErrorMessage(), $response->getCode());
+        }
+
+        /** @var MessageDeserializerInterface $deserializer */
+        $deserializer = $this->deserializersAbstractFactory->create(MessageDeserializerInterface::class);
+
+        return $deserializer->deserialize($response->getResponseData()[RequestInterface::RESULT_KEY]);
     }
 
     /**

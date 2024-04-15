@@ -200,4 +200,9 @@ enum TelegramApiFieldEnum: string
     case COMMAND = 'command';
     case SCOPE = 'scope';
     case COMMANDS = 'commands';
+    case BUSINESS_CONNECTION_ID = 'business_connection_id';
+    case FOURSQUARE_ID = 'foursquare_id';
+    case FOURSQUARE_TYPE = 'foursquare_type';
+    case GOOGLE_PLACE_ID = 'google_place_id';
+    case GOOGLE_PLACE_TYPE = 'google_place_type';
 }
