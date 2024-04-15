@@ -73,6 +73,7 @@ interface MessageArgumentInterface extends ArgumentInterface
     public function setLinkPreviewOptions(LinkPreviewOptionsArgumentInterface $linkPreviewOptions = null): void;
 
     /**
+     * @TODO: поменять название
      * Необязательный. Отправляет сообщение молча. Пользователи получат уведомление без звука.
      */
     public function isNotificationDisabled(): ?bool;
@@ -80,6 +81,7 @@ interface MessageArgumentInterface extends ArgumentInterface
     public function setNotificationDisabled(bool $notificationDisabled = null): void;
 
     /**
+     * @TODO: поменять название
      * Необязательный. Защищает содержимое отправленного сообщения от пересылки и сохранения.
      */
     public function isContentProtected(): ?bool;
@@ -109,6 +111,9 @@ interface MessageArgumentInterface extends ArgumentInterface
 
     public function getInlineKeyboardMarkup(): ?InlineKeyboardMarkupArgumentInterface;
 
+    /**
+     * @TODO: А тут точно сеттеры нужны?
+     */
     public function setInlineKeyboardMarkup(InlineKeyboardMarkupArgumentInterface $replyMarkup = null): void;
 
     public function getReplyKeyboardMarkup(): ?ReplyKeyboardMarkupArgumentInterface;
