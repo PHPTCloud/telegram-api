@@ -14,6 +14,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ForwardMessagesArgument
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\MessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendContactArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
@@ -190,4 +191,9 @@ interface MessageDomainServiceInterface
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SendVenue.md
      */
     public function sendVenue(SendVenueArgumentInterface $argument): MessageInterface;
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SendContact.md
+     */
+    public function sendContact(SendContactArgumentInterface $argument): MessageInterface;
 }

@@ -30,6 +30,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendContactArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
@@ -192,4 +193,6 @@ interface TelegramApiManagerInterface
     public function setMyCommands(SetMyCommandsArgumentInterface $argument): bool;
 
     public function sendVenue(SendVenueArgumentInterface $argument): MessageInterface;
+
+    public function sendContact(SendContactArgumentInterface $argument): MessageInterface;
 }

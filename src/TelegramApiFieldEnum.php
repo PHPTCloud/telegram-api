@@ -205,4 +205,7 @@ enum TelegramApiFieldEnum: string
     case FOURSQUARE_TYPE = 'foursquare_type';
     case GOOGLE_PLACE_ID = 'google_place_id';
     case GOOGLE_PLACE_TYPE = 'google_place_type';
+    case PHONE_NUMBER = 'phone_number';
+    case VCARD = 'vcard';
+    case CONTACT = 'contact';
 }

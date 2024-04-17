@@ -57,6 +57,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\RevokeChatInviteLinkArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAnimationArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendAudioArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendChatActionArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendContactArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendDocumentArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendMediaGroupArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\SendPhotoArgumentArraySerializerInterface;
@@ -131,6 +132,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\RevokeChatInviteLinkArgumentArrayS
 use PHPTCloud\TelegramApi\Argument\Serializer\SendAnimationArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendAudioArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendChatActionArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\SendContactArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendDocumentArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendMediaGroupArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\SendPhotoArgumentArraySerializer;
@@ -379,6 +381,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SendVenueArgumentArraySerializer::class:
             case SendVenueArgumentArraySerializerInterface::class:
                 return $this->createSendVenueArgumentArraySerializer();
+            case SendContactArgumentArraySerializer::class:
+            case SendContactArgumentArraySerializerInterface::class:
+                return $this->createSendContactArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Невозможно определить сериализатор для данного типа (%s).', $type));
         }
@@ -881,6 +886,17 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
     public function createSendVenueArgumentArraySerializer(): SendVenueArgumentArraySerializerInterface
     {
         return new SendVenueArgumentArraySerializer(
+            $this->createReplyParametersArgumentArraySerializer(),
+            $this->createInlineKeyboardMarkupArgumentArraySerializer(),
+            $this->createReplyKeyboardRemoveArgumentArraySerializer(),
+            $this->createReplyKeyboardMarkupArgumentArraySerializer(),
+            $this->createForceReplyArgumentArraySerializer(),
+        );
+    }
+
+    public function createSendContactArgumentArraySerializer(): SendContactArgumentArraySerializerInterface
+    {
+        return new SendContactArgumentArraySerializer(
             $this->createReplyParametersArgumentArraySerializer(),
             $this->createInlineKeyboardMarkupArgumentArraySerializer(),
             $this->createReplyKeyboardRemoveArgumentArraySerializer(),

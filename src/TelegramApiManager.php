@@ -30,6 +30,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\RevokeChatInviteLinkArg
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAnimationArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendAudioArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendChatActionArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendContactArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendDocumentArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendMediaGroupArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\SendPhotoArgumentInterface;
@@ -359,6 +360,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function sendVenue(SendVenueArgumentInterface $argument): MessageInterface
     {
         return $this->getMessageDomainService()->sendVenue($argument);
+    }
+
+    public function sendContact(SendContactArgumentInterface $argument): MessageInterface
+    {
+        return $this->getMessageDomainService()->sendContact($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface

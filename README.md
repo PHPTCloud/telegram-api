@@ -40,7 +40,7 @@ sendLocation ✅
 
 sendVenue ✅
 
-sendContact
+sendContact ✅
 
 sendPoll
 

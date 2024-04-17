@@ -9,6 +9,7 @@ use PHPTCloud\TelegramApi\TelegramApiFieldEnum;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\MessageInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\DataObject\PhotoSizeInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ContactDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MessageDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\PhotoSizeDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MessageTypeFactoryInterface;
@@ -22,6 +23,7 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
         private readonly MessageTypeFactoryInterface $messageTypeFactory,
         private readonly ChatDeserializerInterface $chatDeserializer,
         private readonly PhotoSizeDeserializerInterface $photoSizeDeserializer,
+        private readonly ContactDeserializerInterface $contactDeserializer,
     ) {
     }
 
@@ -32,19 +34,26 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
         $text = $data[TelegramApiFieldEnum::TEXT->value] ?? null;
         $chat = $data[TelegramApiFieldEnum::CHAT->value] ?? null;
         $photo = $data[TelegramApiFieldEnum::PHOTO->value] ?? null;
+        $contact = $data[TelegramApiFieldEnum::CONTACT->value] ?? null;
 
         $messageId = $this->filterNumeric($messageId);
         $date = $this->filterNumeric($date);
         $text = $this->filterString($text);
+
         $chat = $this->filterArray($chat);
         if (!empty($chat)) {
             $chat = $this->chatDeserializer->deserialize($chat);
         }
+
         $photo = $this->filterArray($photo);
         if (!empty($photo)) {
             $photo = array_map(function (array $item): PhotoSizeInterface {
                 return $this->photoSizeDeserializer->deserialize($item);
             }, $photo);
+        }
+
+        if ($contact) {
+            $contact = $this->contactDeserializer->deserialize($contact);
         }
 
         return $this->messageTypeFactory->create(
@@ -53,6 +62,7 @@ class MessageDeserializer extends AbstractDeserializer implements MessageDeseria
             chat: $chat,
             text: $text,
             photo: $photo,
+            contact: $contact,
         );
     }
 }
