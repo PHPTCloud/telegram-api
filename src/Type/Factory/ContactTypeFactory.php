@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PHPTCloud\TelegramApi\Type\Factory;
@@ -12,9 +13,9 @@ class ContactTypeFactory implements ContactTypeFactoryInterface
     public function create(
         string $phoneNumber,
         string $firstName,
-        ?string $lastName = null,
-        int|float|null $userId = null,
-        ?string $vcard = null,
+        string $lastName = null,
+        int|float $userId = null,
+        string $vcard = null,
     ): ContactInterface {
         return new Contact($phoneNumber, $firstName, $lastName, $userId, $vcard);
     }
