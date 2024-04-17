@@ -346,4 +346,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SendVenue.md
      */
     case SEND_VENUE = 'sendVenue';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SendContact.md
+     */
+    case SEND_CONTACT = 'sendContact';
 }

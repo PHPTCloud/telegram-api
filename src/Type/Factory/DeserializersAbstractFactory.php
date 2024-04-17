@@ -22,6 +22,7 @@ use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberOwnerDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatMemberRestrictedDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPermissionsDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\ChatPhotoDeserializer;
+use PHPTCloud\TelegramApi\Type\Deserializer\ContactDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\FileDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\LocationDeserializer;
 use PHPTCloud\TelegramApi\Type\Deserializer\MenuButtonDeserializer;
@@ -50,6 +51,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberOwnerDeserializ
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatMemberRestrictedDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPermissionsDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ChatPhotoDeserializerInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\ContactDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\FileDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\LocationDeserializerInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Deserializer\MenuButtonDeserializerInterface;
@@ -77,6 +79,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberRestrictedTypeFactor
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ContactTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\DeserializersAbstractFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
@@ -189,6 +192,9 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             case BotCommandDeserializer::class:
             case BotCommandDeserializerInterface::class:
                 return $this->createBotCommandDeserializer();
+            case ContactDeserializer::class:
+            case ContactDeserializerInterface::class:
+                return $this->createContactDeserializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Десериалайзер с типом "%s" не определен.', $type));
         }
@@ -211,6 +217,7 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
             $typeFactory,
             $this->createChatDeserializer($wantCreateMessageDeserializer),
             $this->createPhotoSizeDeserializer(),
+            $this->createContactDeserializer(),
         );
     }
 
@@ -436,6 +443,13 @@ class DeserializersAbstractFactory implements DeserializersAbstractFactoryInterf
     {
         return new BotCommandDeserializer(
             $this->typeFactoriesAbstractFactory->create(BotCommandTypeFactoryInterface::class),
+        );
+    }
+
+    public function createContactDeserializer(): ContactDeserializerInterface
+    {
+        return new ContactDeserializer(
+            $this->typeFactoriesAbstractFactory->create(ContactTypeFactoryInterface::class),
         );
     }
 }

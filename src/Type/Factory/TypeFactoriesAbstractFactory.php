@@ -20,6 +20,7 @@ use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatMemberRestrictedTypeFactor
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPermissionsTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatPhotoTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ChatTypeFactoryInterface;
+use PHPTCloud\TelegramApi\Type\Interfaces\Factory\ContactTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\FileFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\LocationTypeFactoryInterface;
 use PHPTCloud\TelegramApi\Type\Interfaces\Factory\MenuButtonCommandsTypeFactoryInterface;
@@ -131,6 +132,9 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
             case BotCommandTypeFactory::class:
             case BotCommandTypeFactoryInterface::class:
                 return $this->createBotCommandTypeFactory();
+            case ContactTypeFactory::class:
+            case ContactTypeFactoryInterface::class:
+                return $this->createContactTypeFactory();
             default:
                 throw new \InvalidArgumentException(sprintf('Фабрика с типом "%s" не определена.', $type));
         }
@@ -282,5 +286,10 @@ class TypeFactoriesAbstractFactory implements TypeFactoriesAbstractFactoryInterf
     public function createBotCommandTypeFactory(): BotCommandTypeFactoryInterface
     {
         return new BotCommandTypeFactory();
+    }
+
+    public function createContactTypeFactory(): ContactTypeFactoryInterface
+    {
+        return new ContactTypeFactory();
     }
 }
