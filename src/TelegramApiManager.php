@@ -8,6 +8,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentIn
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\CopyMessagesArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteChatStickerSetArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMyCommandsArgumentInterface;
@@ -365,6 +366,11 @@ class TelegramApiManager implements TelegramApiManagerInterface
     public function sendContact(SendContactArgumentInterface $argument): MessageInterface
     {
         return $this->getMessageDomainService()->sendContact($argument);
+    }
+
+    public function deleteChatStickerSet(DeleteChatStickerSetArgumentInterface $argument): bool
+    {
+        return $this->getChatDomainService()->deleteChatStickerSet($argument);
     }
 
     private function getChatDomainService(): ChatDomainServiceInterface

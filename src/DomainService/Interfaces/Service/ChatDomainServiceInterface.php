@@ -6,6 +6,7 @@ namespace PHPTCloud\TelegramApi\DomainService\Interfaces\Service;
 
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\BanChatMemberArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ChatIdArgumentInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteChatStickerSetArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessageArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\DeleteMessagesArgumentInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\DataObject\ExportChatInviteLinkArgumentInterface;
@@ -161,4 +162,9 @@ interface ChatDomainServiceInterface
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SetChatMenuButton.md
      */
     public function setChatMenuButton(SetChatMenuButtonArgumentInterface $argument): bool;
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteChatStickerSet.md
+     */
+    public function deleteChatStickerSet(DeleteChatStickerSetArgumentInterface $argument): bool;
 }

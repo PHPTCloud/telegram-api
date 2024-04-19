@@ -12,6 +12,7 @@ use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatAdministratorRights
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\ChatIdArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\CopyMessagesArgumentArraySerializerInterface;
+use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteChatStickerSetArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessageArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMessagesArgumentArraySerializerInterface;
 use PHPTCloud\TelegramApi\Argument\Interfaces\Serializer\DeleteMyCommandsArgumentArraySerializerInterface;
@@ -87,6 +88,7 @@ use PHPTCloud\TelegramApi\Argument\Serializer\ChatAdministratorRightsArgumentArr
 use PHPTCloud\TelegramApi\Argument\Serializer\ChatIdIdArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\CopyMessagesArgumentArraySerializer;
+use PHPTCloud\TelegramApi\Argument\Serializer\DeleteChatStickerSetArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessageArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMessagesArgumentArraySerializer;
 use PHPTCloud\TelegramApi\Argument\Serializer\DeleteMyCommandsArgumentArraySerializer;
@@ -384,6 +386,9 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             case SendContactArgumentArraySerializer::class:
             case SendContactArgumentArraySerializerInterface::class:
                 return $this->createSendContactArgumentArraySerializer();
+            case DeleteChatStickerSetArgumentArraySerializer::class:
+            case DeleteChatStickerSetArgumentArraySerializerInterface::class:
+                return $this->createDeleteChatStickerSetArgumentArraySerializer();
             default:
                 throw new \InvalidArgumentException(sprintf('Невозможно определить сериализатор для данного типа (%s).', $type));
         }
@@ -903,5 +908,10 @@ class SerializersAbstractFactory implements SerializersAbstractFactoryInterface
             $this->createReplyKeyboardMarkupArgumentArraySerializer(),
             $this->createForceReplyArgumentArraySerializer(),
         );
+    }
+
+    public function createDeleteChatStickerSetArgumentArraySerializer(): DeleteChatStickerSetArgumentArraySerializerInterface
+    {
+        return new DeleteChatStickerSetArgumentArraySerializer();
     }
 }
