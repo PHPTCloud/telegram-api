@@ -1,7 +1,7 @@
 {
   "name": "phptcloud/telegram-api",
   "description": "Библиотека для работы с Telegram API",
-  "version": "1.0.0",
+  "version": "1.0.0-rc",
   "type": "library",
   "keywords": ["telegram", "bot", "api"],
   "authors": [
