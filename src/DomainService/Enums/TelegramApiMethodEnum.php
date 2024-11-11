@@ -351,4 +351,9 @@ enum TelegramApiMethodEnum: string
      * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/SendContact.md
      */
     case SEND_CONTACT = 'sendContact';
+
+    /**
+     * @see https://github.com/PHPTCloud/telegram-api/tree/master/documentation/ru/methods/DeleteChatStickerSet.md
+     */
+    case DELETE_CHAT_STICKER_SET = 'deleteChatStickerSet';
 }
