@@ -35,18 +35,10 @@ class Request implements RequestInterface
     }
 
     public static function getInstance(
-        TelegramBotInterface $telegramBot = null,
-        ?string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        TelegramBotInterface $telegramBot,
+        string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface {
-        if (null === self::$instance) {
-            if (null === $host || null === $telegramBot) {
-                throw new \InvalidArgumentException('Нельзя создать экземпляр класса без обязательных аргументов.');
-            }
-
-            self::$instance = new Request($host, $telegramBot);
-        }
-
-        return self::$instance;
+        return new Request($host, $telegramBot);
     }
 
     public static function create(

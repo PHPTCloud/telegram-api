@@ -16,8 +16,8 @@ interface RequestInterface
     public const DESCRIPTION_KEY = 'description';
 
     public static function getInstance(
-        TelegramBotInterface $telegramBot = null,
-        ?string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
+        TelegramBotInterface $telegramBot,
+        string $host = TelegramApiManagerInterface::TELEGRAM_API_HOST,
     ): RequestInterface;
 
     public static function create(
